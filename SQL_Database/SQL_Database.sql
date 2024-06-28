@@ -27,6 +27,7 @@ TenLT nvarchar,
 GhiChu nvarchar
 );
 
+
 -- SQL Thang
 CREATE TABLE NhaPhanPhoi (
 	MaNPP NVARCHAR(50) PRIMARY KEY,
@@ -44,3 +45,41 @@ CREATE TABLE HoaDon (
     MaNV NVARCHAR(50) NOT NULL,
     MaKH NVARCHAR(50) NOT NULL
 );
+
+-- SQL TU
+create table taikhoan(
+MaTK int primary key ,
+username nvarchar(50) not null,
+password nvarchar(50) not null,
+MaNV int ,
+MaVT int
+);
+
+create table khachhang(
+MaKH int primary key ,
+TenKH nvarchar(50) not null,
+Tuoi int not null,
+SDT int ,
+Email nvarchar(55),
+Gioitinh bit ,
+Diachi nvarchar(200),
+ngaythamgia date
+);
+
+
+create table NhanVien (
+manhanvien nvarchar(20) primary key,
+Ten nvarchar (50),
+Tuoi int, 
+SDT nvarchar(12),
+Email nvarchar(50),
+GioiTinh nvarchar(20),
+DiaChi nvarchar(200),
+Luong int,
+CCCD int,
+)
+create table VaiTro(
+Mavaitro nvarchar(10) primary key,
+Ten nvarchar(255),
+)
+
