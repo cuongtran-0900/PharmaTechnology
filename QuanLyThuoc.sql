@@ -4,7 +4,7 @@ create database QuanLyThuoc;
 Use QuanLyThuoc;
 go
 
--- 1 t?o b?ng nh‚n viÍn 
+-- 1 t?o b?ng nh√¢n vi√™n 
 create table NhanVien(
 MaNV nvarchar(10) NOT NULL primary key,
 Ten nvarchar (100) NOT NULL,
@@ -16,14 +16,14 @@ DiaChi nvarchar (255)NOT NULL,
 )
 go
 
--- 2 t?o b?ng vai trÚ 
+-- 2 t?o b?ng vai tr√≤ 
 CREATE TABLE VaiTro (
     MaVT NVARCHAR(10) NOT NULL PRIMARY KEY,
     Ten NVARCHAR(255) NOT NULL,
 )
 go
 
--- 3 t?o b?ng t‡i kho?n 
+-- 3 t?o b?ng t√†i kho?n 
 CREATE TABLE TaiKhoan (
 	MaTK NVARCHAR(10) NOT NULL PRIMARY KEY,
     Username NVARCHAR(255) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE TaiKhoan (
 )
 go
 
--- 4 t?o b?ng kh·ch h‡ng
+-- 4 t?o b?ng kh√°ch h√†ng
 CREATE TABLE KhachHang (
     MaKH NVARCHAR(10) NOT NULL PRIMARY KEY,
     TenKH NVARCHAR(255) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE KhachHang (
 )
 go
 
--- 5t?o b?ng ??n v? tÌnh 
+-- 5t?o b?ng ??n v? t√≠nh 
 CREATE TABLE DonViTinh (
     MaDVT NVARCHAR(10) NOT NULL PRIMARY KEY,
     tenDVT NVARCHAR(255) NOT NULL,
@@ -68,13 +68,13 @@ CREATE TABLE DanhMuc (
 go
 
 -- 14t?o b?ng lo?i thu?c 
-create table LoaiThuoc
-(
-MaLoai nvarchar(10) primary key,
-TenLoai Nvarchar(100),
-GhiChu Nvarchar(100)
-)
-go
+-- create table LoaiThuoc
+-- (
+-- MaLoai nvarchar(10) primary key,
+-- TenLoai Nvarchar(100),
+-- GhiChu Nvarchar(100)
+-- )
+-- go
 
 -- 8 t?o b?ng thu?c 
 CREATE TABLE Thuoc (
@@ -94,16 +94,16 @@ CREATE TABLE Thuoc (
 )
 go
 
---9 t?o b?ng hÛa ??n xu?t
-CREATE TABLE HoaDonXuat (
-    MaHDX NVARCHAR(10) NOT NULL PRIMARY KEY,
-    NgayThang DATE NOT NULL,
-	tongTien FLOAT NOT NULL,
-    MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhanVien(MaNV),	
-)
-go
+--9 t?o b?ng h√≥a ??n xu?t
+-- CREATE TABLE HoaDonXuat (
+--     MaHDX NVARCHAR(10) NOT NULL PRIMARY KEY,
+--     NgayThang DATE NOT NULL,
+-- 	tongTien FLOAT NOT NULL,
+--     MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhanVien(MaNV),	
+-- )
+-- go
 
---13 t?o b?ng nh‡ ph‚n ph?i 
+--13 t?o b?ng nh√† ph√¢n ph?i 
 create table nhaPhanPhoi
 (
 MaNPP nvarchar (10) primary key,
@@ -114,20 +114,20 @@ Email nvarchar(50),
 )
 go
 
--- 10 t?o b?ng chi ti?t hÛa ??n xu?t 
-create table chitiethoadonxuat
-(
-MaCTHDX nvarchar(10)primary key,
-MaHDX  nvarchar (10),
-Mathuoc nvarchar(10),
-soluong nvarchar (500),
-giaban float,
-FOREIGN KEY (MaHDX) REFERENCES Hoadonxuat(MaHDX),
-FOREIGN KEY (MAthuoc) REFERENCES Thuoc(Mathuoc),
-)
-go
+-- 10 t?o b?ng chi ti?t h√≥a ??n xu?t 
+-- create table chitiethoadonxuat
+-- (
+-- MaCTHDX nvarchar(10)primary key,
+-- MaHDX  nvarchar (10),
+-- Mathuoc nvarchar(10),
+-- soluong nvarchar (500),
+-- giaban float,
+-- FOREIGN KEY (MaHDX) REFERENCES Hoadonxuat(MaHDX),
+-- FOREIGN KEY (MAthuoc) REFERENCES Thuoc(Mathuoc),
+-- )
+-- go
 
--- 11 t?o b?ng  hÛa ??n nh?p 
+-- 11 t?o b?ng  h√≥a ??n nh?p 
 create table hoadonnhap
 (
 maHDN nvarchar(10) primary key,
@@ -141,7 +141,7 @@ FOREIGN KEY (MaNPP) REFERENCES nhaPhanPhoi(MANPP)
 )
 go
 
--- 12 t?o b?ng chi ti?t hÛa ??n nh?p 
+-- 12 t?o b?ng chi ti?t h√≥a ??n nh?p 
 create table chitiethoadonnhap
 (
 MaCTHDN nvarchar(10) primary key,
@@ -154,7 +154,7 @@ FOREIGN KEY (Mathuoc) REFERENCES thuoc(MAthuoc)
 )
 go
 
--- 15 t?o b?ng hÛa ??n
+-- 15 t?o b?ng h√≥a ??n
 CREATE TABLE HoaDon (
     MaHD NVARCHAR(10) NOT NULL PRIMARY KEY,
     thoiGian DATETIME NOT NULL,
@@ -166,7 +166,7 @@ CREATE TABLE HoaDon (
 )
 go
 
--- 16 t?o b?ng chi ti?t hÛa ??n
+-- 16 t?o b?ng chi ti?t h√≥a ??n
 CREATE TABLE ChiTietHoaDon (
 	MaHD NVARCHAR(10) NOT NULL,
     MaThuoc NVARCHAR(10) NOT NULL,
