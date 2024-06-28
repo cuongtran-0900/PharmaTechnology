@@ -94,7 +94,7 @@ CREATE TABLE Thuoc (
 )
 go
 
---9 t?o b?ng hóa ??n xu?t
+--9 t?o b?ng hóa ??n xu?
 -- CREATE TABLE HoaDonXuat (
 --     MaHDX NVARCHAR(10) NOT NULL PRIMARY KEY,
 --     NgayThang DATE NOT NULL,
