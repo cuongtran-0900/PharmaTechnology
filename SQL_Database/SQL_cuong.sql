@@ -1,1 +1,0 @@
-trong này chả có j cả
