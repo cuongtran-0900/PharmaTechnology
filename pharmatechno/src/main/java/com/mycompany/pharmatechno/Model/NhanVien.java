@@ -9,5 +9,14 @@ package com.mycompany.pharmatechno.Model;
  * @author Cuong
  */
 public class NhanVien {
-    
+    String MaNV;
+    String TenNV;
+    int TuoiNV;
+    String SDT;
+    String Email;
+    String GioiTinh;
+    String DiaChi;
+    String Roll;
+    String UserName;
+    String PassWord;
 }
