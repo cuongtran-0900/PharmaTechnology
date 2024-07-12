@@ -13,16 +13,10 @@ SDT nvarchar (15)NOT NULL,
 Email nvarchar (50)NOT NULL,
 GioiTinh nvarchar(50)NOT NULL,
 DiaChi nvarchar (255)NOT NULL,
-Roll NVARCHAR(255) NOT NULL,
+TenVT NVARCHAR(255) NOT NULL,
 Username NVARCHAR(255) NOT NULL,
 Password NVARCHAR(255) NOT NULL,
-IsDelete Int NOT NULL,
 )
-
--- Insert data into NhanVien table
-INSERT INTO NhanVien (MaNV, Ten, Tuoi, SDT, Email, GioiTinh, DiaChi,Roll,Username,Password,IsDelete  ) VALUES
-('nv001',  N'Nguyễn Phan Anh Tuấn', '30', '0906765871', 'Tuan2454@gmail.com', N'Nam', N'Gò Vấp thành Phố Hồ Chí Minh', N'Admin', 'admin', '123123',1),
-('nv002',  N'Vũ Nương', '28', '0931265687', 'Vunuong255@gmail.com',N'Nữ', 'Quận 4 thành phố Hồ Chí Minh ', N'Nhân viên ', 'nhanvien', '123456',1);
 go
 
 -- 4 t?o b?ng khách hàng
@@ -86,20 +80,22 @@ CREATE TABLE DanhMuc (
 )
 go
 
-INSERT INTO DanhMuc (MaDM, TenDM)
-VALUES
-	('ZXC311QWE', N'Hệ tim mạch & tạo máu'),
-	('ZXC321QWE', N'Hệ tiêu hóa & gan mật'),
-	('ZAQ321QWE', N'Thuốc giảm đau');
-go
+-- 14t?o b?ng lo?i thu?c 
+-- create table LoaiThuoc
+-- (
+-- MaLoai nvarchar(10) primary key,
+-- TenLoai Nvarchar(100),
+-- GhiChu Nvarchar(100)
+-- )
+-- go
 
 -- 8 t?o b?ng thu?c 
 CREATE TABLE Thuoc (
     MaThuoc NVARCHAR(10) NOT NULL PRIMARY KEY,
     TenThuoc NVARCHAR(255) NOT NULL,
-    SoLuong NVARCHAR(50),
-    HinhAnh nvarchar(50) not null,
+    HinhAnh VARBINARY(MAX),
     ThanhPhan NVARCHAR(255),
+    SoLuong NVARCHAR(50),
 	MaDVT NVARCHAR(10) NOT NULL FOREIGN KEY REFERENCES DonViTinh(MaDVT),
 	MADM NVARCHAR(10) NOT NULL FOREIGN KEY REFERENCES DanhMuc(MaDM),
 	MaXX NVARCHAR(10) NOT NULL FOREIGN KEY REFERENCES XuatXu(MaXX),
@@ -111,44 +107,40 @@ CREATE TABLE Thuoc (
 )
 go
 
-INSERT INTO Thuoc(MaThuoc, TenThuoc, SoLuong, HinhAnh, ThanhPhan, MaDVT, MaDM, MaXX, SoLuongTon, giaNhap, DonGia, HanSuDung,IsDelete )
-VALUES
-    ('X12IFO4BZ', N'Hapacol 650 DHG', '24', 'thuocHapacol.png', N'Paracetamol', 'CVB123ERT', 'ZAQ321QWE', 'XCVSDF123', 1021, 20000, 25000, '2026-02-15',1),
-    ('XRZXFO4BZ', N'Bột pha hỗn dịch uống Smecta vị cam', '12', 'botphatieuchay.jpg', N'Diosmectite', 'CVB141ERT', 'ZXC321QWE', 'XCVSDF125', 1021, 3000, 4000, '2026-05-21',1),
-    ('XRBIFO4BZ', N'Siro C.C Life 100mg/5ml Foripharm', '30', 'sirocam.jpg', N'Vitamin C', 'CV123GERT', 'ZXC321QWE', 'XCVSDF123', 1032, 25000, 30000, '2026-03-01',1),
-    ('VFZCHLHIE', N'Panadol Extra đỏ', '64', 'Panadol-Extra.png', N'Caffeine, Paracetamol', 'CVB123ERT', 'ZAQ321QWE', 'XCVSDF122', 1034, 235000, 250000, '2026-08-07',1),
-    ('MJ9AB7J1I', N'Viên sủi Vitatrum C BRV', '9', 'vitaminc.png', N'Sỏi thận, Rối loạn chuyển hoá fructose, Bệnh Thalassemia, Tăng oxalat niệu, Rối loạn chuyển hoá oxalat', 'CVB123ERT', 'ZXC321QWE', 'XCVSDF122', 1076, 20000, 24000, '2027-12-31',1),
-    ('ESMJMM7T1', N'Bổ Gan Trường Phúc', '50', 'Bogantruongphu.jpg', N'Diệp hạ châu, Đảng Sâm, Bạch truật, Cam thảo, Phục Linh, Nhân trần, Trần bì', 'CVB123ERT', 'ZXC321QWE', 'XCVSDF123', 1034, 85000, 95000, '2026-02-15',1),
-    ('BV07519DS', N'Bài Thạch Trường Phúc', '6', 'bothantruongphuc.jpg', N'Xa tiền tử, Bạch mao căn, Sinh Địa, Ý Dĩ, Kim tiền thảo', 'CVB123ERT', 'ZXC321QWE', 'XCVSDF123', 1076, 85000, 95000, '2026-02-10',1),
-    ('798E63U16', N'Đại Tràng Trường Phúc', '32', 'Daitrangtruongphuc.jpg', N'Hoàng liên, Mộc hương, Bạch truật, Bạch thược, Ngũ bội tử, Hậu phác, Cam thảo, Xa tiền tử, Hoạt thạch', 'CVB123ERT', 'ZXC321QWE', 'XCVSDF123', 1021, 90000, 105000, '2026-09-03',1),
-    ('745KCI1KX', N'Ninh Tâm Vương Hồng Bàng', '46', 'Ninhtamvuong.png', N'L-Carnitine, Taurine, Đan sâm, Khổ sâm bắc, Nattokinase, Hoàng đằng, Magie, Tá dược vừa đủ', 'CVB123ERT', 'ZXC311QWE', 'XCVSDF124', 1054, 165000, 180000, '2026-08-15',1);
-go
+--9 t?o b?ng hóa ??n xu?
+-- CREATE TABLE HoaDonXuat (
+--     MaHDX NVARCHAR(10) NOT NULL PRIMARY KEY,
+--     NgayThang DATE NOT NULL,
+-- 	tongTien FLOAT NOT NULL,
+--     MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhanVien(MaNV),	
+-- )
+-- go
 
---9 t?o b?ng nhà phân ph?i 
+--13 t?o b?ng nhà phân ph?i 
 create table nhaPhanPhoi
 (
 MaNPP nvarchar (10) primary key,
 TenNPP Nvarchar (100),
-DienThoai varchar(13),
 DiaChi nvarchar (200),
+DienThoai varchar(13),
 Email nvarchar(50),
-IsDelete Int NOT NULL,
 )
 go
 
-INSERT INTO nhaPhanPhoi (MaNPP, tenNPP, DienThoai, diaChi,Email,IsDelete )
-VALUES
-  ('XCZXWE123', N'Công ty Cổ phần Dược phẩm An Khang', '0283820618', N'282-284 Trần Hưng Đạo, Phường Nguyễn Cư Trinh, Quận 1, TP.HCM','nhathuocankhang@gmail.com',1),
-  ('23HUSZ173', N'Công ty Cổ phần Dược phẩm Pharmacity', '0243825353', N'426 Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, TP.HCM','cskh@pharmacity.vn',1),
-  ('ZXHUWE12S', N'Hệ thống nhà thuốc ECO', '0283689339', N'336 Phan Văn Trị, Phường 11, Quận Bình Thạnh, TP.HCM','eco@ecopharma.com.vn',1),
-  ('N4M35KL1B', N'Công ty Dược phẩm Phano', '0243574133', N'286 P. Xã Đàn, Đống Đa, Hà Nội','contact@phanopharmacy.com',1),
-  ('XCHUWE123', N'Công ty Dược phẩm Trung ương 2', '0243825535', '138B Đội Cấn, Ba Đình, Hà Nội','	info@phytopharma.vn',1),
-  ('2B32N31B2', N'Công ty Dược phẩm VCP', '0285413833', N'780 Đường Nguyễn Văn Linh, Phường Tân Phong, Quận 7, TP. Hồ Chí Minh','sale.online@vcp.com.vn',1);
-go
+-- 10 t?o b?ng chi ti?t hóa ??n xu?t 
+-- create table chitiethoadonxuat
+-- (
+-- MaCTHDX nvarchar(10)primary key,
+-- MaHDX  nvarchar (10),
+-- Mathuoc nvarchar(10),
+-- soluong nvarchar (500),
+-- giaban float,
+-- FOREIGN KEY (MaHDX) REFERENCES Hoadonxuat(MaHDX),
+-- FOREIGN KEY (MAthuoc) REFERENCES Thuoc(Mathuoc),
+-- )
+-- go
 
-
-
--- 10 t?o b?ng  hóa ??n nh?p 
+-- 11 t?o b?ng  hóa ??n nh?p 
 create table hoadonnhap
 (
 maHDN nvarchar(10) primary key,
@@ -158,42 +150,21 @@ NguoiNhan nvarchar (50),
 NgayViet DateTime,
 NgayNhap DateTime,
 TongTien float,
-IsDelete Int NOT NULL,
 FOREIGN KEY (MaNPP) REFERENCES nhaPhanPhoi(MANPP)
 )
 go
 
-
-INSERT INTO HoaDonNhap (MaHDN, MaNPP, NguoiGiao, NguoiNhan, NgayViet, NgayNhap, TongTien,IsDelete )
-VALUES
-    ('PPJ9DNBL7', 'XCZXWE123', N'Nguyễn văn Trường', N'Trần thị Kim', '2024-03-04 10:00:00', '2024-03-04 13:12:42', 10500000,1),
-    ('RXPXRWR36', '23HUSZ173', N'Bùi Văn Nam', 'Phạm Thị Dương', '2024-03-05 09:00:00', '2024-03-05 11:31:26', 19800000,1),
-    ('ZQKV59121', 'ZXHUWE12S', N'Hoàng Văn Tùng', N'Nguyễn Thị Thảo', '2024-03-06 06:00:00', '2024-03-06 07:18:32', 6000000,1),
-    ('C45PX5VYN', 'XCHUWE123', N'Hoàng Trung Khánh ', N'Trần Văn Hùng', '2024-03-07 08:00:00', '2024-03-07 10:26:21', 77000000,1),
-    ('A4B3VKX8V', 'XCHUWE123', N'Mai Thành Vũ ', N'Phạm Kim Hồng', '2024-03-11 07:00:00', '2024-03-11 08:35:37', 9500000,1);
-GO
-
--- 11 t?o b?ng chi ti?t hóa ??n nh?p 
+-- 12 t?o b?ng chi ti?t hóa ??n nh?p 
 create table chitiethoadonnhap
 (
+MaCTHDN nvarchar(10) primary key,
 MaHDN nvarchar (10),
 MaThuoc nvarchar(10),
 Soluong int,
 GiaNhap float,
-CONSTRAINT MaCTHDN PRIMARY KEY (MaHDN,MaThuoc),
 FOREIGN KEY (MaHDN) REFERENCES hoadonnhap(MAHDN),
 FOREIGN KEY (Mathuoc) REFERENCES thuoc(MAthuoc)
 )
-go
-
-INSERT INTO chitiethoadonnhap(MaHDN, MaThuoc, soLuong, GiaNhap)
-VALUES
-	('PPJ9DNBL7', '798E63U16', 100, 105000),
-	('RXPXRWR36', '745KCI1KX', 110, 180000),
-	('ZQKV59121', 'XRBIFO4BZ', 200, 30000),
-	('C45PX5VYN', 'XRZXFO4BZ', 500, 4000),
-	('C45PX5VYN', 'VFZCHLHIE', 300, 250000),
-	('A4B3VKX8V', 'ESMJMM7T1', 100, 95000);
 go
 
 
@@ -211,125 +182,99 @@ CREATE TABLE HoaDon (
 )
 go
 
-INSERT INTO HoaDon (MaHD, thoiGian, MaNV, MaKH, tongTien,IsDelete )
-VALUES
-    ('V1DFWISZ0', '2024-04-01 14:21:13', 'nv001', 'KH001', 105000,1),
-    ('MNS6VLQ9F', '2024-04-02 16:12:51', 'nv002', 'KH002', 180000,1),
-    ('3P06S5KGG', '2024-04-03 08:31:31', 'nv001', 'KH003', 90000,1),
-    ('R4DDC67Q0', '2024-04-04 10:12:41', 'nv002', 'KH004', 270000,1),
-    ('SKUQJUB5Z', '2024-04-05 12:31:36', 'nv001', 'KH005', 30000,1),
-    ('F8BARB18Z', '2024-03-09 14:12:11', 'nv002', 'KH006', 105000,1),
-    ('8XBLQZV9B', '2024-03-10 16:03:43', 'nv002', 'KH007', 345000,1),
-    ('914KKABW3', '2024-03-11 08:07:32', 'nv002', 'KH008', 95000,1),
-    ('TJ6QM5STW', '2024-03-12 10:45:11', 'nv002', 'KH009', 400000,1),
-    ('B42SJZNIM', '2024-03-13 12:54:22', 'nv002', 'KH010', 30000,1),
-    ('41C5TNFGE', '2024-02-14 14:14:30', 'nv002', 'KH005', 280000,1),
-    ('ME9CL5ER6', '2024-02-15 16:15:13', 'nv002', 'KH006', 280000,1),
-    ('WXOX8PE0Q', '2024-02-16 08:56:11', 'nv002', 'KH007', 500000,1),
-    ('63V7R8RBE', '2024-02-17 10:18:53', 'nv001', 'KH002', 250000,1),
-    ('1B78SGIZV', '2024-02-18 12:28:06', 'nv002', 'KH008', 105000,1),
-    ('VBA5E001G', '2024-02-19 14:38:28', 'nv002', 'KH006', 200000,1),
-    ('HAT7YG1MK', '2024-02-20 16:16:29', 'nv002', 'KH005', 240000,1),
-	('ASZS32JZX', '2024-02-21 16:16:29', 'nv002', N'KH004', 135000,1),
-	('MNXS72JXA', '2024-02-22 16:16:29', 'nv002', N'KH005', 465000,1);
-go
-
-
-
--- 13 t?o b?ng chi ti?t hóa ??n
+-- 16 t?o b?ng chi ti?t hóa ??n
 CREATE TABLE ChiTietHoaDon (
     MaHD NVARCHAR(10) NOT NULL,
     MaThuoc NVARCHAR(10) NOT NULL,
-    SoLuong INT NOT NULL,
-    DonGia FLOAT NOT NULL,
-    CONSTRAINT MaCTHD PRIMARY KEY (MaHD, MaThuoc),
-    FOREIGN KEY (MaHD) REFERENCES HoaDon(MaHD),
-    FOREIGN KEY (MaThuoc) REFERENCES Thuoc(MaThuoc)
-);
-GO
-INSERT INTO ChiTietHoaDon(MaHD, MaThuoc, soLuong, donGia)
-VALUES
-	('V1DFWISZ0', '798E63U16', 1, 105000),
-	('MNS6VLQ9F', '745KCI1KX', 1, 180000),
-	('3P06S5KGG', 'XRBIFO4BZ', 3, 30000),
-	('R4DDC67Q0', 'XRZXFO4BZ', 5, 4000),
-	('R4DDC67Q0', 'VFZCHLHIE', 1, 250000),
-	('SKUQJUB5Z', 'XRBIFO4BZ', 1, 30000),
-	('F8BARB18Z', '798E63U16', 1, 105000),
-	('8XBLQZV9B', 'ESMJMM7T1', 1, 95000),
-	('8XBLQZV9B', 'VFZCHLHIE', 1, 250000),
-	('914KKABW3', 'ESMJMM7T1', 1, 95000),
-	('TJ6QM5STW', 'XRBIFO4BZ', 1, 30000),
-	('TJ6QM5STW', 'VFZCHLHIE', 1, 250000),
-	('TJ6QM5STW', 'X12IFO4BZ', 1, 120000),
-	('B42SJZNIM', 'XRBIFO4BZ', 1, 30000),
-	('41C5TNFGE', 'XRBIFO4BZ', 1, 30000),
-	('41C5TNFGE', 'VFZCHLHIE', 1, 250000),
-	('ME9CL5ER6', 'XRBIFO4BZ', 1, 30000),
-	('ME9CL5ER6', 'VFZCHLHIE', 1, 250000),
-	('WXOX8PE0Q', 'VFZCHLHIE', 2, 250000),
-	('63V7R8RBE', 'VFZCHLHIE', 1, 250000),
-	('1B78SGIZV', '798E63U16', 1, 105000),
-	('VBA5E001G', '798E63U16', 1, 105000),
-	('VBA5E001G', 'ESMJMM7T1', 1, 95000),
-	('HAT7YG1MK', 'X12IFO4BZ', 2, 120000),
-	('ASZS32JZX', 'X12IFO4BZ', 3, 25000),
-	('ASZS32JZX', 'XRZXFO4BZ', 2, 30000),
-	('MNXS72JXA', 'ESMJMM7T1', 2, 95000),
-	('MNXS72JXA', 'VFZCHLHIE', 1, 250000),
-	('MNXS72JXA', 'X12IFO4BZ', 1, 25000);
+    soLuong INT NOT NULL,
+	donGia FLOAT NOT NULL,
+	CONSTRAINT MaCTHD PRIMARY KEY (MaHD,MaThuoc),
+	FOREIGN KEY(maHD) REFERENCES HoaDon(MaHD),
+	FOREIGN KEY(MaThuoc) REFERENCES Thuoc(MAThuoc),
+)
 go
--- 1. Procedure: Lấy thông tin nhân viên theo mã nhân viên
-CREATE PROCEDURE laythongtinNhanVien
-    @MaNV NVARCHAR(10)
-AS
-BEGIN
-    SELECT * 
-    FROM NhanVien 
-    WHERE MaNV = @MaNV;
-END;
-GO
--- 2. Procedure: Lấy thông tin thuốc theo mã thuốc
 
-CREATE PROCEDURE Laythongtinthuoc
-    @MaThuoc NVARCHAR(10)
-AS
-BEGIN
-    SELECT * 
-    FROM Thuoc 
-    WHERE MaThuoc = @MaThuoc;
-END;
+
+-- Insert data into NhanVien table
+INSERT INTO NhanVien (MaNV, Ten, Tuoi, SDT, Email, GioiTinh, DiaChi) VALUES
+('NV001', 'Nguyen Van A', '30', '0123456789', 'a@gmail.com', 'Nam', '123 ABC St.'),
+('NV002', 'Tran Thi B', '28', '0987654321', 'b@gmail.com', 'Nu', '456 DEF St.');
+
+-- Insert data into VaiTro table
+INSERT INTO VaiTro (MaVT, Ten) VALUES
+('VT001', 'Admin'),
+('VT002', 'NhanVien');
+
+-- Insert data into TaiKhoan table
+INSERT INTO TaiKhoan (MaTK, Username, Password, MaNV, MaVT) VALUES
+('TK001', 'admin', 'adminpass', 'NV001', 'VT001'),
+('TK002', 'user1', 'user1pass', 'NV002', 'VT002');
+
+-- Insert data into KhachHang table
+INSERT INTO KhachHang (MaKH, TenKH, Tuoi, SDT, Email, GioiTinh, DiaChi, NgayThamGia) VALUES
+('KH001', 'Le Van C', '35', '0123456788', 'c@gmail.com', 'Nam', '789 GHI St.', '2023-01-01'),
+('KH002', 'Pham Thi D', '32', '0987654322', 'd@gmail.com', 'Nu', '101 JKL St.', '2023-02-01');
+
+-- Insert data into DonViTinh table
+INSERT INTO DonViTinh (MaDVT, TenDVT) VALUES
+('DVT001', 'Hop'),
+('DVT002', 'Vien');
+
+-- Insert data into XuatXu table
+INSERT INTO XuatXu (MaXX, TenXX) VALUES
+('XX001', 'Viet Nam'),
+('XX002', 'USA');
+
+-- Insert data into DanhMuc table
+INSERT INTO DanhMuc (MaDM, TenDM) VALUES
+('DM001', 'Thuoc Bo'),
+('DM002', 'Thuoc Giam Dau');
+
+-- Insert data into LoaiThuoc table
+INSERT INTO LoaiThuoc (MaLoai, TenLoai, GhiChu) VALUES
+('LT001', 'Thuoc Khang Sinh', 'Khang sinh'),
+('LT002', 'Thuoc Chua Benh', 'Chua benh');
+
+-- Insert data into Thuoc table
+INSERT INTO Thuoc (MaThuoc, TenThuoc, HinhAnh, ThanhPhan, SoLuong, MaDVT, MaDM, MaXX, MaLoai, SoLuongTon, GiaNhap, DonGia, HanSuDung) VALUES
+('T001', 'Paracetamol', NULL, 'Acetaminophen', '100', 'DVT002', 'DM002', 'XX001', 'LT002', 100, 10000, 12000, '2024-12-31'),
+('T002', 'Amoxicillin', NULL, 'Amoxicillin', '200', 'DVT002', 'DM001', 'XX002', 'LT001', 200, 15000, 18000, '2024-12-31');
+
+-- Insert data into HoaDonXuat table
+INSERT INTO HoaDonXuat (MaHDX, NgayThang, TongTien, MaNV) VALUES
+('HDX001', '2023-03-01', 24000, 'NV002'),
+('HDX002', '2023-03-02', 36000, 'NV002');
+
+-- Insert data into NhaPhanPhoi table
+INSERT INTO NhaPhanPhoi (MaNPP, TenNPP, DiaChi, DienThoai, Email) VALUES
+('NPP001', 'Cong ty ABC', '123 ABC St.', '0123456789', 'abc@gmail.com'),
+('NPP002', 'Cong ty DEF', '456 DEF St.', '0987654321', 'def@gmail.com');
+
+-- Insert data into ChiTietHoaDonXuat table
+INSERT INTO ChiTietHoaDonXuat (MaCTHDX, MaHDX, MaThuoc, SoLuong, GiaBan) VALUES
+('CTHDX001', 'HDX001', 'T001', '2', 12000),
+('CTHDX002', 'HDX002', 'T002', '2', 18000);
+
+-- Insert data into HoaDonNhap table
+INSERT INTO HoaDonNhap (MaHDN, MaNPP, NguoiGiao, NguoiNhan, NgayViet, NgayNhap, TongTien) VALUES
+('HDN001', 'NPP001', 'Nguyen Van E', 'Nguyen Van A', '2023-03-01', '2023-03-02', 20000),
+('HDN002', 'NPP002', 'Tran Thi F', 'Tran Thi B', '2023-03-03', '2023-03-04', 30000);
+
+-- Insert data into ChiTietHoaDonNhap table
+INSERT INTO ChiTietHoaDonNhap (MaCTHDN, MaHDN, MaThuoc, SoLuong, GiaNhap) VALUES
+('CTHDN001', 'HDN001', 'T001', 100, 10000),
+('CTHDN002', 'HDN002', 'T002', 150, 15000);
+
+-- Insert data into HoaDon table
+INSERT INTO HoaDon (MaHD, ThoiGian, MaNV, MaKH, TongTien) VALUES
+('HD001', '2023-03-05 10:00:00', 'NV001', 'KH001', 24000),
+('HD002', '2023-03-06 11:00:00', 'NV002', 'KH002', 36000);
+
+-- Insert data into ChiTietHoaDon table
+INSERT INTO ChiTietHoaDon (MaHD, MaThuoc, SoLuong, DonGia) VALUES
+('HD001', 'T001', 2, 12000),
+('HD002', 'T002', 2, 18000);
 GO
---3. Procedure: Lấy thông tin hóa đơn theo mã hóa đơn
-CREATE PROCEDURE LaythongtinHoaDon
-    @MaHD NVARCHAR(10)
-AS
-BEGIN
-    SELECT * 
-    FROM HoaDon 
-    WHERE MaHD = @MaHD;
-END;
-GO
--- 4. Procedure: Lấy danh sách khách hàng tham gia trong một khoảng thời gian
-CREATE PROCEDURE KhachhangThamgia
-    @StartDate DATE,
-    @EndDate DATE
-AS
-BEGIN
-    SELECT * 
-    FROM KhachHang 
-    WHERE NgayThamGia BETWEEN @StartDate AND @EndDate;
-END;
-GO
--- 5. Procedure: Lấy thông tin hóa đơn nhập theo mã nhà phân phối
-CREATE PROCEDURE thongtinhoadonnhap
-    @MaNPP NVARCHAR(10)
-AS
-BEGIN
-    SELECT * 
-    FROM HoaDonNhap 
-    WHERE MaNPP = @MaNPP;
-END;
-GO
--- text1 -- 
--- text 2 --
+
+
+select * from ChiTietHoaDon,chitiethoadonnhap,chitiethoadonxuat,DanhMuc,DonViTinh,HoaDon,hoadonnhap,HoaDonXuat,KhachHang,LoaiThuoc,NhanVien,nhaPhanPhoi,TaiKhoan,Thuoc,VaiTro,XuatXu;
