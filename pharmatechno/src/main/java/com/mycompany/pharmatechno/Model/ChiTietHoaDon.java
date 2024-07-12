@@ -9,5 +9,5 @@ package com.mycompany.pharmatechno.Model;
  * @author Cuong
  */
 public class ChiTietHoaDon {
-    
+    // test code
 }
