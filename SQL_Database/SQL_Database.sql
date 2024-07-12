@@ -14,31 +14,20 @@ SDT nvarchar (15)NOT NULL,
 Email nvarchar (50)NOT NULL,
 GioiTinh nvarchar(50)NOT NULL,
 DiaChi nvarchar (255)NOT NULL,
-<<<<<<< Updated upstream
 Roll NVARCHAR(255) NOT NULL,
-=======
-TenVT NVARCHAR(255) NOT NULL,
->>>>>>> Stashed changes
 Username NVARCHAR(255) NOT NULL,
 Password NVARCHAR(255) NOT NULL,
 IsDelete Int NOT NULL,
 )
 
 -- Insert data into NhanVien table
-<<<<<<< Updated upstream
-INSERT INTO NhanVien (MaNV, Ten, Tuoi, SDT, Email, GioiTinh, DiaChi,Roll,Username,Password,IsDelete  ) VALUES
-=======
 INSERT INTO NhanVien (MaNV, Ten, Tuoi, SDT, Email, GioiTinh, DiaChi,TenVT,Username,Password,IsDelete  ) VALUES
 >>>>>>> Stashed changes
 ('nv001',  N'Nguyễn Phan Anh Tuấn', '30', '0906765871', 'Tuan2454@gmail.com', N'Nam', N'Gò Vấp thành Phố Hồ Chí Minh', N'Admin', 'admin', '123123',1),
 ('nv002',  N'Vũ Nương', '28', '0931265687', 'Vunuong255@gmail.com',N'Nữ', 'Quận 4 thành phố Hồ Chí Minh ', N'Nhân viên ', 'nhanvien', '123456',1);
 go
 
-<<<<<<< Updated upstream
 -- 2 t?o b?ng khách hàng
-=======
--- 4 t?o b?ng khách hàng
->>>>>>> Stashed changes
 CREATE TABLE KhachHang (
     MaKH NVARCHAR(10) NOT NULL PRIMARY KEY,
     TenKH NVARCHAR(255) NOT NULL,
@@ -63,29 +52,6 @@ INSERT INTO KhachHang (MaKH, TenKH, Tuoi, SDT, Email, GioiTinh, DiaChi, NgayTham
 ('KH008', N'Phạm Thị Anh', '18', '052173241', 'Anh2006@gmail.com', N'Nữ', N'Quận 12 thành phố hồ chí minh ','2023-05-25',1),
 ('KH009', N'Hoàng Hữu Đức', '28', '0987654321', 'Duc1999@gmail.com', N'Nam', N'Quận 8 thành phố hồ chí minh ','2021-08-25',1),
 ('KH010', N'Nguyễn Văn Hùng', '29', '0369258741', 'Hung1777@gmail.com', N'Nam', N'Quận 7 thành phố hồ chí minh ','2021-08-25',1);
-<<<<<<< Updated upstream
-=======
--- 5t?o b?ng ??n v? tính 
-CREATE TABLE DonViTinh (
-    MaDVT NVARCHAR(10) NOT NULL PRIMARY KEY,
-    tenDVT NVARCHAR(255) NOT NULL,
-)
-go
-INSERT INTO DonViTinh (MaDVT, tenDVT) 
-VALUES
-	('CVBDF123T', N'Viên'),
-	('CV123GERT', N'Chai'),
-	('CVB123ERT', N'Hộp'),
-	('CVB141ERT', N'Gói'),
-	('CV1223ERT', N'Vỉ');
-go
--- 6t?o b?ng xu?t x? 
-CREATE TABLE XuatXu (
-    MaXX NVARCHAR(10) NOT NULL PRIMARY KEY,
-    TenXX NVARCHAR(255) NOT NULL,
-)
-go
->>>>>>> Stashed changes
 
 -- 3 t?o b?ng thu?c 
 CREATE TABLE Thuoc (
@@ -97,20 +63,15 @@ CREATE TABLE Thuoc (
 	SoLuongTon INT NOT NULL,
 	giaNhap FLOAT NOT NULL,
 	DonGia FLOAT NOT NULL,
-<<<<<<< Updated upstream
 	NgaySanXuat Date Not NUll,
 	HanSuDung DATE NOT NULL,
 	DonViTinh NVARCHAR(50),
 	LoaiThuoc NVARCHAR(50),
 	XuatXu NVARCHAR(50) ,
-=======
-	HanSuDung DATE NOT NULL,
->>>>>>> Stashed changes
     IsDelete Int NOT NULL,
 )
 go
 
-<<<<<<< Updated upstream
 INSERT INTO Thuoc(MaThuoc, TenThuoc, SoLuong, HinhAnh, ThanhPhan, SoLuongTon, giaNhap, DonGia, NgaySanXuat, HanSuDung, DonViTinh, LoaiThuoc, XuatXu, IsDelete)
 VALUES
     ('X12IFO4BZ', N'Hapacol 650 DHG', 24, 'thuocHapacol.png', N'Paracetamol', 1021, 20000, 25000, '2024-02-15', '2026-02-15', N'Viên', N'Hệ tim mạch & tạo máu', N'Việt Nam', 1),
@@ -123,21 +84,6 @@ VALUES
     ('798E63U16', N'Đại Tràng Trường Phúc', 32, 'Daitrangtruongphuc.jpg', N'Hoàng liên, Mộc hương, Bạch truật, Bạch thược, Ngũ bội tử, Hậu phác, Cam thảo, Xa tiền tử, Hoạt thạch', 1021, 90000, 105000, '2024-09-03', '2026-09-03', N'Viên', N'Đại tràng', N'Việt Nam', 1),
     ('745KCI1KX', N'Ninh Tâm Vương Hồng Bàng', 46, 'Ninhtamvuong.png', N'L-Carnitine, Taurine, Đan sâm, Khổ sâm bắc, Nattokinase, Hoàng đằng, Magie, Tá dược vừa đủ', 1054, 165000, 180000, '2024-08-15', '2026-08-15', N'Viên', N'Tim mạch', N'Việt Nam', 1);
 GO
-=======
-INSERT INTO Thuoc(MaThuoc, TenThuoc, SoLuong, HinhAnh, ThanhPhan, MaDVT, MaDM, MaXX, SoLuongTon, giaNhap, DonGia, HanSuDung,IsDelete )
-VALUES
-    ('X12IFO4BZ', N'Hapacol 650 DHG', '24', 'thuocHapacol.png', N'Paracetamol', 'CVB123ERT', 'ZAQ321QWE', 'XCVSDF123', 1021, 20000, 25000, '2026-02-15',1),
-    ('XRZXFO4BZ', N'Bột pha hỗn dịch uống Smecta vị cam', '12', 'botphatieuchay.jpg', N'Diosmectite', 'CVB141ERT', 'ZXC321QWE', 'XCVSDF125', 1021, 3000, 4000, '2026-05-21',1),
-    ('XRBIFO4BZ', N'Siro C.C Life 100mg/5ml Foripharm', '30', 'sirocam.jpg', N'Vitamin C', 'CV123GERT', 'ZXC321QWE', 'XCVSDF123', 1032, 25000, 30000, '2026-03-01',1),
-    ('VFZCHLHIE', N'Panadol Extra đỏ', '64', 'Panadol-Extra.png', N'Caffeine, Paracetamol', 'CVB123ERT', 'ZAQ321QWE', 'XCVSDF122', 1034, 235000, 250000, '2026-08-07',1),
-    ('MJ9AB7J1I', N'Viên sủi Vitatrum C BRV', '9', 'vitaminc.png', N'Sỏi thận, Rối loạn chuyển hoá fructose, Bệnh Thalassemia, Tăng oxalat niệu, Rối loạn chuyển hoá oxalat', 'CVB123ERT', 'ZXC321QWE', 'XCVSDF122', 1076, 20000, 24000, '2027-12-31',1),
-    ('ESMJMM7T1', N'Bổ Gan Trường Phúc', '50', 'Bogantruongphu.jpg', N'Diệp hạ châu, Đảng Sâm, Bạch truật, Cam thảo, Phục Linh, Nhân trần, Trần bì', 'CVB123ERT', 'ZXC321QWE', 'XCVSDF123', 1034, 85000, 95000, '2026-02-15',1),
-    ('BV07519DS', N'Bài Thạch Trường Phúc', '6', 'bothantruongphuc.jpg', N'Xa tiền tử, Bạch mao căn, Sinh Địa, Ý Dĩ, Kim tiền thảo', 'CVB123ERT', 'ZXC321QWE', 'XCVSDF123', 1076, 85000, 95000, '2026-02-10',1),
-    ('798E63U16', N'Đại Tràng Trường Phúc', '32', 'Daitrangtruongphuc.jpg', N'Hoàng liên, Mộc hương, Bạch truật, Bạch thược, Ngũ bội tử, Hậu phác, Cam thảo, Xa tiền tử, Hoạt thạch', 'CVB123ERT', 'ZXC321QWE', 'XCVSDF123', 1021, 90000, 105000, '2026-09-03',1),
-    ('745KCI1KX', N'Ninh Tâm Vương Hồng Bàng', '46', 'Ninhtamvuong.png', N'L-Carnitine, Taurine, Đan sâm, Khổ sâm bắc, Nattokinase, Hoàng đằng, Magie, Tá dược vừa đủ', 'CVB123ERT', 'ZXC311QWE', 'XCVSDF124', 1054, 165000, 180000, '2026-08-15',1);
-go
->>>>>>> Stashed changes
-
 --4t?o b?ng nhà phân ph?i 
 create table nhaPhanPhoi
 (
