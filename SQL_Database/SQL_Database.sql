@@ -21,7 +21,7 @@ IsDelete Int NOT NULL,
 )
 
 -- Insert data into NhanVien table
-INSERT INTO NhanVien (MaNV, Ten, Tuoi, SDT, Email, GioiTinh, DiaChi,TenVT,Username,Password,IsDelete  ) VALUES
+INSERT INTO NhanVien (MaNV, Ten, Tuoi, SDT, Email, GioiTinh, DiaChi,Roll,Username,Password,IsDelete  ) VALUES
 ('nv001',  N'Nguyễn Phan Anh Tuấn', '30', '0906765871', 'Tuan2454@gmail.com', N'Nam', N'Gò Vấp thành Phố Hồ Chí Minh', N'Admin', 'admin', '123123',1),
 ('nv002',  N'Vũ Nương', '28', '0931265687', 'Vunuong255@gmail.com',N'Nữ', 'Quận 4 thành phố Hồ Chí Minh ', N'Nhân viên ', 'nhanvien', '123456',1);
 go
