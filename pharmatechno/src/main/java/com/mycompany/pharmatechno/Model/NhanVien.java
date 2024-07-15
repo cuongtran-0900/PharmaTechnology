@@ -11,18 +11,19 @@ package com.mycompany.pharmatechno.Model;
 public class NhanVien {
     private String MaNV;
     private String TenNV;
-    private int TuoiNV;
+    private String TuoiNV;
     private String SDT;
     private String Email;
     private String GioiTinh;
     private String DiaChi;
     private String Roll;
     private String UserName;
-
+    private String PassWord;
+    
     public NhanVien() {
     }
 
-    public NhanVien(String MaNV, String TenNV, int TuoiNV, String SDT, String Email, String GioiTinh, String DiaChi, String Roll, String UserName, String PassWord) {
+    public NhanVien(String MaNV, String TenNV, String TuoiNV, String SDT, String Email, String GioiTinh, String DiaChi, String Roll, String UserName, String PassWord) {
         this.MaNV = MaNV;
         this.TenNV = TenNV;
         this.TuoiNV = TuoiNV;
@@ -34,7 +35,7 @@ public class NhanVien {
         this.UserName = UserName;
         this.PassWord = PassWord;
     }
-    private String PassWord;
+
 
     public String getMaNV() {
         return MaNV;
@@ -52,11 +53,11 @@ public class NhanVien {
         this.TenNV = TenNV;
     }
 
-    public int getTuoiNV() {
+    public String getTuoiNV() {
         return TuoiNV;
     }
 
-    public void setTuoiNV(int TuoiNV) {
+    public void setTuoiNV(String TuoiNV) {
         this.TuoiNV = TuoiNV;
     }
 
