@@ -4,6 +4,8 @@
  */
 package com.mycompany.pharmatechno.UI;
 
+import com.mycompany.pharmatechno.Control.Xlimg;
+
 /**
  *
  * @author hongo
@@ -15,8 +17,12 @@ public class mainframe extends javax.swing.JFrame {
      */
     public mainframe() {
         initComponents();
+        init();
     }
-
+void init(){
+      setIconImage(Xlimg.getAppIcon());
+      setLocationRelativeTo(null);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

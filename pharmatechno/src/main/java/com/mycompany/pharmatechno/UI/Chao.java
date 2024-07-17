@@ -4,6 +4,7 @@
  */
 package com.mycompany.pharmatechno.UI;
 
+import com.mycompany.pharmatechno.Control.Xlimg;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ public class Chao extends javax.swing.JFrame {
         init();
     }
    void init(){
+        setIconImage(Xlimg.getAppIcon());
         setLocationRelativeTo(null);
         new Timer(20, new ActionListener() {
             @Override
