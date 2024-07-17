@@ -43,7 +43,7 @@ public class DoanhThu extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 255));
         setForeground(new java.awt.Color(51, 255, 255));
 
         tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(

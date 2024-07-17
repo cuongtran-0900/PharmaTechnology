@@ -41,7 +41,7 @@ public class ThuocTonKho extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 255));
 
         tblThuocTonKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
