@@ -25,6 +25,7 @@ public class TaiKhoanNhanVien extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         paneltaikhoan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -53,7 +54,6 @@ public class TaiKhoanNhanVien extends javax.swing.JPanel {
         paneltaikhoan.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("TÀI KHOẢN(NV)");
 
         javax.swing.GroupLayout paneltaikhoanLayout = new javax.swing.GroupLayout(paneltaikhoan);
@@ -73,35 +73,27 @@ public class TaiKhoanNhanVien extends javax.swing.JPanel {
         );
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("EMAIL :");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("GIỚI TÍNH :");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("ĐỊA CHỈ :");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("PASSWORD :");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("USERNAME :");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("TÊN :");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("TUỔI :");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("SĐT :");
 
         btnDoiMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -136,12 +128,12 @@ public class TaiKhoanNhanVien extends javax.swing.JPanel {
             }
         });
 
+        buttonGroup1.add(rbtnNam);
         rbtnNam.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rbtnNam.setForeground(new java.awt.Color(0, 0, 0));
         rbtnNam.setText("NAM");
 
+        buttonGroup1.add(rbtnNu);
         rbtnNu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        rbtnNu.setForeground(new java.awt.Color(0, 0, 0));
         rbtnNu.setText("NỮ");
         rbtnNu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +265,7 @@ public class TaiKhoanNhanVien extends javax.swing.JPanel {
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiMatKhau;
     private javax.swing.JButton btnThoat;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
