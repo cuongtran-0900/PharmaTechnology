@@ -40,7 +40,7 @@ public class DoiMatKhau extends javax.swing.JPanel {
 
         paneltaikhoan.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("THAY ĐỔI MẬT KHẨU");
 
@@ -74,6 +74,7 @@ public class DoiMatKhau extends javax.swing.JPanel {
         jLabel1.setText("MẬT KHẨU HIỆN TẠI :");
 
         btnXacNhan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnXacNhan.setForeground(new java.awt.Color(0, 0, 0));
         btnXacNhan.setText("XÁC NHẬN");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +83,7 @@ public class DoiMatKhau extends javax.swing.JPanel {
         });
 
         btnHuy.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnHuy.setForeground(new java.awt.Color(0, 0, 0));
         btnHuy.setText("HỦY");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -126,7 +128,7 @@ public class DoiMatKhau extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXacNhan)
                     .addComponent(btnHuy))
-                .addGap(0, 83, Short.MAX_VALUE))
+                .addGap(0, 86, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
