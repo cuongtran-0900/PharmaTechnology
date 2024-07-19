@@ -4,6 +4,7 @@
  */
 package com.mycompany.pharmatechno.UI;
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -458,6 +459,11 @@ public class main extends javax.swing.JFrame {
         jMenu1.add(mniLight);
 
         mniDark.setText("Dark");
+        mniDark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDarkActionPerformed(evt);
+            }
+        });
         jMenu1.add(mniDark);
 
         jMenuBar1.add(jMenu1);
@@ -535,6 +541,18 @@ public class main extends javax.swing.JFrame {
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void mniDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDarkActionPerformed
+        // TODO add your handling code here:
+                SwingUtilities.invokeLater(()->{
+            try {
+                UIManager.setLookAndFeel(new FlatDarkLaf());
+                SwingUtilities.updateComponentTreeUI(this);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }//GEN-LAST:event_mniDarkActionPerformed
 
     /**
      * @param args the command line arguments
