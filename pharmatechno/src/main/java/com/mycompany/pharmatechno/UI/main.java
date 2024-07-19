@@ -4,7 +4,12 @@
  */
 package com.mycompany.pharmatechno.UI;
 
-import javax.swing.JPanel;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -70,6 +75,9 @@ public class main extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMnTroGiup = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        mniLight = new javax.swing.JMenuItem();
+        mniDark = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -452,6 +460,21 @@ public class main extends javax.swing.JFrame {
         jMnTroGiup.setText("Trợ Giúp");
         jMenuBar1.add(jMnTroGiup);
 
+        jMenu1.setText("Chế Độ");
+
+        mniLight.setText("Light");
+        mniLight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLightActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mniLight);
+
+        mniDark.setText("Dark");
+        jMenu1.add(mniDark);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -566,6 +589,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -598,5 +622,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel jpnQuanLiBanHang;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnView;
+    private javax.swing.JMenuItem mniDark;
+    private javax.swing.JMenuItem mniLight;
     // End of variables declaration//GEN-END:variables
 }
