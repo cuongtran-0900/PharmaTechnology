@@ -7,6 +7,7 @@ package com.mycompany.pharmatechno.UI;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -42,7 +43,7 @@ public class main extends javax.swing.JFrame {
         jpnMenu = new javax.swing.JPanel();
         jpnQuanLiBanHang = new javax.swing.JPanel();
         jlbQuanLiBanHang = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        JpnQuanLiNV = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -53,6 +54,7 @@ public class main extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
+        JpnScreen = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMnTrangChu = new javax.swing.JMenu();
         jMnHeThong = new javax.swing.JMenu();
@@ -62,7 +64,7 @@ public class main extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMnQuanLi = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        MniNhanVien = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMnXuLi = new javax.swing.JMenu();
@@ -100,7 +102,7 @@ public class main extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 887, Short.MAX_VALUE))
+                .addGap(0, 939, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,25 +150,30 @@ public class main extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        jPanel7.setBackground(new java.awt.Color(153, 255, 204));
+        JpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
+        JpnQuanLiNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JpnQuanLiNVMouseClicked(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("QUẢN LÍ NHÂN VIÊN");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout JpnQuanLiNVLayout = new javax.swing.GroupLayout(JpnQuanLiNV);
+        JpnQuanLiNV.setLayout(JpnQuanLiNVLayout);
+        JpnQuanLiNVLayout.setHorizontalGroup(
+            JpnQuanLiNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnQuanLiNVLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        JpnQuanLiNVLayout.setVerticalGroup(
+            JpnQuanLiNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JpnQuanLiNVLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -276,7 +283,7 @@ public class main extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpnQuanLiBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JpnQuanLiNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -289,14 +296,14 @@ public class main extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jpnQuanLiBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JpnQuanLiNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -332,6 +339,9 @@ public class main extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
+        JpnScreen.setBackground(new java.awt.Color(204, 255, 255));
+        JpnScreen.setLayout(new java.awt.BorderLayout(1, 0));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -339,11 +349,13 @@ public class main extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jpnRoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(948, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(JpnScreen, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jpnRoot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JpnScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(204, 255, 255));
@@ -369,17 +381,27 @@ public class main extends javax.swing.JFrame {
         jMenuBar1.add(jMnHeThong);
 
         jMnQuanLi.setText("Quản Lí");
+        jMnQuanLi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMnQuanLiMouseClicked(evt);
+            }
+        });
+        jMnQuanLi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnQuanLiActionPerformed(evt);
+            }
+        });
 
         jMenuItem5.setText("Thuốc");
         jMnQuanLi.add(jMenuItem5);
 
-        jMenuItem6.setText("Nhân Viên");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        MniNhanVien.setText("Nhân Viên");
+        MniNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                MniNhanVienActionPerformed(evt);
             }
         });
-        jMnQuanLi.add(jMenuItem6);
+        jMnQuanLi.add(MniNhanVien);
 
         jMenuItem7.setText("Khách Hàng");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -460,8 +482,7 @@ public class main extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -475,7 +496,10 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLightActionPerformed
+    private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MniNhanVienActionPerformed
+    private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         SwingUtilities.invokeLater(()->{
             try {
@@ -485,7 +509,28 @@ public class main extends javax.swing.JFrame {
                 Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }//GEN-LAST:event_mniLightActionPerformed
+    } 
+    private void jMnQuanLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnQuanLiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMnQuanLiActionPerformed
+
+    private void JpnQuanLiNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JpnQuanLiNVMouseClicked
+        // TODO add your handling code here:
+        JpnScreen.removeAll();
+        JPanel nv = new QuanLiNhanVIen();
+        JpnScreen.add(nv);
+        nv.setVisible(true);
+        JpnScreen.updateUI();
+    }//GEN-LAST:event_JpnQuanLiNVMouseClicked
+
+    private void jMnQuanLiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMnQuanLiMouseClicked
+        // TODO add your handling code here:
+        JpnScreen.removeAll();
+        JPanel nv = new QuanLiNhanVIen();
+        JpnScreen.add(nv);
+        nv.setVisible(true);
+        JpnScreen.updateUI();
+    }//GEN-LAST:event_jMnQuanLiMouseClicked
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
@@ -527,6 +572,9 @@ public class main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JpnQuanLiNV;
+    private javax.swing.JPanel JpnScreen;
+    private javax.swing.JMenuItem MniNhanVien;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -543,7 +591,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
@@ -560,7 +607,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel jlbQuanLiBanHang;
     private javax.swing.JPanel jpnMenu;
