@@ -513,7 +513,17 @@ public class main extends javax.swing.JFrame {
     private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MniNhanVienActionPerformed
-
+    private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(()->{
+            try {
+                UIManager.setLookAndFeel(new FlatLightLaf());
+                SwingUtilities.updateComponentTreeUI(this);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    } 
     private void jMnQuanLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnQuanLiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMnQuanLiActionPerformed
