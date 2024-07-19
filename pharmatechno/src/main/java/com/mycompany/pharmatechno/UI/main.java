@@ -67,7 +67,7 @@ public class main extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         MniNhanVien = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        mniQuanLiNPP = new javax.swing.JMenuItem();
         jMnXuLi = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -412,8 +412,13 @@ public class main extends javax.swing.JFrame {
         });
         jMnQuanLi.add(jMenuItem7);
 
-        jMenuItem8.setText("Nhà Phân Phối");
-        jMnQuanLi.add(jMenuItem8);
+        mniQuanLiNPP.setText("Nhà Phân Phối");
+        mniQuanLiNPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniQuanLiNPPActionPerformed(evt);
+            }
+        });
+        jMnQuanLi.add(mniQuanLiNPP);
 
         jMenuBar1.add(jMnQuanLi);
 
@@ -554,6 +559,15 @@ public class main extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_mniDarkActionPerformed
 
+    private void mniQuanLiNPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQuanLiNPPActionPerformed
+        // TODO add your handling code here:
+        JpnScreen.removeAll();
+        JPanel npp = new QuanLiNhaPhanPhoi();
+        JpnScreen.add(npp);
+        npp.setVisible(true);
+        JpnScreen.updateUI();
+    }//GEN-LAST:event_mniQuanLiNPPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -610,7 +624,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenu jMnHeThong;
     private javax.swing.JMenu jMnQuanLi;
@@ -633,5 +646,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel jpnView;
     private javax.swing.JMenuItem mniDark;
     private javax.swing.JMenuItem mniLight;
+    private javax.swing.JMenuItem mniQuanLiNPP;
     // End of variables declaration//GEN-END:variables
 }

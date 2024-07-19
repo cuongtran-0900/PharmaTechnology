@@ -74,10 +74,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="mniQuanLiNPP">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nh&#xe0; Ph&#xe2;n Ph&#x1ed1;i"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniQuanLiNPPActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
