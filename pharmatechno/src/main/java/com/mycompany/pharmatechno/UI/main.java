@@ -54,7 +54,6 @@ public class main extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
-        btn1 = new javax.swing.JButton();
         JpnScreen = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMnTrangChu = new javax.swing.JMenu();
@@ -311,28 +310,15 @@ public class main extends javax.swing.JFrame {
 
         jpnView.setBackground(new java.awt.Color(255, 51, 51));
 
-        btn1.setText("jButton1");
-        btn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnViewLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btn1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnViewLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(btn1)
-                .addContainerGap(46, Short.MAX_VALUE))
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jpnRootLayout = new javax.swing.GroupLayout(jpnRoot);
@@ -546,15 +532,6 @@ public class main extends javax.swing.JFrame {
         JpnScreen.updateUI();
     }//GEN-LAST:event_jMnQuanLiMouseClicked
 
-    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        // TODO add your handling code here:
-        JpnScreen.removeAll();
-        JPanel nv = new QuanLiNhanVIen();
-        JpnScreen.add(nv);
-        nv.setVisible(true);
-        JpnScreen.updateUI();
-    }//GEN-LAST:event_btn1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -594,7 +571,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel JpnQuanLiNV;
     private javax.swing.JPanel JpnScreen;
     private javax.swing.JMenuItem MniNhanVien;
-    private javax.swing.JButton btn1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
