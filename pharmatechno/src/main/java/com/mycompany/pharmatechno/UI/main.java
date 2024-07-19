@@ -4,7 +4,12 @@
  */
 package com.mycompany.pharmatechno.UI;
 
-import com.mycompany.pharmatechno.Control.ChuyenManHinh;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -17,8 +22,6 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
-        ChuyenManHinh controller = new ChuyenManHinh(jpnMenu);
-        controller.setView(jpnQuanLiBanHang, jlbQuanLiBanHang);
         
     }
 
@@ -70,6 +73,9 @@ public class main extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMnTroGiup = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        mniLight = new javax.swing.JMenuItem();
+        mniDark = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -414,6 +420,21 @@ public class main extends javax.swing.JFrame {
         jMnTroGiup.setText("Trợ Giúp");
         jMenuBar1.add(jMnTroGiup);
 
+        jMenu1.setText("Chế Độ");
+
+        mniLight.setText("Light");
+        mniLight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLightActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mniLight);
+
+        mniDark.setText("Dark");
+        jMenu1.add(mniDark);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -448,6 +469,18 @@ public class main extends javax.swing.JFrame {
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLightActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(()->{
+            try {
+                UIManager.setLookAndFeel(new FlatLightLaf());
+                SwingUtilities.updateComponentTreeUI(this);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }//GEN-LAST:event_mniLightActionPerformed
 
     /**
      * @param args the command line arguments
@@ -490,6 +523,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -524,5 +558,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel jpnQuanLiBanHang;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnView;
+    private javax.swing.JMenuItem mniDark;
+    private javax.swing.JMenuItem mniLight;
     // End of variables declaration//GEN-END:variables
 }
