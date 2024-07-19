@@ -374,6 +374,11 @@ public class main extends javax.swing.JFrame {
         jMnQuanLi.add(jMenuItem5);
 
         jMenuItem6.setText("Nhân Viên");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMnQuanLi.add(jMenuItem6);
 
         jMenuItem7.setText("Khách Hàng");
@@ -481,6 +486,10 @@ public class main extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_mniLightActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
