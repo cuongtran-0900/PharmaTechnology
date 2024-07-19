@@ -12,6 +12,7 @@ com\mycompany\pharmatechno\UI\QuanLiNhanVIen.class
 com\mycompany\pharmatechno\UI\ThongTinThanhVien.class
 com\mycompany\pharmatechno\Model\ChiTietHoaDon.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVIen$9.class
+com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$11.class
 com\mycompany\pharmatechno\UI\Thuoc$1.class
 com\mycompany\pharmatechno\Model\ChiTietHoaDonNhap.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$6.class
