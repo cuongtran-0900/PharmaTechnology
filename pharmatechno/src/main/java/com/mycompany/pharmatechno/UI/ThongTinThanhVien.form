@@ -55,10 +55,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnXoa" min="-2" pref="84" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btnSua" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="btnSua" pref="93" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnFirst" min="-2" pref="65" max="-2" attributes="0"/>
@@ -109,10 +109,10 @@
                   <Component id="lblChietKhau" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtHang" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                  <Component id="txtThoiGianThamGia" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                  <Component id="txtChietKhau" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="txtHang" alignment="0" pref="222" max="32767" attributes="0"/>
+                  <Component id="txtChietKhau" alignment="0" pref="222" max="32767" attributes="0"/>
+                  <Component id="jDateChooser1" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -142,22 +142,22 @@
                           <Component id="lblSDT" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtSDT" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="txtHang" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="txtChietKhau" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblThoiGianThamGia" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtThoiGianThamGia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblThoiGianThamGia" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="27" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -342,8 +342,6 @@
         <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian tham gia:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtThoiGianThamGia">
-    </Component>
     <Component class="javax.swing.JButton" name="btnFirst">
       <Properties>
         <Property name="text" type="java.lang.String" value="|&lt;"/>
@@ -406,10 +404,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Th&#xf4;ng Tin Th&#xe0;nh Vi&#xea;n"/>
+            <Property name="text" type="java.lang.String" value="TH&#xd4;NG TIN TH&#xc0;NH VI&#xca;N"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -421,6 +416,8 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
       </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
     </Component>
   </SubComponents>
 </Form>
