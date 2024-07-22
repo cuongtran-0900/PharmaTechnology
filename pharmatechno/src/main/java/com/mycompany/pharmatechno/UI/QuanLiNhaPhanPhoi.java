@@ -4,6 +4,12 @@
  */
 package com.mycompany.pharmatechno.UI;
 
+import com.mycompany.pharmatechno.Control.NhaPhanPhoiDao;
+import com.mycompany.pharmatechno.Model.NhaPhanPhoi;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Cuong
@@ -13,10 +19,57 @@ public class QuanLiNhaPhanPhoi extends javax.swing.JPanel {
     /**
      * Creates new form QuanLiNhaPhanPhoi
      */
+    int vitri = 0;
     public QuanLiNhaPhanPhoi() {
-        initComponents();
+        initComponents();      
+        someMethod(vitri);
+        filltotextbox(vitri);
+        filltotable();
     }
-
+    
+        NhaPhanPhoiDao nppdao = new NhaPhanPhoiDao();
+        List<NhaPhanPhoi> dsnpp = nppdao.filltoArrayList();  
+        
+private void filltotextbox(int index) {
+        if (index >= 0 && index < dsnpp.size()) {
+            NhaPhanPhoi npp = dsnpp.get(index);
+            txtMaNPP.setText(npp.getMaNPP());
+            txtTenNPP.setText(npp.getTenNPP());
+            txtDiaChi.setText(npp.getDiaChi());
+            txtSDT.setText(npp.getSDT());
+            txtEmail.setText(npp.getEmail());
+        } else {
+            txtMaNPP.setText("");
+            txtTenNPP.setText("");
+            txtDiaChi.setText("");
+            txtSDT.setText("");
+            txtEmail.setText("");
+        }
+    }
+    public void filltotable(){
+        DefaultTableModel model = (DefaultTableModel) tblQuanLiNhaPhanPhoi.getModel();
+        model.setRowCount(0);
+        for(NhaPhanPhoi npp:dsnpp){
+            model.addRow(new Object[] {npp.getMaNPP(),npp.getTenNPP(),npp.getSDT(),npp.getDiaChi(),npp.getEmail() });
+        }
+    }
+    public void showDetail(){
+        int index  = tblQuanLiNhaPhanPhoi.getSelectedRow();
+        NhaPhanPhoi npp = dsnpp.get(index);
+        txtMaNPP.setText(npp.getMaNPP());
+        txtTenNPP.setText(npp.getTenNPP());
+        txtEmail.setText(npp.getEmail());
+        txtSDT.setText(npp.getSDT());
+        txtDiaChi.setText(npp.getDiaChi());
+    }
+    
+    public void someMethod(int v) {
+    if (v >= 0 && v < dsnpp.size()) {
+        filltotextbox(v);
+    } else {
+        JOptionPane.showMessageDialog(this, "Chỉ mục không hợp lệ");
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -222,9 +275,14 @@ public class QuanLiNhaPhanPhoi extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mã NPP", "Tên NPP", "Số Điện Thoại", "Địa Chỉt", "Email"
+                "Mã NPP", "Tên NPP", "Số Điện Thoại", "Địa Chỉ", "Email"
             }
         ));
+        tblQuanLiNhaPhanPhoi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblQuanLiNhaPhanPhoiMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblQuanLiNhaPhanPhoi);
 
         jPanel3.setBackground(new java.awt.Color(51, 255, 51));
@@ -368,6 +426,11 @@ public class QuanLiNhaPhanPhoi extends javax.swing.JPanel {
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    private void tblQuanLiNhaPhanPhoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLiNhaPhanPhoiMouseClicked
+        // TODO add your handling code here:
+        showDetail();
+    }//GEN-LAST:event_tblQuanLiNhaPhanPhoiMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

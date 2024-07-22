@@ -326,7 +326,7 @@
                 <Column editable="true" title="M&#xe3; NPP" type="java.lang.Object"/>
                 <Column editable="true" title="T&#xea;n NPP" type="java.lang.Object"/>
                 <Column editable="true" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.Object"/>
-                <Column editable="true" title="&#x110;&#x1ecb;a Ch&#x1ec9;t" type="java.lang.Object"/>
+                <Column editable="true" title="&#x110;&#x1ecb;a Ch&#x1ec9;" type="java.lang.Object"/>
                 <Column editable="true" title="Email" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -363,6 +363,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblQuanLiNhaPhanPhoiMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
