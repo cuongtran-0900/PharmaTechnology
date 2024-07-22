@@ -1,6 +1,8 @@
 
 package com.mycompany.pharmatechno.UI;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author tu
@@ -12,6 +14,7 @@ public class hoadon extends javax.swing.JPanel {
      */
     public hoadon() {
         initComponents();
+        fillToTable();
     }
 
     /**
@@ -66,6 +69,11 @@ public class hoadon extends javax.swing.JPanel {
                 "Tên thuốc", "Số lượng ", "Đơn giá thuốc", "Thành tiền"
             }
         ));
+        table_HoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_HoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(table_HoaDon);
 
         btnInHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Printer.png"))); // NOI18N
@@ -364,6 +372,34 @@ public class hoadon extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaNVjTextField1ActionPerformed
 
+    private void table_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_HoaDonMouseClicked
+        // TODO add your handling code here:
+         fillToTextBox();
+    }//GEN-LAST:event_table_HoaDonMouseClicked
+
+    private void filltoTable(){
+         DefaultTableModel model = (DefaultTableModel) table_HoaDon.getModel();
+        model.setRowCount(0);
+        Object[] rowData = {"Paracetamol", 2, 5000, 10000};
+        model.addRow(rowData);
+
+        model = (DefaultTableModel) tableHoaDon_lichsu.getModel();
+        model.setRowCount(0);
+        Object[] rowHistory = {"HD001", "Nguyen Van A", "2022-07-20", 100000};
+        model.addRow(rowHistory);
+        
+}
+     private void fillToTextBox() {
+       
+        int selectedRow = table_HoaDon.getSelectedRow();
+        if (selectedRow >= 0) {
+            txtMaHD_Xuat.setText(table_HoaDon.getValueAt(selectedRow, 0).toString());
+            txtMaKH.setText(table_HoaDon.getValueAt(selectedRow, 1).toString());
+            txtTime.setText(table_HoaDon.getValueAt(selectedRow, 2).toString());
+            txtMaNV.setText(table_HoaDon.getValueAt(selectedRow, 3).toString());
+        }
+    }
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -394,4 +430,9 @@ public class hoadon extends javax.swing.JPanel {
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
+
+    private void fillToTable() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+
