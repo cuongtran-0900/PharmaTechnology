@@ -557,7 +557,7 @@ private void updateBackgroundColorsformni() {
 
     private void jpnQuanLiNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiNVMouseClicked
         // TODO add your handling code here:
-    changePanel(new QuanLiNhanVIen());
+    changePanel(new QuanLiNhanVien());
     updateBackgroundColors(jpnQuanLiNV);
     }//GEN-LAST:event_jpnQuanLiNVMouseClicked
 
