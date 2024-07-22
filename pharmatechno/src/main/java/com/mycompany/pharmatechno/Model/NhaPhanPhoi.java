@@ -9,62 +9,65 @@ package com.mycompany.pharmatechno.Model;
  * @author Cuong
  */
 public class NhaPhanPhoi {
-   private String maNPP;
-   private String tenNPP;
-   private String dienThoai;
-   private String diaChi;
-   private String email;
+    private String MaNPP;
+    private String TenNPP;
+    private String SDT;
+    private String DiaChi;
+    private String Email;
 
     public NhaPhanPhoi() {
     }
 
-    public NhaPhanPhoi(String maNPP, String tenNPP, String dienThoai, String diaChi, String email) {
-        this.maNPP = maNPP;
-        this.tenNPP = tenNPP;
-        this.dienThoai = dienThoai;
-        this.diaChi = diaChi;
-        this.email = email;
+    public NhaPhanPhoi(String MaNPP, String TenNPP, String SDT, String DiaChi, String Email) {
+        this.MaNPP = MaNPP;
+        this.TenNPP = TenNPP;
+        this.SDT = SDT;
+        this.DiaChi = DiaChi;
+        this.Email = Email;
     }
+
+
 
     public String getMaNPP() {
-        return maNPP;
+        return MaNPP;
     }
 
-    public void setMaNPP(String maNPP) {
-        this.maNPP = maNPP;
+    public void setMaNPP(String MaNPP) {
+        this.MaNPP = MaNPP;
     }
 
     public String getTenNPP() {
-        return tenNPP;
+        return TenNPP;
     }
 
-    public void setTenNPP(String tenNPP) {
-        this.tenNPP = tenNPP;
+    public void setTenNPP(String TenNPP) {
+        this.TenNPP = TenNPP;
     }
 
-    public String getDienThoai() {
-        return dienThoai;
+    public String getSDT() {
+        return SDT;
     }
 
-    public void setDienThoai(String dienThoai) {
-        this.dienThoai = dienThoai;
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
     }
 
     public String getDiaChi() {
-        return diaChi;
+        return DiaChi;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setDiaChi(String DiaChi) {
+        this.DiaChi = DiaChi;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
+    
     
 }
 

@@ -14,11 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author hongo
+ * @author Cuong
  */
 public class NhaPhanPhoiDao extends ConnectSQL{
     List<NhaPhanPhoi> dsnpp = new ArrayList<>();
-     public List<NhaPhanPhoi> filltoArrayList(){
+    
+    public List<NhaPhanPhoi> filltoArrayList(){
     try {
             String sql = "select * from nhaphanphoi where isdelete = 1 order by manpp ";
         try (Statement st = con.createStatement();
@@ -26,12 +27,12 @@ public class NhaPhanPhoiDao extends ConnectSQL{
             dsnpp.clear();
             while(rs.next()) {
                 NhaPhanPhoi npp = new NhaPhanPhoi();
-                npp.setMaNPP(rs.getString("MaNPP"));
-                npp.setTenNPP(rs.getString("TenNPP"));                
-                npp.setDienThoai(rs.getString("DienThoai"));
-                npp.setEmail(rs.getString("Email"));               
-                npp.setDiaChi(rs.getString("DiaChi"));
-                dsnpp.add(npp);   
+                npp.setMaNPP(rs.getString(1));
+                npp.setTenNPP(rs.getString(2));
+                npp.setSDT(rs.getString(3));
+                npp.setDiaChi(rs.getString(4));
+                npp.setEmail(rs.getString(5));
+                dsnpp.add(npp);
             }
             rs.close();
             st.close();
