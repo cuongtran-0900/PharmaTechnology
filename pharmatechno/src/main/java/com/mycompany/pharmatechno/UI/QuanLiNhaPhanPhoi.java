@@ -4,6 +4,12 @@
  */
 package com.mycompany.pharmatechno.UI;
 
+import com.mycompany.pharmatechno.Control.NhaPhanPhoiDao;
+import com.mycompany.pharmatechno.Model.NhaPhanPhoi;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Cuong
@@ -13,10 +19,63 @@ public class QuanLiNhaPhanPhoi extends javax.swing.JPanel {
     /**
      * Creates new form QuanLiNhaPhanPhoi
      */
+    int vitri =0;
     public QuanLiNhaPhanPhoi() {
         initComponents();
+          someMethod(vitri);
+        filltotextbox(vitri);
+        filltotable();
     }
 
+    
+    NhaPhanPhoiDao nppdao = new NhaPhanPhoiDao();
+    List<NhaPhanPhoi> dsnpp = nppdao.filltoArrayList();
+    
+    private void filltotextbox(int index) {
+        if (index >= 0 && index < dsnpp.size()) {
+            // Lấy thông tin từ đối tượng Student tại chỉ mục index
+            NhaPhanPhoi npp = dsnpp.get(index);
+
+            txtMaNPP.setText(npp.getMaNPP());
+            txtTenNPP.setText(npp.getTenNPP());
+            txtDiaChi.setText(npp.getDiaChi());
+            txtSDT.setText(npp.getDienThoai());
+            txtEmail.setText(npp.getEmail());
+        } else {
+
+            txtMaNPP.setText("");
+            txtTenNPP.setText("");
+            txtDiaChi.setText("");
+            txtSDT.setText("");
+            txtEmail.setText("");
+        }
+    }
+   public void filltotable(){
+        DefaultTableModel model = (DefaultTableModel) tblQuanLiNhaPhanPhoi.getModel();
+        model.setRowCount(0);
+        for(NhaPhanPhoi npp:dsnpp){
+            model.addRow(new Object[] {npp.getMaNPP(),npp.getTenNPP(),npp.getDienThoai(),npp.getDiaChi(),
+                npp.getEmail()});
+        }
+    }
+   
+    public void showDetail(){
+        int index  = tblQuanLiNhaPhanPhoi.getSelectedRow();
+        NhaPhanPhoi npp = dsnpp.get(index);
+        txtMaNPP.setText(npp.getMaNPP());
+        txtTenNPP.setText(npp.getTenNPP());
+        txtEmail.setText(npp.getEmail());
+        txtSDT.setText(npp.getDienThoai());
+        txtDiaChi.setText(npp.getDiaChi());
+    }
+    
+      public void someMethod(int v) {
+    if (v >= 0 && v < dsnpp.size()) {
+        filltotextbox(v);
+    } else {
+        JOptionPane.showMessageDialog(this, "Chỉ mục không hợp lệ");
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -222,7 +281,7 @@ public class QuanLiNhaPhanPhoi extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mã NPP", "Tên NPP", "Số Điện Thoại", "Địa Chỉt", "Email"
+                "Mã NPP", "Tên NPP", "Số Điện Thoại", "Địa Chỉ", "Email"
             }
         ));
         jScrollPane1.setViewportView(tblQuanLiNhaPhanPhoi);
@@ -315,7 +374,7 @@ public class QuanLiNhaPhanPhoi extends javax.swing.JPanel {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnThem)
                             .addComponent(btnCapNhat)
