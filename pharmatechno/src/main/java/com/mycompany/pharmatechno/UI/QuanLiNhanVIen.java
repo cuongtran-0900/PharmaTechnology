@@ -490,7 +490,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         if(cboVaiTro.getSelectedIndex()==0){
             nv.setRoll("Nhân Viên");
         }else{
-            nv.setRoll("Quản Lí");
+            nv.setRoll("Admin");
         }
         
             if (txtEmail.getText().matches(patternEmail)) {
@@ -518,7 +518,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     }
     }
     private void delete(){
-                if (txtMaNV.getText().equals("")) {
+               if (txtMaNV.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập Mã Nhân Viên Cần Xóa");
             txtMaNV.requestFocus();
         } else {

@@ -90,7 +90,7 @@ public class NhanVienDao extends ConnectSQL{
             st1.setString(3, nv.getTuoiNV());
             st1.setString(4, nv.getEmail());
             st1.setString(5, nv.getSDT());
-            st1.setString(5, nv.getGioiTinh());
+            st1.setString(6, nv.getGioiTinh());
             st1.setString(7, nv.getDiaChi());
             st1.setString(8, "nhanvien");
             st1.setString(9, "123");
