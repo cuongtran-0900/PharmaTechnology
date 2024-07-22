@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class ConnectSQL {
         protected Connection con = null;
     String user="sa";// 
-    String pass="123456789"; 
+    String pass="8520"; 
     String url="jdbc:sqlserver://localhost:1433;databaseName=QuanLiThuoc;encrypt=false";
     public ConnectSQL(){
         try {
