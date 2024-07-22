@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.java
 E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\KhachHang.java
 E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\ChiTietHoaDon.java
@@ -29,3 +30,33 @@ E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\Qua
 E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\TaiKhoanNhanVien.java
 E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\Thuoc.java
 E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi.java
+=======
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Pharmatechno.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\ConnectSQL.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\DangNhap.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\ThongTinThanhVien.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\TaiKhoanNhanVien.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\NhanVien.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\HoaDonNhap.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\DoanhThu.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\Xlimg.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiBanHang.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\KhachHang.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\ThuocTonKho.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\NhanVienDao.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\NhaPhanPhoi.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\mainframe.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\HoaDon.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\Thuoc.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\main.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\DoiMatKhau.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\hoadonnhap.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiNhanVIen.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\Chao.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\KhachHang.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\ChiTietHoaDon.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\hoadon.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\Thuoc.java
+C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\ChiTietHoaDonNhap.java
+>>>>>>> Stashed changes

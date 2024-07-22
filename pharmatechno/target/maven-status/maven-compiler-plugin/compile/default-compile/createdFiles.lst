@@ -70,6 +70,7 @@ com\mycompany\pharmatechno\Model\KhachHang.class
 com\mycompany\pharmatechno\Model\HoaDonNhap.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$1.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$3.class
+com\mycompany\pharmatechno\UI\mainframe$3.class
 com\mycompany\pharmatechno\UI\DoanhThu$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$10.class
 TaiKhoanNhanVien.class
@@ -95,15 +96,21 @@ com\mycompany\pharmatechno\UI\main$6.class
 com\mycompany\pharmatechno\Model\Thuoc.class
 <<<<<<< HEAD
 com\mycompany\pharmatechno\UI\QuanLiNhanVIen$7.class
+<<<<<<< Updated upstream
 com\mycompany\pharmatechno\UI\QuanLiThuoc$5.class
 =======
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$14.class
+=======
+>>>>>>> Stashed changes
 com\mycompany\pharmatechno\UI\main$9.class
 com\mycompany\pharmatechno\UI\KhachHang.class
 >>>>>>> 08c9d87b23f05bd01e2500bf76621673b3d2edd6
 TaiKhoanNhanVien$4.class
+<<<<<<< Updated upstream
 com\mycompany\pharmatechno\UI\QuanLiThuoc$8.class
 com\mycompany\pharmatechno\bean\DanhMucBean.class
+=======
+>>>>>>> Stashed changes
 com\mycompany\pharmatechno\Model\HoaDon.class
 DoiMatKhau.class
 <<<<<<< HEAD

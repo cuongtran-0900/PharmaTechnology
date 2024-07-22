@@ -26,7 +26,7 @@ public class NhanVienDao extends ConnectSQL{
                                                        
     public List<NhanVien> filltoArrayList(){
     try {
-            String sql = "select * from nhanvien where isdelete = 1 order by manv ";
+            String sql = "select * from nhanvien where isdelete = 1 order by manv  ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
             dsnv.clear();

@@ -15,7 +15,11 @@
         <Menu class="javax.swing.JMenu" name="mnuTrangChu">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< Updated upstream
               <Image iconType="3" name="/icon/Brick house.png"/>
+=======
+              <Image iconType="3" name="/icon/Home.png"/>
+>>>>>>> Stashed changes
             </Property>
             <Property name="text" type="java.lang.String" value="Trang Ch&#x1ee7;"/>
           </Properties>
@@ -68,7 +72,11 @@
         <Menu class="javax.swing.JMenu" name="mnuQuanLi">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< Updated upstream
               <Image iconType="3" name="/icon/To do list.png"/>
+=======
+              <Image iconType="3" name="/icon/Task list.png"/>
+>>>>>>> Stashed changes
             </Property>
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xed;"/>
           </Properties>
@@ -84,6 +92,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Thu&#x1ed1;c"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniThuocActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniNhanVien">
               <Properties>
@@ -107,7 +118,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniKhachHangActionPerformed"/>
               </Events>
             </MenuItem>
+<<<<<<< Updated upstream
             <MenuItem class="javax.swing.JMenuItem" name="mniQuanLiNPP">
+=======
+            <MenuItem class="javax.swing.JMenuItem" name="mniNhaPhanPhoi">
+>>>>>>> Stashed changes
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon/Conference.png"/>
@@ -120,7 +135,11 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+<<<<<<< Updated upstream
         <Menu class="javax.swing.JMenu" name="mnuXuLi">
+=======
+        <Menu class="javax.swing.JMenu" name="mnuXuLy">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icon/Cash register.png"/>
@@ -165,7 +184,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDoanhThuActionPerformed"/>
               </Events>
             </MenuItem>
+<<<<<<< Updated upstream
             <MenuItem class="javax.swing.JMenuItem" name="mniTKKhachhang">
+=======
+            <MenuItem class="javax.swing.JMenuItem" name="MniKhachHang">
+>>>>>>> Stashed changes
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon/User.png"/>
@@ -173,7 +196,11 @@
                 <Property name="text" type="java.lang.String" value="Kh&#xe1;ch H&#xe0;ng"/>
               </Properties>
             </MenuItem>
+<<<<<<< Updated upstream
             <MenuItem class="javax.swing.JMenuItem" name="mniTKthuoc">
+=======
+            <MenuItem class="javax.swing.JMenuItem" name="mniTKThuoc">
+>>>>>>> Stashed changes
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon/medicine.png"/>
@@ -186,13 +213,20 @@
         <Menu class="javax.swing.JMenu" name="mnuTroGiup">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< Updated upstream
               <Image iconType="3" name="/icon/info.png"/>
+=======
+              <Image iconType="3" name="/icon/icons8_info_30px_2.png"/>
+>>>>>>> Stashed changes
             </Property>
             <Property name="text" type="java.lang.String" value="Tr&#x1ee3; Gi&#xfa;p"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="mnuCheDo">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon/Best.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ch&#x1ebf; &#x110;&#x1ed9;"/>
           </Properties>
           <SubComponents>
@@ -390,6 +424,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -406,8 +441,23 @@
                                       <Component id="jpnQuanLiBanHang" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+=======
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jpnQuanLiBanHang" max="32767" attributes="0"/>
+                              <Component id="JpnQuanLiNV" max="32767" attributes="0"/>
+                              <Component id="jPanel8" max="32767" attributes="0"/>
+                              <Component id="jPanel11" max="32767" attributes="0"/>
+                              <Component id="jPanel12" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                           </Group>
                           <EmptySpace pref="23" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel10" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -424,9 +474,15 @@
                           <Component id="jpnTaiKhoan" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="157" max="32767" attributes="0"/>
+=======
+                          <EmptySpace pref="106" max="32767" attributes="0"/>
+                          <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -446,23 +502,36 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+<<<<<<< Updated upstream
                               <Component id="jlbQuanLiBanHang" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+=======
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="lblQuanLiBanHang" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jlbQuanLiBanHang" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace pref="18" max="32767" attributes="0"/>
+=======
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <Component id="lblQuanLiBanHang" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jlbQuanLiBanHang">
+                    <Component class="javax.swing.JLabel" name="lblQuanLiBanHang">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -494,7 +563,15 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+=======
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jLabel8" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+>>>>>>> Stashed changes
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -541,8 +618,14 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+<<<<<<< Updated upstream
                               <Component id="jLabel9" min="-2" pref="182" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+=======
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" pref="232" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -726,18 +809,32 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="logo" pref="0" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+=======
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="logo" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="logo" min="-2" pref="77" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+=======
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="logo" min="-2" pref="77" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -749,7 +846,11 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+<<<<<<< Updated upstream
                       <Font name="Segoe Print" size="24" style="1"/>
+=======
+                      <Font name="Segoe Print" size="32" style="1"/>
+>>>>>>> Stashed changes
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="b7" green="b7" red="0" type="rgb"/>

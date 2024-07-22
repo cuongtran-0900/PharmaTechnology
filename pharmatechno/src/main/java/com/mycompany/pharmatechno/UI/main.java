@@ -43,8 +43,13 @@ public class main extends javax.swing.JFrame {
         jpnRoot = new javax.swing.JPanel();
         jpnMenu = new javax.swing.JPanel();
         jpnQuanLiBanHang = new javax.swing.JPanel();
+<<<<<<< Updated upstream
         jlbQuanLiBanHang = new javax.swing.JLabel();
         jpnQuanLiNV = new javax.swing.JPanel();
+=======
+        lblQuanLiBanHang = new javax.swing.JLabel();
+        JpnQuanLiNV = new javax.swing.JPanel();
+>>>>>>> Stashed changes
         jLabel8 = new javax.swing.JLabel();
         jpnQuanLiThuoc = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -58,8 +63,13 @@ public class main extends javax.swing.JFrame {
         logo = new javax.swing.JLabel();
         JpnScreen = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
+<<<<<<< Updated upstream
         mnuTrangChu = new javax.swing.JMenu();
         mnuHeThong = new javax.swing.JMenu();
+=======
+        jMnTrangChu = new javax.swing.JMenu();
+        jMnHeThong = new javax.swing.JMenu();
+>>>>>>> Stashed changes
         mniDangXuat = new javax.swing.JMenuItem();
         mniDoiMatKhau = new javax.swing.JMenuItem();
         mniThoat = new javax.swing.JMenuItem();
@@ -69,15 +79,26 @@ public class main extends javax.swing.JFrame {
         mniNhanVien = new javax.swing.JMenuItem();
         mniKhachHang = new javax.swing.JMenuItem();
         mniNhaPhanPhoi = new javax.swing.JMenuItem();
+<<<<<<< Updated upstream
         mnuXuLi = new javax.swing.JMenu();
+=======
+        mnuXuLy = new javax.swing.JMenu();
+>>>>>>> Stashed changes
         mniHoaDon = new javax.swing.JMenuItem();
         mniHoaDonNhap = new javax.swing.JMenuItem();
         mnuThongKe = new javax.swing.JMenu();
         mniDoanhThu = new javax.swing.JMenuItem();
+<<<<<<< Updated upstream
         mniTKKhachhang = new javax.swing.JMenuItem();
         mniTKthuoc = new javax.swing.JMenuItem();
         mnuTroGiup = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
+=======
+        MniKhachHang = new javax.swing.JMenuItem();
+        mniTKThuoc = new javax.swing.JMenuItem();
+        mnuTroGiup = new javax.swing.JMenu();
+        mnuCheDo = new javax.swing.JMenu();
+>>>>>>> Stashed changes
         mniLight = new javax.swing.JMenuItem();
         mniDark = new javax.swing.JMenuItem();
 
@@ -135,17 +156,26 @@ public class main extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< Updated upstream
         jlbQuanLiBanHang.setBackground(new java.awt.Color(255, 255, 255));
         jlbQuanLiBanHang.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jlbQuanLiBanHang.setForeground(new java.awt.Color(51, 51, 51));
         jlbQuanLiBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Certificate.png"))); // NOI18N
         jlbQuanLiBanHang.setText("QUẢN LÍ BÁN HÀNG");
+=======
+        lblQuanLiBanHang.setBackground(new java.awt.Color(255, 255, 255));
+        lblQuanLiBanHang.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        lblQuanLiBanHang.setForeground(new java.awt.Color(51, 51, 51));
+        lblQuanLiBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Certificate.png"))); // NOI18N
+        lblQuanLiBanHang.setText("QUẢN LÍ BÁN HÀNG");
+>>>>>>> Stashed changes
 
         javax.swing.GroupLayout jpnQuanLiBanHangLayout = new javax.swing.GroupLayout(jpnQuanLiBanHang);
         jpnQuanLiBanHang.setLayout(jpnQuanLiBanHangLayout);
         jpnQuanLiBanHangLayout.setHorizontalGroup(
             jpnQuanLiBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnQuanLiBanHangLayout.createSequentialGroup()
+<<<<<<< Updated upstream
                 .addComponent(jlbQuanLiBanHang)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -155,6 +185,18 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jlbQuanLiBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
+=======
+                .addGap(30, 30, 30)
+                .addComponent(lblQuanLiBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
+        );
+        jpnQuanLiBanHangLayout.setVerticalGroup(
+            jpnQuanLiBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnQuanLiBanHangLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(lblQuanLiBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+>>>>>>> Stashed changes
         );
 
         jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
@@ -176,8 +218,8 @@ public class main extends javax.swing.JFrame {
             jpnQuanLiNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnQuanLiNVLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jpnQuanLiNVLayout.setVerticalGroup(
             jpnQuanLiNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +243,7 @@ public class main extends javax.swing.JFrame {
             jpnQuanLiThuocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnQuanLiThuocLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnQuanLiThuocLayout.setVerticalGroup(
@@ -291,12 +333,23 @@ public class main extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpnQuanLiBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< Updated upstream
                     .addComponent(jpnQuanLiNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnQuanLiThuoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+                    .addComponent(JpnQuanLiNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> Stashed changes
                 .addGap(15, 15, 15))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jpnMenuLayout.setVerticalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,16 +363,27 @@ public class main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jpnTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+<<<<<<< Updated upstream
                 .addComponent(jpnDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(jpnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
+=======
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
+>>>>>>> Stashed changes
         );
 
         jpnView.setBackground(new java.awt.Color(204, 255, 255));
 
         logo.setBackground(new java.awt.Color(255, 255, 255));
+<<<<<<< Updated upstream
         logo.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+=======
+        logo.setFont(new java.awt.Font("Segoe Print", 1, 32)); // NOI18N
+>>>>>>> Stashed changes
         logo.setForeground(new java.awt.Color(0, 183, 183));
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo-64.png")));
@@ -330,6 +394,7 @@ public class main extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< Updated upstream
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnViewLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -340,6 +405,19 @@ public class main extends javax.swing.JFrame {
             .addGroup(jpnViewLayout.createSequentialGroup()
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 24, Short.MAX_VALUE))
+=======
+            .addGroup(jpnViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
+        );
+        jpnViewLayout.setVerticalGroup(
+            jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnViewLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+>>>>>>> Stashed changes
         );
 
         javax.swing.GroupLayout jpnRootLayout = new javax.swing.GroupLayout(jpnRoot);
@@ -382,6 +460,7 @@ public class main extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(204, 255, 255));
         jMenuBar1.setBorder(null);
 
+<<<<<<< Updated upstream
         mnuTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Brick house.png"))); // NOI18N
         mnuTrangChu.setText("Trang Chủ");
         jMenuBar1.add(mnuTrangChu);
@@ -409,10 +488,34 @@ public class main extends javax.swing.JFrame {
         mniTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
         mniTaiKhoan.setText("Tài Khoản");
         mnuHeThong.add(mniTaiKhoan);
+=======
+        jMnTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Home.png"))); // NOI18N
+        jMnTrangChu.setText("Trang Chủ");
+        jMenuBar1.add(jMnTrangChu);
+
+        jMnHeThong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Gear.png"))); // NOI18N
+        jMnHeThong.setText("Hệ Thống");
+
+        mniDangXuat.setText("Đăng Xuất");
+        jMnHeThong.add(mniDangXuat);
+
+        mniDoiMatKhau.setText("Đổi Mật Khẩu");
+        jMnHeThong.add(mniDoiMatKhau);
+
+        mniThoat.setText("Thoát");
+        jMnHeThong.add(mniThoat);
+
+        mniTaiKhoan.setText("Tài Khoản");
+        jMnHeThong.add(mniTaiKhoan);
+>>>>>>> Stashed changes
 
         jMenuBar1.add(mnuHeThong);
 
+<<<<<<< Updated upstream
         mnuQuanLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/To do list.png"))); // NOI18N
+=======
+        mnuQuanLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Task list.png"))); // NOI18N
+>>>>>>> Stashed changes
         mnuQuanLi.setText("Quản Lí");
         mnuQuanLi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -425,6 +528,7 @@ public class main extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< Updated upstream
         mniThuoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/medicine.png"))); // NOI18N
         mniThuoc.setText("Thuốc");
         mnuQuanLi.add(mniThuoc);
@@ -517,8 +621,73 @@ public class main extends javax.swing.JFrame {
         mnuTroGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/info.png"))); // NOI18N
         mnuTroGiup.setText("Trợ Giúp");
         jMenuBar1.add(mnuTroGiup);
+=======
+        mniThuoc.setText("Thuốc");
+        mniThuoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniThuocActionPerformed(evt);
+            }
+        });
+        mnuQuanLi.add(mniThuoc);
 
-        jMenu1.setText("Chế Độ");
+        mniNhanVien.setText("Nhân Viên");
+        mniNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniNhanVienActionPerformed(evt);
+            }
+        });
+        mnuQuanLi.add(mniNhanVien);
+
+        mniKhachHang.setText("Khách Hàng");
+        mniKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniKhachHangActionPerformed(evt);
+            }
+        });
+        mnuQuanLi.add(mniKhachHang);
+
+        mniNhaPhanPhoi.setText("Nhà Phân Phối");
+        mnuQuanLi.add(mniNhaPhanPhoi);
+
+        jMenuBar1.add(mnuQuanLi);
+
+        mnuXuLy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Cash register.png"))); // NOI18N
+        mnuXuLy.setText("Xử Lí");
+
+        mniHoaDon.setText("Hóa Đơn");
+        mnuXuLy.add(mniHoaDon);
+>>>>>>> Stashed changes
+
+        mniHoaDonNhap.setText("Hóa Đơn Nhập");
+        mnuXuLy.add(mniHoaDonNhap);
+
+        jMenuBar1.add(mnuXuLy);
+
+        mnuThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Diagram.png"))); // NOI18N
+        mnuThongKe.setText("Thống Kê");
+
+        mniDoanhThu.setText("Doanh Thu");
+        mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoanhThuActionPerformed(evt);
+            }
+        });
+        mnuThongKe.add(mniDoanhThu);
+
+        MniKhachHang.setText("Khách Hàng");
+        mnuThongKe.add(MniKhachHang);
+
+        mniTKThuoc.setText("Thuốc ");
+        mnuThongKe.add(mniTKThuoc);
+
+        jMenuBar1.add(mnuThongKe);
+
+        mnuTroGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_info_30px_2.png"))); // NOI18N
+        mnuTroGiup.setText("Trợ Giúp");
+        jMenuBar1.add(mnuTroGiup);
+
+        mnuCheDo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Best.png"))); // NOI18N
+        mnuCheDo.setText("Chế Độ");
 
         mniLight.setText("Light");
         mniLight.addActionListener(new java.awt.event.ActionListener() {
@@ -526,17 +695,21 @@ public class main extends javax.swing.JFrame {
                 mniLightActionPerformed(evt);
             }
         });
-        jMenu1.add(mniLight);
+        mnuCheDo.add(mniLight);
 
         mniDark.setText("Dark");
+<<<<<<< Updated upstream
         mniDark.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mniDarkActionPerformed(evt);
             }
         });
         jMenu1.add(mniDark);
+=======
+        mnuCheDo.add(mniDark);
+>>>>>>> Stashed changes
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnuCheDo);
 
         setJMenuBar(jMenuBar1);
 
@@ -566,6 +739,7 @@ public class main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< Updated upstream
     
 private void changePanel(JPanel newPanel) {
     JpnScreen.removeAll();
@@ -597,6 +771,10 @@ private void updateBackgroundColorsformni() {
         JpnScreen.add(kh);
         kh.setVisible(true);
         JpnScreen.updateUI();
+=======
+    private void mniKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhachHangActionPerformed
+        // TODO add your handling code here:
+>>>>>>> Stashed changes
     }//GEN-LAST:event_mniKhachHangActionPerformed
 
     private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
@@ -605,8 +783,12 @@ private void updateBackgroundColorsformni() {
 
     private void mniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNhanVienActionPerformed
         // TODO add your handling code here:
+<<<<<<< Updated upstream
         jpnQuanLiNVMouseClicked(null);
     }//GEN-LAST:event_MniNhanVienActionPerformed
+=======
+    }//GEN-LAST:event_mniNhanVienActionPerformed
+>>>>>>> Stashed changes
     private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         SwingUtilities.invokeLater(()->{
@@ -630,8 +812,21 @@ private void updateBackgroundColorsformni() {
 
     private void mnuQuanLiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuQuanLiMouseClicked
         // TODO add your handling code here:
+<<<<<<< Updated upstream
 
     }//GEN-LAST:event_jMnQuanLiMouseClicked
+=======
+        JpnScreen.removeAll();
+        JPanel nv = new QuanLiNhanVIen();
+        JpnScreen.add(nv);
+        nv.setVisible(true);
+        JpnScreen.updateUI();
+    }//GEN-LAST:event_mnuQuanLiMouseClicked
+
+    private void mniThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThuocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniThuocActionPerformed
+>>>>>>> Stashed changes
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
@@ -698,13 +893,17 @@ private void updateBackgroundColorsformni() {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JpnScreen;
+<<<<<<< Updated upstream
+=======
+    private javax.swing.JMenuItem MniKhachHang;
+>>>>>>> Stashed changes
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+<<<<<<< Updated upstream
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
@@ -716,19 +915,21 @@ private void updateBackgroundColorsformni() {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
+=======
+>>>>>>> Stashed changes
     private javax.swing.JMenu jMnHeThong;
-    private javax.swing.JMenu jMnQuanLi;
-    private javax.swing.JMenu jMnThongKe;
     private javax.swing.JMenu jMnTrangChu;
-    private javax.swing.JMenu jMnTroGiup;
-    private javax.swing.JMenu jMnXuLi;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+<<<<<<< Updated upstream
     private javax.swing.JLabel jlbQuanLiBanHang;
     private javax.swing.JPanel jpnDangXuat;
     private javax.swing.JPanel jpnDoanhThu;
+=======
+    private javax.swing.JPanel jPanel8;
+>>>>>>> Stashed changes
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnQuanLiBanHang;
     private javax.swing.JPanel jpnQuanLiNV;
@@ -736,6 +937,10 @@ private void updateBackgroundColorsformni() {
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnTaiKhoan;
     private javax.swing.JPanel jpnView;
+<<<<<<< Updated upstream
+=======
+    private javax.swing.JLabel lblQuanLiBanHang;
+>>>>>>> Stashed changes
     private javax.swing.JLabel logo;
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDark;
@@ -745,6 +950,20 @@ private void updateBackgroundColorsformni() {
     private javax.swing.JMenuItem mniHoaDonNhap;
     private javax.swing.JMenuItem mniKhachHang;
     private javax.swing.JMenuItem mniLight;
+<<<<<<< Updated upstream
     private javax.swing.JMenuItem mniQuanLiNPP;
+=======
+    private javax.swing.JMenuItem mniNhaPhanPhoi;
+    private javax.swing.JMenuItem mniNhanVien;
+    private javax.swing.JMenuItem mniTKThuoc;
+    private javax.swing.JMenuItem mniTaiKhoan;
+    private javax.swing.JMenuItem mniThoat;
+    private javax.swing.JMenuItem mniThuoc;
+    private javax.swing.JMenu mnuCheDo;
+    private javax.swing.JMenu mnuQuanLi;
+    private javax.swing.JMenu mnuThongKe;
+    private javax.swing.JMenu mnuTroGiup;
+    private javax.swing.JMenu mnuXuLy;
+>>>>>>> Stashed changes
     // End of variables declaration//GEN-END:variables
 }
