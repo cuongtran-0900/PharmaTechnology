@@ -24,7 +24,7 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
-        
+        mniLightActionPerformed(null);
     }
 
     /**

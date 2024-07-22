@@ -27,12 +27,12 @@ public class NhaPhanPhoiDao extends ConnectSQL{
             dsnpp.clear();
             while(rs.next()) {
                 NhaPhanPhoi npp = new NhaPhanPhoi();
-                npp.setMaNPP(rs.getString("MaNV"));
+                npp.setMaNPP(rs.getString(1));
                 npp.setTenNPP(rs.getString(2));
-                npp.setDiaChi(rs.getString("DiaChi"));
-                npp.setSDT(rs.getString("dienthoai"));
+                npp.setSDT(rs.getString(3));
+                npp.setDiaChi(rs.getString(4));
                 npp.setEmail(rs.getString(5));
-                dsnpp.add(npp);   
+                dsnpp.add(npp);
             }
             rs.close();
             st.close();
