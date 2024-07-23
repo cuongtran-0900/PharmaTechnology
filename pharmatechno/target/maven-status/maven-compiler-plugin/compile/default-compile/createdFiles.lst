@@ -5,22 +5,14 @@ com\mycompany\pharmatechno\Control\ConnectSQL.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$5.class
 com\mycompany\pharmatechno\UI\hoadon$2.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$10.class
+com\mycompany\pharmatechno\UI\hoadonnhap$8.class
 com\mycompany\pharmatechno\UI\main$5.class
-<<<<<<< HEAD
 com\mycompany\pharmatechno\UI\QuanLiThuoc$6.class
-com\mycompany\pharmatechno\UI\QuanLiNhanVIen.class
-com\mycompany\pharmatechno\UI\ThongTinThanhVien.class
-com\mycompany\pharmatechno\Model\ChiTietHoaDon.class
-com\mycompany\pharmatechno\Control\KhachHangDao.class
-com\mycompany\pharmatechno\UI\QuanLiNhanVIen$9.class
-=======
-com\mycompany\pharmatechno\UI\Thuoc$2.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$4.class
-com\mycompany\pharmatechno\UI\KhachHang$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$13.class
 com\mycompany\pharmatechno\UI\ThongTinThanhVien.class
 com\mycompany\pharmatechno\Model\ChiTietHoaDon.class
->>>>>>> 08c9d87b23f05bd01e2500bf76621673b3d2edd6
+com\mycompany\pharmatechno\Control\KhachHangDao.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$11.class
 com\mycompany\pharmatechno\Model\ChiTietHoaDonNhap.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$6.class
@@ -31,15 +23,20 @@ com\mycompany\pharmatechno\UI\hoadon.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$5.class
 TaiKhoanNhanVien$1.class
 com\mycompany\pharmatechno\UI\QuanLiKhachHang$1.class
+com\mycompany\pharmatechno\UI\hoadonnhap$3.class
+com\mycompany\pharmatechno\UI\hoadon$8.class
+com\mycompany\pharmatechno\UI\hoadonnhap$9.class
 com\mycompany\pharmatechno\UI\hoadon$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$6.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$5.class
 com\mycompany\pharmatechno\UI\mainframe$2.class
+com\mycompany\pharmatechno\UI\main$12.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$2.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$4.class
 com\mycompany\pharmatechno\UI\main.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$7.class
+com\mycompany\pharmatechno\UI\hoadon$9.class
 com\mycompany\pharmatechno\Pharmatechno.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$8.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi.class
@@ -47,11 +44,7 @@ com\mycompany\pharmatechno\UI\hoadonnhap$1.class
 com\mycompany\pharmatechno\UI\main$10.class
 com\mycompany\pharmatechno\UI\main$1.class
 com\mycompany\pharmatechno\UI\hoadonnhap.class
-<<<<<<< HEAD
-com\mycompany\pharmatechno\UI\QuanLiNhanVIen$2.class
-=======
 com\mycompany\pharmatechno\UI\QuanLiNhanVien.class
->>>>>>> 08c9d87b23f05bd01e2500bf76621673b3d2edd6
 com\mycompany\pharmatechno\UI\main$11.class
 com\mycompany\pharmatechno\UI\mainframe$1.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$1.class
@@ -66,6 +59,7 @@ com\mycompany\pharmatechno\UI\QuanLiThuoc$9.class
 com\mycompany\pharmatechno\UI\Chao.class
 TaiKhoanNhanVien$3.class
 com\mycompany\pharmatechno\UI\main$2.class
+com\mycompany\pharmatechno\UI\hoadonnhap$5.class
 com\mycompany\pharmatechno\Model\KhachHang.class
 com\mycompany\pharmatechno\Model\HoaDonNhap.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$1.class
@@ -74,19 +68,15 @@ com\mycompany\pharmatechno\UI\mainframe$3.class
 com\mycompany\pharmatechno\UI\DoanhThu$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$10.class
 TaiKhoanNhanVien.class
+com\mycompany\pharmatechno\UI\hoadon$11.class
 com\mycompany\pharmatechno\UI\main$8.class
 DoiMatKhau$1.class
-<<<<<<< HEAD
-com\mycompany\pharmatechno\UI\QuanLiNhanVIen$5.class
 com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.class
 com\mycompany\pharmatechno\UI\mainframe.class
+com\mycompany\pharmatechno\UI\hoadon$10.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$3.class
-com\mycompany\pharmatechno\UI\QuanLiThuoc$4.class
-=======
-com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.class
-com\mycompany\pharmatechno\UI\mainframe.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$12.class
->>>>>>> 08c9d87b23f05bd01e2500bf76621673b3d2edd6
+com\mycompany\pharmatechno\UI\QuanLiThuoc$4.class
 TaiKhoanNhanVien$2.class
 com\mycompany\pharmatechno\Control\NhanVienDao.class
 com\mycompany\pharmatechno\Model\NhaPhanPhoi.class
@@ -94,32 +84,17 @@ com\mycompany\pharmatechno\UI\QuanLiNhanVien$6.class
 com\mycompany\pharmatechno\UI\main$3.class
 com\mycompany\pharmatechno\UI\main$6.class
 com\mycompany\pharmatechno\Model\Thuoc.class
-<<<<<<< HEAD
-com\mycompany\pharmatechno\UI\QuanLiNhanVIen$7.class
-<<<<<<< Updated upstream
-com\mycompany\pharmatechno\UI\QuanLiThuoc$5.class
-=======
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$14.class
-=======
->>>>>>> Stashed changes
+com\mycompany\pharmatechno\UI\QuanLiThuoc$5.class
 com\mycompany\pharmatechno\UI\main$9.class
-com\mycompany\pharmatechno\UI\KhachHang.class
->>>>>>> 08c9d87b23f05bd01e2500bf76621673b3d2edd6
 TaiKhoanNhanVien$4.class
-<<<<<<< Updated upstream
 com\mycompany\pharmatechno\UI\QuanLiThuoc$8.class
-com\mycompany\pharmatechno\bean\DanhMucBean.class
-=======
->>>>>>> Stashed changes
 com\mycompany\pharmatechno\Model\HoaDon.class
 DoiMatKhau.class
-<<<<<<< HEAD
-com\mycompany\pharmatechno\UI\QuanLiNhanVIen$10.class
 com\mycompany\pharmatechno\Control\ThuocDao.class
-=======
->>>>>>> 08c9d87b23f05bd01e2500bf76621673b3d2edd6
 com\mycompany\pharmatechno\UI\QuanLiBanHang$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$4.class
+com\mycompany\pharmatechno\UI\hoadonnhap$4.class
 com\mycompany\pharmatechno\UI\hoadon$6.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$1.class
 com\mycompany\pharmatechno\UI\DoanhThu$2.class
@@ -129,18 +104,15 @@ com\mycompany\pharmatechno\UI\DangNhap.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$9.class
 com\mycompany\pharmatechno\UI\hoadon$3.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$3.class
+com\mycompany\pharmatechno\UI\hoadonnhap$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$2.class
 com\mycompany\pharmatechno\UI\main$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$12.class
+com\mycompany\pharmatechno\UI\hoadonnhap$6.class
 com\mycompany\pharmatechno\UI\ThuocTonKho.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$2.class
-<<<<<<< HEAD
-com\mycompany\pharmatechno\UI\QuanLiNhanVIen$12.class
-com\mycompany\pharmatechno\UI\QuanLiKhachHang.class
-=======
-com\mycompany\pharmatechno\UI\Thuoc.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$3.class
->>>>>>> 08c9d87b23f05bd01e2500bf76621673b3d2edd6
+com\mycompany\pharmatechno\UI\QuanLiKhachHang.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$8.class
 com\mycompany\pharmatechno\UI\hoadon$4.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$11.class
