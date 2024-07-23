@@ -23,7 +23,11 @@ public class Chao extends javax.swing.JFrame {
         init();
     }
    void init(){
-        setIconImage(Xlimg.getAppIcon());
+<<<<<<< Updated upstream
+       // setIconImage(Xlimg.getAppIcon());
+=======
+//        setIconImage(Xlimg.getAppIcon());
+>>>>>>> Stashed changes
         setLocationRelativeTo(null);
         new Timer(20, new ActionListener() {
             @Override

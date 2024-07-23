@@ -20,7 +20,11 @@ public class DangNhap extends javax.swing.JFrame {
         init();
     }
 void init(){
+<<<<<<< Updated upstream
+     // setIconImage(Xlimg.getAppIcon());
+=======
 //      setIconImage(Xlimg.getAppIcon());
+>>>>>>> Stashed changes
       setLocationRelativeTo(null);
 }
     /**
