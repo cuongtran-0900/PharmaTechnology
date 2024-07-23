@@ -59,8 +59,10 @@ com\mycompany\pharmatechno\UI\QuanLiNhanVien$10.class
 TaiKhoanNhanVien.class
 com\mycompany\pharmatechno\UI\main$8.class
 DoiMatKhau$1.class
+com\mycompany\pharmatechno\UI\QuanLiNhanVien$16.class
 com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.class
 com\mycompany\pharmatechno\UI\mainframe.class
+com\mycompany\pharmatechno\UI\QuanLiNhanVien$15.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$12.class
 TaiKhoanNhanVien$2.class
 com\mycompany\pharmatechno\Control\NhanVienDao.class
