@@ -93,11 +93,13 @@ public class DoiMatKhau extends javax.swing.JPanel {
         });
 
         btnHuy.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnHuy.setForeground(new java.awt.Color(0, 0, 0));
         btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/No.png"))); // NOI18N
         btnHuy.setText("HỦY");
 
         btnXacNhan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnXacNhan.setForeground(new java.awt.Color(0, 0, 0));
+        btnXacNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept.png"))); // NOI18N
         btnXacNhan.setText("XÁC NHẬN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
