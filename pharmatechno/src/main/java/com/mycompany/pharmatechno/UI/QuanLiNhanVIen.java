@@ -438,6 +438,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
         }
     }
+    
     public void filltotable(){
         DefaultTableModel model = (DefaultTableModel) tblQuanLiNhanVien.getModel();
         model.setRowCount(0);
@@ -446,6 +447,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 nv.getRoll()});
         }
     }
+    
     public void showDetail(){
         int index  = tblQuanLiNhanVien.getSelectedRow();
         NhanVien nv = dsnv.get(index);

@@ -262,6 +262,11 @@ public class main extends javax.swing.JFrame {
         );
 
         jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
+        jpnDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpnDoanhThuMouseClicked(evt);
+            }
+        });
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -630,6 +635,12 @@ private void updateBackgroundColorsformni() {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jpnDoanhThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDoanhThuMouseClicked
+        // TODO add your handling code here:
+    changePanel(new DoanhThu());
+    updateBackgroundColors(jpnDoanhThu);
+    }//GEN-LAST:event_jpnDoanhThuMouseClicked
 
     /**
      * @param args the command line arguments
