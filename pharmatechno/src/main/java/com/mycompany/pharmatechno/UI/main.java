@@ -55,6 +55,7 @@ public class main extends javax.swing.JFrame {
         jpnDoanhThu = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         JpnScreen = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMnTrangChu = new javax.swing.JMenu();
@@ -137,6 +138,7 @@ public class main extends javax.swing.JFrame {
         jlbQuanLiBanHang.setBackground(new java.awt.Color(255, 255, 255));
         jlbQuanLiBanHang.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jlbQuanLiBanHang.setForeground(new java.awt.Color(51, 51, 51));
+        jlbQuanLiBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Basket.png"))); // NOI18N
         jlbQuanLiBanHang.setText("QUẢN LÍ BÁN HÀNG");
 
         javax.swing.GroupLayout jpnQuanLiBanHangLayout = new javax.swing.GroupLayout(jpnQuanLiBanHang);
@@ -190,6 +192,7 @@ public class main extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/medicine.png"))); // NOI18N
         jLabel9.setText("QUẢN LÍ THUỐC");
 
         javax.swing.GroupLayout jpnQuanLiThuocLayout = new javax.swing.GroupLayout(jpnQuanLiThuoc);
@@ -198,8 +201,8 @@ public class main extends javax.swing.JFrame {
             jpnQuanLiThuocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnQuanLiThuocLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
         );
         jpnQuanLiThuocLayout.setVerticalGroup(
             jpnQuanLiThuocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,6 +241,7 @@ public class main extends javax.swing.JFrame {
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
         jLabel12.setText("TÀI KHOẢN");
 
         javax.swing.GroupLayout jpnTaiKhoanLayout = new javax.swing.GroupLayout(jpnTaiKhoan);
@@ -246,8 +250,8 @@ public class main extends javax.swing.JFrame {
             jpnTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnTaiKhoanLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
         );
         jpnTaiKhoanLayout.setVerticalGroup(
             jpnTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,17 +318,29 @@ public class main extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
-        jpnView.setBackground(new java.awt.Color(255, 51, 51));
+        jpnView.setBackground(new java.awt.Color(204, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo-64.png"))); // NOI18N
+        jLabel1.setText("PharmaStore");
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jpnViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jpnViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jpnRootLayout = new javax.swing.GroupLayout(jpnRoot);
@@ -367,9 +383,11 @@ public class main extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(204, 255, 255));
         jMenuBar1.setBorder(null);
 
+        jMnTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Home.png"))); // NOI18N
         jMnTrangChu.setText("Trang Chủ");
         jMenuBar1.add(jMnTrangChu);
 
+        jMnHeThong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Gear.png"))); // NOI18N
         jMnHeThong.setText("Hệ Thống");
 
         jMenuItem1.setText("Đăng Xuất");
@@ -386,6 +404,7 @@ public class main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMnHeThong);
 
+        jMnQuanLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/To do list.png"))); // NOI18N
         jMnQuanLi.setText("Quản Lí");
         jMnQuanLi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -398,9 +417,16 @@ public class main extends javax.swing.JFrame {
             }
         });
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/medicine.png"))); // NOI18N
         jMenuItem5.setText("Thuốc");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMnQuanLi.add(jMenuItem5);
 
+        MniNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.png"))); // NOI18N
         MniNhanVien.setText("Nhân Viên");
         MniNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,6 +435,7 @@ public class main extends javax.swing.JFrame {
         });
         jMnQuanLi.add(MniNhanVien);
 
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clien list.png"))); // NOI18N
         jMenuItem7.setText("Khách Hàng");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -417,6 +444,7 @@ public class main extends javax.swing.JFrame {
         });
         jMnQuanLi.add(jMenuItem7);
 
+        mniQuanLiNPP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Conference.png"))); // NOI18N
         mniQuanLiNPP.setText("Nhà Phân Phối");
         mniQuanLiNPP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,6 +455,7 @@ public class main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMnQuanLi);
 
+        jMnXuLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Cash register.png"))); // NOI18N
         jMnXuLi.setText("Xử Lí");
 
         jMenuItem9.setText("Hóa Đơn");
@@ -437,6 +466,7 @@ public class main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMnXuLi);
 
+        jMnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Statistics.png"))); // NOI18N
         jMnThongKe.setText("Thống Kê");
 
         jMenuItem11.setText("Doanh Thu");
@@ -455,9 +485,11 @@ public class main extends javax.swing.JFrame {
 
         jMenuBar1.add(jMnThongKe);
 
+        jMnTroGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/info.png"))); // NOI18N
         jMnTroGiup.setText("Trợ Giúp");
         jMenuBar1.add(jMnTroGiup);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Color wheel.png"))); // NOI18N
         jMenu1.setText("Chế Độ");
 
         mniLight.setText("Light");
@@ -595,6 +627,10 @@ private void updateBackgroundColorsformni() {
     updateBackgroundColors(jpnQuanLiBanHang);
     }//GEN-LAST:event_jpnQuanLiBanHangMouseClicked
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -633,6 +669,7 @@ private void updateBackgroundColorsformni() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JpnScreen;
     private javax.swing.JMenuItem MniNhanVien;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
