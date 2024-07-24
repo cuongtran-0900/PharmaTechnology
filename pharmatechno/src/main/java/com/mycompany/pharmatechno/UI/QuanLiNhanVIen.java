@@ -8,7 +8,9 @@ import com.mycompany.pharmatechno.Control.NhanVienDao;
 import com.mycompany.pharmatechno.Model.NhanVien;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -22,9 +24,13 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     int vitri = 0;
     public QuanLiNhanVien() {
         initComponents();
-//        someMethod(vitri);
-//        filltotextbox(vitri);
         filltotable();
+        xulicn(false);
+        txtMaNV.setEditable(false);
+        btnCapNhat.setEnabled(false);
+        btnThem.setEnabled(false);
+        btnXoa.setEnabled(false);
+        
     }
 
     /**
@@ -61,7 +67,6 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
-        btnTimKiem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQuanLiNhanVien = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -254,7 +259,16 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
         jLabel6.setText("Tìm Kiếm");
 
-        btnTimKiem.setText("jButton1");
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemActionPerformed(evt);
+            }
+        });
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -264,10 +278,8 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnTimKiem)
-                .addGap(147, 147, 147))
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,17 +287,16 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiem))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         tblQuanLiNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã Nhân Viên", "Tên Nhân Viên", "Tuổi", "Số Điện Thoại", "Vai Trò"
+                "Mã Nhân Viên", "Tên Nhân Viên", "Tuổi", "Số Điện Thoại", "Giới Tính", "Vai Trò"
             }
         ));
         tblQuanLiNhanVien.setGridColor(new java.awt.Color(204, 204, 204));
@@ -329,8 +340,18 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         });
 
         btnNext.setText(">>");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         btnLast.setText(">|");
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setText("Làm Mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -348,9 +369,9 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 329, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnFrist)
                 .addGap(18, 18, 18)
                 .addComponent(btnBack)
@@ -370,7 +391,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 .addComponent(btnCapNhat)
                 .addGap(18, 18, 18)
                 .addComponent(btnXoa)
-                .addGap(43, 43, 43))
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,22 +405,25 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                     .addComponent(btnBack)
                     .addComponent(btnNext)
                     .addComponent(btnLast))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnThem)
-                        .addComponent(btnCapNhat)
-                        .addComponent(btnXoa)
-                        .addComponent(btnLamMoi)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnThem)
+                            .addComponent(btnCapNhat)
+                            .addComponent(btnXoa)
+                            .addComponent(btnLamMoi))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     NhanVienDao nvdao = new NhanVienDao();
     List<NhanVien> dsnv = nvdao.filltoArrayList();
-    
+   
     private void filltotextbox(int index) {
         if (index >= 0 && index < dsnv.size()) {
             // Lấy thông tin từ đối tượng Student tại chỉ mục index
@@ -439,18 +463,35 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         }
     }
     
+    
+    private void xulicn(boolean a){
+        btnBack.setEnabled(a);
+        btnNext.setEnabled(a);
+        btnLast.setEnabled(a);
+        btnFrist.setEnabled(a);
+        
+    }
+    
+    
     public void filltotable(){
         DefaultTableModel model = (DefaultTableModel) tblQuanLiNhanVien.getModel();
         model.setRowCount(0);
         for(NhanVien nv:dsnv){
-            model.addRow(new Object[] {nv.getMaNV(),nv.getTenNV(),nv.getTuoiNV(),nv.getSDT(),
+            model.addRow(new Object[] {nv.getMaNV(),nv.getTenNV(),nv.getTuoiNV(),nv.getSDT(),nv.getGioiTinh(),
                 nv.getRoll()});
         }
     }
     
-    public void showDetail(){
-        int index  = tblQuanLiNhanVien.getSelectedRow();
-        NhanVien nv = dsnv.get(index);
+    public void showDetail() {
+    int viewIndex = tblQuanLiNhanVien.getSelectedRow();
+    if (viewIndex == -1) {
+        return;
+    }
+
+    int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
+    if (modelIndex >= 0 && modelIndex < dsnv.size()) {
+        NhanVien nv = dsnv.get(modelIndex);
+
         txtMaNV.setText(nv.getMaNV());
         txtTenNV.setText(nv.getTenNV());
         txtEmail.setText(nv.getEmail());
@@ -458,13 +499,16 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         btnNam.setSelected(nv.getGioiTinh().equalsIgnoreCase("nam"));
         btnNu.setSelected(nv.getGioiTinh().equalsIgnoreCase("nữ"));
         txtDiaChi.setText(nv.getDiaChi());
-        if(nv.getRoll().equalsIgnoreCase("Nhân Viên")){
+        if (nv.getRoll().equalsIgnoreCase("Nhân Viên")) {
             cboVaiTro.setSelectedIndex(0);
-        }else if(nv.getRoll().equalsIgnoreCase("Admin")){
+        } else if (nv.getRoll().equalsIgnoreCase("Admin")) {
             cboVaiTro.setSelectedIndex(1);
         }
         txtTuoi.setText(nv.getTuoiNV());
     }
+}
+
+
     
     public void someMethod(int v) {
     if (v >= 0 && v < dsnv.size()) {
@@ -593,6 +637,15 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         }
 
     }
+    private void find(){
+        DefaultTableModel ob = (DefaultTableModel) tblQuanLiNhanVien.getModel();
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
+        tblQuanLiNhanVien.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getText()));
+    }
+    
+    
+    
     private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaNVActionPerformed
@@ -620,7 +673,6 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         save();
-    
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
@@ -636,19 +688,36 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     private void tblQuanLiNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLiNhanVienMouseClicked
         // TODO add your handling code here:
                 this.showDetail();
+                btnCapNhat.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnThem.setEnabled(false);
+                xulicn(true);
     }//GEN-LAST:event_tblQuanLiNhanVienMouseClicked
 
     private void btnFristActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFristActionPerformed
         // TODO add your handling code here:
+                vitri =0;
+        this.filltotextbox(vitri);
+        tblQuanLiNhanVien.setRowSelectionInterval(vitri, vitri);
+        
     }//GEN-LAST:event_btnFristActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+int viewIndex = tblQuanLiNhanVien.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
+            if (modelIndex > 0) {
+                tblQuanLiNhanVien.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
+                showDetail();
+            }
+        }
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-                    txtMaNV.setText("");
+            txtMaNV.setText(nvdao.Maphatsinh());
             txtTenNV.setText("");
             txtDiaChi.setText("");
             txtSDT.setText("");
@@ -657,11 +726,47 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
             cboVaiTro.setSelectedIndex(-1);
             btnNam.setSelected(false);
             btnNu.setSelected(false);
+            btnThem.setEnabled(true);
+            btnCapNhat.setEnabled(false);
+            btnXoa.setEnabled(false);
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void cboVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVaiTroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboVaiTroActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        int viewIndex = tblQuanLiNhanVien.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dsnv.size()) {
+                tblQuanLiNhanVien.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
+                showDetail();
+            }
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        // TODO add your handling code here:
+      int viewIndex = tblQuanLiNhanVien.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dsnv.size()) {
+                tblQuanLiNhanVien.setRowSelectionInterval(dsnv.size()-1, dsnv.size()-1);
+                showDetail();
+            }
+        }        
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        find();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -674,7 +779,6 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     private javax.swing.JButton btnNext;
     private javax.swing.JCheckBox btnNu;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboVaiTro;
