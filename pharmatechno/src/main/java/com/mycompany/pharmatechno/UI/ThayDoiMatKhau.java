@@ -7,12 +7,12 @@
  *
  * @author tranp
  */
-public class DoiMatKhau extends javax.swing.JPanel {
+public class ThayDoiMatKhau extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
      */
-    public DoiMatKhau() {
+    public ThayDoiMatKhau() {
         initComponents();
     }
 
