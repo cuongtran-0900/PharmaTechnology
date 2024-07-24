@@ -18,6 +18,7 @@ com\mycompany\pharmatechno\UI\hoadon.class
 com\mycompany\pharmatechno\UI\hoadonnhap$9.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$4.class
 com\mycompany\pharmatechno\UI\main.class
+com\mycompany\pharmatechno\UI\QuanLiNhanVien$17.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$7.class
 com\mycompany\pharmatechno\UI\hoadon$9.class
@@ -98,7 +99,15 @@ com\mycompany\pharmatechno\UI\QuanLiNhanVien$1.class
 com\mycompany\pharmatechno\UI\DoanhThu$1.class
 com\mycompany\pharmatechno\UI\hoadon$11.class
 DoiMatKhau$1.class
+<<<<<<< HEAD
 com\mycompany\pharmatechno\UI\mainframe.class
+=======
+com\mycompany\pharmatechno\UI\QuanLiNhanVien$16.class
+com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.class
+com\mycompany\pharmatechno\UI\mainframe.class
+com\mycompany\pharmatechno\UI\QuanLiNhanVien$15.class
+com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$12.class
+>>>>>>> dev_cuong
 TaiKhoanNhanVien$2.class
 com\mycompany\pharmatechno\UI\DoanhThu$6.class
 com\mycompany\pharmatechno\Model\NhaPhanPhoi.class
