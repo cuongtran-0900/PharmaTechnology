@@ -50,7 +50,46 @@ public class ThuocTonKho extends javax.swing.JPanel {
         }
     }
 
+        private void navigate(int index) {
+        tblThuocTonKho.setRowSelectionInterval(index, index);
+        showDetail(index);
+    }
+        
+
+    public void btnFirst() {
+        navigate(0);
+        scrollToVisible(0);
+    }
+    public void btnBack() {
+        int currentIndex = tblThuocTonKho.getSelectedRow();
+        if (currentIndex > 0) {
+            navigate(currentIndex - 1);
+            scrollToVisible(currentIndex - 1);
+        }
+    }
     
+       private void btnNext() {
+        int currentIndex = tblThuocTonKho.getSelectedRow();
+        if (currentIndex < ttkm.size() - 1) {
+            navigate(currentIndex + 1);
+            scrollToVisible(currentIndex + 1);
+        }
+    }
+       
+          private void btnLast() {
+        int lastIndex = ttkm.size() - 1;
+        navigate(lastIndex);
+        scrollToVisible(lastIndex);
+    }
+    
+        public void showtoTable() {
+        ttkm = ttkdao.filltoArrayList();
+        filltotable();
+    }
+
+    private void scrollToVisible(int rowIndex) {
+    tblThuocTonKho.scrollRectToVisible(tblThuocTonKho.getCellRect(rowIndex, 0, true));
+}
     
     
     
@@ -108,14 +147,34 @@ public class ThuocTonKho extends javax.swing.JPanel {
         btnThoat.setText("Thoát");
 
         btnFirst.setText("|<");
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
 
         lblTim.setText("Tìm thuốc");
 
         btnBack.setText("<<");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnNext.setText(">>");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         btnLast.setText(">|");
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
 
         btnTim.setText("Tìm");
 
@@ -201,6 +260,26 @@ public class ThuocTonKho extends javax.swing.JPanel {
                 .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        // TODO add your handling code here:
+        btnFirst();
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        btnBack();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        btnNext();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        // TODO add your handling code here:
+        btnLast();
+    }//GEN-LAST:event_btnLastActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
