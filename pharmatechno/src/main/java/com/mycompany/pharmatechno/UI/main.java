@@ -193,6 +193,11 @@ public class main extends javax.swing.JFrame {
         );
 
         jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiThuoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpnQuanLiThuocMouseClicked(evt);
+            }
+        });
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -661,6 +666,12 @@ private void updateBackgroundColorsformni() {
     changePanel(new DoanhThu());
     updateBackgroundColors(jpnDoanhThu);
     }//GEN-LAST:event_jpnDoanhThuMouseClicked
+
+    private void jpnQuanLiThuocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiThuocMouseClicked
+        // TODO add your handling code here:
+    changePanel(new Thuoc());
+    updateBackgroundColors(jpnQuanLiThuoc);
+    }//GEN-LAST:event_jpnQuanLiThuocMouseClicked
 
     /**
      * @param args the command line arguments
