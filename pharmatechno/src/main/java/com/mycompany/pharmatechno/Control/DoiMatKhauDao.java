@@ -1,6 +1,6 @@
 package com.mycompany.pharmatechno.Control;
 import com.mycompany.pharmatechno.Model.DoiMatKhau;
-import com.mycompany.pharmatechno.UI.DoiMatKhau;
+import com.mycompany.pharmatechno.UI.ThayDoiMatKhau;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,7 +22,7 @@ public class DoiMatKhauDao extends ConnectSQL{
     
      public List<DoiMatKhau> filltoArrayList(){
     try {
-            String sql = "select * from DoiMatKhau where isdelete = 1 order by manpp ";
+            String sql = "select * from DoiMatKhau where isdelete = 1 order by MaNV ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
             dsdmk.clear();
@@ -39,7 +39,7 @@ public class DoiMatKhauDao extends ConnectSQL{
         }
         
     } catch (SQLException ex) {
-        Logger.getLogger(DoiMatKhau.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThayDoiMatKhau.class.getName()).log(Level.SEVERE, null, ex);
     }
     return dsdmk;
 }

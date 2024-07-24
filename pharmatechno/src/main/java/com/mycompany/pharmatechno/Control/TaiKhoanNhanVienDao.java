@@ -22,7 +22,7 @@ public class TaiKhoanNhanVienDao extends ConnectSQL{
         
       public List<TaiKhoanNhanVien> filltoArrayList(){
     try {
-            String sql = "select * from TaiKhoanNhanVien where isdelete = 1 order by manpp ";
+            String sql = "select * from TaiKhoanNhanVien where isdelete = 1 order by MaNV ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
             dstknv.clear();
