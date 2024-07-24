@@ -25,10 +25,12 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     public QuanLiNhanVien() {
         initComponents();
         filltotable();
+        xulicn(false);
         txtMaNV.setEditable(false);
         btnCapNhat.setEnabled(false);
         btnThem.setEnabled(false);
         btnXoa.setEnabled(false);
+        
     }
 
     /**
@@ -65,7 +67,6 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
-        btnTimKiem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQuanLiNhanVien = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -264,8 +265,6 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
             }
         });
 
-        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -274,24 +273,17 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(142, 142, 142))
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         tblQuanLiNhanVien.setModel(new javax.swing.table.DefaultTableModel(
@@ -372,7 +364,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnFrist)
@@ -394,7 +386,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 .addComponent(btnCapNhat)
                 .addGap(18, 18, 18)
                 .addComponent(btnXoa)
-                .addGap(43, 43, 43))
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,14 +400,17 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                     .addComponent(btnBack)
                     .addComponent(btnNext)
                     .addComponent(btnLast))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnThem)
-                        .addComponent(btnCapNhat)
-                        .addComponent(btnXoa)
-                        .addComponent(btnLamMoi)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnThem)
+                            .addComponent(btnCapNhat)
+                            .addComponent(btnXoa)
+                            .addComponent(btnLamMoi))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -423,7 +418,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
     NhanVienDao nvdao = new NhanVienDao();
     List<NhanVien> dsnv = nvdao.filltoArrayList();
-    
+   
     private void filltotextbox(int index) {
         if (index >= 0 && index < dsnv.size()) {
             // Lấy thông tin từ đối tượng Student tại chỉ mục index
@@ -462,6 +457,17 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
         }
     }
+    
+    
+    private void xulicn(boolean a){
+        btnBack.setEnabled(a);
+        btnNext.setEnabled(a);
+        btnLast.setEnabled(a);
+        btnFrist.setEnabled(a);
+        
+    }
+    
+    
     public void filltotable(){
         DefaultTableModel model = (DefaultTableModel) tblQuanLiNhanVien.getModel();
         model.setRowCount(0);
@@ -662,7 +668,6 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         save();
-    
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
@@ -681,6 +686,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 btnCapNhat.setEnabled(true);
                 btnXoa.setEnabled(true);
                 btnThem.setEnabled(false);
+                xulicn(true);
     }//GEN-LAST:event_tblQuanLiNhanVienMouseClicked
 
     private void btnFristActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFristActionPerformed
@@ -738,14 +744,14 @@ int viewIndex = tblQuanLiNhanVien.getSelectedRow();
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
-                int lastIndex = dsnv.size() - 1; // Chỉ số hàng cuối cùng trong dữ liệu
-
-    if (lastIndex >= 0) { // Kiểm tra nếu có ít nhất một hàng trong bảng
-        // Chọn hàng cuối cùng trong bảng
-        tblQuanLiNhanVien.setRowSelectionInterval(lastIndex, lastIndex);
-        showDetail();
-    }
-        
+      int viewIndex = tblQuanLiNhanVien.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dsnv.size()) {
+                tblQuanLiNhanVien.setRowSelectionInterval(dsnv.size()-1, dsnv.size()-1);
+                showDetail();
+            }
+        }        
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
@@ -765,7 +771,6 @@ int viewIndex = tblQuanLiNhanVien.getSelectedRow();
     private javax.swing.JButton btnNext;
     private javax.swing.JCheckBox btnNu;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboVaiTro;
