@@ -8,7 +8,9 @@ import com.mycompany.pharmatechno.Control.NhanVienDao;
 import com.mycompany.pharmatechno.Model.NhanVien;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -256,6 +258,12 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
         jLabel6.setText("Tìm Kiếm");
 
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
+
         btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -462,9 +470,17 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 nv.getRoll()});
         }
     }
-    public void showDetail(){
-        int index  = tblQuanLiNhanVien.getSelectedRow();
-        NhanVien nv = dsnv.get(index);
+    
+    public void showDetail() {
+    int viewIndex = tblQuanLiNhanVien.getSelectedRow();
+    if (viewIndex == -1) {
+        return;
+    }
+
+    int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
+    if (modelIndex >= 0 && modelIndex < dsnv.size()) {
+        NhanVien nv = dsnv.get(modelIndex);
+
         txtMaNV.setText(nv.getMaNV());
         txtTenNV.setText(nv.getTenNV());
         txtEmail.setText(nv.getEmail());
@@ -472,13 +488,16 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         btnNam.setSelected(nv.getGioiTinh().equalsIgnoreCase("nam"));
         btnNu.setSelected(nv.getGioiTinh().equalsIgnoreCase("nữ"));
         txtDiaChi.setText(nv.getDiaChi());
-        if(nv.getRoll().equalsIgnoreCase("Nhân Viên")){
+        if (nv.getRoll().equalsIgnoreCase("Nhân Viên")) {
             cboVaiTro.setSelectedIndex(0);
-        }else if(nv.getRoll().equalsIgnoreCase("Admin")){
+        } else if (nv.getRoll().equalsIgnoreCase("Admin")) {
             cboVaiTro.setSelectedIndex(1);
         }
         txtTuoi.setText(nv.getTuoiNV());
     }
+}
+
+
     
     public void someMethod(int v) {
     if (v >= 0 && v < dsnv.size()) {
@@ -607,6 +626,15 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         }
 
     }
+    private void find(){
+        DefaultTableModel ob = (DefaultTableModel) tblQuanLiNhanVien.getModel();
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
+        tblQuanLiNhanVien.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getText()));
+    }
+    
+    
+    
     private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaNVActionPerformed
@@ -665,12 +693,15 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-                vitri--;
-        if(vitri<0){
-            vitri=0;
+int viewIndex = tblQuanLiNhanVien.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
+            if (modelIndex > 0) {
+                tblQuanLiNhanVien.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
+                showDetail();
+            }
         }
-        this.filltotextbox(vitri);
-        tblQuanLiNhanVien.setRowSelectionInterval(vitri, vitri);
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -695,20 +726,33 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
-                vitri++;
-        if(vitri==dsnv.size()){
-            vitri = dsnv.size()-1;
+        int viewIndex = tblQuanLiNhanVien.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dsnv.size()) {
+                tblQuanLiNhanVien.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
+                showDetail();
+            }
         }
-        this.filltotextbox(vitri);
-        tblQuanLiNhanVien.setRowSelectionInterval(vitri, vitri);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
-        vitri = dsnv.size()-1;
-        this.filltotextbox(vitri);
-        tblQuanLiNhanVien.setRowSelectionInterval(vitri, vitri);
+                int lastIndex = dsnv.size() - 1; // Chỉ số hàng cuối cùng trong dữ liệu
+
+    if (lastIndex >= 0) { // Kiểm tra nếu có ít nhất một hàng trong bảng
+        // Chọn hàng cuối cùng trong bảng
+        tblQuanLiNhanVien.setRowSelectionInterval(lastIndex, lastIndex);
+        showDetail();
+    }
+        
     }//GEN-LAST:event_btnLastActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        find();
+
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
