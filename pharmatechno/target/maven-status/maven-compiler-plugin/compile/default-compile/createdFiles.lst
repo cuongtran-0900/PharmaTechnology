@@ -4,6 +4,7 @@ com\mycompany\pharmatechno\Control\ConnectSQL.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$5.class
 com\mycompany\pharmatechno\UI\hoadon$2.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$10.class
+com\mycompany\pharmatechno\UI\main$13.class
 com\mycompany\pharmatechno\UI\hoadonnhap$8.class
 com\mycompany\pharmatechno\UI\main$5.class
 com\mycompany\pharmatechno\UI\Thuoc$2.class
@@ -16,6 +17,7 @@ com\mycompany\pharmatechno\Model\BanHang.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$11.class
 com\mycompany\pharmatechno\UI\Thuoc$1.class
 com\mycompany\pharmatechno\Model\ChiTietHoaDonNhap.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$6.class
 com\mycompany\pharmatechno\UI\DangNhap$1.class
 com\mycompany\pharmatechno\UI\main$4.class
 com\mycompany\pharmatechno\UI\hoadon$7.class
@@ -28,6 +30,7 @@ com\mycompany\pharmatechno\UI\hoadon$8.class
 com\mycompany\pharmatechno\UI\hoadonnhap$9.class
 com\mycompany\pharmatechno\UI\hoadon$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$6.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$5.class
 com\mycompany\pharmatechno\UI\mainframe$2.class
 com\mycompany\pharmatechno\UI\main$12.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$4.class
@@ -88,6 +91,7 @@ com\mycompany\pharmatechno\Control\ChuyenManHinh.class
 com\mycompany\pharmatechno\bean\DanhMucBean.class
 com\mycompany\pharmatechno\Model\HoaDon.class
 DoiMatKhau.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$4.class
 com\mycompany\pharmatechno\UI\hoadonnhap$4.class
 com\mycompany\pharmatechno\UI\hoadon$6.class

@@ -7,9 +7,14 @@ package com.mycompany.pharmatechno.UI;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.sun.tools.javac.Main;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.math.MathContext;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -28,7 +33,13 @@ public class main extends javax.swing.JFrame {
     public main() {
         initComponents();
         mniLightActionPerformed(null);
+        setPanelEvents(jpnDangXuat,jpnDoanhThu,jpnQuanLiBanHang,jpnQuanLiNV);
+        
     }
+    private JPanel currentPanel = null;
+    private final Color originalColor = new Color(13,18,130);
+    private final Color hoverColor = new Color(2, 94, 167);
+    private final Color clickColor = new Color(255, 102, 102);
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -557,6 +568,48 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
+    // 3. Tạo hiệu ứng Hover, và Đánh dấu mục đang sử dụng
+    public void setPanelEvents(JPanel... panels) {
+        for(JPanel panel : panels){
+            panel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    if (panel != currentPanel) {
+                        panel.setBackground(hoverColor);
+                    }
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    if (panel != currentPanel) {
+                        panel.setBackground(originalColor);
+                    }
+                }
+
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (currentPanel != null && panel != currentPanel) {
+                        currentPanel.setBackground(originalColor);
+                    }
+                    panel.setBackground(clickColor);
+                    currentPanel = panel;
+                }
+            });
+        }
+    }
+    
+//    public void MoreSmooth(JComponent previousComponent,JComponent nextComponent,java.awt.event.KeyEvent evt){
+//        if(evt.getKeyCode()==KeyEvent.VK_ENTER ||
+//            evt.getKeyCode()==KeyEvent.VK_TAB ||
+//            evt.getKeyCode()==KeyEvent.VK_DOWN)
+//        {
+//            nextComponent.requestFocus();
+//        }else if(evt.getKeyCode()==KeyEvent.VK_UP)
+//        {
+//            previousComponent.requestFocus();
+//        }
+//    }
+
 private void changePanel(JPanel newPanel) {
     JpnScreen.removeAll();
     JpnScreen.add(newPanel);
