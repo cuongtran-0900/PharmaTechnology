@@ -20,17 +20,24 @@ import java.util.logging.Logger;
  */
 public class HoaDonNhapDao extends ConnectSQL {
 
-    List<HoaDonNhap> dsnv = new ArrayList<>();
+    List<HoaDonNhap> dshdn = new ArrayList<>();
     
     public List<HoaDonNhap> filltoArrayList() {
         try {
-            String sql = "select * from hoadonnhap where isdelete = 1 order by mahdn ";
+            String sql = 
+                    """
+                    select hdn.mahdn, t.tenthuoc, hdn.manpp, cthdn.soluong, hdn.nguoigiao, hdn.nguoinhan, hdn.ngayviet, hdn.ngaynhap
+                    from hoadonnhap as hdn
+                    inner join chitiethoadonnhap as cthdn on hdn.maHDN = cthdn.MaHDN
+                    inner join Thuoc as t on t.MaThuoc = cthdn.MaThuoc;""";
             try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
-                dsnv.clear();
+                dshdn.clear();
                 while (rs.next()) {
                     HoaDonNhap hdn = new HoaDonNhap();
                     hdn.setMaHDN(rs.getString("MaHDN"));
                     hdn.setMaNPP(rs.getString("MaNPP"));  
+                     hdn.setTenThuoc(rs.getString("TenThuoc"));  
+                      hdn.setSoLuong(rs.getInt("SoLuong"));  
                     hdn.setNguoiGiao(rs.getString("nguoiGiao"));
                     hdn.setNguoiNhan(rs.getString("nguoiNhan"));
                     hdn.setNgayViet(rs.getDate("ngayViet"));
@@ -38,7 +45,7 @@ public class HoaDonNhapDao extends ConnectSQL {
                     hdn.setTongTien(rs.getFloat("tongTien"));
                 
 
-                    dsnv.add(hdn);
+                    dshdn.add(hdn);
                 }
                 rs.close();
                 st.close();
@@ -47,6 +54,21 @@ public class HoaDonNhapDao extends ConnectSQL {
         } catch (SQLException ex) {
             Logger.getLogger(hoadonnhap.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return dsnv;
+        return dshdn;
+    }
+    
+    public void add(HoaDonNhap hdn) {
+        dshdn.add(hdn);
+        // Logic to add hdn to the database or any other source
+    }
+
+    public void update(int index, HoaDonNhap hdn) {
+        dshdn.set(index, hdn);
+        // Logic to update hdn in the database or any other source
+    }
+
+    public void delete(int index) {
+        dshdn.remove(index);
+        // Logic to delete hdn from the database or any other source
     }
 }

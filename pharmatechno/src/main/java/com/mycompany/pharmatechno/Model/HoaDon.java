@@ -4,7 +4,7 @@
  */
 package com.mycompany.pharmatechno.Model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  *
@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 public class HoaDon {
 
     private String MaHD;
-    private Timestamp thoiGian;
+    private Date thoiGian;
     private String MaNV;
     private String MaKH;
     private float tongTien;
@@ -22,7 +22,7 @@ public class HoaDon {
 
     }
 
-    public HoaDon(String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float tongTien) {
+    public HoaDon(String MaHD, Date thoiGian, String MaNV, String MaKH, float tongTien) {
         this.MaHD = MaHD;
         this.thoiGian = thoiGian;
         this.MaNV = MaNV;
@@ -38,11 +38,11 @@ public class HoaDon {
         this.MaHD = MaHD;
     }
 
-    public Timestamp getThoiGian() {
+    public Date getThoiGian() {
         return thoiGian;
     }
 
-    public void setThoiGian(Timestamp thoiGian) {
+    public void setThoiGian(Date thoiGian) {
         this.thoiGian = thoiGian;
     }
 
@@ -70,4 +70,5 @@ public class HoaDon {
         this.tongTien = tongTien;
     }
 
+  
 }

@@ -18,14 +18,14 @@ import java.util.logging.Logger;
  * @author tu
  */
 public class HoaDonDao extends ConnectSQL{
-      List<HoaDon> dsnv = new ArrayList<>();
+      List<HoaDon> dshd = new ArrayList<>();
    
     public List<HoaDon> filltoArrayList(){
     try {
             String sql = "select * from HoaDon where isdelete = 1 order by mahd ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
-            dsnv.clear();  
+            dshd.clear();  
             while(rs.next()) {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString("MaHD"));
@@ -34,7 +34,7 @@ public class HoaDonDao extends ConnectSQL{
                 hd.setMaKH(rs.getString("MaKH"));
                 hd.setTongTien(rs.getFloat("tongTien"));
               
-                dsnv.add(hd);   
+                dshd.add(hd);   
             }
             rs.close();
             st.close();
@@ -43,8 +43,8 @@ public class HoaDonDao extends ConnectSQL{
     } catch (SQLException ex) {
         Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
     }
-    return dsnv;
+    return dshd;
 }
     
-    
+
 }
