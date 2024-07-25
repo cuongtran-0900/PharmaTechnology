@@ -129,5 +129,41 @@ public class NhanVienDao extends ConnectSQL{
         }
         return -1;
     }
+    public String fillmaphatsinh() {
+    String mps = null; 
+    try {
+        String sql = "SELECT TOP 1 manv FROM nhanvien ORDER BY manv DESC";
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        
+        if (rs.next()) { 
+            mps = rs.getString("manv"); 
+        }
+
+        rs.close();
+        st.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(QuanLiNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    int so = Integer.parseInt(mps.substring(3,5));
+        String manv = String.valueOf(so);
+    return manv;
+}
+        public String Maphatsinh(){
+    if(dsnv.size() <= 0){
+        return "nv001";
+    } else {
+        int count = Integer.valueOf(fillmaphatsinh());
+        int ma = Integer.valueOf(fillmaphatsinh());
+        if( count >= 100 && count <= 999 ){
+            return "nv"+(ma+1);
+            }else if(count >= 10 && count <= 99){
+                return "nv0" + (ma+1);
+                } else {
+                    return "nv00" + (ma+1);
+                  }
+    }
+    }
     
 }
