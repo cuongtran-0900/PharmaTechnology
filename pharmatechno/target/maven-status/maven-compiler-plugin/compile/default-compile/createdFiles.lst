@@ -14,6 +14,7 @@ com\mycompany\pharmatechno\UI\QuanLiNhanVien$4.class
 com\mycompany\pharmatechno\UI\KhachHang$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$13.class
 com\mycompany\pharmatechno\Model\ChiTietHoaDon.class
+com\mycompany\pharmatechno\Model\BanHang.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$11.class
 com\mycompany\pharmatechno\UI\Thuoc$1.class
 com\mycompany\pharmatechno\Model\ChiTietHoaDonNhap.class
@@ -40,6 +41,7 @@ com\mycompany\pharmatechno\UI\main.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$17.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$7.class
+com\mycompany\pharmatechno\UI\DoanhThu$8.class
 com\mycompany\pharmatechno\UI\hoadon$9.class
 com\mycompany\pharmatechno\Pharmatechno.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$8.class
@@ -94,6 +96,7 @@ com\mycompany\pharmatechno\UI\main$3.class
 com\mycompany\pharmatechno\UI\main$6.class
 com\mycompany\pharmatechno\Model\Thuoc.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$14.class
+com\mycompany\pharmatechno\UI\main$15.class
 com\mycompany\pharmatechno\UI\main$9.class
 com\mycompany\pharmatechno\UI\KhachHang.class
 TaiKhoanNhanVien$4.class
@@ -110,18 +113,17 @@ com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$1.class
 com\mycompany\pharmatechno\UI\DoanhThu$2.class
 com\mycompany\pharmatechno\UI\Chao$2.class
 com\mycompany\pharmatechno\UI\DangNhap.class
-com\mycompany\pharmatechno\UI\QuanLiBanHang$9.class
 com\mycompany\pharmatechno\UI\hoadon$3.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$3.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$2.class
 com\mycompany\pharmatechno\UI\main$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$12.class
 com\mycompany\pharmatechno\UI\DoanhThu$3.class
+com\mycompany\pharmatechno\Control\QuanLiBanHangDao.class
 com\mycompany\pharmatechno\UI\ThuocTonKho.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$2.class
 com\mycompany\pharmatechno\UI\Thuoc.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$3.class
-com\mycompany\pharmatechno\UI\QuanLiBanHang$8.class
 com\mycompany\pharmatechno\UI\hoadon$4.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$11.class
 com\mycompany\pharmatechno\Control\Xlimg.class

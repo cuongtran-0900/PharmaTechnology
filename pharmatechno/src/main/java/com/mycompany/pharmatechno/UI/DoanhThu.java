@@ -130,33 +130,6 @@ public class DoanhThu extends javax.swing.JPanel {
     tblDoanhThu.scrollRectToVisible(tblDoanhThu.getCellRect(rowIndex, 0, true));
 }
     
-    
-//    private void btnLamMoi() {                                          
-//    // Thực hiện truy vấn SQL và cập nhật dữ liệu
-//    updateDataFromDatabase();
-//    // Cập nhật bảng dữ liệu
-//    filltotable();
-//}                                         
-//
-//    
-//    
-//    
-//private void updateDataFromDatabase() {
-//    try {
-//        // Tạo đối tượng DoanhThuDAO và gọi phương thức truy vấn
-//        DoanhThuDAO nvdao = new DoanhThuDAO();
-//        dtm = nvdao.filltoArrayList(); // Phương thức này sẽ thực hiện truy vấn SQL
-//        
-//        // Tính tổng tiền
-//        double tongTien = 0;
-//        for (DoanhThuModel dt : dtm) {
-//            tongTien += dt.getTongTien(); // Giả sử `getTongTien` trả về số tiền
-//        }
-//        lblTongTien.setText(String.format("%.2f", tongTien));
-//    } catch (Exception e) {
-//        e.printStackTrace(); // Xử lý ngoại lệ
-//    }
-//}
 
     
         private void find(){
@@ -166,7 +139,19 @@ public class DoanhThu extends javax.swing.JPanel {
         obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getText()));
     }
     
-    
+    public void showDetail() {
+    int viewIndex = tblDoanhThu.getSelectedRow();
+    if (viewIndex == -1) {
+        return;
+    }
+
+    int modelIndex = tblDoanhThu.convertRowIndexToModel(viewIndex);
+    if (modelIndex >= 0 && modelIndex < dtm.size()) {
+        DoanhThuModel dt = dtm.get(modelIndex);
+
+        txtTongTien.setText(Float.toString(dt.getTongTien()));
+}
+    }
     
     
     
@@ -204,7 +189,7 @@ public class DoanhThu extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         btnLamMoi = new javax.swing.JButton();
         btnInRa = new javax.swing.JButton();
-        lblTongTien = new javax.swing.JTextField();
+        txtTongTien = new javax.swing.JTextField();
         lblTimKiemTheoNgay = new javax.swing.JLabel();
         btnThoat = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
@@ -229,6 +214,11 @@ public class DoanhThu extends javax.swing.JPanel {
                 "Thời Gian", "Tên Thuốc", "Số Lượng", "Tổng Tiền"
             }
         ));
+        tblDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDoanhThuMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDoanhThu);
 
         jLabel2.setText("Tổng Tiền :");
@@ -294,9 +284,9 @@ public class DoanhThu extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 382, Short.MAX_VALUE)
                     .addComponent(jLabel4)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 382, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +311,7 @@ public class DoanhThu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +323,7 @@ public class DoanhThu extends javax.swing.JPanel {
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -347,10 +337,11 @@ public class DoanhThu extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblTimKiemTheoNgay)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTimKiem)))
-                        .addGap(246, 246, 246)
-                        .addComponent(btnThoat))
-                    .addComponent(jScrollPane1))
+                                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(91, 91, 91)
+                        .addComponent(btnThoat)
+                        .addGap(0, 105, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -361,21 +352,21 @@ public class DoanhThu extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLast)
                     .addComponent(btnNext)
                     .addComponent(btnBack)
                     .addComponent(btnFirst))
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnThoat)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnLamMoi)
-                        .addComponent(btnInRa)
-                        .addComponent(lblTimKiemTheoNgay)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLamMoi)
+                    .addComponent(btnInRa)
+                    .addComponent(lblTimKiemTheoNgay)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThoat))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -387,21 +378,37 @@ public class DoanhThu extends javax.swing.JPanel {
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
         btnFirst();
+        showDetail();
+        btnBack.setEnabled(false);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         btnBack();
+        showDetail();
+        btnFirst.setEnabled(true);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
         btnNext();
+        showDetail();
+        btnFirst.setEnabled(true);
+        btnBack.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
         btnLast();
+        showDetail();
+        btnFirst.setEnabled(true);
+        btnBack.setEnabled(true);
+        btnNext.setEnabled(false);
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -412,6 +419,11 @@ public class DoanhThu extends javax.swing.JPanel {
         // TODO add your handling code here:
         find();
     }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void tblDoanhThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoanhThuMouseClicked
+        // TODO add your handling code here:
+        this.showDetail();
+    }//GEN-LAST:event_tblDoanhThuMouseClicked
     
 
     
@@ -429,8 +441,8 @@ public class DoanhThu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTimKiemTheoNgay;
-    private javax.swing.JTextField lblTongTien;
     private javax.swing.JTable tblDoanhThu;
     private javax.swing.JTextField txtTimKiem;
+    private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 }
