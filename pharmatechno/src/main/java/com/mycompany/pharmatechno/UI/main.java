@@ -496,10 +496,20 @@ public class main extends javax.swing.JFrame {
 
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill-import.png"))); // NOI18N
         jMenuItem9.setText("Hóa Đơn");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMnXuLi.add(jMenuItem9);
 
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
         jMenuItem10.setText("Hóa Đơn Nhập");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMnXuLi.add(jMenuItem10);
 
         jMenuBar1.add(jMnXuLi);
@@ -725,6 +735,18 @@ private void updateBackgroundColorsformni() {
     changePanel(new Thuoc());
     updateBackgroundColors(jpnQuanLiThuoc);
     }//GEN-LAST:event_jpnQuanLiThuocMouseClicked
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        changePanel(new hoadon());
+        updateBackgroundColorsformni();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        changePanel(new HoaDonNhapUI());
+        updateBackgroundColorsformni();
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**
      * @param args the command line arguments

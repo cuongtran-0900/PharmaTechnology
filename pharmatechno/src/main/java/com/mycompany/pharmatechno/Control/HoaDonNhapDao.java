@@ -7,7 +7,7 @@ package com.mycompany.pharmatechno.Control;
 import java.util.List;
 import java.util.ArrayList;
 import com.mycompany.pharmatechno.Model.HoaDonNhap;
-import com.mycompany.pharmatechno.UI.hoadonnhap;
+import com.mycompany.pharmatechno.UI.HoaDonNhapUI;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
@@ -52,7 +52,7 @@ public class HoaDonNhapDao extends ConnectSQL {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(hoadonnhap.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         return dshdn;
     }

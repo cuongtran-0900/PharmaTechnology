@@ -14,19 +14,19 @@ import java.util.Date;
  *
  * @author tu
  */
-public class hoadonnhap extends javax.swing.JPanel {
+public class HoaDonNhapUI extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
      */
-    public hoadonnhap() {
+    public HoaDonNhapUI() {
         initComponents();
         filltotable();
     }
 
-    private void initComponents() {
-        // Existing initComponents code
-    }
+//    private void initComponents() {
+//        // Existing initComponents code
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
