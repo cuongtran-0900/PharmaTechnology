@@ -15,7 +15,7 @@ import java.util.Date;
  * @author tu
  */
 public class HoaDonNhapUI extends javax.swing.JPanel {
-
+ int vitri = 0;
     /**
      * Creates new form NewJPanel
      */
@@ -48,7 +48,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         }
     }
 
-    private void filltotextbox(int index) {
+    private void fillToTextBox(int index) {
         if (index >= 0 && index < dshdn.size()) {
             // Lấy thông tin từ đối tượng Student tại chỉ mục index
             HoaDonNhap hdn = dshdn.get(index);
@@ -299,6 +299,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                 "Mã hóa đơn nhập", "Tên thuốc", "Nhà phân phối", "Số lượng ", "Người giao", "Người nhận", "Ngày Viết", "Ngày Nhập", "Tổng tiền"
             }
         ));
+        tbl_hoadon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_hoadonMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbl_hoadon);
 
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_refresh_30px.png"))); // NOI18N
@@ -334,12 +339,32 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         });
 
         btnPrev.setText("<<");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
 
         btnFirst.setText("|<");
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
 
         btnNext.setText(">>");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         btnLast.setText(">|");
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
 
         txtTenThuoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -653,9 +678,58 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
     private void tbl_hdnlsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_hdnlsMouseClicked
         // TODO add your handling code here:
-        int selectedRow = tbl_hoadon.getSelectedRow();
-        filltotextbox(selectedRow);
+        int selectedRow = tbl_hdnls.getSelectedRow();
+        fillToTextBox(selectedRow);
     }//GEN-LAST:event_tbl_hdnlsMouseClicked
+
+    private void tbl_hoadonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_hoadonMouseClicked
+        // TODO add your handling code here:
+         int selectedRow = tbl_hoadon.getSelectedRow();
+        fillToTextBox(selectedRow);
+    }//GEN-LAST:event_tbl_hoadonMouseClicked
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        // TODO add your handling code here:
+          vitri = 0;
+        this.fillToTextBox(vitri);
+        tbl_hoadon.setRowSelectionInterval(vitri, vitri);
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        // TODO add your handling code here:
+         int viewIndex = tbl_hoadon.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
+            if (modelIndex > 0) {
+                tbl_hoadon.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
+
+            }
+        }
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        int viewIndex = tbl_hoadon.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dshdn.size()) {
+                tbl_hoadon.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
+
+            }
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        // TODO add your handling code here:
+         int viewIndex = tbl_hoadon.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dshdn.size()) {
+                tbl_hoadon.setRowSelectionInterval(dshdn.size() - 1, dshdn.size() - 1);
+
+            }
+        }
+    }//GEN-LAST:event_btnLastActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

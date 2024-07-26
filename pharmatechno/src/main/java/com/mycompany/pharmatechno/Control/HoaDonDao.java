@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.ArrayList;
 import com.mycompany.pharmatechno.Model.HoaDon;
 import com.mycompany.pharmatechno.UI.hoadon;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
@@ -22,7 +24,7 @@ public class HoaDonDao extends ConnectSQL{
    
     public List<HoaDon> filltoArrayList(){
     try {
-            String sql = "select * from HoaDon where isdelete = 1 order by mahd ";
+            String sql = "select * from HoaDon where isDelete = 1 order by mahd ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
             dshd.clear();  
