@@ -30,6 +30,7 @@ public class hoadon extends javax.swing.JPanel {
         initComponents();
 //        dshd = nvhd.filltoArrayList(); // Lấy dữ liệu từ cơ sở dữ liệu
         filltotable(); // đổ dữ liệu vào bảng
+        filltotable2();
         fillToTextBox(vitri);
     }
 
@@ -40,14 +41,24 @@ public class hoadon extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
 
-    HoaDonDao nvhd = new HoaDonDao();
-    List<HoaDon> dshd = nvhd.filltoArrayList();
+    HoaDonDao nvhd = new HoaDonDao(); // Khởi tạo đối tượng HoaDonDao để quản lý dữ liệu hóa đơn
+    HoaDonDao nvhdls = new HoaDonDao(); // Khởi tạo đối tượng HoaDonDao khác để quản lý lịch sử hóa đơn
+    List<HoaDon> dshd = nvhd.filltoArrayList(); // Lấy danh sách hóa đơn từ cơ sở dữ liệu
+    List<HoaDon> dshdls = nvhdls.filltoArrayList2(); // Lấy danh sách lịch sử hóa đơn từ cơ sở dữ liệu
 
     public void filltotable() {
         DefaultTableModel model = (DefaultTableModel) tbl_HoaDon.getModel();
-        model.setRowCount(0);
-        for (HoaDon hd : dshd) {
-            model.addRow(new Object[]{hd.getMaHD(), hd.getMaNV(), hd.getMaKH(), hd.getThoiGian(), hd.getTongTien()});
+        model.setRowCount(0); // Xóa tất cả các hàng hiện có
+        for (HoaDon hd : dshd) { // Duyệt qua danh sách hóa đơn
+            model.addRow(new Object[]{hd.getMaHD(), hd.getMaNV(), hd.getMaKH(), hd.getThoiGian(), hd.getTongTien()}); // Thêm hàng mới vào bảng
+        }
+    }
+    
+    public void filltotable2() {
+        DefaultTableModel model = (DefaultTableModel) tblHoaDon_lichsu.getModel();
+        model.setRowCount(0); // Xóa tất cả các hàng hiện có
+        for (HoaDon hd : dshdls) { // Duyệt qua danh sách lịch sử hóa đơn
+            model.addRow(new Object[]{hd.getMaHD(), hd.getMaKH(), hd.getTenKH(), hd.getThoiGian(), hd.getTongTien()}); // Thêm hàng mới vào bảng
         }
     }
 
@@ -164,13 +175,13 @@ public class hoadon extends javax.swing.JPanel {
 
         tblHoaDon_lichsu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã hóa đơn", "Tên khách hàng", "Ngày mua hàng", "Tổng thanh toán"
+                "Mã hóa đơn", "Mã khách hàng", "Tên khách hàng", "Ngày mua hàng", "Tổng tiền"
             }
         ));
         jScrollPane1.setViewportView(tblHoaDon_lichsu);
@@ -508,7 +519,7 @@ public class hoadon extends javax.swing.JPanel {
 
     private void tbl_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HoaDonMouseClicked
         // TODO add your handling code here:
-
+fillToTextBox(vitri);
     }//GEN-LAST:event_tbl_HoaDonMouseClicked
 
     private void txtTongtienjTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongtienjTextField4ActionPerformed
@@ -526,23 +537,23 @@ public class hoadon extends javax.swing.JPanel {
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_HoaDon.getSelectedRow();
+       int viewIndex = tblHoaDon_lichsu.getSelectedRow();
         if (viewIndex != -1) {
-            int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshd.size()) {
-                tbl_HoaDon.setRowSelectionInterval(dshd.size() - 1, dshd.size() - 1);
+            int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dshdls.size()) {
+                tblHoaDon_lichsu.setRowSelectionInterval(dshdls.size()-1, dshdls.size()-1);
                 showDetail();
             }
-        }
+        }      
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_HoaDon.getSelectedRow();
+       int viewIndex = tblHoaDon_lichsu.getSelectedRow();
         if (viewIndex != -1) {
-            int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshd.size()) {
-                tbl_HoaDon.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
+            int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dshdls.size()) {
+                tblHoaDon_lichsu.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
                 showDetail();
             }
         }
@@ -550,25 +561,34 @@ public class hoadon extends javax.swing.JPanel {
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         // TODO add your handling code here:
+ int viewIndex = tblHoaDon_lichsu.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
+            if (modelIndex > 0) {
+                tblHoaDon_lichsu.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
+                showDetail();
+            }
+        }
 
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
-        // TODO add your handling code here:
-        vitri = 0;
+           // TODO add your handling code here:
+                vitri =0;
         this.fillToTextBox(vitri);
-        tbl_HoaDon.setRowSelectionInterval(vitri, vitri);
-        showDetail();
+        tblHoaDon_lichsu.setRowSelectionInterval(vitri, vitri);
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst1ActionPerformed
         // TODO add your handling code here:
-
+   vitri =0;
+        this.fillToTextBox(vitri);
+        tbl_HoaDon.setRowSelectionInterval(vitri, vitri);
     }//GEN-LAST:event_btnFirst1ActionPerformed
 
     private void btnPrev1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrev1ActionPerformed
-        // TODO add your handling code here:
-        int viewIndex = tbl_HoaDon.getSelectedRow();
+       // TODO add your handling code here:
+       int viewIndex = tbl_HoaDon.getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
             if (modelIndex > 0) {
@@ -581,18 +601,26 @@ public class hoadon extends javax.swing.JPanel {
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_HoaDon.getSelectedRow();
+       int viewIndex = tbl_HoaDon.getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
             if (modelIndex + 1 < dshd.size()) {
                 tbl_HoaDon.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
-showDetail();
+                showDetail();
             }
         }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     private void btnLast1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLast1ActionPerformed
         // TODO add your handling code here:
+        int viewIndex = tbl_HoaDon.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dshd.size()) {
+                tbl_HoaDon.setRowSelectionInterval(dshd.size()-1, dshd.size()-1);
+                showDetail();
+            }
+        }    
     }//GEN-LAST:event_btnLast1ActionPerformed
 
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
