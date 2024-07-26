@@ -28,7 +28,7 @@ public class NhanVienDao extends ConnectSQL{
     try {
             String sql = "select * from nhanvien where isdelete = 1 order by manv ";
         try (Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql)) {
+            ResultSet rs = st.executeQuery(sql)){
             dsnv.clear();
             while(rs.next()) {
                 NhanVien nv = new NhanVien();
@@ -58,7 +58,7 @@ public class NhanVienDao extends ConnectSQL{
             if (ma.equals(nv.getMaNV())) {
                 return false;
             }
-        }
+        } 
         return true;
     }
     public boolean removeStaff(String manv) {
