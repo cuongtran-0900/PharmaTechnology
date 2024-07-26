@@ -22,8 +22,6 @@ public class QuanLiNhaPhanPhoi extends javax.swing.JPanel {
     int vitri = 0;
     public QuanLiNhaPhanPhoi() {
         initComponents();      
-        someMethod(vitri);
-//        filltotextbox(vitri);
         filltotable();
     }
     
