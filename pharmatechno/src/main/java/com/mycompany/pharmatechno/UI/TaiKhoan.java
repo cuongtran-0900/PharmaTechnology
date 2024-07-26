@@ -1,5 +1,7 @@
 package com.mycompany.pharmatechno.UI;
 import com.mycompany.pharmatechno.Model.TaiKhoanNhanVien;
+import com.mycompany.pharmatechno.Control.TaiKhoanNhanVienDao;
+import java.util.List;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,6 +19,9 @@ public class TaiKhoan extends javax.swing.JPanel {
      */
     public TaiKhoan() {
         initComponents();
+            if (!list.isEmpty()) {
+    fillToTextBox(list.get(0)); // Điền thông tin của phần tử đầu tiên vào giao diện
+}
     }
 
     /**
@@ -240,28 +245,27 @@ public class TaiKhoan extends javax.swing.JPanel {
                 .addGap(0, 62, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-public void fillToTextBox(TaiKhoanNhanVien tk) {
-    if (tk == null) {
-        return; // Handle the case where the provided object is null
-    }
+    TaiKhoanNhanVienDao dao = new TaiKhoanNhanVienDao();
+    List<TaiKhoanNhanVien> list = dao.filltoArrayList();
 
-    txtMaNV.setText(tk.getMaNV());
-    txtTen.setText(tk.getTen());
-    txtTuoi.setText(String.valueOf(tk.getTuoi()));
-    txtSDT.setText(tk.getSDT());
-    txtEmail.setText(tk.getEmail());
-    taDiaChi.setText(tk.getDiaChi());
-    txtUsername.setText(tk.getUsername());
-    pwfPassword.setText(tk.getPassword());
-    
-    // Handle gender radio buttons
-    if (tk.getGioiTinh().equalsIgnoreCase("NAM")) {
+    public void fillToTextBox(TaiKhoanNhanVien tkNhanVien) {
+    txtMaNV.setText(tkNhanVien.getMaNV());
+    txtTen.setText(tkNhanVien.getTen());
+    txtTuoi.setText(String.valueOf(tkNhanVien.getTuoi()));
+    txtSDT.setText(tkNhanVien.getSDT());
+    txtEmail.setText(tkNhanVien.getEmail());
+    taDiaChi.setText(tkNhanVien.getDiaChi());
+    txtUsername.setText(tkNhanVien.getUsername());
+    pwfPassword.setText(tkNhanVien.getPassword());
+    if ("Nam".equalsIgnoreCase(tkNhanVien.getGioiTinh())) {
         rbtnNam.setSelected(true);
     } else {
         rbtnNu.setSelected(true);
     }
 }
-
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiMatKhau;
