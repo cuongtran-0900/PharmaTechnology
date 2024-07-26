@@ -248,16 +248,16 @@ public class TaiKhoan extends javax.swing.JPanel {
     TaiKhoanNhanVienDao dao = new TaiKhoanNhanVienDao();
     List<TaiKhoanNhanVien> list = dao.filltoArrayList();
 
-    public void fillToTextBox(TaiKhoanNhanVien tkNhanVien) {
-    txtMaNV.setText(tkNhanVien.getMaNV());
-    txtTen.setText(tkNhanVien.getTen());
-    txtTuoi.setText(String.valueOf(tkNhanVien.getTuoi()));
-    txtSDT.setText(tkNhanVien.getSDT());
-    txtEmail.setText(tkNhanVien.getEmail());
-    taDiaChi.setText(tkNhanVien.getDiaChi());
-    txtUsername.setText(tkNhanVien.getUsername());
-    pwfPassword.setText(tkNhanVien.getPassword());
-    if ("Nam".equalsIgnoreCase(tkNhanVien.getGioiTinh())) {
+    public void fillToTextBox(TaiKhoanNhanVien tknv) {
+    txtMaNV.setText(tknv.getMaNV());
+    txtTen.setText(tknv.getTen());
+    txtTuoi.setText(String.valueOf(tknv.getTuoi()));
+    txtSDT.setText(tknv.getSDT());
+    txtEmail.setText(tknv.getEmail());
+    taDiaChi.setText(tknv.getDiaChi());
+    txtUsername.setText(tknv.getUsername());
+    pwfPassword.setText(tknv.getPassword());
+    if ("Nam".equalsIgnoreCase(tknv.getGioiTinh())) {
         rbtnNam.setSelected(true);
     } else {
         rbtnNu.setSelected(true);

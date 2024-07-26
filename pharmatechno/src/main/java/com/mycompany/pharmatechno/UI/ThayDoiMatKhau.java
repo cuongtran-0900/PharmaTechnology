@@ -1,4 +1,9 @@
 package com.mycompany.pharmatechno.UI;
+
+import com.mycompany.pharmatechno.Control.DoiMatKhauDao;
+import com.mycompany.pharmatechno.Model.DoiMatKhau;
+import java.util.List;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -156,7 +161,16 @@ public class ThayDoiMatKhau extends javax.swing.JPanel {
                 .addGap(0, 45, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+     DoiMatKhauDao dao = new DoiMatKhauDao();
+    List<DoiMatKhau> list = dao.filltoArrayList();
 
+    public void fillToTextBox(DoiMatKhau dmk) {
+    txtMatKhauHienTai.setText(dmk.getMatKhauHienTai());
+    txtMatKhauMoi.setText(dmk.getMatKhauMoi());
+    txtXacNhanMatKhauMoi.setText(dmk.getXacNhanMatKhauMoi());
+
+
+}
     private void txtXacNhanMatKhauMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXacNhanMatKhauMoiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtXacNhanMatKhauMoiActionPerformed
