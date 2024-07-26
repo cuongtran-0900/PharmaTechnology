@@ -30,6 +30,8 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         initComponents();
         filltotable();
         addToListCart();
+        updateTotalAmount();
+        txtMaHoaDon.setText(bhdao.Maphatsinh());
         txtTongTien.setEditable(false);
         txtMaHoaDon.setEditable(false);
     
@@ -182,11 +184,17 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
         cboMaNV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel10.setText("Hình Thức      :");
+        jLabel10.setText("Hình Thức Thanh Toán     :");
 
-        cboHinhThuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboHinhThuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền Mặt", "Chuyển Khoản", " " }));
 
         jLabel11.setText("Tổng Tiền       :");
+
+        txtTongTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTongTienActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Mã Hóa Đơn :");
 
@@ -196,13 +204,6 @@ public class QuanLiBanHang extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btbThanhToan)
-                        .addGap(67, 67, 67)
-                        .addComponent(btnLuuIn)
-                        .addGap(66, 66, 66)
-                        .addComponent(btnHuy))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -218,9 +219,16 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboHinhThuc, 0, 88, Short.MAX_VALUE)
-                            .addComponent(txtMaHoaDon))))
-                .addContainerGap())
+                            .addComponent(cboHinhThuc, 0, 150, Short.MAX_VALUE)
+                            .addComponent(txtMaHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btbThanhToan)
+                        .addGap(67, 67, 67)
+                        .addComponent(btnLuuIn)
+                        .addGap(66, 66, 66)
+                        .addComponent(btnHuy)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +270,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                         .addComponent(btnThem)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -291,7 +299,8 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private boolean isUpdatingTable = false;
+
 public void filltotable() {
     // Cập nhật mô hình bảng để không cho phép chỉnh sửa
     DefaultTableModel model = new DefaultTableModel(
@@ -355,8 +364,12 @@ public void filltotable() {
                             }
                             int newQuantity = currentQuantity + SoLuong;
                             int thanhTien = newQuantity * DonGia;
+
+                            isUpdatingTable = true;
                             tblGioHang.setValueAt(newQuantity, i, 2); // Cập nhật số lượng
                             tblGioHang.setValueAt(thanhTien, i, 4); // Cập nhật thành tiền
+                            isUpdatingTable = false;
+
                             productExists = true;
                             break;
                         }
@@ -365,6 +378,7 @@ public void filltotable() {
                         int thanhTien = SoLuong * DonGia;
                         cartmodel.addRow(new Object[]{TenThuoc, DVT, SoLuong, DonGia, thanhTien});
                     }
+                    updateTotalAmount(); // Cập nhật tổng tiền
                 }
             }
         }
@@ -372,72 +386,83 @@ public void filltotable() {
 
     // Thêm TableModelListener để lắng nghe sự thay đổi
     cartmodel.addTableModelListener(e -> {
-        int row = e.getFirstRow();
-        int column = e.getColumn();
-        if (column == 2) { // Kiểm tra nếu cột là cột số lượng
-            int newQuantity = 0;
-            Object newQuantityObj = tblGioHang.getValueAt(row, 2);
-            if (newQuantityObj instanceof Number) {
-                newQuantity = ((Number) newQuantityObj).intValue();
-            } else if (newQuantityObj instanceof String) {
-                try {
-                    newQuantity = Integer.parseInt((String) newQuantityObj);
-                } catch (NumberFormatException ex) {
-                    ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+        if (!isUpdatingTable) {
+            int row = e.getFirstRow();
+            int column = e.getColumn();
+            if (column == 2 || column == 4) { // Kiểm tra nếu cột là cột số lượng hoặc thành tiền
+                int newQuantity = 0;
+                Object newQuantityObj = tblGioHang.getValueAt(row, 2);
+                if (newQuantityObj instanceof Number) {
+                    newQuantity = ((Number) newQuantityObj).intValue();
+                } else if (newQuantityObj instanceof String) {
+                    try {
+                        newQuantity = Integer.parseInt((String) newQuantityObj);
+                    } catch (NumberFormatException ex) {
+                        ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                    }
                 }
-            }
-            Object donGiaObj = tblGioHang.getValueAt(row, 3);
-            int DonGia = 0;
-            if (donGiaObj instanceof Number) {
-                DonGia = ((Number) donGiaObj).intValue();
-            } else if (donGiaObj instanceof String) {
-                try {
-                    DonGia = Integer.parseInt((String) donGiaObj);
-                } catch (NumberFormatException ex) {
-                    ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                Object donGiaObj = tblGioHang.getValueAt(row, 3);
+                int DonGia = 0;
+                if (donGiaObj instanceof Number) {
+                    DonGia = ((Number) donGiaObj).intValue();
+                } else if (donGiaObj instanceof String) {
+                    try {
+                        DonGia = Integer.parseInt((String) donGiaObj);
+                    } catch (NumberFormatException ex) {
+                        ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                    }
                 }
+                int thanhTien = newQuantity * DonGia;
+
+                isUpdatingTable = true;
+                tblGioHang.setValueAt(thanhTien, row, 4); // Cập nhật thành tiền
+                isUpdatingTable = false;
+
+                updateTotalAmount(); // Cập nhật tổng tiền
             }
-            int thanhTien = newQuantity * DonGia;
-            tblGioHang.setValueAt(thanhTien, row, 4); // Cập nhật thành tiền
         }
     });
+
     JPopupMenu popupMenu = new JPopupMenu();
-        JMenuItem deleteItem = new JMenuItem("Delete");
-        popupMenu.add(deleteItem);
+    JMenuItem deleteItem = new JMenuItem("Delete");
+    popupMenu.add(deleteItem);
 
-        // Thêm sự kiện cho menu ngữ cảnh
-        deleteItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedRow = tblGioHang.getSelectedRow();
-                if (selectedRow != -1) {
-                    cartmodel.removeRow(selectedRow);
-                }
+    // Thêm sự kiện cho menu ngữ cảnh
+    deleteItem.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int selectedRow = tblGioHang.getSelectedRow();
+            if (selectedRow != -1) {
+                cartmodel.removeRow(selectedRow);
+                updateTotalAmount(); // Cập nhật tổng tiền khi xóa
             }
-        });
+        }
+    });
 
-        // Thêm sự kiện chuột phải để hiển thị menu ngữ cảnh
-        tblGioHang.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                if (e.isPopupTrigger()) {
-                    int row = tblGioHang.rowAtPoint(e.getPoint());
-                    if (row >= 0 && row < tblGioHang.getRowCount()) {
-                        tblGioHang.setRowSelectionInterval(row, row);
-                    } else {
-                        tblGioHang.clearSelection();
-                    }
-
-                    int rowindex = tblGioHang.getSelectedRow();
-                    if (rowindex < 0) {
-                        return;
-                    }
-                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+    // Thêm sự kiện chuột phải để hiển thị menu ngữ cảnh
+    tblGioHang.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            if (e.isPopupTrigger()) {
+                int row = tblGioHang.rowAtPoint(e.getPoint());
+                if (row >= 0 && row < tblGioHang.getRowCount()) {
+                    tblGioHang.setRowSelectionInterval(row, row);
+                } else {
+                    tblGioHang.clearSelection();
                 }
+
+                int rowindex = tblGioHang.getSelectedRow();
+                if (rowindex < 0) {
+                    return;
+                }
+                popupMenu.show(e.getComponent(), e.getX(), e.getY());
             }
-        });
-    
+        }
+    });
 }
+
+
+   
 
     private void updateCart(int rowIndex) {
         DefaultTableModel cartModel = (DefaultTableModel) tblGioHang.getModel();
@@ -471,6 +496,27 @@ public void filltotable() {
 
         tblGioHang.setValueAt(thanhTien, rowIndex, 4);
     }
+    
+    private void updateTotalAmount() {
+    DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
+    int totalAmount = 0;
+    for (int i = 0; i < cartmodel.getRowCount(); i++) {
+        Object thanhTienObj = cartmodel.getValueAt(i, 4);
+        int thanhTien = 0;
+        if (thanhTienObj instanceof Number) {
+            thanhTien = ((Number) thanhTienObj).intValue();
+        } else if (thanhTienObj instanceof String) {
+            try {
+                thanhTien = Integer.parseInt((String) thanhTienObj);
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+            }
+        }
+        totalAmount += thanhTien;
+    }
+    txtTongTien.setText(String.valueOf(totalAmount));
+}
+
     private void find(){
         DefaultTableModel ob = (DefaultTableModel) tblQuanLiBanHang.getModel();
         TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
@@ -502,8 +548,15 @@ public void filltotable() {
 
     private void btbThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbThanhToanActionPerformed
         // TODO add your handling code here:
-        
+        bhdao.filltoArrayList();
+        txtMaHoaDon.setText("");
+        txtMaHoaDon.setText(bhdao.Maphatsinh());
     }//GEN-LAST:event_btbThanhToanActionPerformed
+
+    private void txtTongTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongTienActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtTongTienActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

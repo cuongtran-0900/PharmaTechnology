@@ -52,7 +52,6 @@ public class QuanLiBanHangDao extends ConnectSQL{
         try {
             String sql1 = "insert into hoadon (MaHD,MaNV,TongTien,IsDelete) values(?,?,?,?)";
             PreparedStatement st1 = con.prepareStatement(sql1);
-            
             st1.setString(1, bh.getMaHD());
             st1.setString(2, bh.getMaNV());
             st1.setInt(3, bh.getTongTien());
@@ -61,17 +60,14 @@ public class QuanLiBanHangDao extends ConnectSQL{
             
             String sql2 = "insert into ChiTietHoaDon (MaHD,MaThuoc,SoLuong,DonGia) values(?,?,?,?)";
             PreparedStatement st2 = con.prepareStatement(sql2);
-            
             st2.setString(1, bh.getMaHD());
             st2.setString(2, bh.getMaThuoc());
             st2.setInt(3, bh.getSoluong());
             st2.setInt(4, bh.getDonGia());
+            int row2 = st2.executeUpdate();
             
-            
-            
-            
-            
-            if (row1 > 0) {
+            int ttrow = row1 + row2;
+            if (ttrow > 0) {
                 JOptionPane.showMessageDialog(null, "Thanh toán thành công");
                 return row1;
             }
@@ -83,10 +79,10 @@ public class QuanLiBanHangDao extends ConnectSQL{
             
             
             
-                public String fillmaphatsinh() {
+    public String fillmaphatsinh() {
     String mps = null; 
     try {
-        String sql = "SELECT TOP 1 mahd FROM hoadon ORDER BY mahd DESC";
+        String sql = "SELECT mahd FROM hoadon WHERE mahd LIKE 'hd%' ORDER BY mahd DESC";
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(sql);
         
