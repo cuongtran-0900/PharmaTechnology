@@ -99,6 +99,7 @@ com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$1.class
 com\mycompany\pharmatechno\UI\DoanhThu$2.class
 com\mycompany\pharmatechno\UI\Chao$2.class
 com\mycompany\pharmatechno\UI\DangNhap.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$9.class
 com\mycompany\pharmatechno\UI\hoadon$3.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$3.class
 com\mycompany\pharmatechno\UI\hoadonnhap$7.class
@@ -111,6 +112,7 @@ com\mycompany\pharmatechno\UI\ThuocTonKho.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$2.class
 com\mycompany\pharmatechno\UI\Thuoc.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$3.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$8.class
 com\mycompany\pharmatechno\UI\hoadon$4.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$11.class
 com\mycompany\pharmatechno\Control\Xlimg.class

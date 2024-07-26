@@ -14,21 +14,34 @@ public class BanHang {
     private String DVT;
     private int DonGia;
     private int TonKho;
+    
+    private String MaThuoc;
     private String MaHD;
+    private int TongTien;
+    private int Soluong;
+    
     private String MaNV;
-
+    
+    
     public BanHang() {
     }
 
-    public BanHang(String TenThuoc, String Loai, String DVT, int DonGia, int TonKho, String MaHD, String MaNV) {
+    public BanHang(String TenThuoc, String Loai, String DVT, int DonGia, int TonKho, String MaThuoc, String MaHD, int TongTien, int Soluong, String MaNV) {
         this.TenThuoc = TenThuoc;
         this.Loai = Loai;
         this.DVT = DVT;
         this.DonGia = DonGia;
         this.TonKho = TonKho;
+        this.MaThuoc = MaThuoc;
         this.MaHD = MaHD;
+        this.TongTien = TongTien;
+        this.Soluong = Soluong;
         this.MaNV = MaNV;
     }
+
+
+
+
 
 
 
@@ -87,6 +100,30 @@ public class BanHang {
 
     public void setDonGia(int DonGia) {
         this.DonGia = DonGia;
+    }
+
+    public int getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(int TongTien) {
+        this.TongTien = TongTien;
+    }
+
+    public String getMaThuoc() {
+        return MaThuoc;
+    }
+
+    public void setMaThuoc(String MaThuoc) {
+        this.MaThuoc = MaThuoc;
+    }
+
+    public int getSoluong() {
+        return Soluong;
+    }
+
+    public void setSoluong(int Soluong) {
+        this.Soluong = Soluong;
     }
     
 

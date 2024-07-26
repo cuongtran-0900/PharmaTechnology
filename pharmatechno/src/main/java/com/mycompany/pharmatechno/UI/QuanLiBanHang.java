@@ -5,10 +5,14 @@
 package com.mycompany.pharmatechno.UI;
 import com.mycompany.pharmatechno.Control.QuanLiBanHangDao;
 import com.mycompany.pharmatechno.Model.BanHang;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.concurrent.ForkJoinTask;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -26,6 +30,8 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         initComponents();
         filltotable();
         addToListCart();
+        txtTongTien.setEditable(false);
+        txtMaHoaDon.setEditable(false);
     
     }
     
@@ -84,13 +90,9 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblQuanLiBanHang);
         if (tblQuanLiBanHang.getColumnModel().getColumnCount() > 0) {
-            tblQuanLiBanHang.getColumnModel().getColumn(0).setMinWidth(300);
-            tblQuanLiBanHang.getColumnModel().getColumn(0).setPreferredWidth(300);
-            tblQuanLiBanHang.getColumnModel().getColumn(0).setMaxWidth(300);
-            tblQuanLiBanHang.getColumnModel().getColumn(1).setMinWidth(50);
-            tblQuanLiBanHang.getColumnModel().getColumn(1).setPreferredWidth(50);
-            tblQuanLiBanHang.getColumnModel().getColumn(1).setMaxWidth(50);
-            tblQuanLiBanHang.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tblQuanLiBanHang.getColumnModel().getColumn(0).setMinWidth(200);
+            tblQuanLiBanHang.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tblQuanLiBanHang.getColumnModel().getColumn(0).setMaxWidth(200);
         }
 
         jPanel3.setBackground(new java.awt.Color(51, 255, 51));
@@ -150,12 +152,9 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblGioHang);
         if (tblGioHang.getColumnModel().getColumnCount() > 0) {
-            tblGioHang.getColumnModel().getColumn(0).setMinWidth(120);
-            tblGioHang.getColumnModel().getColumn(0).setPreferredWidth(120);
-            tblGioHang.getColumnModel().getColumn(0).setMaxWidth(120);
-            tblGioHang.getColumnModel().getColumn(1).setMinWidth(50);
-            tblGioHang.getColumnModel().getColumn(1).setPreferredWidth(50);
-            tblGioHang.getColumnModel().getColumn(1).setMaxWidth(50);
+            tblGioHang.getColumnModel().getColumn(0).setMinWidth(200);
+            tblGioHang.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tblGioHang.getColumnModel().getColumn(0).setMaxWidth(200);
             tblGioHang.getColumnModel().getColumn(2).setMinWidth(70);
             tblGioHang.getColumnModel().getColumn(2).setPreferredWidth(70);
             tblGioHang.getColumnModel().getColumn(2).setMaxWidth(70);
@@ -166,6 +165,11 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         btnLuuIn.setText("Lưu In");
 
         btbThanhToan.setText("Thanh Toán");
+        btbThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btbThanhToanActionPerformed(evt);
+            }
+        });
 
         btnHuy.setText("Hủy");
         btnHuy.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +237,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                     .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(txtMaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btbThanhToan)
                     .addComponent(btnLuuIn)
@@ -281,8 +285,8 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -321,7 +325,7 @@ public void filltotable() {
                 int selectedRow = tblQuanLiBanHang.getSelectedRow();
                 if (selectedRow != -1) {
                     String TenThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 0));
-                    String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 1));
+                    String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 2));
                     int SoLuong = 1;
                     Object donGiaObj = tblQuanLiBanHang.getValueAt(selectedRow, 3);
                     int DonGia = 0;
@@ -397,6 +401,42 @@ public void filltotable() {
             tblGioHang.setValueAt(thanhTien, row, 4); // Cập nhật thành tiền
         }
     });
+    JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem deleteItem = new JMenuItem("Delete");
+        popupMenu.add(deleteItem);
+
+        // Thêm sự kiện cho menu ngữ cảnh
+        deleteItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = tblGioHang.getSelectedRow();
+                if (selectedRow != -1) {
+                    cartmodel.removeRow(selectedRow);
+                }
+            }
+        });
+
+        // Thêm sự kiện chuột phải để hiển thị menu ngữ cảnh
+        tblGioHang.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+                    int row = tblGioHang.rowAtPoint(e.getPoint());
+                    if (row >= 0 && row < tblGioHang.getRowCount()) {
+                        tblGioHang.setRowSelectionInterval(row, row);
+                    } else {
+                        tblGioHang.clearSelection();
+                    }
+
+                    int rowindex = tblGioHang.getSelectedRow();
+                    if (rowindex < 0) {
+                        return;
+                    }
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+        });
+    
 }
 
     private void updateCart(int rowIndex) {
@@ -459,6 +499,11 @@ public void filltotable() {
         // TODO add your handling code here:
         find();
     }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void btbThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbThanhToanActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btbThanhToanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
