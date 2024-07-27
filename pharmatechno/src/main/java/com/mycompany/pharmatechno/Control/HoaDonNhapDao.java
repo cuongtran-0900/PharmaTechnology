@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 public class HoaDonNhapDao extends ConnectSQL {
 
     List<HoaDonNhap> dshdn = new ArrayList<>();
+     List<HoaDonNhap> dshdnls = new ArrayList<>();
     
     public List<HoaDonNhap> filltoArrayList() {
         try {

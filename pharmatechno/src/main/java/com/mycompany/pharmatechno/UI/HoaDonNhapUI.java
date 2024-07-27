@@ -738,6 +738,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         vitri = 0;
         this.fillToTextBox(vitri);
         tbl_hoadon.setRowSelectionInterval(vitri, vitri);
+        
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
@@ -747,7 +748,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
             if (modelIndex > 0) {
                 tbl_hoadon.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
-
+showDetail();
             }
         }
     }//GEN-LAST:event_btnPrevActionPerformed
@@ -759,7 +760,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
             if (modelIndex + 1 < dshdn.size()) {
                 tbl_hoadon.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
-
+showDetail();
             }
         }
     }//GEN-LAST:event_btnNextActionPerformed
@@ -771,7 +772,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
             if (modelIndex + 1 < dshdn.size()) {
                 tbl_hoadon.setRowSelectionInterval(dshdn.size() - 1, dshdn.size() - 1);
-
+showDetail();
             }
         }
     }//GEN-LAST:event_btnLastActionPerformed
