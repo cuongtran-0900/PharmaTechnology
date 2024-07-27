@@ -436,6 +436,11 @@ public class main extends javax.swing.JFrame {
 
         mniTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
         mniTaiKhoan.setText("Tài Khoản");
+        mniTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniTaiKhoanActionPerformed(evt);
+            }
+        });
         jMnHeThong.add(mniTaiKhoan);
 
         jMenuBar1.add(jMnHeThong);
@@ -747,6 +752,10 @@ private void updateBackgroundColorsformni() {
         changePanel(new HoaDonNhapUI());
         updateBackgroundColorsformni();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniTaiKhoanActionPerformed
 
     /**
      * @param args the command line arguments
