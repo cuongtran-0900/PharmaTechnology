@@ -113,7 +113,7 @@
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="txtMaHDN1" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtNgayThangNam" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="txtTimKiem" min="-2" pref="192" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnTim_HDN1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
@@ -150,7 +150,7 @@
                                   <Component id="txtMaHDN1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnTim_HDN1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txtNgayThangNam" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTimKiem" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           <Component id="jScrollPane3" pref="254" max="32767" attributes="0"/>
@@ -236,7 +236,7 @@
                     <Property name="text" type="java.lang.String" value="&gt;|"/>
                   </Properties>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="txtNgayThangNam">
+                <Component class="com.toedter.calendar.JDateChooser" name="txtTimKiem">
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSua2">
                   <Properties>

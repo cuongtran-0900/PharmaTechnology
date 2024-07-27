@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 public class HoaDonDao extends ConnectSQL{
       List<HoaDon> dshd = new ArrayList<>();
    List<HoaDon> dshdls = new ArrayList<>();
+   
     public List<HoaDon> filltoArrayList(){
     try {
             String sql = "select * from HoaDon where isDelete = 1 order by mahd ";
