@@ -44,6 +44,7 @@ com\mycompany\pharmatechno\Control\DoanhThuDAO.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$10.class
 TaiKhoanNhanVien.class
 com\mycompany\pharmatechno\UI\main$8.class
+com\mycompany\pharmatechno\UI\HoaDonNhapUI$22.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$16.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$9.class
 com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.class
@@ -64,6 +65,7 @@ com\mycompany\pharmatechno\UI\hoadon$6.class
 com\mycompany\pharmatechno\UI\Chao$2.class
 com\mycompany\pharmatechno\UI\hoadon$3.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$14.class
+com\mycompany\pharmatechno\UI\HoaDonNhapUI$21.class
 com\mycompany\pharmatechno\UI\main$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$12.class
 com\mycompany\pharmatechno\Control\QuanLiBanHangDao.class
