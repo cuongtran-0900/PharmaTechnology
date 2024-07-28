@@ -2,6 +2,7 @@ package com.mycompany.pharmatechno.UI;
 import com.mycompany.pharmatechno.Model.TaiKhoanNhanVien;
 import com.mycompany.pharmatechno.Control.TaiKhoanNhanVienDao;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,17 +14,25 @@ import java.util.List;
  * @author tranp
  */
 public class TaiKhoan extends javax.swing.JPanel {
+        TaiKhoanNhanVienDao dao = new TaiKhoanNhanVienDao();
+    List<TaiKhoanNhanVien> list;
+
 
     /**
      * Creates new form TaiKhoan
      */
-    public TaiKhoan() {
+public TaiKhoan() {
         initComponents();
-            if (!list.isEmpty()) {
-    fillToTextBox(list.get(0)); // Điền thông tin của phần tử đầu tiên vào giao diện
-}
+        list = dao.filltoArrayList(); // Lấy dữ liệu từ cơ sở dữ liệu
+        if (!list.isEmpty()) {
+            fillToTextBox(list.get(0)); // Điền thông tin của phần tử đầu tiên vào giao diện
+        } else {
+            // Hiển thị thông báo nếu không có dữ liệu
+            JOptionPane.showMessageDialog(this, "Không có dữ liệu để hiển thị.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,7 +75,6 @@ public class TaiKhoan extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(0, 255, 0));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("TÀI KHOẢN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -87,41 +95,32 @@ public class TaiKhoan extends javax.swing.JPanel {
         );
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("MÃ NV :");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("TÊN :");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("TUỔI :");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("SĐT :");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("EMAIL :");
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("GIỚI TÍNH :");
 
         buttonGroup1.add(rbtnNam);
         rbtnNam.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        rbtnNam.setForeground(new java.awt.Color(0, 0, 0));
         rbtnNam.setText("NAM");
 
         buttonGroup1.add(rbtnNu);
         rbtnNu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        rbtnNu.setForeground(new java.awt.Color(0, 0, 0));
         rbtnNu.setText("NỮ");
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("ĐỊA CHỈ :");
 
         taDiaChi.setColumns(20);
@@ -129,25 +128,30 @@ public class TaiKhoan extends javax.swing.JPanel {
         jScrollPane1.setViewportView(taDiaChi);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("USERNAME :");
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("PASSWORD :");
 
         pwfPassword.setText("jPasswordField1");
 
         btnDoiMatKhau.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnDoiMatKhau.setForeground(new java.awt.Color(0, 0, 0));
         btnDoiMatKhau.setText("ĐỔI MẬT KHẨU");
+        btnDoiMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDoiMatKhauMouseClicked(evt);
+            }
+        });
+        btnDoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiMatKhauActionPerformed(evt);
+            }
+        });
 
         btnDangXuat.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnDangXuat.setForeground(new java.awt.Color(0, 0, 0));
         btnDangXuat.setText("ĐĂNG XUẤT");
 
         btnThoat.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnThoat.setForeground(new java.awt.Color(0, 0, 0));
         btnThoat.setText("THOÁT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -245,24 +249,37 @@ public class TaiKhoan extends javax.swing.JPanel {
                 .addGap(0, 62, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    TaiKhoanNhanVienDao dao = new TaiKhoanNhanVienDao();
-    List<TaiKhoanNhanVien> list = dao.filltoArrayList();
 
+    private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDoiMatKhauActionPerformed
+
+    private void btnDoiMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoiMatKhauMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDoiMatKhauMouseClicked
     public void fillToTextBox(TaiKhoanNhanVien tknv) {
-    txtMaNV.setText(tknv.getMaNV());
-    txtTen.setText(tknv.getTen());
-    txtTuoi.setText(String.valueOf(tknv.getTuoi()));
-    txtSDT.setText(tknv.getSDT());
-    txtEmail.setText(tknv.getEmail());
-    taDiaChi.setText(tknv.getDiaChi());
-    txtUsername.setText(tknv.getUsername());
-    pwfPassword.setText(tknv.getPassword());
-    if ("Nam".equalsIgnoreCase(tknv.getGioiTinh())) {
-        rbtnNam.setSelected(true);
-    } else {
-        rbtnNu.setSelected(true);
+        txtMaNV.setText(tknv.getMaNV());
+        txtTen.setText(tknv.getTen());
+        txtTuoi.setText(String.valueOf(tknv.getTuoi()));
+        txtSDT.setText(tknv.getSDT());
+        txtEmail.setText(tknv.getEmail());
+        taDiaChi.setText(tknv.getDiaChi());
+        txtUsername.setText(tknv.getUsername());
+        pwfPassword.setText(tknv.getPassword());
+        
+        // Cài đặt giới tính
+        if ("Nam".equalsIgnoreCase(tknv.getGioiTinh())) {
+            rbtnNam.setSelected(true);
+        } else {
+            rbtnNu.setSelected(true);
+        }
     }
-}
+    
+    
+
+
+     
+
     
     
     

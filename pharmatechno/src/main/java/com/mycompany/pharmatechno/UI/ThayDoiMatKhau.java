@@ -1,6 +1,4 @@
 package com.mycompany.pharmatechno.UI;
-
-import com.mycompany.pharmatechno.Control.DoiMatKhauDao;
 import com.mycompany.pharmatechno.Model.DoiMatKhau;
 import java.util.List;
 
@@ -161,8 +159,7 @@ public class ThayDoiMatKhau extends javax.swing.JPanel {
                 .addGap(0, 45, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-     DoiMatKhauDao dao = new DoiMatKhauDao();
-    List<DoiMatKhau> list = dao.filltoArrayList();
+
 
     public void fillToTextBox(DoiMatKhau dmk) {
     txtMatKhauHienTai.setText(dmk.getMatKhauHienTai());

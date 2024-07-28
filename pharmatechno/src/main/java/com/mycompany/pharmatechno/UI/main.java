@@ -259,6 +259,11 @@ public class main extends javax.swing.JFrame {
         );
 
         jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
+        jpnTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpnTaiKhoanMouseClicked(evt);
+            }
+        });
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -756,6 +761,12 @@ private void updateBackgroundColorsformni() {
     private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mniTaiKhoanActionPerformed
+
+    private void jpnTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnTaiKhoanMouseClicked
+        // TODO add your handling code here:
+        changePanel(new TaiKhoan());
+    updateBackgroundColors(jpnTaiKhoan);
+    }//GEN-LAST:event_jpnTaiKhoanMouseClicked
 
     /**
      * @param args the command line arguments
