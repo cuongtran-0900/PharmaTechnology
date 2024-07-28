@@ -32,47 +32,8 @@ public class DoanhThu extends javax.swing.JPanel {
      */
     
     
-       DoanhThuDAO nvdao = new DoanhThuDAO();
-    List<DoanhThuModel> dtm = nvdao.filltoArrayList();
-    
-//        private void filltotextbox(int index) {
-//        if (index >= 0 && index < dtm.size()) {
-//            // Lấy thông tin từ đối tượng Student tại chỉ mục index
-//            DoanhThuModel dt = dtm.get(index);
-//
-//            txtMaNV.setText(nv.getMaNV());
-//            txtTenNV.setText(nv.getTenNV());
-//            txtDiaChi.setText(nv.getDiaChi());
-//            txtSDT.setText(nv.getSDT());
-//            txtEmail.setText(nv.getEmail());
-//            if(nv.getRoll().equalsIgnoreCase("Nhân Viên")){
-//                cboVaiTro.setSelectedIndex(0);
-//            }else{
-//                cboVaiTro.setSelectedIndex(1);
-//            }
-//            
-//            txtTuoi.setText(nv.getTuoiNV());
-//
-//            if (nv.getGioiTinh().equalsIgnoreCase("Nam")) {
-//                btnNam.setSelected(true);
-//            } else {
-//                btnNu.setSelected(true);
-//            }
-//
-//        } else {
-//
-//            txtMaNV.setText("");
-//            txtTenNV.setText("");
-//            txtDiaChi.setText("");
-//            txtSDT.setText("");
-//            txtEmail.setText("");
-//            txtTuoi.setText("");
-//            cboVaiTro.setSelectedIndex(-1);
-//            btnNam.setSelected(false);
-//            btnNu.setSelected(false);
-//
-//        }
-//    }
+       DoanhThuDAO dtdao = new DoanhThuDAO();
+    List<DoanhThuModel> dtm = dtdao.filltoArrayList();
     
     public void filltotable(){
         DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
@@ -122,7 +83,7 @@ public class DoanhThu extends javax.swing.JPanel {
     }
     
         public void showtoTable() {
-        dtm = nvdao.filltoArrayList();
+        dtm = dtdao.filltoArrayList();
         filltotable();
     }
 

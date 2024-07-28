@@ -519,6 +519,11 @@ public class main extends javax.swing.JFrame {
 
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Dollar.png"))); // NOI18N
         jMenuItem11.setText("Doanh Thu");
+        jMenuItem11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem11MouseClicked(evt);
+            }
+        });
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
@@ -659,6 +664,7 @@ private void updateBackgroundColorsformni() {
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
@@ -747,6 +753,10 @@ private void updateBackgroundColorsformni() {
         changePanel(new HoaDonNhapUI());
         updateBackgroundColorsformni();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem11MouseClicked
 
     /**
      * @param args the command line arguments
