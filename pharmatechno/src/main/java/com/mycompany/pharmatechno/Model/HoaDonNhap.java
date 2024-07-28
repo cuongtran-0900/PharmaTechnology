@@ -15,6 +15,7 @@ public class HoaDonNhap {
     private String MaHDN;
     private String MaNPP;
     private String TenThuoc;
+     private String MaThuoc;
     private int soLuong;
     private String nguoiGiao;
     private String nguoiNhan;
@@ -26,10 +27,11 @@ public class HoaDonNhap {
 
     }
 
-    public HoaDonNhap(String MaHDN, String MaNPP, String TenThuoc, int soLuong, String nguoiGiao, String nguoiNhan, Date ngayViet, Date ngayNhap, float tongTien) {
+    public HoaDonNhap(String MaHDN, String MaNPP, String TenThuoc, String MaThuoc, int soLuong, String nguoiGiao, String nguoiNhan, Date ngayViet, Date ngayNhap, float tongTien) {
         this.MaHDN = MaHDN;
         this.MaNPP = MaNPP;
         this.TenThuoc = TenThuoc;
+        this.MaThuoc = MaThuoc;
         this.soLuong = soLuong;
         this.nguoiGiao = nguoiGiao;
         this.nguoiNhan = nguoiNhan;
@@ -60,6 +62,14 @@ public class HoaDonNhap {
 
     public void setTenThuoc(String TenThuoc) {
         this.TenThuoc = TenThuoc;
+    }
+
+    public String getMaThuoc() {
+        return MaThuoc;
+    }
+
+    public void setMaThuoc(String MaThuoc) {
+        this.MaThuoc = MaThuoc;
     }
 
     public int getSoLuong() {
@@ -110,5 +120,6 @@ public class HoaDonNhap {
         this.tongTien = tongTien;
     }
 
+   
   
 }
