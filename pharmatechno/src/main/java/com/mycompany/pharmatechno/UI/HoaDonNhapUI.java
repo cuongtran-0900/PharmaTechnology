@@ -50,7 +50,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbl_hoadon.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDonNhap hdn : dshdn) { // Duyệt qua danh sách hóa đơn
-            model.addRow(new Object[]{hdn.getMaHDN(), hdn.getTenThuoc(), hdn.getMaNPP(), hdn.getSoLuong(),
+            model.addRow(new Object[]{hdn.getMaHDN(), hdn.getMaThuoc(), hdn.getTenThuoc(), hdn.getMaNPP(), hdn.getSoLuong(),
                 hdn.getNguoiGiao(), hdn.getNguoiNhan(), hdn.getNgayViet(), hdn.getNgayNhap(), hdn.getTongTien()});
         }
     }
@@ -59,7 +59,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbl_hdnls.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDonNhap hdn : dshdnls) { // Duyệt qua danh sách lịch sử hóa đơn
-            model.addRow(new Object[]{hdn.getMaHDN(), hdn.getMaNPP(), hdn.getTenThuoc(), hdn.getSoLuong(), hdn.getNgayNhap()}); // Thêm hàng mới vào bảng
+            model.addRow(new Object[]{hdn.getMaHDN(), hdn.getMaNPP(), hdn.getTenThuoc(), hdn.getSoLuong(), hdn.getNgayNhap(), hdn.getTongTien()}); // Thêm hàng mới vào bảng
         }
     }
 
@@ -70,6 +70,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
             txtMaHDN.setText(hdn.getMaHDN());
             txtMaHDN1.setText(hdn.getMaHDN());
+            txtMaThuoc.setText(hdn.getMaThuoc());
             txtTenThuoc.setText(hdn.getTenThuoc());
             txtSoluong.setText(String.valueOf(hdn.getSoLuong()));
             txtNPP.setText(hdn.getMaNPP());
@@ -93,6 +94,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             HoaDonNhap hdn = dshdn.get(modelIndex);
 
             txtMaHDN.setText(hdn.getMaHDN());
+            txtMaThuoc.setText(hdn.getMaThuoc());
             txtTenThuoc.setText(hdn.getTenThuoc());
             txtSoluong.setText(String.valueOf(hdn.getSoLuong()));
             txtNPP.setText(hdn.getMaNPP());
@@ -105,14 +107,13 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         }
     }
 
-    private void find() {
+   private void find() {
         DefaultTableModel ob = (DefaultTableModel) tbl_hdnls.getModel();
-        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
+       TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
         tbl_hdnls.setRowSorter(obj);
-        obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getDateFormatString()));
+        obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getName()));
     }
-
-
+   
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -203,6 +204,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         jLabel3.setText("Mã hóa đơn nhập");
 
         btnTim_HDN1.setText("Tìm");
+        btnTim_HDN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTim_HDN1ActionPerformed(evt);
+            }
+        });
 
         tbl_hdnls.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -650,7 +656,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         // Lấy dữ liệu từ các trường nhập liệu
         String maHDN = txtMaHDN.getText();
         String tenThuoc = txtTenThuoc.getText();
-               String MaThuoc = txtMaThuoc.getText();
+        String MaThuoc = txtMaThuoc.getText();
         int soLuong = Integer.parseInt(txtSoluong.getText());
         String maNPP = txtNPP.getText();
         String nguoiGiao = txtNguoiGiao.getText();
@@ -660,10 +666,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         float tongTien = Float.parseFloat(txtThanhTien.getText());
 
         // Tạo đối tượng HoaDonNhap mới
-        HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP,tenThuoc, MaThuoc, soLuong, nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
+        HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP, tenThuoc, MaThuoc, soLuong, nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
         // Thêm vào danh sách và cập nhật bảng
         nvhdn.add(hdn);
         filltotable();
+        filltotable2();
     }
 
     private void Sua() {
@@ -682,11 +689,12 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             float tongTien = Float.parseFloat(txtThanhTien.getText());
 
             // Cập nhật đối tượng HoaDonNhap
-            HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP,tenThuoc, MaThuoc, soLuong, nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
+            HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP, tenThuoc, MaThuoc, soLuong, nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
             nvhdn.update(selectedRow, hdn);
 
             // Cập nhật bảng
             filltotable();
+             filltotable2();
         }
     }
 
@@ -695,6 +703,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             nvhdn.delete(selectedRow);
             filltotable();
+            filltotable2();
         }
     }
 
@@ -709,6 +718,9 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         dateNgayViet.setDate(null);
         dateNgayNhap.setDate(null);
         txtThanhTien.setText("");
+        
+        filltotable();
+        filltotable2();
     }
 
     private void txtMaHDN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHDN1ActionPerformed
@@ -818,6 +830,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     private void txtMaThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaThuocActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaThuocActionPerformed
+
+    private void btnTim_HDN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTim_HDN1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnTim_HDN1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

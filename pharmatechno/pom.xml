@@ -15,6 +15,11 @@
         <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
        
         
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.2.3</version>
+        </dependency>
         
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
