@@ -23,6 +23,7 @@ public class hoadon extends javax.swing.JPanel {
 
     int vitri = 0;
 
+    
     /**
      * Creates new form hoadon
      */
@@ -53,7 +54,7 @@ public class hoadon extends javax.swing.JPanel {
             model.addRow(new Object[]{hd.getMaHD(), hd.getMaNV(), hd.getMaKH(), hd.getThoiGian(), hd.getTongTien()}); // Thêm hàng mới vào bảng
         }
     }
-    
+
     public void filltotable2() {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon_lichsu.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
@@ -519,7 +520,7 @@ public class hoadon extends javax.swing.JPanel {
 
     private void tbl_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HoaDonMouseClicked
         // TODO add your handling code here:
-fillToTextBox(vitri);
+        fillToTextBox(vitri);
     }//GEN-LAST:event_tbl_HoaDonMouseClicked
 
     private void txtTongtienjTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongtienjTextField4ActionPerformed
@@ -537,19 +538,19 @@ fillToTextBox(vitri);
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
-       int viewIndex = tblHoaDon_lichsu.getSelectedRow();
+        int viewIndex = tblHoaDon_lichsu.getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
             if (modelIndex + 1 < dshdls.size()) {
-                tblHoaDon_lichsu.setRowSelectionInterval(dshdls.size()-1, dshdls.size()-1);
+                tblHoaDon_lichsu.setRowSelectionInterval(dshdls.size() - 1, dshdls.size() - 1);
                 showDetail();
             }
-        }      
+        }
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
-       int viewIndex = tblHoaDon_lichsu.getSelectedRow();
+        int viewIndex = tblHoaDon_lichsu.getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
             if (modelIndex + 1 < dshdls.size()) {
@@ -561,7 +562,7 @@ fillToTextBox(vitri);
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
         // TODO add your handling code here:
- int viewIndex = tblHoaDon_lichsu.getSelectedRow();
+        int viewIndex = tblHoaDon_lichsu.getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
             if (modelIndex > 0) {
@@ -573,22 +574,22 @@ fillToTextBox(vitri);
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
-           // TODO add your handling code here:
-                vitri =0;
+        // TODO add your handling code here:
+        vitri = 0;
         this.fillToTextBox(vitri);
         tblHoaDon_lichsu.setRowSelectionInterval(vitri, vitri);
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst1ActionPerformed
         // TODO add your handling code here:
-   vitri =0;
+        vitri = 0;
         this.fillToTextBox(vitri);
         tbl_HoaDon.setRowSelectionInterval(vitri, vitri);
     }//GEN-LAST:event_btnFirst1ActionPerformed
 
     private void btnPrev1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrev1ActionPerformed
-       // TODO add your handling code here:
-       int viewIndex = tbl_HoaDon.getSelectedRow();
+        // TODO add your handling code here:
+        int viewIndex = tbl_HoaDon.getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
             if (modelIndex > 0) {
@@ -601,7 +602,7 @@ fillToTextBox(vitri);
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
         // TODO add your handling code here:
-       int viewIndex = tbl_HoaDon.getSelectedRow();
+        int viewIndex = tbl_HoaDon.getSelectedRow();
         if (viewIndex != -1) {
             int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
             if (modelIndex + 1 < dshd.size()) {
@@ -617,10 +618,10 @@ fillToTextBox(vitri);
         if (viewIndex != -1) {
             int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
             if (modelIndex + 1 < dshd.size()) {
-                tbl_HoaDon.setRowSelectionInterval(dshd.size()-1, dshd.size()-1);
+                tbl_HoaDon.setRowSelectionInterval(dshd.size() - 1, dshd.size() - 1);
                 showDetail();
             }
-        }    
+        }
     }//GEN-LAST:event_btnLast1ActionPerformed
 
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
@@ -631,7 +632,7 @@ fillToTextBox(vitri);
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng chọn một hóa đơn để in.");
         }
-
+        xuatHoaDon();
     }//GEN-LAST:event_btnInHoaDonActionPerformed
 
 
@@ -670,5 +671,13 @@ fillToTextBox(vitri);
     private javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txtTongtien;
     // End of variables declaration//GEN-END:variables
+
+    private void xuatHoaDon() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void XuatHoaDon() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }

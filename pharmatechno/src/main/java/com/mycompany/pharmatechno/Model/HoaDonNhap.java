@@ -13,6 +13,7 @@ import java.util.Date;
 public class HoaDonNhap {
 
     private String MaHDN;
+     private String MaHDN1;
     private String MaNPP;
     private String TenThuoc;
      private String MaThuoc;
@@ -29,6 +30,7 @@ public class HoaDonNhap {
 
     public HoaDonNhap(String MaHDN, String MaNPP, String TenThuoc, String MaThuoc, int soLuong, String nguoiGiao, String nguoiNhan, Date ngayViet, Date ngayNhap, float tongTien) {
         this.MaHDN = MaHDN;
+//        this.MaHDN1 = MaHDN1;
         this.MaNPP = MaNPP;
         this.TenThuoc = TenThuoc;
         this.MaThuoc = MaThuoc;
@@ -47,6 +49,8 @@ public class HoaDonNhap {
     public void setMaHDN(String MaHDN) {
         this.MaHDN = MaHDN;
     }
+
+   
 
     public String getMaNPP() {
         return MaNPP;
@@ -120,6 +124,5 @@ public class HoaDonNhap {
         this.tongTien = tongTien;
     }
 
-   
   
 }
