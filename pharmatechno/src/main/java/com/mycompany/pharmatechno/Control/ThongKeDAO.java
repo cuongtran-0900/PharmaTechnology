@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.pharmatechno.Control;
 
 import com.mycompany.pharmatechno.Model.ThongKeModel;
-import com.mycompany.pharmatechno.UI.ThongKe;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,27 +10,33 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author acer to you
- */
-public class ThongKeDAO extends ConnectSQL{
+public class ThongKeDAO extends ConnectSQL {
     
-        private final List<ThongKeModel> tkm = new ArrayList<>();
+    public ThongKeDAO() {
+        super();
+    }
 
     public List<ThongKeModel> filltoArrayList() {
-        String sql ="select tongtien from HoaDon where IsDelete = 1;";
+        List<ThongKeModel> tkm = new ArrayList<>();
+        String sql = """
+                     SELECT t.tenthuoc, SUM(hd.tongTien) as tongTien
+                     FROM HoaDon hd
+                     INNER JOIN ChiTietHoaDon cthd ON hd.MaHD = cthd.MaHD
+                     INNER JOIN Thuoc t ON cthd.MaThuoc = t.MaThuoc
+                     WHERE hd.IsDelete = 1
+                     GROUP BY t.tenthuoc;
+                     """;
 
         try (Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
-            tkm.clear();
             while (rs.next()) {
                 ThongKeModel tk = new ThongKeModel();
+                tk.setTenThuoc(rs.getString("tenthuoc"));
                 tk.setTongTien(rs.getFloat("tongTien"));
                 tkm.add(tk); 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThongKeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tkm;
     }

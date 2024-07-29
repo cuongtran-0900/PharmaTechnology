@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import com.mycompany.pharmatechno.UI.ThongKe;
 /**
  *
  * @author Cuong
@@ -664,7 +664,9 @@ private void updateBackgroundColorsformni() {
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
-        
+
+        changePanel(new ThongKe());
+       
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
@@ -784,7 +786,7 @@ private void updateBackgroundColorsformni() {
             java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+            
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

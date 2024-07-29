@@ -17,43 +17,48 @@ public class ThongKe extends javax.swing.JPanel {
     ThongKeDAO tkdao = new ThongKeDAO();
     List<ThongKeModel> tkm = tkdao.filltoArrayList();
 
-    public ThongKe(List<ThongKeModel> tkm) {
-        this.tkm = tkm;
+    public void ThongKe() {
         initComponents();
         addChart();
     }
 
     private void addChart() {
-        // Tạo dataset
-        CategoryDataset dataset = createDataset();
+    // Lấy dữ liệu từ cơ sở dữ liệu
+    tkm = tkdao.filltoArrayList();
 
-        // Tạo biểu đồ
-        JFreeChart chart = ChartFactory.createBarChart(
-                "Biểu đồ cột", 
-                "Thể loại", 
-                "Giá trị", 
-                dataset, 
-                PlotOrientation.VERTICAL, 
-                true, true, false);
+    // Tạo dataset
+    CategoryDataset dataset = createDataset();
 
-        // Tùy chỉnh biểu đồ
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(694, 400));
+    // Tạo biểu đồ
+    JFreeChart chart = ChartFactory.createBarChart(
+            "Biểu đồ cột", 
+            "Thể loại", 
+            "Giá trị", 
+            dataset, 
+            PlotOrientation.VERTICAL, 
+            true, true, false);
 
-        // Thêm biểu đồ vào JPanelThongKe
-        JPanelThongKe.setLayout(new java.awt.BorderLayout());
-        JPanelThongKe.add(chartPanel, java.awt.BorderLayout.CENTER);
+    // Tùy chỉnh biểu đồ
+    ChartPanel chartPanel = new ChartPanel(chart);
+    chartPanel.setPreferredSize(new Dimension(694, 400));
+
+    // Thêm biểu đồ vào JPanelThongKe
+    JPanelThongKe.setLayout(new java.awt.BorderLayout());
+    JPanelThongKe.add(chartPanel, java.awt.BorderLayout.CENTER);
+    JPanelThongKe.validate(); // Thêm dòng này để xác nhận JPanel đã được cập nhật
+}
+
+
+  private CategoryDataset createDataset() {
+    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+    // Giả sử "Thể loại" là tên thuốc và "Giá trị" là tổng tiền
+    for (ThongKeModel tk : tkm) {
+        dataset.addValue(tk.getTongTien(), "Doanh Thu", tk.getTenThuoc());
     }
 
-    private CategoryDataset createDataset() {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-        for (ThongKeModel tk : tkm) {
-            tk.getTongTien();
-        }
-
-        return dataset;
-    }
+    return dataset;
+}
 
 
     // Phần còn lại của code không thay đổi
