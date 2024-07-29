@@ -121,17 +121,6 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel5 = new javax.swing.JPanel();
-        txtMaHDN1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbl_hdnls = new javax.swing.JTable();
-        btnPrev1 = new javax.swing.JButton();
-        btnFirst1 = new javax.swing.JButton();
-        btnNext1 = new javax.swing.JButton();
-        btnLast1 = new javax.swing.JButton();
-        txtTimKiem = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         txtMaHDN = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -163,6 +152,17 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         dateNgayNhap = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
         txtMaThuoc = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        txtMaHDN1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbl_hdnls = new javax.swing.JTable();
+        btnPrev1 = new javax.swing.JButton();
+        btnFirst1 = new javax.swing.JButton();
+        btnNext1 = new javax.swing.JButton();
+        btnLast1 = new javax.swing.JButton();
+        txtTimKiem = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 102));
 
@@ -188,103 +188,6 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         );
 
         jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
-
-        txtMaHDN1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaHDN1ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Mã hóa đơn nhập");
-
-        tbl_hdnls.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Mã hóa đơn nhập", "Nhà phân phối", "Tên thuốc nhập", "Số lượng nhập", "Ngày nhận", "Tổng tiền thanh toán"
-            }
-        ));
-        tbl_hdnls.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_hdnlsMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tbl_hdnls);
-
-        btnPrev1.setText("<<");
-
-        btnFirst1.setText("|<");
-
-        btnNext1.setText(">>");
-
-        btnLast1.setText(">|");
-
-        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTimKiemActionPerformed(evt);
-            }
-        });
-        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyReleased(evt);
-            }
-        });
-
-        jLabel13.setText("Tìm Kiếm");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(txtMaHDN1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(225, 225, 225))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(493, 493, 493)
-                .addComponent(btnFirst1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPrev1)
-                .addGap(18, 18, 18)
-                .addComponent(btnNext1)
-                .addGap(18, 18, 18)
-                .addComponent(btnLast1)
-                .addContainerGap(139, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtMaHDN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPrev1)
-                    .addComponent(btnFirst1)
-                    .addComponent(btnNext1)
-                    .addComponent(btnLast1))
-                .addGap(23, 23, 23))
-        );
-
-        jTabbedPane2.addTab("Lịch Sử", jPanel5);
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -570,6 +473,103 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Hóa đơn", jPanel4);
 
+        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
+
+        txtMaHDN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaHDN1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Mã hóa đơn nhập");
+
+        tbl_hdnls.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã hóa đơn nhập", "Nhà phân phối", "Tên thuốc nhập", "Số lượng nhập", "Ngày nhận", "Tổng tiền thanh toán"
+            }
+        ));
+        tbl_hdnls.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_hdnlsMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbl_hdnls);
+
+        btnPrev1.setText("<<");
+
+        btnFirst1.setText("|<");
+
+        btnNext1.setText(">>");
+
+        btnLast1.setText(">|");
+
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemActionPerformed(evt);
+            }
+        });
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
+
+        jLabel13.setText("Tìm Kiếm");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(txtMaHDN1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(225, 225, 225))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(493, 493, 493)
+                .addComponent(btnFirst1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnPrev1)
+                .addGap(18, 18, 18)
+                .addComponent(btnNext1)
+                .addGap(18, 18, 18)
+                .addComponent(btnLast1)
+                .addContainerGap(139, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtMaHDN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPrev1)
+                    .addComponent(btnFirst1)
+                    .addComponent(btnNext1)
+                    .addComponent(btnLast1))
+                .addGap(23, 23, 23))
+        );
+
+        jTabbedPane2.addTab("Lịch Sử", jPanel5);
+
         jTabbedPane1.addTab("Hóa đơn nhập hàng", jTabbedPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -588,25 +588,121 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMaHDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHDNActionPerformed
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaHDNActionPerformed
+        find();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
-    private void txtTenThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenThuocActionPerformed
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTenThuocActionPerformed
+    }//GEN-LAST:event_txtTimKiemActionPerformed
 
-    private void txtSoluongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoluongActionPerformed
+    private void tbl_hdnlsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_hdnlsMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSoluongActionPerformed
+        int selectedRow = tbl_hdnls.getSelectedRow();
+        fillToTextBox(selectedRow);
+    }//GEN-LAST:event_tbl_hdnlsMouseClicked
+
+    private void txtMaHDN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHDN1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaHDN1ActionPerformed
+
+    private void txtMaThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaThuocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaThuocActionPerformed
+
+    private void txtNguoiGiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNguoiGiaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNguoiGiaoActionPerformed
+
+    private void txtThanhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThanhTienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtThanhTienActionPerformed
 
     private void txtNPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNPPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNPPActionPerformed
 
-    private void txtThanhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThanhTienActionPerformed
+    private void txtSoluongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoluongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtThanhTienActionPerformed
+    }//GEN-LAST:event_txtSoluongActionPerformed
+
+    private void txtTenThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenThuocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenThuocActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        // TODO add your handling code here:
+        int viewIndex = tbl_hoadon.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dshdn.size()) {
+                tbl_hoadon.setRowSelectionInterval(dshdn.size() - 1, dshdn.size() - 1);
+                showDetail();
+            }
+        }
+    }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        int viewIndex = tbl_hoadon.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
+            if (modelIndex + 1 < dshdn.size()) {
+                tbl_hoadon.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
+                showDetail();
+            }
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+        // TODO add your handling code here:
+        vitri = 0;
+        this.fillToTextBox(vitri);
+        tbl_hoadon.setRowSelectionInterval(vitri, vitri);
+    }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        // TODO add your handling code here:
+        int viewIndex = tbl_hoadon.getSelectedRow();
+        if (viewIndex != -1) {
+            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
+            if (modelIndex > 0) {
+                tbl_hoadon.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
+                showDetail();
+            }
+        }
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        Xoa();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        Sua();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        Them();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        // TODO add your handling code here:
+        Moi();
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void tbl_hoadonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_hoadonMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tbl_hoadon.getSelectedRow();
+        fillToTextBox(selectedRow);
+    }//GEN-LAST:event_tbl_hoadonMouseClicked
+
+    private void txtMaHDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHDNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaHDNActionPerformed
     private void Them() {
         // Lấy dữ liệu từ các trường nhập liệu
         String maHDN = txtMaHDN.getText();
@@ -693,103 +789,6 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         filltotable();
         filltotable2();
     }
-
-    private void txtMaHDN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHDN1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaHDN1ActionPerformed
-
-    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
-        // TODO add your handling code here:
-        Moi();
-    }//GEN-LAST:event_btnMoiActionPerformed
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        // TODO add your handling code here:
-        Them();
-    }//GEN-LAST:event_btnThemActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
-        Sua();
-    }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-        Xoa();
-    }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void tbl_hdnlsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_hdnlsMouseClicked
-        // TODO add your handling code here:
-        int selectedRow = tbl_hdnls.getSelectedRow();
-        fillToTextBox(selectedRow);
-    }//GEN-LAST:event_tbl_hdnlsMouseClicked
-
-    private void tbl_hoadonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_hoadonMouseClicked
-        // TODO add your handling code here:
-        int selectedRow = tbl_hoadon.getSelectedRow();
-        fillToTextBox(selectedRow);
-    }//GEN-LAST:event_tbl_hoadonMouseClicked
-
-    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
-        // TODO add your handling code here:
-        vitri = 0;
-        this.fillToTextBox(vitri);
-        tbl_hoadon.setRowSelectionInterval(vitri, vitri);
-
-    }//GEN-LAST:event_btnFirstActionPerformed
-
-    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        // TODO add your handling code here:
-        int viewIndex = tbl_hoadon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
-            if (modelIndex > 0) {
-                tbl_hoadon.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
-                showDetail();
-            }
-        }
-    }//GEN-LAST:event_btnPrevActionPerformed
-
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        // TODO add your handling code here:
-        int viewIndex = tbl_hoadon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshdn.size()) {
-                tbl_hoadon.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
-                showDetail();
-            }
-        }
-    }//GEN-LAST:event_btnNextActionPerformed
-
-    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
-        // TODO add your handling code here:
-        int viewIndex = tbl_hoadon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshdn.size()) {
-                tbl_hoadon.setRowSelectionInterval(dshdn.size() - 1, dshdn.size() - 1);
-                showDetail();
-            }
-        }
-    }//GEN-LAST:event_btnLastActionPerformed
-
-    private void txtNguoiGiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNguoiGiaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNguoiGiaoActionPerformed
-
-    private void txtMaThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaThuocActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaThuocActionPerformed
-
-    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemActionPerformed
-
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
-        // TODO add your handling code here:
-        find();
-    }//GEN-LAST:event_txtTimKiemKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
