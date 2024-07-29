@@ -37,7 +37,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         txtTongTien.setEditable(false);
         txtMaHoaDon.setEditable(false);
         txtThoiGian.setEditable(false);
-        
+        txtThoiGian.setText(currentTimestamp.toString());
     }
     
     QuanLiBanHangDao bhdao = new QuanLiBanHangDao();
