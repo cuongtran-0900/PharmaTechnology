@@ -111,7 +111,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         DefaultTableModel ob = (DefaultTableModel) tbl_hdnls.getModel();
         TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
         tbl_hdnls.setRowSorter(obj);
-        obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getName()));
+        obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getText()));
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -124,18 +124,14 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         txtMaHDN1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        btnTim_HDN1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_hdnls = new javax.swing.JTable();
         btnPrev1 = new javax.swing.JButton();
         btnFirst1 = new javax.swing.JButton();
         btnNext1 = new javax.swing.JButton();
         btnLast1 = new javax.swing.JButton();
-        txtTimKiem = new com.toedter.calendar.JDateChooser();
-        btnSua2 = new javax.swing.JButton();
-        btnXoa2 = new javax.swing.JButton();
-        btnMoi2 = new javax.swing.JButton();
-        btnThem2 = new javax.swing.JButton();
+        txtTimKiem = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         txtMaHDN = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -203,13 +199,6 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
         jLabel3.setText("Mã hóa đơn nhập");
 
-        btnTim_HDN1.setText("Tìm");
-        btnTim_HDN1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTim_HDN1ActionPerformed(evt);
-            }
-        });
-
         tbl_hdnls.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -236,37 +225,18 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
         btnLast1.setText(">|");
 
-        btnSua2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
-        btnSua2.setText("Sửa");
-        btnSua2.addActionListener(new java.awt.event.ActionListener() {
+        txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSua2ActionPerformed(evt);
+                txtTimKiemActionPerformed(evt);
+            }
+        });
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
             }
         });
 
-        btnXoa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
-        btnXoa2.setText("Xóa");
-        btnXoa2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoa2ActionPerformed(evt);
-            }
-        });
-
-        btnMoi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_refresh_30px.png"))); // NOI18N
-        btnMoi2.setText("Mới");
-        btnMoi2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoi2ActionPerformed(evt);
-            }
-        });
-
-        btnThem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add.png"))); // NOI18N
-        btnThem2.setText("Thêm");
-        btnThem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThem2ActionPerformed(evt);
-            }
-        });
+        jLabel13.setText("Tìm Kiếm");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -278,20 +248,12 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(txtMaHDN1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTim_HDN1)
-                .addGap(124, 124, 124))
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(225, 225, 225))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnMoi2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnThem2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSua2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnXoa2)
-                .addGap(112, 112, 112)
+                .addGap(493, 493, 493)
                 .addComponent(btnFirst1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPrev1)
@@ -306,26 +268,19 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(txtMaHDN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnTim_HDN1))
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtMaHDN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(56, 56, 56)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnPrev1)
-                        .addComponent(btnFirst1)
-                        .addComponent(btnNext1)
-                        .addComponent(btnLast1))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnThem2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMoi2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSua2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnXoa2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPrev1)
+                    .addComponent(btnFirst1)
+                    .addComponent(btnNext1)
+                    .addComponent(btnLast1))
                 .addGap(23, 23, 23))
         );
 
@@ -743,11 +698,6 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaHDN1ActionPerformed
 
-    private void btnMoi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoi2ActionPerformed
-        // TODO add your handling code here:
-        Moi();
-    }//GEN-LAST:event_btnMoi2ActionPerformed
-
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
         Moi();
@@ -767,21 +717,6 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         // TODO add your handling code here:
         Xoa();
     }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void btnThem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem2ActionPerformed
-        // TODO add your handling code here:
-        Them();
-    }//GEN-LAST:event_btnThem2ActionPerformed
-
-    private void btnSua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSua2ActionPerformed
-        // TODO add your handling code here:
-        Sua();
-    }//GEN-LAST:event_btnSua2ActionPerformed
-
-    private void btnXoa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoa2ActionPerformed
-        // TODO add your handling code here:
-        Xoa();
-    }//GEN-LAST:event_btnXoa2ActionPerformed
 
     private void tbl_hdnlsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_hdnlsMouseClicked
         // TODO add your handling code here:
@@ -847,10 +782,14 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaThuocActionPerformed
 
-    private void btnTim_HDN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTim_HDN1ActionPerformed
+    private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemActionPerformed
 
-    }//GEN-LAST:event_btnTim_HDN1ActionPerformed
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        find();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -859,24 +798,20 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnLast1;
     private javax.swing.JButton btnMoi;
-    private javax.swing.JButton btnMoi2;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnPrev1;
     private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnSua2;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnThem2;
-    private javax.swing.JButton btnTim_HDN1;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton btnXoa2;
     private com.toedter.calendar.JDateChooser dateNgayNhap;
     private com.toedter.calendar.JDateChooser dateNgayViet;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -903,7 +838,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     private javax.swing.JTextField txtSoluong;
     private javax.swing.JTextField txtTenThuoc;
     private javax.swing.JTextField txtThanhTien;
-    private com.toedter.calendar.JDateChooser txtTimKiem;
+    private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
 
 }

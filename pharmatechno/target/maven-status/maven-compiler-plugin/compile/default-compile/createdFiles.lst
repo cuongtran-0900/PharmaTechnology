@@ -44,12 +44,10 @@ com\mycompany\pharmatechno\Control\DoanhThuDAO.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$10.class
 TaiKhoanNhanVien.class
 com\mycompany\pharmatechno\UI\main$8.class
-com\mycompany\pharmatechno\UI\HoaDonNhapUI$22.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$16.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$9.class
 com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.class
 com\mycompany\pharmatechno\UI\ThuocTonKho$2.class
-com\mycompany\pharmatechno\UI\HoaDonNhapUI$23.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$15.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$12.class
 com\mycompany\pharmatechno\Control\NhanVienDao.class
@@ -66,7 +64,6 @@ com\mycompany\pharmatechno\UI\hoadon$6.class
 com\mycompany\pharmatechno\UI\Chao$2.class
 com\mycompany\pharmatechno\UI\hoadon$3.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$14.class
-com\mycompany\pharmatechno\UI\HoaDonNhapUI$21.class
 com\mycompany\pharmatechno\UI\main$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$12.class
 com\mycompany\pharmatechno\Control\QuanLiBanHangDao.class
@@ -100,6 +97,7 @@ com\mycompany\pharmatechno\UI\mainframe$2.class
 com\mycompany\pharmatechno\UI\main$12.class
 com\mycompany\pharmatechno\Control\XuatHoaDon.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$3.class
+com\mycompany\pharmatechno\UI\hoadon$17.class
 com\mycompany\pharmatechno\Pharmatechno.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$8.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi.class
