@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.pharmatechno.Model;
-
+import java.time.LocalDateTime;
+import java.sql.Timestamp;
 /**
  *
  * @author Cuong
@@ -19,6 +20,7 @@ public class BanHang {
     private String MaHD;
     private int TongTien;
     private int Soluong;
+    private Timestamp ThoiGian;
     
     private String MaNV;
     
@@ -26,7 +28,7 @@ public class BanHang {
     public BanHang() {
     }
 
-    public BanHang(String TenThuoc, String Loai, String DVT, int DonGia, int TonKho, String MaThuoc, String MaHD, int TongTien, int Soluong, String MaNV) {
+    public BanHang(String TenThuoc, String Loai, String DVT, int DonGia, int TonKho, String MaThuoc, String MaHD, int TongTien, int Soluong, Timestamp ThoiGian, String MaNV) {
         this.TenThuoc = TenThuoc;
         this.Loai = Loai;
         this.DVT = DVT;
@@ -36,8 +38,15 @@ public class BanHang {
         this.MaHD = MaHD;
         this.TongTien = TongTien;
         this.Soluong = Soluong;
+        this.ThoiGian = ThoiGian;
         this.MaNV = MaNV;
     }
+
+
+
+
+
+    
 
 
 
@@ -124,6 +133,14 @@ public class BanHang {
 
     public void setSoluong(int Soluong) {
         this.Soluong = Soluong;
+    }
+
+    public Timestamp getThoiGian() {
+        return ThoiGian;
+    }
+
+    public void setThoiGian(Timestamp ThoiGian) {
+        this.ThoiGian = ThoiGian;
     }
     
 

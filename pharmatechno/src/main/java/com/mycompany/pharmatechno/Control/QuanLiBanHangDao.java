@@ -6,10 +6,13 @@ package com.mycompany.pharmatechno.Control;
 
 import com.mycompany.pharmatechno.Model.BanHang;
 import com.mycompany.pharmatechno.UI.QuanLiBanHang;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -25,7 +28,7 @@ public class QuanLiBanHangDao extends ConnectSQL{
         
             public List<BanHang> filltoArrayList(){
     try {
-            String sql = "select TenThuoc, DonViTinh, LoaiThuoc, DonGia, soluongton from thuoc where isdelete = 1 order by tenthuoc ";
+            String sql = "select TenThuoc, DonViTinh, LoaiThuoc, DonGia, soluongton, MaThuoc from thuoc where isdelete = 1 order by tenthuoc ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
             dsbh.clear();
@@ -36,6 +39,7 @@ public class QuanLiBanHangDao extends ConnectSQL{
                 bh.setLoai(rs.getString("LoaiThuoc"));
                 bh.setDonGia(rs.getInt("DonGia"));
                 bh.setTonKho(rs.getInt("soluongton"));
+                bh.setMaThuoc(rs.getString("mathuoc"));
                 dsbh.add(bh);   
             }
             rs.close();
@@ -47,36 +51,89 @@ public class QuanLiBanHangDao extends ConnectSQL{
     }
     return dsbh;
 }
-          public int save(BanHang bh) {
+    public int payment(BanHang bh) {
+    try {
+        con.setAutoCommit(false); // Bắt đầu giao dịch
 
-        try {
-            String sql1 = "insert into hoadon (MaHD,MaNV,TongTien,IsDelete) values(?,?,?,?)";
+        String checkMaHD = "SELECT COUNT(*) FROM HoaDon WHERE MaHD = ?";
+        PreparedStatement checkStmt = con.prepareStatement(checkMaHD);
+        checkStmt.setString(1, bh.getMaHD());
+        ResultSet rs = checkStmt.executeQuery();
+        rs.next();
+        int count = rs.getInt(1);
+
+        if (count == 0) {
+            String sql1 = "INSERT INTO HoaDon (MaHD, thoigian, MaNV, TongTien, IsDelete) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement st1 = con.prepareStatement(sql1);
             st1.setString(1, bh.getMaHD());
-            st1.setString(2, bh.getMaNV());
-            st1.setInt(3, bh.getTongTien());
-            st1.setInt(4, 1);
+            st1.setTimestamp(2, bh.getThoiGian());
+            st1.setString(3, bh.getMaNV());
+            st1.setInt(4, bh.getTongTien());
+            st1.setInt(5, 1);
             int row1 = st1.executeUpdate();
-            
-            String sql2 = "insert into ChiTietHoaDon (MaHD,MaThuoc,SoLuong,DonGia) values(?,?,?,?)";
+
+            if (row1 > 0) {
+                String sql2 = "INSERT INTO ChiTietHoaDon (MaHD, MaThuoc, SoLuong, DonGia) VALUES (?, ?, ?, ?)";
+                PreparedStatement st2 = con.prepareStatement(sql2);
+                st2.setString(1, bh.getMaHD());
+                st2.setString(2, bh.getMaThuoc());
+                st2.setInt(3, bh.getSoluong());
+                st2.setInt(4, bh.getDonGia());
+                int row2 = st2.executeUpdate();
+
+                String sql3 = "UPDATE thuoc SET SoLuongTon = SoLuongTon - ? WHERE MaThuoc = ?";
+                PreparedStatement st3 = con.prepareStatement(sql3);
+                st3.setInt(1, bh.getSoluong());
+                st3.setString(2, bh.getMaThuoc());
+                int row3 = st3.executeUpdate();
+
+                if (row2 > 0 && row3 > 0) {
+                    con.commit(); // Commit giao dịch
+                    return row1 + row2 + row3;
+                }
+            }
+        } else {
+            String sql2 = "INSERT INTO ChiTietHoaDon (MaHD, MaThuoc, SoLuong, DonGia) VALUES (?, ?, ?, ?)";
             PreparedStatement st2 = con.prepareStatement(sql2);
             st2.setString(1, bh.getMaHD());
             st2.setString(2, bh.getMaThuoc());
             st2.setInt(3, bh.getSoluong());
             st2.setInt(4, bh.getDonGia());
             int row2 = st2.executeUpdate();
-            
-            int ttrow = row1 + row2;
-            if (ttrow > 0) {
-                JOptionPane.showMessageDialog(null, "Thanh toán thành công");
-                return row1;
+
+            String sql3 = "UPDATE thuoc SET SoLuongTon = SoLuongTon - ? WHERE MaThuoc = ?";
+            PreparedStatement st3 = con.prepareStatement(sql3);
+            st3.setInt(1, bh.getSoluong());
+            st3.setString(2, bh.getMaThuoc());
+            int row3 = st3.executeUpdate();
+
+            if (row2 > 0 && row3 > 0) {
+                con.commit(); // Commit giao dịch
+                return row2 + row3;
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(BanHangDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return -1;
-    }  
-            
+        con.rollback(); // Rollback giao dịch nếu có lỗi
+    } catch (SQLException ex) {
+        if (con != null) {
+            try {
+                con.rollback(); // Rollback giao dịch khi có lỗi
+            } catch (SQLException rollbackEx) {
+                Logger.getLogger(BanHangDao.class.getName()).log(Level.SEVERE, null, rollbackEx);
+            }
+        }
+        Logger.getLogger(BanHangDao.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        try {
+            con.setAutoCommit(true); // Đặt lại AutoCommit về true
+        } catch (SQLException e) {
+            Logger.getLogger(BanHangDao.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    return -1;
+}
+
+               
             
             
     public String fillmaphatsinh() {
@@ -100,20 +157,15 @@ public class QuanLiBanHangDao extends ConnectSQL{
         String manv = String.valueOf(so);
     return manv;
 }
-        public String Maphatsinh(){
-    if(dsbh.size() <= 0){
+        public String Maphatsinh() {
+    if (dsbh.size() <= 0) {
         return "hd001";
     } else {
-        int count = Integer.valueOf(fillmaphatsinh());
-        int ma = Integer.valueOf(fillmaphatsinh());
-        if( count >= 100 && count <= 999 ){
-            return "hd"+(ma+1);
-            }else if(count >= 10 && count <= 99){
-                return "hd0" + (ma+1);
-                } else {
-                    return "hd00" + (ma+1);
-                  }
+        int ma = Integer.valueOf(fillmaphatsinh()) + 1;
+        return String.format("hd%03d", ma);
     }
-    }
+}
+
+
     
 }
