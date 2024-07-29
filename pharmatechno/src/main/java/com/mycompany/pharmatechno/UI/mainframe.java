@@ -63,7 +63,7 @@ void init(){
         mnuThongKe = new javax.swing.JMenu();
         mniDoanhThu = new javax.swing.JMenuItem();
         mniKhachHang = new javax.swing.JMenuItem();
-        miThuoc = new javax.swing.JMenuItem();
+        mniTKThuoc = new javax.swing.JMenuItem();
         mnuTroGiup = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -258,11 +258,16 @@ void init(){
 
         mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clien list.png"))); // NOI18N
         mniKhachHang.setText("Khách Hàng");
+        mniKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniKhachHangActionPerformed(evt);
+            }
+        });
         mnuThongKe.add(mniKhachHang);
 
-        miThuoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/medicine.png"))); // NOI18N
-        miThuoc.setText("Thuốc ");
-        mnuThongKe.add(miThuoc);
+        mniTKThuoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/medicine.png"))); // NOI18N
+        mniTKThuoc.setText("Thuốc ");
+        mnuThongKe.add(mniTKThuoc);
 
         jMenuBar1.add(mnuThongKe);
 
@@ -293,6 +298,10 @@ void init(){
     private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mniTaiKhoanActionPerformed
+
+    private void mniKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhachHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniKhachHangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,7 +355,6 @@ void init(){
     private javax.swing.JLabel lblTaiKhoan;
     private javax.swing.JLabel lblThuoc;
     private javax.swing.JLabel logo;
-    private javax.swing.JMenuItem miThuoc;
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDoanhThu;
     private javax.swing.JMenuItem mniDoiMatKhau;
@@ -356,6 +364,7 @@ void init(){
     private javax.swing.JMenuItem mniKhachHang;
     private javax.swing.JMenuItem mniNhaPhanPhoi;
     private javax.swing.JMenuItem mniNhanVien;
+    private javax.swing.JMenuItem mniTKThuoc;
     private javax.swing.JMenuItem mniTaiKhoan;
     private javax.swing.JMenuItem mniThoat;
     private javax.swing.JMenuItem mniThuoc;
