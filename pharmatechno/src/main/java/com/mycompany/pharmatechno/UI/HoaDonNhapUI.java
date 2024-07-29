@@ -107,13 +107,13 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         }
     }
 
-   private void find() {
+    private void find() {
         DefaultTableModel ob = (DefaultTableModel) tbl_hdnls.getModel();
-       TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
         tbl_hdnls.setRowSorter(obj);
         obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getName()));
     }
-   
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -673,6 +673,22 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         filltotable2();
     }
 
+//    private void Them_ls() {
+//        // Lấy dữ liệu từ các trường nhập liệu
+//         String MaHDN1 = txtMaHDN1.getText();
+//        String maNPP = txtNPP.getText();
+//        String tenThuoc = txtTenThuoc.getText();
+//        int soLuong = Integer.parseInt(txtSoluong.getText());
+//        Date ngayNhap = dateNgayNhap.getDate();
+//        float tongTien = Float.parseFloat(txtThanhTien.getText());
+//
+//        // Tạo đối tượng HoaDonNhap mới
+//        HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP, tenThuoc, soLuong, ngayNhap, tongTien);
+//        // Thêm vào danh sách và cập nhật bảng
+//        nvhdnls.add(hdn);
+//
+//        filltotable2();
+//    }
     private void Sua() {
         int selectedRow = tbl_hoadon.getSelectedRow();
         if (selectedRow >= 0) {
@@ -694,7 +710,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
             // Cập nhật bảng
             filltotable();
-             filltotable2();
+            filltotable2();
         }
     }
 
@@ -718,7 +734,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         dateNgayViet.setDate(null);
         dateNgayNhap.setDate(null);
         txtThanhTien.setText("");
-        
+
         filltotable();
         filltotable2();
     }
@@ -833,7 +849,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
     private void btnTim_HDN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTim_HDN1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnTim_HDN1ActionPerformed
 
 

@@ -18,8 +18,14 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>5.2.3</version>
+            <version>5.2.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+
         
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
@@ -53,6 +59,11 @@
             <artifactId>jcommon</artifactId>
             <version>1.0.24</version>
         </dependency>
+        <dependency>
+    <groupId>net.sf.jasperreports</groupId>
+    <artifactId>jasperreports</artifactId>
+    <version>6.20.0</version> <!-- Chọn phiên bản phù hợp với nhu cầu của bạn -->
+</dependency>
 
 
 

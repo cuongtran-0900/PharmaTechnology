@@ -98,6 +98,7 @@ com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$6.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$5.class
 com\mycompany\pharmatechno\UI\mainframe$2.class
 com\mycompany\pharmatechno\UI\main$12.class
+com\mycompany\pharmatechno\Control\XuatHoaDon.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$3.class
 com\mycompany\pharmatechno\Pharmatechno.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$8.class
