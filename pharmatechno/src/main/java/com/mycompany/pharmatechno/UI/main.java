@@ -664,7 +664,6 @@ private void updateBackgroundColorsformni() {
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
-
         changePanel(new ThongKe());
        
     }//GEN-LAST:event_jMenuItem11ActionPerformed
