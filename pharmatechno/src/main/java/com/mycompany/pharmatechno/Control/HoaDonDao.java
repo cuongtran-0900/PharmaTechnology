@@ -15,71 +15,83 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author tu
  */
-public class HoaDonDao extends ConnectSQL{
-      List<HoaDon> dshd = new ArrayList<>();
-   List<HoaDon> dshdls = new ArrayList<>();
-   
-    public List<HoaDon> filltoArrayList(){
-    try {
-            String sql = "select * from HoaDon where isDelete = 1 order by mahd ";
-        try (Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql)) {
-            dshd.clear();  
-            while(rs.next()) {
-                HoaDon hd = new HoaDon();
-                hd.setMaHD(rs.getString("MaHD"));
-                hd.setThoiGian(rs.getTimestamp("thoiGian"));
-                hd.setMaNV(rs.getString("MaNV"));
-                hd.setMaKH(rs.getString("MaKH"));
-                hd.setTongTien(rs.getFloat("tongTien"));
-              
-                dshd.add(hd);   
+public class HoaDonDao extends ConnectSQL {
+
+    List<HoaDon> dshd = new ArrayList<>();
+    List<HoaDon> dshdls = new ArrayList<>();
+
+    public List<HoaDon> filltoArrayList() {
+        try {
+          String sql = """
+    SELECT hd.MaHD, hd.manv, hd.makh, t.tenthuoc, hd.thoigian, cthd.soluong, cthd.dongia,
+    cthd.soluong * cthd.dongia AS TongTien,
+    cthd.soluong * cthd.dongia * 0.2 AS LoiNhuan,
+    cthd.soluong * cthd.dongia + (cthd.soluong * cthd.dongia * 0.2) AS TongTienBaoGomLoiNhuan
+    FROM hoadon hd
+    INNER JOIN ChiTietHoaDon cthd ON hd.MaHD = cthd.MaHD
+    INNER JOIN thuoc t ON t.MaThuoc = cthd.MaThuoc;
+""";
+
+            try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+                dshd.clear();
+                while (rs.next()) {
+                    HoaDon hd = new HoaDon();
+                    hd.setMaHD(rs.getString("MaHD"));
+                    hd.setMaNV(rs.getString("MaNV"));
+                    hd.setMaKH(rs.getString("MaKH"));
+                    hd.setTenThuoc(rs.getString("TenThuoc"));
+                    hd.setThoiGian(rs.getTimestamp("thoiGian"));
+                    hd.setSoLuong(rs.getInt("soLuong"));
+                    hd.setDonGia(rs.getInt("donGia"));
+                    hd.setTongTien(rs.getFloat("tongTien"));
+
+                    dshd.add(hd);
+                }
+                rs.close();
+                st.close();
             }
-            rs.close();
-            st.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    } catch (SQLException ex) {
-        Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
+        return dshd;
     }
-    return dshd;
-}
-  // fillto cho bảng lịch sử hóa đơn
-     public List<HoaDon> filltoArrayList2(){
-    try {
-             String sql = """
+    // fillto cho bảng lịch sử hóa đơn
+
+    public List<HoaDon> filltoArrayList2() {
+        try {
+            String sql = """
                          SELECT HoaDon.MaHD, HoaDon.MaKH, KhachHang.TenKH, HoaDon.ThoiGian, HoaDon.TongTien 
                          FROM HoaDon 
                          JOIN KhachHang ON HoaDon.MaKH = KhachHang.MaKH 
                          WHERE HoaDon.isDelete = 1 
                          ORDER BY HoaDon.MaHD;
-                         """;                                  
-        try (Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql)) {
-            dshdls.clear();  
-            while(rs.next()) {
-                HoaDon hd = new HoaDon();
-                hd.setMaHD(rs.getString("MaHD"));
-                 hd.setMaKH(rs.getString("MaKH"));
-               hd.setTenKH(rs.getString("TenKH"));
-                hd.setThoiGian(rs.getTimestamp("thoiGian"));
-                hd.setTongTien(rs.getFloat("tongTien"));
-              
-                dshdls.add(hd);   
+                         """;
+            try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+                dshdls.clear();
+                while (rs.next()) {
+                    HoaDon hd = new HoaDon();
+                    hd.setMaHD(rs.getString("MaHD"));
+                    hd.setMaKH(rs.getString("MaKH"));
+                    hd.setTenKH(rs.getString("TenKH"));
+                    hd.setThoiGian(rs.getTimestamp("thoiGian"));
+                    hd.setTongTien(rs.getFloat("tongTien"));
+
+                    dshdls.add(hd);
+                }
+                rs.close();
+                st.close();
             }
-            rs.close();
-            st.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    } catch (SQLException ex) {
-        Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
+        return dshdls;
     }
-    return dshdls;
-}
-    
 
 }

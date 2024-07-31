@@ -9,6 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class XuatHoaDon {
@@ -45,10 +46,10 @@ public class XuatHoaDon {
             Cell cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("DANH SÁCH HÓA ĐƠN");
             cell.setCellStyle(headerStyle);
-            spreadsheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 5));
+            spreadsheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 8));
 
             // Tiêu đề cột
-            String[] headers = {"STT", "Mã HD", "Mã NV", "Mã KH", "Thời gian", "Tổng tiền"};
+            String[] headers = {"STT", "Mã HD", "Mã NV", "Mã KH", "Tên Thuốc", "Thời gian", "Số lượng", "Đơn Giá", "Tổng tiền"};
             row = spreadsheet.createRow(1);
             row.setHeight((short) 500);
             for (int i = 0; i < headers.length; i++) {
@@ -58,26 +59,45 @@ public class XuatHoaDon {
             }
 
             // Điền dữ liệu vào bảng
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             for (int i = 0; i < listHoaDon.size(); i++) {
                 HoaDon hd = listHoaDon.get(i);
                 row = spreadsheet.createRow(2 + i);
                 row.setHeight((short) 400);
-                cell = row.createCell(0);
+                
+                cell = row.createCell(0, CellType.NUMERIC);
                 cell.setCellValue(i + 1);
                 cell.setCellStyle(cellStyle);
-                cell = row.createCell(1);
+
+                cell = row.createCell(1, CellType.STRING);
                 cell.setCellValue(hd.getMaHD());
                 cell.setCellStyle(cellStyle);
-                cell = row.createCell(2);
+
+                cell = row.createCell(2, CellType.STRING);
                 cell.setCellValue(hd.getMaNV());
                 cell.setCellStyle(cellStyle);
-                cell = row.createCell(3);
+
+                cell = row.createCell(3, CellType.STRING);
                 cell.setCellValue(hd.getMaKH());
                 cell.setCellStyle(cellStyle);
-                cell = row.createCell(4);
-                cell.setCellValue(hd.getThoiGian().toString());
+
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue(hd.getTenThuoc());
                 cell.setCellStyle(cellStyle);
-                cell = row.createCell(5);
+
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue(sdf.format(hd.getThoiGian()));
+                cell.setCellStyle(cellStyle);
+
+                cell = row.createCell(6, CellType.NUMERIC);
+                cell.setCellValue(hd.getSoLuong());
+                cell.setCellStyle(cellStyle);
+
+                cell = row.createCell(7, CellType.NUMERIC);
+                cell.setCellValue(hd.getDonGia());
+                cell.setCellStyle(cellStyle);
+
+                cell = row.createCell(8, CellType.NUMERIC);
                 cell.setCellValue(hd.getTongTien());
                 cell.setCellStyle(cellStyle);
             }
