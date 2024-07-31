@@ -270,6 +270,11 @@ public class main extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
         jLabel12.setText("TÀI KHOẢN");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpnTaiKhoanLayout = new javax.swing.GroupLayout(jpnTaiKhoan);
         jpnTaiKhoan.setLayout(jpnTaiKhoanLayout);
@@ -399,6 +404,7 @@ public class main extends javax.swing.JFrame {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cuahangthuoc.png"))); // NOI18N
+        jLabel2.setText("  ");
         JpnScreen.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -433,6 +439,11 @@ public class main extends javax.swing.JFrame {
 
         mniDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_find_and_replace_30px.png"))); // NOI18N
         mniDoiMatKhau.setText("Đổi Mật Khẩu");
+        mniDoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoiMatKhauActionPerformed(evt);
+            }
+        });
         jMnHeThong.add(mniDoiMatKhau);
 
         mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
@@ -767,6 +778,18 @@ private void updateBackgroundColorsformni() {
         changePanel(new TaiKhoan());
     updateBackgroundColors(jpnTaiKhoan);
     }//GEN-LAST:event_jpnTaiKhoanMouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+           changePanel(new TaiKhoan());
+    updateBackgroundColors(jpnTaiKhoan);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
+        // TODO add your handling code here:
+        changePanel(new ThayDoiMatKhau());
+        
+    }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
     /**
      * @param args the command line arguments

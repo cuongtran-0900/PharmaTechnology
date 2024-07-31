@@ -1,6 +1,11 @@
 package com.mycompany.pharmatechno.UI;
+import com.mycompany.pharmatechno.Control.TaiKhoanNhanVienDao;
 import com.mycompany.pharmatechno.Model.DoiMatKhau;
+import com.mycompany.pharmatechno.Model.TaiKhoanNhanVien;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -49,7 +54,6 @@ public class ThayDoiMatKhau extends javax.swing.JPanel {
         pnlThayDoiMatKhau.setBackground(new java.awt.Color(0, 255, 0));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("THAY ĐỔI MẬT KHẨU");
 
         javax.swing.GroupLayout pnlThayDoiMatKhauLayout = new javax.swing.GroupLayout(pnlThayDoiMatKhau);
@@ -57,9 +61,9 @@ public class ThayDoiMatKhau extends javax.swing.JPanel {
         pnlThayDoiMatKhauLayout.setHorizontalGroup(
             pnlThayDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThayDoiMatKhauLayout.createSequentialGroup()
-                .addGap(229, 229, 229)
+                .addGap(453, 453, 453)
                 .addComponent(jLabel2)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlThayDoiMatKhauLayout.setVerticalGroup(
             pnlThayDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,24 +74,19 @@ public class ThayDoiMatKhau extends javax.swing.JPanel {
         );
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("XÁC NHẬN MẬT KHẨU MỚI :");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("MẬT KHẨU MỚI                      :");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("MẬT KHẨU HIỆN TẠI             :");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept.png"))); // NOI18N
         jLabel5.setText("XÁC NHẬN");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("XÁC NHẬN MẬT KHẨU MỚI :");
 
         txtXacNhanMatKhauMoi1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,50 +96,57 @@ public class ThayDoiMatKhau extends javax.swing.JPanel {
         });
 
         btnHuy.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnHuy.setForeground(new java.awt.Color(0, 0, 0));
         btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/No.png"))); // NOI18N
         btnHuy.setText("HỦY");
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         btnXacNhan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnXacNhan.setForeground(new java.awt.Color(0, 0, 0));
         btnXacNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept.png"))); // NOI18N
         btnXacNhan.setText("XÁC NHẬN");
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlThayDoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(304, 304, 304)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnXacNhan)
                         .addGap(119, 119, 119)
                         .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(142, 142, 142))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(20, 20, 20))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(22, 22, 22)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMatKhauHienTai, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtXacNhanMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(50, 50, 50))))
+                        .addGap(92, 92, 92))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(20, 20, 20))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(22, 22, 22)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtMatKhauMoi, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtMatKhauHienTai, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtXacNhanMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlThayDoiMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMatKhauHienTai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -156,7 +162,7 @@ public class ThayDoiMatKhau extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXacNhan)
                     .addComponent(btnHuy))
-                .addGap(0, 45, Short.MAX_VALUE))
+                .addGap(0, 284, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -171,6 +177,75 @@ public class ThayDoiMatKhau extends javax.swing.JPanel {
     private void txtXacNhanMatKhauMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXacNhanMatKhauMoiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtXacNhanMatKhauMoiActionPerformed
+
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        // TODO add your handling code here:
+    // Lấy thông tin từ các trường nhập liệu
+    String matKhauHienTai = txtMatKhauHienTai.getText().trim();
+    String matKhauMoi = txtMatKhauMoi.getText().trim();
+    String xacNhanMatKhauMoi = txtXacNhanMatKhauMoi.getText().trim();
+    
+    // Kiểm tra các trường nhập liệu
+    if (matKhauHienTai.isEmpty() || matKhauMoi.isEmpty() || xacNhanMatKhauMoi.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin.", "Thông báo", javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // Kiểm tra mật khẩu mới và xác nhận mật khẩu mới
+    if (!matKhauMoi.equals(xacNhanMatKhauMoi)) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Mật khẩu mới và xác nhận mật khẩu không khớp.", "Lỗi", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Kiểm tra mật khẩu hiện tại
+    TaiKhoanNhanVienDao dao = new TaiKhoanNhanVienDao();
+    List<TaiKhoanNhanVien> dstknv = dao.filltoArrayList();
+    boolean isCurrentPasswordValid = false;
+    String username = "exampleUser"; // Thay thế bằng username thực tế của người dùng hiện tại
+    
+    for (TaiKhoanNhanVien tk : dstknv) {
+        if (tk.getUsername().equals(username) && tk.getPassword().equals(matKhauHienTai)) {
+            isCurrentPasswordValid = true;
+            break;
+        }
+    }
+    
+    if (!isCurrentPasswordValid) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Mật khẩu hiện tại không đúng.", "Lỗi", javax.swing.JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Cập nhật mật khẩu mới
+    boolean isUpdated = dao.updatePassword(username, matKhauMoi);
+    
+    if (isUpdated) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Mật khẩu đã được thay đổi thành công.", "Thông báo", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        // Đóng hoặc quay lại trang trước đó
+        this.setVisible(false); // hoặc thực hiện hành động quay lại trang trước đó
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Không thể thay đổi mật khẩu.", "Lỗi", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+
+                   
+        
+    }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+          int response = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thoát?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+    if (response == JOptionPane.YES_OPTION) {
+        // Lấy JFrame chứa JPanel hiện tại
+        JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        
+        // Đóng JFrame hiện tại
+        parentFrame.dispose();
+        
+        // Tạo và hiển thị JFrame mới (ví dụ: màn hình chính)
+        JFrame newFrame = new main(); // Khởi tạo JFrame mới của bạn
+        newFrame.setVisible(true);
+        
+    }
+    }//GEN-LAST:event_btnHuyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
