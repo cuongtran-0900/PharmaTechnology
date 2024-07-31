@@ -1,15 +1,25 @@
 package com.mycompany.pharmatechno.Model;
 
+import java.sql.Timestamp;
+
 public class ThongKeModel {
-    private String tenThuoc;
+    private Timestamp ThoiGian;
     private float tongTien;
 
-    public String getTenThuoc() {
-        return tenThuoc;
+    public ThongKeModel() {
     }
 
-    public void setTenThuoc(String tenThuoc) {
-        this.tenThuoc = tenThuoc;
+    public ThongKeModel(Timestamp ThoiGian, float tongTien) {
+        this.ThoiGian = ThoiGian;
+        this.tongTien = tongTien;
+    }
+
+    public Timestamp getThoiGian() {
+        return ThoiGian;
+    }
+
+    public void setThoiGian(Timestamp ThoiGian) {
+        this.ThoiGian = ThoiGian;
     }
 
     public float getTongTien() {
@@ -20,3 +30,5 @@ public class ThongKeModel {
         this.tongTien = tongTien;
     }
 }
+
+

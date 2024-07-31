@@ -537,6 +537,11 @@ public class main extends javax.swing.JFrame {
 
         jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Diagram.png"))); // NOI18N
         jMenuItem13.setText("Thuốc ");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMnThongKe.add(jMenuItem13);
 
         jMenuBar1.add(jMnThongKe);
@@ -758,6 +763,11 @@ private void updateBackgroundColorsformni() {
     private void jMenuItem11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11MouseClicked
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+                changePanel(new ThuocTonKho());
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments

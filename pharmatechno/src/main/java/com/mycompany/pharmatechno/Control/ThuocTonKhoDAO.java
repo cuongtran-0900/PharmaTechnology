@@ -24,11 +24,9 @@ public class ThuocTonKhoDAO extends ConnectSQL{
      
     public List<ThuocTonKhoModel> filltoArrayList() {
         String sql = """
-                    SELECT t.MaThuoc, t.TenThuoc, cthdn.SoLuong, cthd.SoLuong, t.SoLuongTon
-                    FROM Thuoc AS t 
-                    INNER JOIN chitiethoadonnhap AS cthdn ON t.MaThuoc = cthdn.MaThuoc
-                    INNER JOIN ChiTietHoaDon AS cthd ON cthd.MaThuoc = cthdn.MaThuoc;
-                     """;
+                     SELECT MaThuoc, TenThuoc, SoLuongTon
+                     FROM Thuoc
+                     WHERE SoLuongTon < 100;""";
 
         try (Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
@@ -37,8 +35,6 @@ public class ThuocTonKhoDAO extends ConnectSQL{
                 ThuocTonKhoModel ttk = new ThuocTonKhoModel();
                 ttk.setMaThuoc(rs.getString("MaThuoc"));
                 ttk.setTenThuoc(rs.getString("TenThuoc"));
-                ttk.setSoLuongNhap(rs.getInt("SoLuongNhap"));
-                ttk.setSoLuongBan(rs.getInt("SoLuongBan"));
                 ttk.setSoLuongTon(rs.getInt("SoLuongTon"));
                 ttkm.add(ttk); 
             }

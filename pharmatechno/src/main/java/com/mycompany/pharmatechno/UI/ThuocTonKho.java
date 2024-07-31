@@ -20,6 +20,7 @@ public class ThuocTonKho extends javax.swing.JPanel {
      */
     public ThuocTonKho() {
         initComponents();
+        filltotable();
     }
 
     /**
@@ -38,8 +39,6 @@ public class ThuocTonKho extends javax.swing.JPanel {
             model.addRow(new Object[] 
             {ttk.getMaThuoc(),
             ttk.getTenThuoc(),
-            ttk.getSoLuongNhap(),
-            ttk.getSoLuongBan(),
             ttk.getSoLuongTon()});
         }
     }
@@ -50,29 +49,36 @@ public class ThuocTonKho extends javax.swing.JPanel {
         }
     }
 
-        private void navigate(int index) {
+        
+   private void navigate(int index) {
+    // Kiểm tra xem index có hợp lệ không
+    if (index >= 0 && index < tblThuocTonKho.getRowCount()) {
         tblThuocTonKho.setRowSelectionInterval(index, index);
         showDetail(index);
+    } else {
+        // Nếu không hợp lệ, có thể hiển thị thông báo lỗi hoặc xử lý phù hợp
+        System.err.println("Đã đến cuối");
     }
+}
         
 
     public void btnFirst() {
         navigate(0);
         scrollToVisible(0);
     }
-    public void btnBack() {
+    private void btnNext() {
+        int currentIndex = tblThuocTonKho.getSelectedRow();
+        if (currentIndex >= 0 && currentIndex < ttkm.size() - 1) {
+            navigate(currentIndex + 1);
+            scrollToVisible(currentIndex + 1);
+        }
+    }
+
+    private void btnBack() {
         int currentIndex = tblThuocTonKho.getSelectedRow();
         if (currentIndex > 0) {
             navigate(currentIndex - 1);
             scrollToVisible(currentIndex - 1);
-        }
-    }
-    
-       private void btnNext() {
-        int currentIndex = tblThuocTonKho.getSelectedRow();
-        if (currentIndex < ttkm.size() - 1) {
-            navigate(currentIndex + 1);
-            scrollToVisible(currentIndex + 1);
         }
     }
        
@@ -129,13 +135,13 @@ public class ThuocTonKho extends javax.swing.JPanel {
 
         tblThuocTonKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Mã Thuốc", "Tên Thuốc", "Số Lượng Nhập", "Số Lượng Bán", "Số Lượng Tồn Kho"
+                "Mã Thuốc", "Tên Thuốc", "Số Lượng Tồn Kho"
             }
         ));
         jScrollPane1.setViewportView(tblThuocTonKho);
@@ -181,7 +187,7 @@ public class ThuocTonKho extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(0, 255, 0));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("THUỐC TỒN KHO");
+        jLabel2.setText("THUỐC GẦN HẾT");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

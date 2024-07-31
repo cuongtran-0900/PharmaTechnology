@@ -8,7 +8,9 @@ import com.mycompany.pharmatechno.Control.ThongKeDAO;
 import com.mycompany.pharmatechno.Model.ThongKeModel;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.Calendar;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -31,77 +33,93 @@ import org.jfree.data.category.DefaultCategoryDataset;
     public class ThongKe extends javax.swing.JPanel {
       ThongKeDAO tkdao = new ThongKeDAO();
     List<ThongKeModel> tkm = tkdao.filltoArrayList();
+    List<ThongKeModel> tkm2 = tkdao.filltoArrayList2();
     public ThongKe() {
         initComponents();
         addChart();
+        filltotable();
     }
 
-    private void addChart() {
-        // Create dataset
-        CategoryDataset dataset = createDataset();
+   private void addChart() {
+    // Create dataset
+    CategoryDataset dataset = createDataset();
 
-        // Create chart
-        JFreeChart chart = ChartFactory.createBarChart(
-                "Biểu đồ cột", 
-                "Thể loại", 
-                "Giá trị", 
-                dataset, 
-                PlotOrientation.VERTICAL, 
-                true, true, false);
-        
-//        customizeChart(chart);
+    // Create chart
+    JFreeChart chart = ChartFactory.createBarChart(
+            "Biểu đồ cột", 
+            "Thể loại", 
+            "Giá trị", 
+            dataset, 
+            PlotOrientation.VERTICAL, 
+            true, true, false);
 
-        // Customize the chart
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(800, 600));
+    // Customize the chart
+    customizeChart(chart);
 
-        // Add chart to jPanel1
-        JPanelThongKe.setLayout(new java.awt.BorderLayout());
-        JPanelThongKe.add(chartPanel, java.awt.BorderLayout.CENTER);
-    }
+    // Set up chart panel
+    ChartPanel chartPanel = new ChartPanel(chart);
+    chartPanel.setPreferredSize(new Dimension(800, 600));
 
-   private CategoryDataset createDataset() {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    // Add chart to JPanelThongKe
+    JPanelThongKe.setLayout(new java.awt.BorderLayout());
+    JPanelThongKe.add(chartPanel, java.awt.BorderLayout.CENTER);
+}
 
-        // Add data from the database
-        for (ThongKeModel tk : tkm) {
-            if (tk.getTenThuoc()!= null) {
-                dataset.addValue(tk.getTongTien(), "Tổng tiền", tk.getTenThuoc());
-            } else {
-                // Handle null TenTheLoai
-                System.err.println("TenTheLoai is null for a record, skipping this record.");
-            }
+
+private CategoryDataset createDataset() {
+    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+    // Add data from the database
+    for (ThongKeModel tk : tkm) {
+        if (tk.getThoiGian() != null) {
+            // Extract the month from Timestamp
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(tk.getThoiGian());
+            int month = calendar.get(Calendar.MONTH) + 1; // Months are 0-based in Calendar
+
+            // You can format the month as needed (e.g., "January", "February", etc.)
+            String monthLabel = String.format("Tháng %d", month);
+
+            dataset.addValue(tk.getTongTien(), "Tổng tiền", monthLabel);
+        } else {
+            // Handle null ThoiGian
+            System.err.println("ThoiGian is null for a record, skipping this record.");
         }
-
-        return dataset;
     }
+
+    return dataset;
+}
     
-//private void customizeChart(JFreeChart chart) {
-//        CategoryPlot plot = chart.getCategoryPlot();
-//        BarRenderer renderer = (BarRenderer) plot.getRenderer();
-//
-//        // Điều chỉnh khoảng cách giữa các cột
-//        renderer.setItemMargin(0.1); // Khoảng cách giữa các cột (tính theo phần trăm của kích thước cột)
-//
-//        // Điều chỉnh kích thước cột
-//        renderer.setMaximumBarWidth(0.1); // Kích thước tối đa của cột (tính theo phần trăm của không gian cột)
-//
-//        // Thay đổi cỡ chữ của nhãn trục X (Tên thuốc)
-//        CategoryAxis domainAxis = plot.getDomainAxis();
-//        domainAxis.setLabelFont(new Font("Arial", Font.PLAIN, 20)); // Cỡ chữ của nhãn trục X (Tên thuốc)
-//        domainAxis.setTickLabelFont(new Font("Arial", Font.PLAIN, 12)); // Cỡ chữ của các nhãn trục X
-//
-//        // Thay đổi cỡ chữ của nhãn trục Y (Giá trị)
-//        ValueAxis rangeAxis = plot.getRangeAxis();
-//        rangeAxis.setLabelFont(new Font("Arial", Font.PLAIN, 13)); // Cỡ chữ của nhãn trục Y
-//        rangeAxis.setTickLabelFont(new Font("Arial", Font.PLAIN, 10)); // Cỡ chữ của các nhãn trục Y
-//
-////        // Thay đổi cỡ chữ của tiêu đề biểu đồ
-////        chart.setTitle(new TextTitle(
-////            "Biểu đồ cột",
-////            new Font("Arial", Font.BOLD, 14) // Cỡ chữ của tiêu đề biểu đồ
-////        ));
-//    }
+private void customizeChart(JFreeChart chart) {
+        CategoryPlot plot = chart.getCategoryPlot();
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+
+        // Adjust the gap between bars
+        renderer.setItemMargin(0.2); // Increase the gap between bars (as a percentage of bar width)
+
+        // Adjust the maximum bar width
+        renderer.setMaximumBarWidth(0.05); // Decrease the maximum bar width (as a percentage of available space)
+
+        // Chỉnh cột X
+        CategoryAxis domainAxis = plot.getDomainAxis();
+        domainAxis.setLabelFont(new Font("Times New Roman", Font.PLAIN, 20)); // Font size of the X-axis label (Month)
+        domainAxis.setTickLabelFont(new Font("Times New Roman", Font.PLAIN, 12)); // Font size of the X-axis tick labels
+
+        // chỉnh cột Y
+        ValueAxis rangeAxis = plot.getRangeAxis();
+        rangeAxis.setLabelFont(new Font("Times New Roman", Font.PLAIN, 13)); // Font size of the Y-axis label (Value)
+        rangeAxis.setTickLabelFont(new Font("Times New Roman", Font.PLAIN, 10)); // Font size of the Y-axis tick labels
+    }
+             
+
+        public void filltotable(){
+        DefaultTableModel model = (DefaultTableModel) tblThongKe.getModel();
+        model.setRowCount(0);
+        for(ThongKeModel tk:tkm2){
+            model.addRow(new Object[] {tk.getThoiGian(),tk.getTongTien()});
+        }
+    }
+
 
     // Phần còn lại của code không thay đổi
     
@@ -111,18 +129,38 @@ import org.jfree.data.category.DefaultCategoryDataset;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tabs = new javax.swing.JTabbedPane();
         JPanelThongKe = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblThongKe = new javax.swing.JTable();
 
         javax.swing.GroupLayout JPanelThongKeLayout = new javax.swing.GroupLayout(JPanelThongKe);
         JPanelThongKe.setLayout(JPanelThongKeLayout);
         JPanelThongKeLayout.setHorizontalGroup(
             JPanelThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 879, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         JPanelThongKeLayout.setVerticalGroup(
             JPanelThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
+
+        tabs.addTab("BIỂU ĐỒ", JPanelThongKe);
+
+        tblThongKe.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "thơi gian", "tổng doanh thu"
+            }
+        ));
+        jScrollPane1.setViewportView(tblThongKe);
+
+        tabs.addTab("DANH SÁCH", jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,19 +168,18 @@ import org.jfree.data.category.DefaultCategoryDataset;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JPanelThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JPanelThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+            .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelThongKe;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tblThongKe;
     // End of variables declaration//GEN-END:variables
 }
