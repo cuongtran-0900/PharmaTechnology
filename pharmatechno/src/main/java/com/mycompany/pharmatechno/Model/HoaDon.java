@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
 package com.mycompany.pharmatechno.Model;
 
 import java.sql.Timestamp;
@@ -12,25 +10,52 @@ import java.sql.Timestamp;
  * @author Cuong
  */
 public class HoaDon {
-
+    private String TenThuoc;
+    private int SoLuong;
+    private float DonGia;
     private String MaHD;
     private Timestamp thoiGian;
     private String MaNV;
     private String MaKH; 
-    private float tongTien;
-   
-    
-    public HoaDon() {
+    private float ThanhTien;
 
+    public HoaDon() {
     }
 
-    public HoaDon(String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float tongTien) {
+    public HoaDon(String TenThuoc, int SoLuong, float DonGia, String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float ThanhTien) {
+        this.TenThuoc = TenThuoc;
+        this.SoLuong = SoLuong;
+        this.DonGia = DonGia;
         this.MaHD = MaHD;
         this.thoiGian = thoiGian;
         this.MaNV = MaNV;
         this.MaKH = MaKH;
-        this.tongTien = tongTien;
-    } 
+        this.ThanhTien = ThanhTien;
+    }
+
+    public String getTenThuoc() {
+        return TenThuoc;
+    }
+
+    public void setTenThuoc(String TenThuoc) {
+        this.TenThuoc = TenThuoc;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
+    }
+
+    public float getDonGia() {
+        return DonGia;
+    }
+
+    public void setDonGia(float DonGia) {
+        this.DonGia = DonGia;
+    }
 
     public String getMaHD() {
         return MaHD;
@@ -64,19 +89,13 @@ public class HoaDon {
         this.MaKH = MaKH;
     }
 
-    public float getTongTien() {
-        return tongTien;
+    public float getThanhTien() {
+        return ThanhTien;
     }
 
-    public void setTongTien(float tongTien) {
-        this.tongTien = tongTien;
-        
+    public void setThanhTien(float ThanhTien) {
+        this.ThanhTien = ThanhTien;
     }
-
    
 
-    
-   
-
-  
 }

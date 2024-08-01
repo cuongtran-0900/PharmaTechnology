@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import com.mycompany.pharmatechno.Model.HoaDon;
 import com.mycompany.pharmatechno.UI.hoadon;
+import com.mycompany.pharmatechno.Model.Thuoc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -27,25 +28,25 @@ public class HoaDonDao extends ConnectSQL {
 
     public List<HoaDon> filltoArrayList() {
         try {
-          String sql = """
-    SELECT hd.MaHD, hd.manv, hd.makh, t.tenthuoc, hd.thoigian, cthd.soluong, cthd.dongia,
-    cthd.soluong * cthd.dongia AS TongTien,
-    cthd.soluong * cthd.dongia * 0.2 AS LoiNhuan,
-    cthd.soluong * cthd.dongia + (cthd.soluong * cthd.dongia * 0.2) AS TongTienBaoGomLoiNhuan
-    FROM hoadon hd
-    INNER JOIN ChiTietHoaDon cthd ON hd.MaHD = cthd.MaHD
-    INNER JOIN thuoc t ON t.MaThuoc = cthd.MaThuoc;
-""";
+          String sql = 
+                    """
+                    SELECT hd.MaHD, hd.manv, hd.makh, t.tenthuoc, hd.thoigian, cthd.soluong, cthd.dongia,
+                    cthd.soluong * cthd.dongia AS TongTien
+                    FROM hoadon hd
+                    INNER JOIN ChiTietHoaDon cthd ON hd.MaHD = cthd.MaHD
+                    INNER JOIN thuoc t ON t.MaThuoc = cthd.MaThuoc;
+                    """;
 
             try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
                 dshd.clear();
                 while (rs.next()) {
                     HoaDon hd = new HoaDon();
-                    hd.setMaHD(rs.getString("MaHD"));
-                    hd.setMaNV(rs.getString("MaNV"));
-                    hd.setMaKH(rs.getString("MaKH"));                  
-                    hd.setThoiGian(rs.getTimestamp("thoiGian"));                    
-                    hd.setTongTien(rs.getFloat("tongTien"));
+                    hd.setTenThuoc(rs.getString("TenThuoc"));
+                    hd.setSoLuong(rs.getInt("SoLuong"));
+                    hd.setDonGia(rs.getFloat("dongia"));                  
+                    hd.setThanhTien(rs.getFloat("tongtien"));                    
+
+                    
 
                     dshd.add(hd);
                 }
@@ -77,7 +78,7 @@ public class HoaDonDao extends ConnectSQL {
                     hd.setMaKH(rs.getString("MaKH"));
                    
                     hd.setThoiGian(rs.getTimestamp("thoiGian"));
-                    hd.setTongTien(rs.getFloat("tongTien"));
+                    hd.setThanhTien(rs.getFloat("tongTien"));
 
                     dshdls.add(hd);
                 }

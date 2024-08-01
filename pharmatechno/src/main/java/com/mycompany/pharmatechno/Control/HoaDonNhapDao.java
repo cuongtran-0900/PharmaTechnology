@@ -61,7 +61,7 @@ public class HoaDonNhapDao extends ConnectSQL {
         }
         return dshdn;
     }
-
+        
     public void add(HoaDonNhap hdn) {
         dshdn.add(hdn);
         // Logic to add hdn to the database or any other source
