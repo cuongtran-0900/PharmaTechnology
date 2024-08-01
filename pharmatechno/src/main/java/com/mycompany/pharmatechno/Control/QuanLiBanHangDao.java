@@ -23,7 +23,7 @@ public class QuanLiBanHangDao extends ConnectSQL{
         
             public List<BanHang> filltoArrayList(){
     try {
-            String sql = "select TenThuoc, DonViTinh, LoaiThuoc, DonGia, soluongton from thuoc where isdelete = 1 order by tenthuoc ";
+            String sql = "select TenThuoc, DonViTinh, LoaiThuoc, DonGia, soluongton,barcode from thuoc where isdelete = 1 order by tenthuoc ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
             dsbh.clear();
@@ -34,6 +34,7 @@ public class QuanLiBanHangDao extends ConnectSQL{
                 bh.setLoai(rs.getString("LoaiThuoc"));
                 bh.setDonGia(rs.getInt("DonGia"));
                 bh.setTonKho(rs.getInt("soluongton"));
+                bh.setBarCode(rs.getString("barcode"));
                 dsbh.add(bh);   
             }
             rs.close();

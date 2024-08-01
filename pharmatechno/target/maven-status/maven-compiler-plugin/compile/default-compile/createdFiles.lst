@@ -17,6 +17,8 @@ com\mycompany\pharmatechno\UI\hoadon$7.class
 com\mycompany\pharmatechno\UI\hoadon.class
 com\mycompany\pharmatechno\UI\QuanLiKhachHang$1.class
 com\mycompany\pharmatechno\UI\hoadonnhap$9.class
+com\mycompany\pharmatechno\Control\LoginControl.class
+com\mycompany\pharmatechno\Control\MainControl.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$2.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$4.class
 com\mycompany\pharmatechno\UI\main.class
@@ -57,6 +59,7 @@ com\mycompany\pharmatechno\UI\QuanLiBanHang$7.class
 com\mycompany\pharmatechno\UI\hoadon$6.class
 com\mycompany\pharmatechno\UI\Chao$2.class
 com\mycompany\pharmatechno\UI\QuanLiKhachHang$4.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$9.class
 com\mycompany\pharmatechno\UI\hoadon$3.class
 com\mycompany\pharmatechno\UI\main$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$12.class
@@ -69,6 +72,7 @@ com\mycompany\pharmatechno\UI\QuanLiNhanVien$11.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc.class
 com\mycompany\pharmatechno\UI\Chao$1.class
 com\mycompany\pharmatechno\UI\QuanLiKhachHang$2.class
+com\mycompany\pharmatechno\UI\QuanLiThuoc$10.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$10.class
 com\mycompany\pharmatechno\UI\hoadonnhap$8.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$6.class
@@ -114,10 +118,12 @@ com\mycompany\pharmatechno\UI\QuanLiNhanVien$1.class
 com\mycompany\pharmatechno\UI\mainframe$3.class
 com\mycompany\pharmatechno\UI\DoanhThu$1.class
 com\mycompany\pharmatechno\UI\hoadon$11.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$10.class
 DoiMatKhau$1.class
 com\mycompany\pharmatechno\UI\mainframe.class
 com\mycompany\pharmatechno\UI\hoadon$10.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$3.class
+com\mycompany\pharmatechno\UI\DangNhap$2.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$4.class
 TaiKhoanNhanVien$2.class
 com\mycompany\pharmatechno\UI\DoanhThu$6.class
@@ -125,13 +131,14 @@ com\mycompany\pharmatechno\Model\NhaPhanPhoi.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$6.class
 com\mycompany\pharmatechno\Model\Thuoc.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$5.class
-com\mycompany\pharmatechno\UI\main$15.class
 TaiKhoanNhanVien$4.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$8.class
+com\mycompany\pharmatechno\Control\appController.class
 com\mycompany\pharmatechno\Model\HoaDon.class
 DoiMatKhau.class
 com\mycompany\pharmatechno\UI\DoanhThu$5.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$4.class
+com\mycompany\pharmatechno\Control\Auth.class
 com\mycompany\pharmatechno\UI\hoadonnhap$4.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$1.class
 com\mycompany\pharmatechno\UI\DoanhThu$2.class

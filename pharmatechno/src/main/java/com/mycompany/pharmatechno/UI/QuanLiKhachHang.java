@@ -247,10 +247,10 @@ public class QuanLiKhachHang extends javax.swing.JPanel {
     
      private void delete(){
                if (txtMaKH.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập Mã thuoc Cần Xóa");
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập Mã thuốc Cần Xóa");
             txtMaKH.requestFocus();
         } else {
-            int opt = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa thuoc này?", "Xác nhận",
+            int opt = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa thuốc này?", "Xác nhận",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (opt == JOptionPane.YES_OPTION) {
                 khdao.removeStaff(txtMaKH.getText());

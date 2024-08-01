@@ -33,7 +33,6 @@ public class ThuocDao extends ConnectSQL {
                     Thuoc thuoc = new Thuoc();
                     thuoc.setMaThuoc(rs.getString("MaThuoc"));
                     thuoc.setTenThuoc(rs.getString("TenThuoc"));
-                    thuoc.setSoLuong(rs.getString("SoLuong"));
                     thuoc.setHinhAnh(rs.getString("HinhAnh"));
                     thuoc.setThanhPhan(rs.getString("ThanhPhan"));
                     thuoc.setSoLuongTon(rs.getInt("Soluongton"));
@@ -44,6 +43,7 @@ public class ThuocDao extends ConnectSQL {
                     thuoc.setDonViTinh(rs.getString("DonViTinh"));
                     thuoc.setLoaiThuoc(rs.getString("LoaiThuoc"));
                     thuoc.setXuatXu(rs.getString("XuatXu"));
+                    thuoc.setBarcode(rs.getString("barcode"));
                     dsthuoc.add(thuoc);
                 }
                 rs.close();
@@ -84,91 +84,85 @@ public class ThuocDao extends ConnectSQL {
         return false;
     }
 
-    public int save(Thuoc thuoc) {
-        try {
-            String sql = "INSERT INTO Thuoc (MaThuoc, TenThuoc, SoLuong, HinhAnh, ThanhPhan, SoLuongTon, GiaNhap, DonGia, NgaySanXuat, HanSuDung, DonViTinh, LoaiThuoc, XuatXu, IsDelete) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(sql);
+   public int save(Thuoc thuoc) {
+    try {
+        String sql = "INSERT INTO Thuoc (MaThuoc, TenThuoc, HinhAnh, ThanhPhan, SoLuongTon, GiaNhap, DonGia, NgaySanXuat, HanSuDung, DonViTinh, LoaiThuoc, XuatXu, Barcode, IsDelete) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, thuoc.getMaThuoc());
-            ps.setString(2, thuoc.getTenThuoc());
-            ps.setString(3, thuoc.getSoLuong());
-            ps.setString(4, thuoc.getHinhAnh());
-            ps.setString(5, thuoc.getThanhPhan());
-            ps.setInt(6, thuoc.getSoLuongTon());
-            ps.setFloat(7, thuoc.getGiaNhap());
-            ps.setFloat(8, thuoc.getDonGia());
-            ps.setDate(9, new Date(thuoc.getNgaySanXuat().getTime()));
-            ps.setDate(10, new Date(thuoc.getHanSuDung().getTime()));
-            ps.setString(11, thuoc.getDonViTinh());
-            ps.setString(12, thuoc.getLoaiThuoc());
-            ps.setString(13, thuoc.getXuatXu());
-            ps.setInt(14, 1);
-            int row1 = ps.executeUpdate();
+        ps.setString(1, thuoc.getMaThuoc());
+        ps.setString(2, thuoc.getTenThuoc());
+        ps.setString(3, thuoc.getHinhAnh());
+        ps.setString(4, thuoc.getThanhPhan());
+        ps.setInt(5, thuoc.getSoLuongTon());
+        ps.setFloat(6, thuoc.getGiaNhap());
+        ps.setFloat(7, thuoc.getDonGia());
+        ps.setDate(8, new Date(thuoc.getNgaySanXuat().getTime()));
+        ps.setDate(9, new Date(thuoc.getHanSuDung().getTime()));
+        ps.setString(10, thuoc.getDonViTinh());
+        ps.setString(11, thuoc.getLoaiThuoc());
+        ps.setString(12, thuoc.getXuatXu());
+        ps.setString(13, thuoc.getBarcode()); // Thêm mã barcode
+        ps.setInt(14, 1);
+        int row1 = ps.executeUpdate();
 
-            if (row1 > 0) {
-                JOptionPane.showMessageDialog(null, "Thêm thành công");
-                return row1;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(NhanVienDao.class.getName()).log(Level.SEVERE, null, ex);
+        if (row1 > 0) {
+            JOptionPane.showMessageDialog(null, "Thêm thành công");
+            return row1;
         }
-        return -1;
+    } catch (SQLException ex) {
+        Logger.getLogger(ThuocDao.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return -1;
+}
 
+
+    // lấy dữ liệu từ combobox
+    public List<String> getDonViTinhList() {
+    List<String> donViTinhList = new ArrayList<>();
+    String sql = "SELECT DISTINCT DonViTinh FROM Thuoc WHERE IsDelete = 1";
+
+    try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+        while (rs.next()) {
+            donViTinhList.add(rs.getString("DonViTinh"));
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(ThuocDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return donViTinhList;
+}
     // update thuoc
-    public boolean updateThuoc(Thuoc thuoc) {
-        String sql = "UPDATE Thuoc SET TenThuoc = ?, SoLuong = ?, HinhAnh = ?, ThanhPhan = ?, Soluongton = ?, GiaNhap = ?, DonGia = ?, NgaySanXuat = ?, HanSuDung = ?, DonViTinh = ?, LoaiThuoc = ?, XuatXu = ? WHERE MaThuoc = ?";
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, thuoc.getTenThuoc());
-            ps.setString(2, thuoc.getSoLuong());
-            ps.setString(3, thuoc.getHinhAnh());
-            ps.setString(4, thuoc.getThanhPhan());
-            ps.setInt(5, thuoc.getSoLuongTon());
-            ps.setFloat(6, thuoc.getGiaNhap());
-            ps.setFloat(7, thuoc.getDonGia());
-            ps.setDate(8, thuoc.getNgaySanXuat());
-            ps.setDate(9, thuoc.getHanSuDung());
-            ps.setString(10, thuoc.getDonViTinh());
-            ps.setString(11, thuoc.getLoaiThuoc());
-            ps.setString(12, thuoc.getXuatXu());
-            ps.setString(13, thuoc.getMaThuoc());
+   
 
-            int result = ps.executeUpdate();
-            return result > 0;
-        } catch (SQLException ex) {
-            Logger.getLogger(ThuocDao.class.getName()).log(Level.SEVERE, null, ex);
+   public int update(Thuoc thuoc) {
+    try {
+        String sql = "UPDATE Thuoc SET TenThuoc = ?, HinhAnh = ?, ThanhPhan = ?, Soluongton = ?, GiaNhap = ?, DonGia = ?, NgaySanXuat = ?, HanSuDung = ?, DonViTinh = ?, LoaiThuoc = ?, XuatXu = ?, Barcode = ? WHERE MaThuoc = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setString(1, thuoc.getTenThuoc());
+        ps.setString(2, thuoc.getHinhAnh());
+        ps.setString(3, thuoc.getThanhPhan());
+        ps.setInt(4, thuoc.getSoLuongTon());
+        ps.setFloat(5, thuoc.getGiaNhap());
+        ps.setFloat(6, thuoc.getDonGia());
+        ps.setDate(7, new Date(thuoc.getNgaySanXuat().getTime()));
+        ps.setDate(8, new Date(thuoc.getHanSuDung().getTime()));
+        ps.setString(9, thuoc.getDonViTinh());
+        ps.setString(10, thuoc.getLoaiThuoc());
+        ps.setString(11, thuoc.getXuatXu());
+        ps.setString(12, thuoc.getBarcode()); // Cập nhật mã barcode
+        ps.setString(13, thuoc.getMaThuoc()); // Điều kiện WHERE
+
+        int rows = ps.executeUpdate();
+        if (rows > 0) {
+            JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+            return rows;
         }
-        return false;
+    } catch (SQLException ex) {
+        Logger.getLogger(ThuocDao.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return -1;
+}
 
-    public int update(Thuoc thuoc) {
-        try {
-            String sql = "UPDATE Thuoc SET TenThuoc = ?, SoLuong = ?, HinhAnh = ?, ThanhPhan = ?, Soluongton = ?, GiaNhap = ?, DonGia = ?, NgaySanXuat = ?, HanSuDung = ?, DonViTinh = ?, LoaiThuoc = ?, XuatXu = ? WHERE MaThuoc = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setString(1, thuoc.getMaThuoc());
-            ps.setString(2, thuoc.getTenThuoc());
-            ps.setString(3, thuoc.getSoLuong());
-            ps.setString(4, thuoc.getHinhAnh());
-            ps.setString(5, thuoc.getThanhPhan());
-            ps.setInt(6, thuoc.getSoLuongTon());
-            ps.setFloat(7, thuoc.getGiaNhap());
-            ps.setFloat(8, thuoc.getDonGia());
-            ps.setDate(9, new Date(thuoc.getNgaySanXuat().getTime()));
-            ps.setDate(10, new Date(thuoc.getHanSuDung().getTime()));
-            ps.setString(11, thuoc.getDonViTinh());
-            ps.setString(12, thuoc.getLoaiThuoc());
-            ps.setString(13, thuoc.getXuatXu());
-            int rows = ps.executeUpdate();
-            if (rows > 0) {
-                JOptionPane.showMessageDialog(null, "cập nhật thành công");
-                return rows;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(NhanVienDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return -1;
-    }
 
 public String fillmaphatsinh() {
     String mps = null;

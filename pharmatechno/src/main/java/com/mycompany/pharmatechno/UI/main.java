@@ -6,6 +6,8 @@ package com.mycompany.pharmatechno.UI;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.mycompany.pharmatechno.Control.Auth;
+import com.mycompany.pharmatechno.Control.appController;
 import com.sun.tools.javac.Main;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -16,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -26,7 +29,8 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Cuong
  */
 public class main extends javax.swing.JFrame {
-
+ private JPanel adminPanel; // Panel dành cho quản trị viên
+    private JPanel employeePanel; // Panel dành cho nhân viên
     /**
      * Creates new form main
      */
@@ -36,6 +40,31 @@ public class main extends javax.swing.JFrame {
         setPanelEvents(jpnDangXuat,jpnDoanhThu,jpnQuanLiBanHang,jpnQuanLiNV);
         
     }
+    
+    public void hideAdminPanel() {
+        if (adminPanel != null) {
+            adminPanel.setVisible(false);
+        }
+    }
+    
+     public void showAdminPanel() {
+        if (adminPanel != null) {
+            adminPanel.setVisible(true);
+        }
+    }
+     
+      public void hideEmployeePanel() {
+        if (employeePanel != null) {
+            employeePanel.setVisible(false);
+        }
+    }
+
+          public void showEmployeePanel() {
+        if (employeePanel != null) {
+            employeePanel.setVisible(true);
+        }
+    }
+    
     private JPanel currentPanel = null;
     private final Color originalColor = new Color(13,18,130);
     private final Color hoverColor = new Color(2, 94, 167);
@@ -641,6 +670,7 @@ private void updateBackgroundColorsformni() {
 
     private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
         // TODO add your handling code here:
+        jpnDoanhThuMouseClicked(null);
     }//GEN-LAST:event_mniDoanhThuActionPerformed
 
     private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
@@ -654,7 +684,7 @@ private void updateBackgroundColorsformni() {
                 UIManager.setLookAndFeel(new FlatLightLaf());
                 SwingUtilities.updateComponentTreeUI(this);
             } catch (UnsupportedLookAndFeelException ex) {
-                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex); 
             }
         });
     } 
@@ -664,13 +694,29 @@ private void updateBackgroundColorsformni() {
 
     private void jpnQuanLiNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiNVMouseClicked
         // TODO add your handling code here:
-    changePanel(new QuanLiNhanVien());
-    updateBackgroundColors(jpnQuanLiNV);
+        
+        
+             // TODO add your handling code here:
+      if (!Auth.isLogin()) {
+        JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí nhân viên .");
+        return;
+    }
+        
+    if (!Auth.isManager()) {
+        JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin quản lí nhân viên .");
+        return;
+    }else{
+         changePanel(new QuanLiNhanVien());
+    }
+     updateBackgroundColors(jpnQuanLiNV);
+                    
+   
+   
     }//GEN-LAST:event_jpnQuanLiNVMouseClicked
 
     private void MnuQuanLiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MnuQuanLiMouseClicked
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_MnuQuanLiMouseClicked
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -704,20 +750,48 @@ private void updateBackgroundColorsformni() {
 
     private void MniThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniThuocActionPerformed
         // TODO add your handling code here:
+        jpnQuanLiThuocMouseClicked(null);
     }//GEN-LAST:event_MniThuocActionPerformed
 
     private void jpnDoanhThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDoanhThuMouseClicked
         // TODO add your handling code here:
-    changePanel(new DoanhThu());
+      if (!Auth.isLogin()) {
+        JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin doanh thu.");
+        return;
+    }
+        
+    if (!Auth.isManager()) {
+        JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin doanh thu.");
+        return;
+    }else{
+        changePanel(new DoanhThu());
+    }
+
     updateBackgroundColors(jpnDoanhThu);
     }//GEN-LAST:event_jpnDoanhThuMouseClicked
 
     private void jpnQuanLiThuocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiThuocMouseClicked
         // TODO add your handling code here:
-    changePanel(new QuanLiThuoc());
+        
+        
+        if (!Auth.isLogin()) {
+        JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí thuốc.");
+        return;
+    }
+        
+    if (!Auth.isManager()) {
+        JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin quản lí thuốc.");
+        return;
+    }else{
+       changePanel(new QuanLiThuoc());
+    }
     updateBackgroundColors(jpnQuanLiThuoc);
+    
+    
     }//GEN-LAST:event_jpnQuanLiThuocMouseClicked
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -746,10 +820,10 @@ private void updateBackgroundColorsformni() {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new main().setVisible(true);
-            }
+       java.awt.EventQueue.invokeLater(() -> {
+            appController appController = new appController();
+            appController.showChao(); // Bắt đầu từ màn hình chào
+            
         });
     }
 
