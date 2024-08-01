@@ -82,7 +82,7 @@ public class XuatHoaDon {
                 cell.setCellStyle(cellStyle);
 
                 cell = row.createCell(4, CellType.STRING);
-                cell.setCellValue(hd.getTenThuoc());
+               // cell.setCellValue(hd.getTenThuoc());
                 cell.setCellStyle(cellStyle);
 
                 cell = row.createCell(5, CellType.STRING);
@@ -90,11 +90,11 @@ public class XuatHoaDon {
                 cell.setCellStyle(cellStyle);
 
                 cell = row.createCell(6, CellType.NUMERIC);
-                cell.setCellValue(hd.getSoLuong());
+               // cell.setCellValue(hd.getSoLuong());
                 cell.setCellStyle(cellStyle);
 
                 cell = row.createCell(7, CellType.NUMERIC);
-                cell.setCellValue(hd.getDonGia());
+             //   cell.setCellValue(hd.getDonGia());
                 cell.setCellStyle(cellStyle);
 
                 cell = row.createCell(8, CellType.NUMERIC);

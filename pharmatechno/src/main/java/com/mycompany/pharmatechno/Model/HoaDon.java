@@ -16,36 +16,21 @@ public class HoaDon {
     private String MaHD;
     private Timestamp thoiGian;
     private String MaNV;
-    private String MaKH;
-     private String TenThuoc;
+    private String MaKH; 
     private float tongTien;
-    private String tenKH;
-    private int donGia;
-    private int soLuong;
+   
     
     public HoaDon() {
 
     }
 
-    public HoaDon(String MaHD, Timestamp thoiGian, String MaNV, String MaKH, String TenThuoc, float tongTien, String tenKH, int donGia, int soLuong) {
+    public HoaDon(String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float tongTien) {
         this.MaHD = MaHD;
         this.thoiGian = thoiGian;
         this.MaNV = MaNV;
         this.MaKH = MaKH;
-        this.TenThuoc = TenThuoc;
         this.tongTien = tongTien;
-        this.tenKH = tenKH;
-        this.donGia = donGia;
-        this.soLuong = soLuong;
-    }
-
-    public int getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(int donGia) {
-        this.donGia = donGia;
-    }
+    } 
 
     public String getMaHD() {
         return MaHD;
@@ -88,29 +73,7 @@ public class HoaDon {
         
     }
 
-    public String getTenKH() {
-        return tenKH;
-    }
-
-    public void setTenKH(String tenKH) {
-        this.tenKH = tenKH;
-    }
-
-    public String getTenThuoc() {
-        return TenThuoc;
-    }
-
-    public void setTenThuoc(String TenThuoc) {
-        this.TenThuoc = TenThuoc;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
+   
 
     
    

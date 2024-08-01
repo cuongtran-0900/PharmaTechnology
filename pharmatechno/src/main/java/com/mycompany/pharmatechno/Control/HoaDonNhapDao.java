@@ -43,10 +43,7 @@ public class HoaDonNhapDao extends ConnectSQL {
                 while (rs.next()) {
                     HoaDonNhap hdn = new HoaDonNhap();
                     hdn.setMaHDN(rs.getString("MaHDN"));
-                    hdn.setMaNPP(rs.getString("MaNPP"));
-                    hdn.setMaThuoc(rs.getString("MaThuoc"));
-                    hdn.setTenThuoc(rs.getString("TenThuoc"));
-                    hdn.setSoLuong(rs.getInt("SoLuong"));
+                    hdn.setMaNPP(rs.getString("MaNPP"));                 
                     hdn.setNguoiGiao(rs.getString("nguoiGiao"));
                     hdn.setNguoiNhan(rs.getString("nguoiNhan"));
                     hdn.setNgayViet(rs.getDate("ngayViet"));

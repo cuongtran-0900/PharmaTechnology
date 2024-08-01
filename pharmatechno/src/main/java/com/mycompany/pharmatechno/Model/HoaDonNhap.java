@@ -12,12 +12,8 @@ import java.util.Date;
  */
 public class HoaDonNhap {
 
-    private String MaHDN;
-     private String MaHDN1;
-    private String MaNPP;
-    private String TenThuoc;
-     private String MaThuoc;
-    private int soLuong;
+    private String MaHDN;   
+    private String MaNPP; 
     private String nguoiGiao;
     private String nguoiNhan;
     private Date ngayViet;
@@ -28,19 +24,17 @@ public class HoaDonNhap {
 
     }
 
-    public HoaDonNhap(String MaHDN, String MaNPP, String TenThuoc, String MaThuoc, int soLuong, String nguoiGiao, String nguoiNhan, Date ngayViet, Date ngayNhap, float tongTien) {
+    public HoaDonNhap(String MaHDN, String MaNPP, String nguoiGiao, String nguoiNhan, Date ngayViet, Date ngayNhap, float tongTien) {
         this.MaHDN = MaHDN;
-//        this.MaHDN1 = MaHDN1;
         this.MaNPP = MaNPP;
-        this.TenThuoc = TenThuoc;
-        this.MaThuoc = MaThuoc;
-        this.soLuong = soLuong;
         this.nguoiGiao = nguoiGiao;
         this.nguoiNhan = nguoiNhan;
         this.ngayViet = ngayViet;
         this.ngayNhap = ngayNhap;
         this.tongTien = tongTien;
     }
+
+    
 
     public String getMaHDN() {
         return MaHDN;
@@ -50,8 +44,6 @@ public class HoaDonNhap {
         this.MaHDN = MaHDN;
     }
 
-   
-
     public String getMaNPP() {
         return MaNPP;
     }
@@ -59,31 +51,7 @@ public class HoaDonNhap {
     public void setMaNPP(String MaNPP) {
         this.MaNPP = MaNPP;
     }
-
-    public String getTenThuoc() {
-        return TenThuoc;
-    }
-
-    public void setTenThuoc(String TenThuoc) {
-        this.TenThuoc = TenThuoc;
-    }
-
-    public String getMaThuoc() {
-        return MaThuoc;
-    }
-
-    public void setMaThuoc(String MaThuoc) {
-        this.MaThuoc = MaThuoc;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-
+    
     public String getNguoiGiao() {
         return nguoiGiao;
     }

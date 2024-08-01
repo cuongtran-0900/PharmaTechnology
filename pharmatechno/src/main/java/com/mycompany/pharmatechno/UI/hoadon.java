@@ -52,7 +52,7 @@ public class hoadon extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbl_HoaDon.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDon hd : dshd) { // Duyệt qua danh sách hóa đơn
-            model.addRow(new Object[]{hd.getMaNV(), hd.getMaKH(), hd.getTenThuoc(), hd.getThoiGian(), hd.getSoLuong(), hd.getDonGia(), hd.getTongTien()}); // Thêm hàng mới vào bảng
+            model.addRow(new Object[]{hd.getMaNV(), hd.getMaKH(),  hd.getThoiGian(), hd.getTongTien()}); // Thêm hàng mới vào bảng
         }
     }
 
@@ -60,7 +60,7 @@ public class hoadon extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon_lichsu.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDon hd : dshdls) { // Duyệt qua danh sách lịch sử hóa đơn
-            model.addRow(new Object[]{hd.getMaHD(), hd.getMaKH(), hd.getTenKH(), hd.getThoiGian(), hd.getTongTien()}); // Thêm hàng mới vào bảng
+            model.addRow(new Object[]{hd.getMaHD(), hd.getMaKH(),  hd.getThoiGian(), hd.getTongTien()}); // Thêm hàng mới vào bảng
         }
     }
 
@@ -70,12 +70,12 @@ public class hoadon extends javax.swing.JPanel {
             HoaDon hd = dshd.get(index);
             txtMaNV.setText(hd.getMaNV());
             txtMaHD.setText(hd.getMaHD());
-            txtTenthuoc.setText(hd.getTenThuoc());
+          //  txtTenthuoc.setText(hd.getTenThuoc());
             txtMaKH.setText(hd.getMaKH());
-            txtSoLuong.setText(String.valueOf(hd.getSoLuong()));
+            //txtSoLuong.setText(String.valueOf(hd.getSoLuong()));
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             txtThoiGian.setDate(hd.getThoiGian());
-            txtDonGia.setText(String.valueOf(hd.getDonGia()));
+          //  txtDonGia.setText(String.valueOf(hd.getDonGia()));
         }
     }
 
@@ -91,14 +91,14 @@ public class hoadon extends javax.swing.JPanel {
             txtMaHD.setText(hd.getMaHD());
             txtMaNV.setText(hd.getMaNV());
             txtMaKH.setText(hd.getMaKH());
-            txtTenthuoc.setText(hd.getTenThuoc());
+          //  txtTenthuoc.setText(hd.getTenThuoc());
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             txtThoiGian.setDate(hd.getThoiGian());
-            txtSoLuong.setText(String.valueOf(hd.getSoLuong()));
+          //  txtSoLuong.setText(String.valueOf(hd.getSoLuong()));
 
             // Đặt giá trị đơn giá vào trường giao diện
-            double donGia = hd.getDonGia(); // Giả sử getDonGia() trả về kiểu double
-            txtDonGia.setText(String.valueOf(donGia));
+          //  double donGia = hd.getDonGia(); // Giả sử getDonGia() trả về kiểu double
+          //  txtDonGia.setText(String.valueOf(donGia));
 
             // Tính tổng tiền và đặt vào trường giao diện
 //        int soLuong = hd.getSoLuong();
@@ -152,13 +152,13 @@ public class hoadon extends javax.swing.JPanel {
         y += lineHeight;
         graphics.drawString("Mã khách hàng: " + hd.getMaKH(), x, y);
         y += lineHeight;
-        graphics.drawString("Tên thuốc: " + hd.getTenThuoc(), x, y);
+       // graphics.drawString("Tên thuốc: " + hd.getTenThuoc(), x, y);
         y += lineHeight;
         graphics.drawString("Thời gian: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(hd.getThoiGian()), x, y);
         y += lineHeight;
-        graphics.drawString("Số lượng: " + hd.getSoLuong(), x, y);
+       // graphics.drawString("Số lượng: " + hd.getSoLuong(), x, y);
         y += lineHeight;
-        graphics.drawString("Đơn giá: " + hd.getDonGia(), x, y);
+       // graphics.drawString("Đơn giá: " + hd.getDonGia(), x, y);
         y += lineHeight;
         graphics.drawString("Tổng tiền: " + hd.getTongTien(), x, y);
 

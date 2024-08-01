@@ -43,11 +43,8 @@ public class HoaDonDao extends ConnectSQL {
                     HoaDon hd = new HoaDon();
                     hd.setMaHD(rs.getString("MaHD"));
                     hd.setMaNV(rs.getString("MaNV"));
-                    hd.setMaKH(rs.getString("MaKH"));
-                    hd.setTenThuoc(rs.getString("TenThuoc"));
-                    hd.setThoiGian(rs.getTimestamp("thoiGian"));
-                    hd.setSoLuong(rs.getInt("soLuong"));
-                    hd.setDonGia(rs.getInt("donGia"));
+                    hd.setMaKH(rs.getString("MaKH"));                  
+                    hd.setThoiGian(rs.getTimestamp("thoiGian"));                    
                     hd.setTongTien(rs.getFloat("tongTien"));
 
                     dshd.add(hd);
@@ -78,7 +75,7 @@ public class HoaDonDao extends ConnectSQL {
                     HoaDon hd = new HoaDon();
                     hd.setMaHD(rs.getString("MaHD"));
                     hd.setMaKH(rs.getString("MaKH"));
-                    hd.setTenKH(rs.getString("TenKH"));
+                   
                     hd.setThoiGian(rs.getTimestamp("thoiGian"));
                     hd.setTongTien(rs.getFloat("tongTien"));
 

@@ -50,7 +50,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbl_hoadon.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDonNhap hdn : dshdn) { // Duyệt qua danh sách hóa đơn
-            model.addRow(new Object[]{ hdn.getMaThuoc(), hdn.getTenThuoc(), hdn.getMaNPP(), hdn.getSoLuong(),
+            model.addRow(new Object[]{  hdn.getMaNPP(),
                 hdn.getNguoiGiao(), hdn.getNguoiNhan(), hdn.getNgayViet(), hdn.getNgayNhap(), hdn.getTongTien()});
         }
     }
@@ -59,7 +59,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbl_hdnls.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDonNhap hdn : dshdnls) { // Duyệt qua danh sách lịch sử hóa đơn
-            model.addRow(new Object[]{hdn.getMaHDN(), hdn.getMaNPP(), hdn.getTenThuoc(), hdn.getSoLuong(), hdn.getNgayNhap(), hdn.getTongTien()}); // Thêm hàng mới vào bảng
+            model.addRow(new Object[]{hdn.getMaHDN(), hdn.getMaNPP(),  hdn.getNgayNhap(), hdn.getTongTien()}); // Thêm hàng mới vào bảng
         }
     }
 
@@ -70,9 +70,9 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
             txtMaHDN.setText(hdn.getMaHDN());
            // txtMaHDN1.setText(hdn.getMaHDN());
-            txtMaThuoc.setText(hdn.getMaThuoc());
-            txtTenThuoc.setText(hdn.getTenThuoc());
-            txtSoluong.setText(String.valueOf(hdn.getSoLuong()));
+//            txtMaThuoc.setText(hdn.getMaThuoc());
+//            txtTenThuoc.setText(hdn.getTenThuoc());
+//            txtSoluong.setText(String.valueOf(hdn.getSoLuong()));
             txtNPP.setText(hdn.getMaNPP());
             txtNguoiGiao.setText(hdn.getNguoiGiao());
             txtNguoiNhan.setText(hdn.getNguoiNhan());
@@ -94,9 +94,9 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             HoaDonNhap hdn = dshdn.get(modelIndex);
 
             txtMaHDN.setText(hdn.getMaHDN());
-            txtMaThuoc.setText(hdn.getMaThuoc());
-            txtTenThuoc.setText(hdn.getTenThuoc());
-            txtSoluong.setText(String.valueOf(hdn.getSoLuong()));
+//            txtMaThuoc.setText(hdn.getMaThuoc());
+//            txtTenThuoc.setText(hdn.getTenThuoc());
+//            txtSoluong.setText(String.valueOf(hdn.getSoLuong()));
             txtNPP.setText(hdn.getMaNPP());
             txtNguoiGiao.setText(hdn.getNguoiGiao());
             txtNguoiNhan.setText(hdn.getNguoiNhan());
@@ -702,7 +702,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         float tongTien = Float.parseFloat(txtThanhTien.getText());
 
         // Tạo đối tượng HoaDonNhap mới
-        HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP, tenThuoc, MaThuoc, soLuong, nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
+        HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP,  nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
         // Thêm vào danh sách và cập nhật bảng
         nvhdn.add(hdn);
         filltotable();
@@ -741,7 +741,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             float tongTien = Float.parseFloat(txtThanhTien.getText());
 
             // Cập nhật đối tượng HoaDonNhap
-            HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP, tenThuoc, MaThuoc, soLuong, nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
+            HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP, nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
             nvhdn.update(selectedRow, hdn);
 
             // Cập nhật bảng
