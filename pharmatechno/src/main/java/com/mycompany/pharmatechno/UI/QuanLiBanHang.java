@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.pharmatechno.UI;
+
 import com.mycompany.pharmatechno.Control.QuanLiBanHangDao;
 import com.mycompany.pharmatechno.Model.BanHang;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.RowFilter;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -33,17 +36,19 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         filltotable();
         addToListCart();
         updateTotalAmount();
+        tableEvent();
         txtMaHoaDon.setText(bhdao.Maphatsinh());
         txtTongTien.setEditable(false);
         txtMaHoaDon.setEditable(false);
         txtThoiGian.setEditable(false);
         txtThoiGian.setText(currentTimestamp.toString());
-    }
-    
+
+    }  
+
     QuanLiBanHangDao bhdao = new QuanLiBanHangDao();
     List<BanHang> dsbh = bhdao.filltoArrayList();
-
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -212,6 +217,12 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
         jLabel2.setText("Thời Gian        :");
 
+        txtThoiGian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtThoiGianActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -325,253 +336,338 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
     private boolean isUpdatingTable = false;
 
-public void filltotable() {
-    DefaultTableModel model = new DefaultTableModel(
-        new Object[]{"Mã Thuốc", "Tên Thuốc", "Tồn Kho", "ĐVT", "Đơn Giá"}, 0
-    ) {
-        @Override
-        public boolean isCellEditable(int row, int column) {
-            return false;
+    public void filltotable() {
+        DefaultTableModel model = new DefaultTableModel(
+                new Object[]{"Mã Thuốc", "Tên Thuốc", "Tồn Kho", "ĐVT", "Đơn Giá"}, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        for (BanHang bh : dsbh) {
+            model.addRow(new Object[]{
+                bh.getMaThuoc(), bh.getTenThuoc(), bh.getTonKho(), bh.getDVT(), bh.getDonGia()
+            });
         }
-    };
-    for (BanHang bh : dsbh) {
-        model.addRow(new Object[]{
-           bh.getMaThuoc(), bh.getTenThuoc(), bh.getTonKho(), bh.getDVT(), bh.getDonGia()
+        tblQuanLiBanHang.setModel(model);
+    }
+
+    public boolean isCartNotEmpty() {
+        // Giả sử bạn có một bảng giỏ hàng có tên tblGioHang
+        // Kiểm tra số lượng hàng trong giỏ hàng
+        return tblGioHang.getRowCount() > 0;
+    }
+
+    private void tableEvent() {
+        tblGioHang.getModel().addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                if (e.getType() == TableModelEvent.UPDATE) {
+                    int row = e.getFirstRow();
+                    int column = e.getColumn();
+
+                    // Kiểm tra nếu cột thay đổi là cột số lượng (giả sử cột số lượng là cột thứ 3)
+                    if (column == 3) {
+                        int enteredQuantity = 0;
+                        Object enteredQuantityObj = tblGioHang.getValueAt(row, column);
+
+                        if (enteredQuantityObj instanceof Number) {
+                            enteredQuantity = ((Number) enteredQuantityObj).intValue();
+                        } else if (enteredQuantityObj instanceof String) {
+                            try {
+                                enteredQuantity = Integer.parseInt((String) enteredQuantityObj);
+                            } catch (NumberFormatException ex) {
+                                ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                            }
+                        }
+
+                        // Lấy mã thuốc để tra cứu tồn kho
+                        String MaThuoc = String.valueOf(tblGioHang.getValueAt(row, 0));
+
+                        // Tìm số lượng tồn kho tương ứng từ bảng tblQuanLiBanHang
+                        int tonKho = 0;
+                        for (int i = 0; i < tblQuanLiBanHang.getRowCount(); i++) {
+                            if (tblQuanLiBanHang.getValueAt(i, 0).equals(MaThuoc)) {
+                                tonKho = (int) tblQuanLiBanHang.getValueAt(i, 2); // Giả sử cột tồn kho là cột thứ 2
+                                break;
+                            }
+                        }
+
+                        // Kiểm tra nếu số lượng nhập vào vượt quá tồn kho
+                        if (enteredQuantity > tonKho) {
+                            JOptionPane.showMessageDialog(null, "Số lượng không được vượt quá tồn kho!");
+
+                            // Khôi phục giá trị số lượng trước đó
+                            tblGioHang.setValueAt(tonKho, row, column);
+                        } else {
+                            // Nếu số lượng hợp lệ, cập nhật thành tiền
+                            int DonGia = (int) tblGioHang.getValueAt(row, 4); // Giả sử cột đơn giá là cột thứ 4
+                            int thanhTien = enteredQuantity * DonGia;
+                            tblGioHang.setValueAt(thanhTien, row, 5); // Cập nhật thành tiền
+                            updateTotalAmount(); // Cập nhật tổng tiền
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void addToListCart() {
+        tblQuanLiBanHang.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) { // Kiểm tra click đôi
+                    int selectedRow = tblQuanLiBanHang.rowAtPoint(e.getPoint()); // Lấy hàng tại vị trí chuột
+                    if (selectedRow != -1) {
+                        addProductToCart(selectedRow);
+                    }
+                }
+            }
+        });
+
+        DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
+        cartmodel.setRowCount(0);
+
+        // Thêm TableModelListener để lắng nghe sự thay đổi
+        cartmodel.addTableModelListener(e -> {
+            if (!isUpdatingTable) {
+                int row = e.getFirstRow();
+                int column = e.getColumn();
+                if (column == 3 ) { // Kiểm tra nếu cột là cột số lượng hoặc thành tiền
+                    updateRowTotal(row);
+                }
+            }
+        });
+
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem deleteItem = new JMenuItem("Delete");
+        popupMenu.add(deleteItem);
+
+        // Thêm sự kiện cho menu ngữ cảnh
+        deleteItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = tblGioHang.getSelectedRow();
+                if (selectedRow != -1) {
+                    cartmodel.removeRow(selectedRow);
+                    updateTotalAmount(); // Cập nhật tổng tiền khi xóa
+                }
+            }
+        });
+
+        // Thêm sự kiện chuột phải để hiển thị menu ngữ cảnh
+        tblGioHang.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+                    int row = tblGioHang.rowAtPoint(e.getPoint());
+                    if (row >= 0 && row < tblGioHang.getRowCount()) {
+                        tblGioHang.setRowSelectionInterval(row, row);
+                    } else {
+                        tblGioHang.clearSelection();
+                    }
+
+                    int rowindex = tblGioHang.getSelectedRow();
+                    if (rowindex < 0) {
+                        return;
+                    }
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
         });
     }
-    tblQuanLiBanHang.setModel(model);
-}
 
-   
+    private void addProductToCart(int selectedRow) {
+        DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
+        String MaThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 0));
+        String TenThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 1));
+        String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 3));
+        int SoLuong = 1;
 
-private void addToListCart() {
-    tblQuanLiBanHang.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2) { // Kiểm tra click đôi
-                int selectedRow = tblQuanLiBanHang.rowAtPoint(e.getPoint()); // Lấy hàng tại vị trí chuột
-                if (selectedRow != -1) {
-                    addProductToCart(selectedRow);
+        // Lấy số lượng tồn kho từ bảng tblQuanLiBanHang (giả sử cột 2 là số lượng tồn kho)
+        int tonKho = (int) tblQuanLiBanHang.getValueAt(selectedRow, 2);
+
+        Object donGiaObj = tblQuanLiBanHang.getValueAt(selectedRow, 4);
+        int DonGia = 0;
+
+        if (donGiaObj instanceof Number) {
+            DonGia = ((Number) donGiaObj).intValue();
+        } else if (donGiaObj instanceof String) {
+            try {
+                DonGia = Integer.parseInt((String) donGiaObj);
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                return; // Thoát nếu không thể chuyển đổi
+            }
+        }
+
+        boolean productExists = false;
+        for (int i = 0; i < tblGioHang.getRowCount(); i++) {
+            Object tenThuocInCart = tblGioHang.getValueAt(i, 1); // Cột 1 là TenThuoc
+            if (TenThuoc.equals(String.valueOf(tenThuocInCart))) {
+                int currentQuantity = 0;
+                Object currentQuantityObj = tblGioHang.getValueAt(i, 3); // Cột 3 là SoLuong
+                if (currentQuantityObj instanceof Number) {
+                    currentQuantity = ((Number) currentQuantityObj).intValue();
+                } else if (currentQuantityObj instanceof String) {
+                    try {
+                        currentQuantity = Integer.parseInt((String) currentQuantityObj);
+                    } catch (NumberFormatException ex) {
+                        ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                    }
                 }
-            }
-        }
-    });
+                int newQuantity = currentQuantity + SoLuong;
 
-    DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
-    cartmodel.setRowCount(0);
-
-    // Thêm TableModelListener để lắng nghe sự thay đổi
-    cartmodel.addTableModelListener(e -> {
-        if (!isUpdatingTable) {
-            int row = e.getFirstRow();
-            int column = e.getColumn();
-            if (column == 3 || column == 5) { // Kiểm tra nếu cột là cột số lượng hoặc thành tiền
-                updateRowTotal(row);
-            }
-        }
-    });
-
-    JPopupMenu popupMenu = new JPopupMenu();
-    JMenuItem deleteItem = new JMenuItem("Delete");
-    popupMenu.add(deleteItem);
-
-    // Thêm sự kiện cho menu ngữ cảnh
-    deleteItem.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            int selectedRow = tblGioHang.getSelectedRow();
-            if (selectedRow != -1) {
-                cartmodel.removeRow(selectedRow);
-                updateTotalAmount(); // Cập nhật tổng tiền khi xóa
-            }
-        }
-    });
-
-    // Thêm sự kiện chuột phải để hiển thị menu ngữ cảnh
-    tblGioHang.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            if (e.isPopupTrigger()) {
-                int row = tblGioHang.rowAtPoint(e.getPoint());
-                if (row >= 0 && row < tblGioHang.getRowCount()) {
-                    tblGioHang.setRowSelectionInterval(row, row);
-                } else {
-                    tblGioHang.clearSelection();
-                }
-
-                int rowindex = tblGioHang.getSelectedRow();
-                if (rowindex < 0) {
+                // Kiểm tra nếu newQuantity vượt quá số lượng tồn kho
+                if (newQuantity > tonKho) {
+                    JOptionPane.showMessageDialog(null, "Số lượng trong giỏ hàng không được vượt quá tồn kho!");
                     return;
                 }
-                popupMenu.show(e.getComponent(), e.getX(), e.getY());
+
+                int thanhTien = newQuantity * DonGia;
+
+                isUpdatingTable = true;
+                tblGioHang.setValueAt(newQuantity, i, 3); // Cập nhật số lượng
+                tblGioHang.setValueAt(thanhTien, i, 5); // Cập nhật thành tiền
+                isUpdatingTable = false;
+
+                productExists = true;
+
+                // Cập nhật tồn kho sau khi sản phẩm được thêm vào giỏ hàng
+                int updatedTonKho = tonKho - SoLuong;
+                tblQuanLiBanHang.setValueAt(updatedTonKho, selectedRow, 2); // Cập nhật tồn kho
+
+                break;
             }
         }
-    });
-}
-
-private void addProductToCart(int selectedRow) {
-    DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
-    String MaThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 0));
-    String TenThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 1));
-    String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 3));
-    int SoLuong = 1;
-    Object donGiaObj = tblQuanLiBanHang.getValueAt(selectedRow, 4);
-    int DonGia = 0;
-
-    if (donGiaObj instanceof Number) {
-        DonGia = ((Number) donGiaObj).intValue();
-    } else if (donGiaObj instanceof String) {
-        try {
-            DonGia = Integer.parseInt((String) donGiaObj);
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
-            return; // Thoát nếu không thể chuyển đổi
-        }
-    }
-
-    boolean productExists = false;
-    for (int i = 0; i < tblGioHang.getRowCount(); i++) {
-        Object tenThuocInCart = tblGioHang.getValueAt(i, 1); // Cột 1 là TenThuoc
-        if (TenThuoc.equals(String.valueOf(tenThuocInCart))) {
-            int currentQuantity = 0;
-            Object currentQuantityObj = tblGioHang.getValueAt(i, 3); // Cột 3 là SoLuong
-            if (currentQuantityObj instanceof Number) {
-                currentQuantity = ((Number) currentQuantityObj).intValue();
-            } else if (currentQuantityObj instanceof String) {
-                try {
-                    currentQuantity = Integer.parseInt((String) currentQuantityObj);
-                } catch (NumberFormatException ex) {
-                    ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
-                }
+        if (!productExists) {
+            // Kiểm tra nếu số lượng ban đầu vượt quá tồn kho
+            if (SoLuong > tonKho) {
+                JOptionPane.showMessageDialog(null, "Số lượng trong giỏ hàng không được vượt quá tồn kho!");
+                return;
             }
-            int newQuantity = currentQuantity + SoLuong;
-            int thanhTien = newQuantity * DonGia;
 
-            isUpdatingTable = true;
-            tblGioHang.setValueAt(newQuantity, i, 3); // Cập nhật số lượng
-            tblGioHang.setValueAt(thanhTien, i, 5); // Cập nhật thành tiền
-            isUpdatingTable = false;
+            int thanhTien = SoLuong * DonGia;
+            cartmodel.addRow(new Object[]{MaThuoc, TenThuoc, DVT, SoLuong, DonGia, thanhTien});
 
-            productExists = true;
-            break;
+            // Cập nhật tồn kho sau khi sản phẩm được thêm vào giỏ hàng
+            int updatedTonKho = tonKho - SoLuong;
+            tblQuanLiBanHang.setValueAt(updatedTonKho, selectedRow, 2); // Cập nhật tồn kho
         }
+        updateTotalAmount(); // Cập nhật tổng tiền
     }
-    if (!productExists) {
-        int thanhTien = SoLuong * DonGia;
-        cartmodel.addRow(new Object[]{MaThuoc, TenThuoc, DVT, SoLuong, DonGia, thanhTien});
-    }
-    updateTotalAmount(); // Cập nhật tổng tiền
-}
 
-private void updateRowTotal(int row) {
-    int newQuantity = 0;
-    Object newQuantityObj = tblGioHang.getValueAt(row, 3);
-    if (newQuantityObj instanceof Number) {
-        newQuantity = ((Number) newQuantityObj).intValue();
-    } else if (newQuantityObj instanceof String) {
-        try {
-            newQuantity = Integer.parseInt((String) newQuantityObj);
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
-        }
-    }
-    Object donGiaObj = tblGioHang.getValueAt(row, 4);
-    int DonGia = 0;
-    if (donGiaObj instanceof Number) {
-        DonGia = ((Number) donGiaObj).intValue();
-    } else if (donGiaObj instanceof String) {
-        try {
-            DonGia = Integer.parseInt((String) donGiaObj);
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
-        }
-    }
-    int thanhTien = newQuantity * DonGia;
-
-    isUpdatingTable = true;
-    tblGioHang.setValueAt(thanhTien, row, 5); // Cập nhật thành tiền
-    isUpdatingTable = false;
-
-    updateTotalAmount(); // Cập nhật tổng tiền
-}
-
-private void updateTotalAmount() {
-    DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
-    int totalAmount = 0;
-    for (int i = 0; i < cartmodel.getRowCount(); i++) {
-        Object thanhTienObj = cartmodel.getValueAt(i, 5); // Cột 5 là thành tiền
-        int thanhTien = 0;
-        if (thanhTienObj instanceof Number) {
-            thanhTien = ((Number) thanhTienObj).intValue();
-        } else if (thanhTienObj instanceof String) {
+    private void updateRowTotal(int row) {
+        int newQuantity = 0;
+        Object newQuantityObj = tblGioHang.getValueAt(row, 3);
+        if (newQuantityObj instanceof Number) {
+            newQuantity = ((Number) newQuantityObj).intValue();
+        } else if (newQuantityObj instanceof String) {
             try {
-                thanhTien = Integer.parseInt((String) thanhTienObj);
+                newQuantity = Integer.parseInt((String) newQuantityObj);
             } catch (NumberFormatException ex) {
                 ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
             }
         }
-        totalAmount += thanhTien;
+        Object donGiaObj = tblGioHang.getValueAt(row, 4);
+        int DonGia = 0;
+        if (donGiaObj instanceof Number) {
+            DonGia = ((Number) donGiaObj).intValue();
+        } else if (donGiaObj instanceof String) {
+            try {
+                DonGia = Integer.parseInt((String) donGiaObj);
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+            }
+        }
+        int thanhTien = newQuantity * DonGia;
+
+        isUpdatingTable = true;
+        tblGioHang.setValueAt(thanhTien, row, 5); // Cập nhật thành tiền
+        isUpdatingTable = false;
+
+        updateTotalAmount(); // Cập nhật tổng tiền
     }
-    txtTongTien.setText(String.valueOf(totalAmount));
-}
 
+    private void updateTotalAmount() {
+        DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
+        int totalAmount = 0;
+        for (int i = 0; i < cartmodel.getRowCount(); i++) {
+            Object thanhTienObj = cartmodel.getValueAt(i, 5); // Cột 5 là thành tiền
+            int thanhTien = 0;
+            if (thanhTienObj instanceof Number) {
+                thanhTien = ((Number) thanhTienObj).intValue();
+            } else if (thanhTienObj instanceof String) {
+                try {
+                    thanhTien = Integer.parseInt((String) thanhTienObj);
+                } catch (NumberFormatException ex) {
+                    ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                }
+            }
+            totalAmount += thanhTien;
+        }
+        txtTongTien.setText(String.valueOf(totalAmount));
+    }
 
-    private void find(){
+    private void find() {
         DefaultTableModel ob = (DefaultTableModel) tblQuanLiBanHang.getModel();
         TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
         tblQuanLiBanHang.setRowSorter(obj);
         obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getText()));
     }
-    private void payment() {
-    boolean allSuccess = true;
-    QuanLiBanHangDao bhDao = new QuanLiBanHangDao();
 
-    for (int i = 0; i < tblGioHang.getRowCount(); i++) {
-        BanHang bh = new BanHang();
-        bh.setMaHD(txtMaHoaDon.getText());
-        bh.setMaNV(txtMaNV.getText());
-        
-        try {
-            bh.setTongTien(Integer.parseInt(txtTongTien.getText()));
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Tổng tiền không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return;
+    public void payment() {
+        boolean allSuccess = true;
+        QuanLiBanHangDao bhDao = new QuanLiBanHangDao();
+
+        for (int i = 0; i < tblGioHang.getRowCount(); i++) {
+            BanHang bh = new BanHang();
+            bh.setMaHD(txtMaHoaDon.getText());
+            bh.setMaNV(txtMaNV.getText());
+
+            try {
+                bh.setTongTien(Integer.parseInt(txtTongTien.getText()));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Tổng tiền không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            bh.setMaThuoc((String) tblGioHang.getValueAt(i, 0));
+            bh.setThoiGian(Timestamp.valueOf(txtThoiGian.getText()));
+            bh.setTonKho((int) tblQuanLiBanHang.getValueAt(i, 2));
+
+            try {
+                bh.setSoluong((int) tblGioHang.getValueAt(i, 3));
+            } catch (ClassCastException e) {
+                JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            try {
+                bh.setDonGia((int) tblGioHang.getValueAt(i, 4));
+            } catch (ClassCastException e) {
+                JOptionPane.showMessageDialog(this, "Đơn giá không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (bhDao.payment(bh) <= 0) {
+                allSuccess = false;
+            }
         }
-        
-        bh.setMaThuoc((String) tblGioHang.getValueAt(i, 0));
-        bh.setThoiGian(Timestamp.valueOf(txtThoiGian.getText()));
-        bh.setTonKho((int) tblQuanLiBanHang.getValueAt(i, 2));
-        
-        try {
-            bh.setSoluong((int) tblGioHang.getValueAt(i, 3));
-        } catch (ClassCastException e) {
-            JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        try {
-            bh.setDonGia((int) tblGioHang.getValueAt(i, 4));
-        } catch (ClassCastException e) {
-            JOptionPane.showMessageDialog(this, "Đơn giá không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        if (bhDao.payment(bh) <= 0) {
-            allSuccess = false;
+
+        if (allSuccess) {
+            JOptionPane.showMessageDialog(null, "Thanh toán thành công");
+            bhdao.filltoArrayList();
+            this.filltotable();
+            ((DefaultTableModel) tblGioHang.getModel()).setRowCount(0); // Làm rỗng giỏ hàng
+        } else {
+            JOptionPane.showMessageDialog(this, "Thanh Toán thất bại", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    if (allSuccess) {
-        JOptionPane.showMessageDialog(null, "Thanh toán thành công");
-        bhdao.filltoArrayList();
-        this.filltotable();
-        ((DefaultTableModel) tblGioHang.getModel()).setRowCount(0); // Làm rỗng giỏ hàng
-    } else {
-        JOptionPane.showMessageDialog(this, "Thanh Toán thất bại", "Lỗi", JOptionPane.ERROR_MESSAGE);
-    }
-}
-       
-            
+
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHuyActionPerformed
@@ -587,6 +683,8 @@ private void updateTotalAmount() {
 
     private void btbThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbThanhToanActionPerformed
         // TODO add your handling code here:
+        java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
+
         payment();
         bhdao.filltoArrayList();
         txtMaHoaDon.setText("");
@@ -597,8 +695,12 @@ private void updateTotalAmount() {
 
     private void txtTongTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongTienActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtTongTienActionPerformed
+
+    private void txtThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThoiGianActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtThoiGianActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
