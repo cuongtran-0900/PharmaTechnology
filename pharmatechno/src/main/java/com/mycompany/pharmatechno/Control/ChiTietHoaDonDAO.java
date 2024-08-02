@@ -4,57 +4,46 @@
  */
 package com.mycompany.pharmatechno.Control;
 
+import java.util.List;
+import java.util.ArrayList;
+import com.mycompany.pharmatechno.Model.ChiTietHoaDonModel;
+import com.mycompany.pharmatechno.UI.hoadon;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tu
  */
-public class ChiTietHoaDonDAO {
-    private String maHD;
-    private String maThuoc;
-    private int soLuong;
-    private float donGia;
-
-    public ChiTietHoaDonDAO() {
-    }
-
-    public ChiTietHoaDonDAO(String maHD, String maThuoc, int soLuong, float donGia) {
-        this.maHD = maHD;
-        this.maThuoc = maThuoc;
-        this.soLuong = soLuong;
-        this.donGia = donGia;
-    }
-
-    public String getMaHD() {
-        return maHD;
-    }
-
-    public void setMaHD(String maHD) {
-        this.maHD = maHD;
-    }
-
-    public String getMaThuoc() {
-        return maThuoc;
-    }
-
-    public void setMaThuoc(String maThuoc) {
-        this.maThuoc = maThuoc;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    public float getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(float donGia) {
-        this.donGia = donGia;
-    }
+public class ChiTietHoaDonDAO extends ConnectSQL {
+  List<ChiTietHoaDonModel> cthd = new ArrayList<>();
     
-    
+  public List<ChiTietHoaDonModel> filltoArrayList(){
+    try {
+            String sql = "select * from chitiethoadon where isdelete = 1 order by mahd ";
+        try (Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql)){
+            cthd.clear();
+            while(rs.next()) {
+                ChiTietHoaDonModel hd = new ChiTietHoaDonModel();
+                hd.setMaHD(rs.getString("MaHD"));
+                 hd.setMaThuoc(rs.getString("Mathuoc"));
+                  hd.setSoLuong(rs.getInt("soLuong"));
+                   hd.setDonGia(rs.getFloat("dongia"));
+                cthd.add(hd);   
+            }
+            rs.close();
+            st.close();
+        }
+        
+    } catch (SQLException ex) {
+        Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return cthd;
+}
 }
