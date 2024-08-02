@@ -5,16 +5,16 @@ package com.mycompany.pharmatechno.Model;
  *
  * @author Cuong
  */
-public class ChiTietHoaDon {
+public class ChiTietHoaDonModel {
     private String MaHD;
     private String MaThuoc;
     private int SoLuong;
     private float DonGia;
 
-    public ChiTietHoaDon() {
+    public ChiTietHoaDonModel() {
     }
 
-    public ChiTietHoaDon(String MaHD, String MaThuoc, int SoLuong, float DonGia) {
+    public ChiTietHoaDonModel(String MaHD, String MaThuoc, int SoLuong, float DonGia) {
         this.MaHD = MaHD;
         this.MaThuoc = MaThuoc;
         this.SoLuong = SoLuong;
