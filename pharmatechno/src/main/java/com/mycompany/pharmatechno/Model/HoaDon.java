@@ -1,14 +1,8 @@
 
-
 package com.mycompany.pharmatechno.Model;
 
 import java.sql.Timestamp;
 
-
-/**
- *
- * @author Cuong
- */
 public class HoaDon {
     
     private String TenThuoc;
