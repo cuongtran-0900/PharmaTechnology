@@ -146,6 +146,68 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        private void navigate(int index) {
+        tbl_hoadon.setRowSelectionInterval(index, index);
+        showDetail();
+    }
+        
+
+    public void btnFirst() {
+        navigate(0);
+        scrollToVisible(0);
+    }
+    public void btnBack() {
+        int currentIndex = tbl_hoadon.getSelectedRow();
+        if (currentIndex > 0) {
+            navigate(currentIndex - 1);
+            scrollToVisible(currentIndex - 1);
+        }
+    }
+    
+       private void btnNext() {
+        int currentIndex = tbl_hoadon.getSelectedRow();
+        if (currentIndex < dshdn.size() - 1) {
+            navigate(currentIndex + 1);
+            scrollToVisible(currentIndex + 1);
+        }
+    }
+       
+          private void btnLast() {
+        int lastIndex = dshdn.size() - 1;
+        navigate(lastIndex);
+        scrollToVisible(lastIndex);
+    }
+    
+              private void scrollToVisible(int rowIndex) {
+    tbl_hoadon.scrollRectToVisible(tbl_hoadon.getCellRect(rowIndex, 0, true));
+}
+    
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -163,7 +225,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
-        btnPrev = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         btnFirst = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
@@ -186,10 +248,6 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_hdnls = new javax.swing.JTable();
-        btnPrev1 = new javax.swing.JButton();
-        btnFirst1 = new javax.swing.JButton();
-        btnNext1 = new javax.swing.JButton();
-        btnLast1 = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
 
@@ -278,10 +336,10 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             }
         });
 
-        btnPrev.setText("<<");
-        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("<<");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrevActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -379,7 +437,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                                 .addGap(158, 158, 158)
                                 .addComponent(btnFirst)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnPrev)
+                                .addComponent(btnBack)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnNext)
                                 .addGap(18, 18, 18)
@@ -391,11 +449,12 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(26, 26, 26)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtTenThuoc, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMaHDN, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNPP, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(75, 75, 75)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNPP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtTenThuoc, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtMaHDN, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(39, 39, 39)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGap(7, 7, 7)
@@ -480,7 +539,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPrev)
+                        .addComponent(btnBack)
                         .addComponent(btnFirst)
                         .addComponent(btnNext)
                         .addComponent(btnLast))
@@ -512,14 +571,6 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tbl_hdnls);
 
-        btnPrev1.setText("<<");
-
-        btnFirst1.setText("|<");
-
-        btnNext1.setText(">>");
-
-        btnLast1.setText(">|");
-
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTimKiemActionPerformed(evt);
@@ -539,22 +590,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(493, 493, 493)
-                        .addComponent(btnFirst1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPrev1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNext1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLast1)))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGap(145, 145, 145)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(649, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,14 +604,8 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addGap(56, 56, 56)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPrev1)
-                    .addComponent(btnFirst1)
-                    .addComponent(btnNext1)
-                    .addComponent(btnLast1))
-                .addGap(23, 23, 23))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
         jTabbedPane2.addTab("Lịch Sử", jPanel5);
@@ -631,46 +665,39 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_hoadon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshdn.size()) {
-                tbl_hoadon.setRowSelectionInterval(dshdn.size() - 1, dshdn.size() - 1);
-                showDetail();
-            }
-        }
+        btnBack.setEnabled(true);
+        btnFirst.setEnabled(true);
+        btnNext.setEnabled(false);
+        btnLast.setEnabled(false);
+       btnLast();
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_hoadon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshdn.size()) {
-                tbl_hoadon.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
-                showDetail();
-            }
-        }
+        btnNext();
+        btnBack.setEnabled(true);
+        btnFirst.setEnabled(true);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
-        vitri = 0;
-        this.fillToTextBox(vitri);
-        tbl_hoadon.setRowSelectionInterval(vitri, vitri);
+        btnBack.setEnabled(false);
+        btnFirst.setEnabled(false);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
+        btnFirst();
     }//GEN-LAST:event_btnFirstActionPerformed
 
-    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_hoadon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_hoadon.convertRowIndexToModel(viewIndex);
-            if (modelIndex > 0) {
-                tbl_hoadon.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
-                showDetail();
-            }
-        }
-    }//GEN-LAST:event_btnPrevActionPerformed
+        btnBack();
+        btnBack.setEnabled(true);
+        btnFirst.setEnabled(true);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
@@ -707,15 +734,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFirst;
-    private javax.swing.JButton btnFirst1;
     private javax.swing.JButton btnLast;
-    private javax.swing.JButton btnLast1;
     private javax.swing.JButton btnMoi;
     private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnNext1;
-    private javax.swing.JButton btnPrev;
-    private javax.swing.JButton btnPrev1;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;

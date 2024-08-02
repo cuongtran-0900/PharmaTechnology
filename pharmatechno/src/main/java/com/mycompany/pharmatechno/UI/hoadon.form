@@ -104,13 +104,13 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="btnFirst" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFirst2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnPrev" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBack2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="btnNext" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNext2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          <Component id="btnLast" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLast2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="359" max="32767" attributes="0"/>
                           <Component id="btnInHoaDon1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
@@ -136,10 +136,10 @@
                           <Component id="jScrollPane1" min="-2" pref="257" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnFirst" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnPrev" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnLast" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnFirst2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnBack2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnNext2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnLast2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnInHoaDon1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="25" max="32767" attributes="0"/>
@@ -210,36 +210,36 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInHoaDon1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnFirst">
+                <Component class="javax.swing.JButton" name="btnFirst2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="|&lt;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirstActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirst2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnPrev">
+                <Component class="javax.swing.JButton" name="btnBack2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrevActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBack2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnNext">
+                <Component class="javax.swing.JButton" name="btnNext2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNext2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnLast">
+                <Component class="javax.swing.JButton" name="btnLast2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&gt;|"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLast2ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTimKiem">
@@ -314,7 +314,7 @@
                           <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           <Component id="btnFirst1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnPrev1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnBack1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="btnNext1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -354,7 +354,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnFirst1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnPrev1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnBack1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnNext1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnLast1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnInHoaDon" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -470,12 +470,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirst1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnPrev1">
+                <Component class="javax.swing.JButton" name="btnBack1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrev1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBack1ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnNext1">
