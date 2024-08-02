@@ -30,10 +30,6 @@ public class hoadon extends javax.swing.JPanel {
      */
     public hoadon() {
         initComponents();
-<<<<<<< HEAD
-       dshd = nvhd.filltoArrayList(); // Lấy dữ liệu từ cơ sở dữ liệu
-=======
->>>>>>> 51a22f61395d7fc9f0501549aa65ce8bd21eb0d1
         filltotable(); // đổ dữ liệu vào bảng
         filltotable2();
         fillToTextBox(vitri);
@@ -51,16 +47,10 @@ public class hoadon extends javax.swing.JPanel {
     List<HoaDon> dshd = nvhd.filltoArrayList(); // Lấy danh sách hóa đơn từ cơ sở dữ liệu
     List<HoaDon> dshdls = nvhdls.filltoArrayList2(); // Lấy danh sách lịch sử hóa đơn từ cơ sở dữ liệu
 
-    public void filltotable() {
+    public void filltotable() {     
         DefaultTableModel model = (DefaultTableModel) tbl_HoaDon.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDon hd : dshd) { // Duyệt qua danh sách hóa đơn
-<<<<<<< HEAD
-            model.addRow(new Object[]{hd.getTenThuoc(), hd.getSoLuong(), hd.getDonGia(), hd.getThanhTien()}); // Thêm hàng mới vào bảng
-=======
-            model.addRow(new Object[]{hd.getTenThuoc(), hd.getSoLuong(),  hd.getDonGia(), hd.getThanhTien()}); // Thêm hàng mới vào bảng
-            
->>>>>>> 51a22f61395d7fc9f0501549aa65ce8bd21eb0d1
         }
     }
 
@@ -76,30 +66,13 @@ public class hoadon extends javax.swing.JPanel {
         if (index >= 0 && index < dshd.size()) {
             HoaDon hd = dshd.get(index);
             txtMaHD.setText(hd.getMaHD());
-<<<<<<< HEAD
-            txtMaKH.setText(hd.getMaKH());
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            txtThoiGian.setDate(hd.getThoiGian());
-           txtTongTien.setText(String.format("%,.2f", hd.getTongTien()));
         }
     }
-
-    void fillToTextBox2(int index) {
+    
+        void fillToTextBox2(int index) {
         if (index >= 0 && index < dshdls.size()) {
-            // Lấy thông tin từ đối tượng Student tại chỉ mục index
             HoaDon hd = dshdls.get(index);
             txtMaHD.setText(hd.getMaHD());
-            txtMaKH.setText(hd.getMaKH());
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            txtThoiGian.setDate(hd.getThoiGian());
-
-=======
-            txtMaNV.setText(hd.getMaNV());
-            txtThoiGian.setDate(hd.getThoiGian());
-            txtMaKH.setText(hd.getMaKH());
-            
-            
->>>>>>> 51a22f61395d7fc9f0501549aa65ce8bd21eb0d1
         }
     }
 
@@ -115,15 +88,6 @@ public class hoadon extends javax.swing.JPanel {
             txtMaHD.setText(hd.getMaHD());
             txtMaNV.setText(hd.getMaNV());
             txtMaKH.setText(hd.getMaKH());
-<<<<<<< HEAD
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            txtThoiGian.setDate(hd.getThoiGian());
-            // Giả sử HoaDon có phương thức getTongTien() trả về tổng tiền
-            txtTongTien.setText(String.format("%,.2f", hd.getTongTien())); // Định dạng tiền tệ
-=======
-//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            txtThoiGian.setDate(hd.getThoiGian());
->>>>>>> 51a22f61395d7fc9f0501549aa65ce8bd21eb0d1
         }
     }
 

@@ -45,7 +45,7 @@ public class HoaDonDao extends ConnectSQL {
                     hd.setMaHD(rs.getString("mahd"));
                     hd.setMaNV(rs.getString("manv"));
                     hd.setThoiGian(rs.getTimestamp("thoigian"));
-                    hd.setMaKH(rs.getString("manv"));
+                    hd.setMaKH(rs.getString("makh"));
 //                    hd.setTongTien(rs.getFloat("tongtien"));  
                     hd.setTenThuoc(rs.getString("TenThuoc"));
                     hd.setSoLuong(rs.getInt("SoLuong"));
