@@ -458,6 +458,9 @@
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="txtThoiGian">
+                  <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnFirst1">
                   <Properties>

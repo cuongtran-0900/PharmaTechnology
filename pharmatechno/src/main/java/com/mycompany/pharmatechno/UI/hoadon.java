@@ -4,6 +4,8 @@ import com.mycompany.pharmatechno.Control.HoaDonDao;
 import com.mycompany.pharmatechno.Model.HoaDon;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import static java.awt.print.Printable.NO_SUCH_PAGE;
 import static java.awt.print.Printable.PAGE_EXISTS;
 import java.text.SimpleDateFormat;
@@ -33,6 +35,7 @@ public class hoadon extends javax.swing.JPanel {
         filltotable(); // đổ dữ liệu vào bảng
         filltotable2();
         fillToTextBox(vitri);
+        addTableMouseListener();
     }
 
     /**
@@ -51,6 +54,7 @@ public class hoadon extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbl_HoaDon.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDon hd : dshd) { // Duyệt qua danh sách hóa đơn
+            model.addRow(new Object[]{hd.getTenThuoc(), hd.getSoLuong(), hd.getDonGia(),hd.getThanhTien()});
         }
     }
 
@@ -66,6 +70,10 @@ public class hoadon extends javax.swing.JPanel {
         if (index >= 0 && index < dshd.size()) {
             HoaDon hd = dshd.get(index);
             txtMaHD.setText(hd.getMaHD());
+            txtMaKH.setText(hd.getMaKH());
+            txtMaNV.setText(hd.getMaNV());
+            txtThoiGian.setDate(hd.getThoiGian());
+            txtTongTien.setText(String.valueOf(hd.getTongTienNgay()));
         }
     }
     
@@ -88,6 +96,7 @@ public class hoadon extends javax.swing.JPanel {
             txtMaHD.setText(hd.getMaHD());
             txtMaNV.setText(hd.getMaNV());
             txtMaKH.setText(hd.getMaKH());
+            txtTongTien.setText(String.valueOf(hd.getTongTienNgay()));
         }
     }
 
@@ -159,7 +168,17 @@ public class hoadon extends javax.swing.JPanel {
         }
     }
 
-   
+   private void addTableMouseListener() {
+    tbl_HoaDon.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int row = tbl_HoaDon.rowAtPoint(e.getPoint());
+            if (row >= 0) {
+                fillToTextBox(row); // Update text boxes with the selected row's data
+            }
+        }
+    });
+}
    
    
    
@@ -376,6 +395,8 @@ public class hoadon extends javax.swing.JPanel {
         jLabel26.setText("Mã hóa đơn");
 
         jLabel27.setText("Mã nhân viên");
+
+        txtThoiGian.setDateFormatString("dd-MM-yyyy");
 
         btnFirst1.setText("|<");
         btnFirst1.addActionListener(new java.awt.event.ActionListener() {
