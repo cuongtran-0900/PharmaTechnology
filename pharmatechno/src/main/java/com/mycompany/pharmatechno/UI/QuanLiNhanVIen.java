@@ -486,7 +486,6 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
     int modelIndex = tblQuanLiNhanVien.convertRowIndexToModel(viewIndex);
     if (modelIndex >= 0 && modelIndex < dsnv.size()) {
         NhanVien nv = dsnv.get(modelIndex);
-
         txtMaNV.setText(nv.getMaNV());
         txtTenNV.setText(nv.getTenNV());
         txtEmail.setText(nv.getEmail());

@@ -21,6 +21,10 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import com.mycompany.pharmatechno.bean.GiohangBean;
+import com.mycompany.pharmatechno.Control.GioHangDao;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -44,9 +48,12 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         txtThoiGian.setText(currentTimestamp.toString());
 
     }  
+    JTable tblGioHang = new JTable(); // Đảm bảo bảng này được khởi tạo và có dữ liệu
 
     QuanLiBanHangDao bhdao = new QuanLiBanHangDao();
     List<BanHang> dsbh = bhdao.filltoArrayList();
+
+
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
 
 
@@ -215,6 +222,18 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
         jLabel12.setText("Mã Hóa Đơn :");
 
+        txtMaHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaHoaDonActionPerformed(evt);
+            }
+        });
+
+        txtMaNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaNVActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Thời Gian        :");
 
         txtThoiGian.addActionListener(new java.awt.event.ActionListener() {
@@ -333,6 +352,11 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+
+    List<GiohangBean> beansFromTable = GioHangDao.convertTableDataToBeans(tblGioHang);
+
+
 
     private boolean isUpdatingTable = false;
 
@@ -666,6 +690,22 @@ public class QuanLiBanHang extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Thanh Toán thất bại", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    private void transform(){
+
+        // Lấy dữ liệu từ các JTextField
+        
+        GioHangDao beanFromTextFields = GioHangDao.convertTextFieldsToBean(txtMaThuoc, txtTenThuoc, txtDonViTinh,
+                txtSoLuong, txtDonGia, txtThanhTien);
+
+        // In dữ liệu ra để kiểm tra
+        for (GioHangBean bean : beansFromTable) {
+            System.out.println(bean.getMaThuoc() + ", " + bean.getTenThuoc() + ", " + bean.getDonViTinh() + ", " + bean.getSoLuong() + ", " + bean.getDonGia() + ", " + bean.getThanhTien());
+        }
+
+        System.out.println(beanFromTextFields.getMaThuoc() + ", " + beanFromTextFields.getTenThuoc() + ", " + beanFromTextFields.getDonViTinh() + ", " + beanFromTextFields.getSoLuong() + ", " + beanFromTextFields.getDonGia() + ", " + beanFromTextFields.getThanhTien());
+    }
+    }
 
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -701,6 +741,14 @@ public class QuanLiBanHang extends javax.swing.JPanel {
     private void txtThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThoiGianActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtThoiGianActionPerformed
+
+    private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaNVActionPerformed
+
+    private void txtMaHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHoaDonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaHoaDonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
