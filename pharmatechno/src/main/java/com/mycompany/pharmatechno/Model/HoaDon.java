@@ -10,9 +10,11 @@ import java.sql.Timestamp;
  * @author Cuong
  */
 public class HoaDon {
+    
     private String TenThuoc;
     private int SoLuong;
     private float DonGia;
+    private float TongTien;
     private String MaHD;
     private Timestamp thoiGian;
     private String MaNV;
@@ -22,10 +24,11 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(String TenThuoc, int SoLuong, float DonGia, String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float ThanhTien) {
+    public HoaDon(String TenThuoc, int SoLuong, float DonGia, float TongTien, String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float ThanhTien) {
         this.TenThuoc = TenThuoc;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
+        this.TongTien = TongTien;
         this.MaHD = MaHD;
         this.thoiGian = thoiGian;
         this.MaNV = MaNV;
@@ -55,6 +58,14 @@ public class HoaDon {
 
     public void setDonGia(float DonGia) {
         this.DonGia = DonGia;
+    }
+
+    public float getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(float TongTien) {
+        this.TongTien = TongTien;
     }
 
     public String getMaHD() {
@@ -96,6 +107,7 @@ public class HoaDon {
     public void setThanhTien(float ThanhTien) {
         this.ThanhTien = ThanhTien;
     }
+
    
 
 }

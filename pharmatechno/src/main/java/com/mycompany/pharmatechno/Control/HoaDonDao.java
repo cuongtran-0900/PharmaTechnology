@@ -34,20 +34,23 @@ public class HoaDonDao extends ConnectSQL {
                     cthd.soluong * cthd.dongia AS TongTien
                     FROM hoadon hd
                     INNER JOIN ChiTietHoaDon cthd ON hd.MaHD = cthd.MaHD
-                    INNER JOIN thuoc t ON t.MaThuoc = cthd.MaThuoc;
+                    INNER JOIN thuoc t ON t.MaThuoc = cthd.MaThuoc
+                    where hd.IsDelete = 1;
                     """;
 
             try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
                 dshd.clear();
                 while (rs.next()) {
                     HoaDon hd = new HoaDon();
+                    hd.setMaHD(rs.getString("mahd"));
+                    hd.setMaNV(rs.getString("manv"));
+                    hd.setThoiGian(rs.getTimestamp("thoigian"));
+                    hd.setMaKH(rs.getString("manv"));
+//                    hd.setTongTien(rs.getFloat("tongtien"));  
                     hd.setTenThuoc(rs.getString("TenThuoc"));
                     hd.setSoLuong(rs.getInt("SoLuong"));
                     hd.setDonGia(rs.getFloat("dongia"));                  
                     hd.setThanhTien(rs.getFloat("tongtien"));                    
-
-                    
-
                     dshd.add(hd);
                 }
                 rs.close();

@@ -30,7 +30,6 @@ public class hoadon extends javax.swing.JPanel {
      */
     public hoadon() {
         initComponents();
-//        dshd = nvhd.filltoArrayList(); // Lấy dữ liệu từ cơ sở dữ liệu
         filltotable(); // đổ dữ liệu vào bảng
 //        filltotable2();
         fillToTextBox(vitri);
@@ -53,6 +52,7 @@ public class hoadon extends javax.swing.JPanel {
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDon hd : dshd) { // Duyệt qua danh sách hóa đơn
             model.addRow(new Object[]{hd.getTenThuoc(), hd.getSoLuong(),  hd.getDonGia(), hd.getThanhTien()}); // Thêm hàng mới vào bảng
+            
         }
     }
 
@@ -66,16 +66,13 @@ public class hoadon extends javax.swing.JPanel {
 
     void fillToTextBox(int index) {
         if (index >= 0 && index < dshd.size()) {
-            // Lấy thông tin từ đối tượng Student tại chỉ mục index
             HoaDon hd = dshd.get(index);
-            txtMaNV.setText(hd.getMaNV());
             txtMaHD.setText(hd.getMaHD());
-          //  txtTenthuoc.setText(hd.getTenThuoc());
-            txtMaKH.setText(hd.getMaKH());
-            //txtSoLuong.setText(String.valueOf(hd.getSoLuong()));
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            txtMaNV.setText(hd.getMaNV());
             txtThoiGian.setDate(hd.getThoiGian());
-          //  txtDonGia.setText(String.valueOf(hd.getDonGia()));
+            txtMaKH.setText(hd.getMaKH());
+            
+            
         }
     }
 
@@ -91,19 +88,8 @@ public class hoadon extends javax.swing.JPanel {
             txtMaHD.setText(hd.getMaHD());
             txtMaNV.setText(hd.getMaNV());
             txtMaKH.setText(hd.getMaKH());
-          //  txtTenthuoc.setText(hd.getTenThuoc());
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             txtThoiGian.setDate(hd.getThoiGian());
-          //  txtSoLuong.setText(String.valueOf(hd.getSoLuong()));
-
-            // Đặt giá trị đơn giá vào trường giao diện
-          //  double donGia = hd.getDonGia(); // Giả sử getDonGia() trả về kiểu double
-          //  txtDonGia.setText(String.valueOf(donGia));
-
-            // Tính tổng tiền và đặt vào trường giao diện
-//        int soLuong = hd.getSoLuong();
-//        double tongTien = donGia * soLuong;
-//        txtTongTien.setText(String.format("%.2f", tongTien)); // Giả sử bạn có trường txtTongTien để hiển thị tổng tiền
         }
     }
 
@@ -175,6 +161,14 @@ public class hoadon extends javax.swing.JPanel {
     }
 }
 
+   
+   
+   
+   
+   
+   
+   
+   
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -549,6 +543,7 @@ public class hoadon extends javax.swing.JPanel {
     private void tbl_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HoaDonMouseClicked
         // TODO add your handling code here:
         fillToTextBox(vitri);
+        
     }//GEN-LAST:event_tbl_HoaDonMouseClicked
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
@@ -647,7 +642,7 @@ public class hoadon extends javax.swing.JPanel {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Vui lòng chọn một hóa đơn để in.");
         }
-        xuatHoaDon();
+//        xuatHoaDon();
     }//GEN-LAST:event_btnInHoaDonActionPerformed
 
     private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
@@ -707,12 +702,12 @@ public class hoadon extends javax.swing.JPanel {
     private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 
-    private void xuatHoaDon() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private void XuatHoaDon() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    private void xuatHoaDon() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+//
+//    private void XuatHoaDon() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 
 }
