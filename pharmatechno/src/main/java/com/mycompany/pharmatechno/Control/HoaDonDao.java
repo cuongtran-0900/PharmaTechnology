@@ -75,8 +75,7 @@ public class HoaDonDao extends ConnectSQL {
                 while (rs.next()) {
                     HoaDon hd = new HoaDon();
                     hd.setMaHD(rs.getString("MaHD"));
-                    hd.setMaKH(rs.getString("MaKH"));
-                   
+                    hd.setMaKH(rs.getString("MaKH"));                  
                     hd.setThoiGian(rs.getTimestamp("thoiGian"));
                     hd.setThanhTien(rs.getFloat("tongTien"));
 
