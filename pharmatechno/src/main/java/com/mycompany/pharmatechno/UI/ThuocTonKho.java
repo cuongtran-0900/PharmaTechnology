@@ -286,21 +286,35 @@ public class ThuocTonKho extends javax.swing.JPanel {
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
         btnFirst();
+        btnFirst.setEnabled(false);
+        btnBack.setEnabled(false);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         btnBack();
+        btnFirst.setEnabled(true);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
         btnNext();
+        btnFirst.setEnabled(true);
+        btnBack.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
         btnLast();
+        btnFirst.setEnabled(true);
+        btnBack.setEnabled(true);
+        btnNext.setEnabled(false);
+        btnLast.setEnabled(false);
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void txtTimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKeyReleased

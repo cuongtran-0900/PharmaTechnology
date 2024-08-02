@@ -178,6 +178,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         btnPrev1.setText("<<");
 
         btnFirst1.setText("|<");
+        btnFirst1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirst1ActionPerformed(evt);
+            }
+        });
 
         btnNext1.setText(">>");
 
@@ -656,6 +661,10 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         int selectedRow = tbl_hoadon.getSelectedRow();
         filltotextbox(selectedRow);
     }//GEN-LAST:event_tbl_hdnlsMouseClicked
+
+    private void btnFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFirst1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

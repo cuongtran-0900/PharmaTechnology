@@ -340,6 +340,7 @@ public class DoanhThu extends javax.swing.JPanel {
         // TODO add your handling code here:
         btnFirst();
         showDetail();
+        btnFirst.setEnabled(false);
         btnBack.setEnabled(false);
         btnNext.setEnabled(true);
         btnLast.setEnabled(true);
@@ -370,6 +371,7 @@ public class DoanhThu extends javax.swing.JPanel {
         btnFirst.setEnabled(true);
         btnBack.setEnabled(true);
         btnNext.setEnabled(false);
+        btnLast.setEnabled(false);
     }//GEN-LAST:event_btnLastActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
