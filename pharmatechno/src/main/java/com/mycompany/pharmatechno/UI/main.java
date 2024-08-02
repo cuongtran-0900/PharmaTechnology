@@ -263,6 +263,11 @@ public class main extends javax.swing.JFrame {
         );
 
         jpnDangXuat.setBackground(new java.awt.Color(153, 255, 204));
+        jpnDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpnDangXuatMouseClicked(evt);
+            }
+        });
 
         lblDangXuat.setBackground(new java.awt.Color(255, 255, 255));
         lblDangXuat.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -446,6 +451,16 @@ public class main extends javax.swing.JFrame {
 
         MnuTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Home.png"))); // NOI18N
         MnuTrangChu.setText("Trang Chủ");
+        MnuTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MnuTrangChuMouseClicked(evt);
+            }
+        });
+        MnuTrangChu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnuTrangChuActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(MnuTrangChu);
 
         MnuHeThong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Gear.png"))); // NOI18N
@@ -453,6 +468,11 @@ public class main extends javax.swing.JFrame {
 
         mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Logout_30px_1.png"))); // NOI18N
         mniDangXuat.setText("Đăng Xuất");
+        mniDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDangXuatActionPerformed(evt);
+            }
+        });
         MnuHeThong.add(mniDangXuat);
 
         mniDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_find_and_replace_30px.png"))); // NOI18N
@@ -461,6 +481,11 @@ public class main extends javax.swing.JFrame {
 
         mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
         mniThoat.setText("Thoát");
+        mniThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniThoatActionPerformed(evt);
+            }
+        });
         MnuHeThong.add(mniThoat);
 
         mniTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
@@ -789,6 +814,59 @@ private void updateBackgroundColorsformni() {
     
     
     }//GEN-LAST:event_jpnQuanLiThuocMouseClicked
+
+    private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
+        // TODO add your handling code here:
+         int response = JOptionPane.showConfirmDialog(this, 
+        "Bạn có chắc chắn muốn đăng xuất không?", 
+        "Xác nhận đăng xuất", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.QUESTION_MESSAGE);
+    
+    // Kiểm tra phản hồi của người dùng
+    if (response == JOptionPane.YES_OPTION) {
+        // Đóng MainFrame hiện tại
+        this.dispose();
+        
+        // Hiển thị lại LoginFrame
+        DangNhap login = new DangNhap();
+        login.setVisible(true);
+    }
+    }//GEN-LAST:event_mniDangXuatActionPerformed
+
+    private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
+        // TODO add your handling code here:
+         int response = JOptionPane.showConfirmDialog(this, 
+        "Bạn có chắc chắn muốn thoát không?", 
+        "Xác nhận thoát", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.QUESTION_MESSAGE);
+    
+    // Kiểm tra phản hồi của người dùng
+    if (response == JOptionPane.YES_OPTION) {
+        // Đóng ứng dụng
+        System.exit(0);
+    }
+    }//GEN-LAST:event_mniThoatActionPerformed
+
+    private void MnuTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuTrangChuActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_MnuTrangChuActionPerformed
+
+    private void MnuTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MnuTrangChuMouseClicked
+        // TODO add your handling code here:
+                 main mainframe = new main();
+    mainframe.setVisible(true);
+    
+    // Đóng khung hiện tại nếu cần thiết
+    this.dispose();
+    }//GEN-LAST:event_MnuTrangChuMouseClicked
+
+    private void jpnDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDangXuatMouseClicked
+        // TODO add your handling code here:
+        mniDangXuatActionPerformed(null);
+    }//GEN-LAST:event_jpnDangXuatMouseClicked
 
     
     
