@@ -83,7 +83,7 @@ private CategoryDataset createDataset() {
             dataset.addValue(tk.getTongTien(), "Tổng tiền", monthLabel);
         } else {
             // Handle null ThoiGian
-            System.err.println("ThoiGian is null for a record, skipping this record.");
+            System.err.println("Sai r em êy");
         }
     }
 

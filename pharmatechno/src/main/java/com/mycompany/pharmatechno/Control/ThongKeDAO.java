@@ -30,21 +30,18 @@ public List<ThongKeModel> filltoArrayList() {
     try (Statement st = con.createStatement();
          ResultSet rs = st.executeQuery(sql)) {
         while (rs.next()) {
-            // Assuming the SQL function 'month(thoigian)' returns an integer month
             int month = rs.getInt("month");
             float avgTongTien = rs.getFloat("tongtien");
 
-            // Create a dummy Timestamp for the month (if needed for your model)
-            // Note: This approach assumes you don't need the exact date; just the month value
             Timestamp timestamp = new Timestamp(System.currentTimeMillis()); // Placeholder
             Calendar cal = Calendar.getInstance();
-            cal.set(Calendar.MONTH, month - 1); // Calendar.MONTH is 0-based
-            cal.set(Calendar.DAY_OF_MONTH, 1); // Set day to the 1st to match the month
+            cal.set(Calendar.MONTH, month - 1);
+            cal.set(Calendar.DAY_OF_MONTH, 1);
             timestamp.setTime(cal.getTimeInMillis());
 
             ThongKeModel tk = new ThongKeModel();
-            tk.setThoiGian(timestamp); // Set the timestamp with month info
-            tk.setTongTien(avgTongTien); // Set the average total amount
+            tk.setThoiGian(timestamp);
+            tk.setTongTien(avgTongTien); 
             tkm.add(tk);
         }
     } catch (SQLException ex) {
