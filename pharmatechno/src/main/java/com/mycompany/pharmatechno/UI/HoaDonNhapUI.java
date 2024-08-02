@@ -9,6 +9,7 @@ import com.mycompany.pharmatechno.Model.HoaDonNhap;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
@@ -123,6 +124,28 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         tbl_hdnls.setRowSorter(obj);
         obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getText()));
     }
+    
+    // làm mới
+    private void Moi() {
+    txtMaHDN.setText("");
+    txtMaThuoc.setText("");
+    txtTenThuoc.setText("");
+    txtNPP.setText("");
+    txtNguoiGiao.setText("");
+    txtNguoiNhan.setText("");
+    dateNgayViet.setDate(null);
+    dateNgayNhap.setDate(null);
+    txtTongTien.setText("");
+    filltotable();
+    filltotable2();
+}
+
+    
+    
+    
+    
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -651,22 +674,20 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-//        Xoa();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-//        Sua();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-//        Them();
+        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
-//        Moi();
+        Moi();
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void tbl_hoadonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_hoadonMouseClicked
@@ -678,73 +699,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     private void txtMaHDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHDNActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaHDNActionPerformed
-//    private void Them() {
-//        // Lấy dữ liệu từ các trường nhập liệu
-//        String maHDN = txtMaHDN.getText();
-//        String tenThuoc = txtTenThuoc.getText();
-//        String MaThuoc = txtMaThuoc.getText();
-//        String maNPP = txtNPP.getText();
-//        String nguoiGiao = txtNguoiGiao.getText();
-//        String nguoiNhan = txtNguoiNhan.getText();
-//        Date ngayViet = dateNgayViet.getDate();
-//        Date ngayNhap = dateNgayNhap.getDate();
-//        float tongTien = Float.parseFloat(txtTongTien.getText());
-//
-//        // Tạo đối tượng HoaDonNhap mới
-//        HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP,  nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
-//        // Thêm vào danh sách và cập nhật bảng
-//        nvhdn.add(hdn);
-//        filltotable();
-//        filltotable2();
-//    }
-//
-//    private void Sua() {
-//        int selectedRow = tbl_hoadon.getSelectedRow();
-//        if (selectedRow >= 0) {
-//            // Lấy dữ liệu từ các trường nhập liệu
-//            String maHDN = txtMaHDN.getText();
-//            String tenThuoc = txtTenThuoc.getText();
-//            String MaThuoc = txtMaThuoc.getText();
-//            String maNPP = txtNPP.getText();
-//            String nguoiGiao = txtNguoiGiao.getText();
-//            String nguoiNhan = txtNguoiNhan.getText();
-//            Date ngayViet = dateNgayViet.getDate();
-//            Date ngayNhap = dateNgayNhap.getDate();
-//            float tongTien = Float.parseFloat(txtTongTien.getText());
-//
-//            // Cập nhật đối tượng HoaDonNhap
-//            HoaDonNhap hdn = new HoaDonNhap(maHDN, maNPP, nguoiGiao, nguoiNhan, ngayViet, ngayNhap, tongTien);
-//            nvhdn.update(selectedRow, hdn);
-//
-//            // Cập nhật bảng
-//            filltotable();
-//            filltotable2();
-//        }
-//    }
-//
-//    private void Xoa() {
-//        int selectedRow = tbl_hoadon.getSelectedRow();
-//        if (selectedRow >= 0) {
-//            nvhdn.delete(selectedRow);
-//            filltotable();
-//            filltotable2();
-//        }
-//    }
-//
-//    private void Moi() {
-//        txtMaHDN.setText("");
-//        txtTenThuoc.setText("");
-//        txtMaThuoc.setText("");
-//        txtNPP.setText("");
-//        txtNguoiGiao.setText("");
-//        txtNguoiNhan.setText("");
-//        dateNgayViet.setDate(null);
-//        dateNgayNhap.setDate(null);
-//        txtTongTien.setText("");
-//
-//        filltotable();
-//        filltotable2();
-//    }
+
+
+
+
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
