@@ -71,10 +71,16 @@ public class hoadon extends javax.swing.JPanel {
         if (index >= 0 && index < dshd.size()) {
             HoaDon hd = dshd.get(index);
             txtMaHD.setText(hd.getMaHD());
+<<<<<<< Updated upstream
             txtMaKH.setText(hd.getMaKH());
             txtMaNV.setText(hd.getMaNV());
             txtThoiGian.setDate(hd.getThoiGian());
             txtTongTien.setText(String.valueOf(hd.getTongTienNgay()));
+=======
+            txtMaNV.setText(hd.getMaNV());
+            txtMaKH.setText(hd.getMaKH());
+            txtThoiGian.setDate(hd.getThoiGian());
+>>>>>>> Stashed changes
         }
     }
     
@@ -97,7 +103,11 @@ public class hoadon extends javax.swing.JPanel {
             txtMaHD.setText(hd.getMaHD());
             txtMaNV.setText(hd.getMaNV());
             txtMaKH.setText(hd.getMaKH());
+<<<<<<< Updated upstream
             txtTongTien.setText(String.valueOf(hd.getTongTienNgay()));
+=======
+            txtThoiGian.setDate(hd.getThoiGian());
+>>>>>>> Stashed changes
         }
     }
 
@@ -114,6 +124,23 @@ public class hoadon extends javax.swing.JPanel {
         }
     }
 
+    private void addTableMouseListener() {
+    tbl_HoaDon.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int row = tbl_HoaDon.rowAtPoint(e.getPoint());
+            if (row >= 0) {
+                fillToTextBox(row); // Cập nhật các ô văn bản với dữ liệu của hàng được chọn
+            }
+        }
+    });
+}
+    
+    
+    
+    
+    
+    
     private void find() {
         DefaultTableModel ob = (DefaultTableModel) tblHoaDon_lichsu.getModel();
         TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
@@ -797,12 +824,5 @@ public class hoadon extends javax.swing.JPanel {
     private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 
-//    private void xuatHoaDon() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-//
-//    private void XuatHoaDon() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
 
 }
