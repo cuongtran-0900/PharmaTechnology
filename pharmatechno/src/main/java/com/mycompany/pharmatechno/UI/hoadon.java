@@ -71,16 +71,13 @@ public class hoadon extends javax.swing.JPanel {
         if (index >= 0 && index < dshd.size()) {
             HoaDon hd = dshd.get(index);
             txtMaHD.setText(hd.getMaHD());
-<<<<<<< Updated upstream
             txtMaKH.setText(hd.getMaKH());
             txtMaNV.setText(hd.getMaNV());
             txtThoiGian.setDate(hd.getThoiGian());
             txtTongTien.setText(String.valueOf(hd.getTongTienNgay()));
-=======
             txtMaNV.setText(hd.getMaNV());
             txtMaKH.setText(hd.getMaKH());
             txtThoiGian.setDate(hd.getThoiGian());
->>>>>>> Stashed changes
         }
     }
     
@@ -103,11 +100,8 @@ public class hoadon extends javax.swing.JPanel {
             txtMaHD.setText(hd.getMaHD());
             txtMaNV.setText(hd.getMaNV());
             txtMaKH.setText(hd.getMaKH());
-<<<<<<< Updated upstream
             txtTongTien.setText(String.valueOf(hd.getTongTienNgay()));
-=======
             txtThoiGian.setDate(hd.getThoiGian());
->>>>>>> Stashed changes
         }
     }
 
@@ -196,19 +190,20 @@ public class hoadon extends javax.swing.JPanel {
         }
     }
 
-   private void addTableMouseListener() {
-    tbl_HoaDon.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            int row = tbl_HoaDon.rowAtPoint(e.getPoint());
-            if (row >= 0) {
-                fillToTextBox(row); // Update text boxes with the selected row's data
-            }
-        }
-    });
-}
+//   private void addTableMouseListener() {
+//    tbl_HoaDon.addMouseListener(new MouseAdapter() {
+//        @Override
+//        public void mouseClicked(MouseEvent e) {
+//            int row = tbl_HoaDon.rowAtPoint(e.getPoint());
+//            if (row >= 0) {
+//                fillToTextBox(row); // Update text boxes with the selected row's data
+//            }
+//        }
+//    });
+//}
    
-    
+
+
 
 
 

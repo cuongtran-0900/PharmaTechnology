@@ -563,6 +563,7 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Đã có mã sv này");
     }
     }
+    
     private void delete(){
                if (txtMaNV.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập Mã Nhân Viên Cần Xóa");

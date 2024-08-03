@@ -9,12 +9,14 @@ import java.util.List;
 import java.util.ArrayList;
 import com.mycompany.pharmatechno.Model.HoaDonNhap;
 import com.mycompany.pharmatechno.UI.HoaDonNhapUI;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -89,6 +91,43 @@ public class HoaDonNhapDao extends ConnectSQL {
         Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, "SQL Error", ex);}
     return dshdnls;
    }
+   
+   
+   public int save(HoaDonNhap hdn) {
+
+        try {
+            String sql1 = "insert into HoaDonNhap (MaHDN,MaNPP,NguoiGiao,NguoiNhan,NgayViet,NgayNhap,TongTien,isdelete) values(?,?,?,?,?,?,?,?)";
+            PreparedStatement st1 = con.prepareStatement(sql1);
+            
+            
+            st1.setString(1, hdn.getMaHDN());
+            st1.setString(2, hdn.getMaNPP());
+            st1.setString(3, hdn.getNguoiGiao());
+            st1.setString(4, hdn.getNguoiNhan());
+            st1.setDate(5, (Date) hdn.getNgayViet());
+            st1.setDate(6, (Date) hdn.getNgayNhap());
+            st1.setString(7, String.valueOf(hdn.getTongTien()));
+            st1.setInt(8,1);
+           
+            
+            String sql2 = "insert into Thuoc (MaThuoc,TenThuoc) values(?,?)";
+            PreparedStatement st2 = con.prepareStatement(sql1);
+            
+            
+            st2.setString(1, hdn.getMaThuoc());
+            st2.setString(2, hdn.getTenThuoc());
+            st2.setInt(14,1);
+            int row1 = st2.executeUpdate();
+            
+            if (row1 > 0) {
+                JOptionPane.showMessageDialog(null, "Thêm thành công");
+                return row1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
 }
    
    

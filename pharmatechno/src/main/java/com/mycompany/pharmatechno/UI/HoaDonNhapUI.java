@@ -85,7 +85,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             txtMaHDN.setText(hdn.getMaHDN());
             txtMaThuoc.setText(hdn.getMaThuoc());
             txtTenThuoc.setText(hdn.getTenThuoc());
-            txtNPP.setText(hdn.getMaNPP());
+            txtMaNPP.setText(hdn.getMaNPP());
             txtNguoiGiao.setText(hdn.getNguoiGiao());
             txtNguoiNhan.setText(hdn.getNguoiNhan());
             dateNgayViet.setDate(hdn.getNgayViet());
@@ -105,7 +105,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             HoaDonNhap hdn = dshdn.get(modelIndex);
 
             txtMaHDN.setText(hdn.getMaHDN());
-            txtNPP.setText(hdn.getMaNPP());
+            txtMaNPP.setText(hdn.getMaNPP());
             txtNguoiGiao.setText(hdn.getNguoiGiao());
             txtNguoiNhan.setText(hdn.getNguoiNhan());
             dateNgayViet.setDate(hdn.getNgayViet());
@@ -130,7 +130,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     txtMaHDN.setText("");
     txtMaThuoc.setText("");
     txtTenThuoc.setText("");
-    txtNPP.setText("");
+    txtMaNPP.setText("");
     txtNguoiGiao.setText("");
     txtNguoiNhan.setText("");
     dateNgayViet.setDate(null);
@@ -142,6 +142,58 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
     
     
+    private boolean save() {
+    String MaHDN = txtMaHDN.getText();
+    String TenThuoc = txtTenThuoc.getText();
+    String NPP = txtMaNPP.getText();
+    String MaThuoc = txtMaThuoc.getText();
+    String NguoiGiao = txtNguoiGiao.getText();
+    String NguoiNhan = txtNguoiNhan.getText();
+    Date NgayViet = dateNgayViet.getDate();
+    Date NgayNhap = dateNgayNhap.getDate();
+    
+    // Kiểm tra các trường không được rỗng
+    if (MaHDN.isEmpty() || TenThuoc.isEmpty() || NPP.isEmpty() || MaThuoc.isEmpty() || 
+        NguoiGiao.isEmpty() || NguoiNhan.isEmpty() || NgayViet == null || NgayNhap == null) {
+        JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin.");
+        return false;
+    }
+
+    // Kiểm tra và chuyển đổi tổng tiền
+    Float TongTien = null;
+    String tongTienStr = txtTongTien.getText().trim();
+    if (tongTienStr.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Tổng tiền không được để trống.");
+        return false;
+    }
+    
+    try {
+        TongTien = Float.valueOf(tongTienStr);
+        if (TongTien < 0) {
+            JOptionPane.showMessageDialog(this, "Tổng tiền không thể âm.");
+            return false;
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Tổng tiền không hợp lệ.");
+        return false;
+    }
+
+    filltotable(); // Cập nhật bảng với danh sách mới
+    clearInputFields(); // Xóa các trường nhập liệu sau khi thêm
+    return true;
+}
+
+    private void clearInputFields() {
+    txtMaHDN.setText("");
+    txtMaThuoc.setText("");
+    txtTenThuoc.setText("");
+    txtMaNPP.setText("");
+    txtNguoiGiao.setText("");
+    txtNguoiNhan.setText("");
+    dateNgayViet.setDate(null);
+    dateNgayNhap.setDate(null);
+    txtTongTien.setText("");
+}
     
     
     
@@ -230,7 +282,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
         txtTenThuoc = new javax.swing.JTextField();
-        txtNPP = new javax.swing.JTextField();
+        txtMaNPP = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -370,9 +422,9 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             }
         });
 
-        txtNPP.addActionListener(new java.awt.event.ActionListener() {
+        txtMaNPP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNPPActionPerformed(evt);
+                txtMaNPPActionPerformed(evt);
             }
         });
 
@@ -450,7 +502,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNPP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMaNPP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtTenThuoc, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtMaHDN, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -501,7 +553,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaNPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
@@ -655,9 +707,9 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTongTienActionPerformed
 
-    private void txtNPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNPPActionPerformed
+    private void txtMaNPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNPPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNPPActionPerformed
+    }//GEN-LAST:event_txtMaNPPActionPerformed
 
     private void txtTenThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenThuocActionPerformed
         // TODO add your handling code here:
@@ -709,7 +761,30 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        
+//        if (save()) {
+//        int selectedIndex = tbl_hoadon.getSelectedRow();
+//        if (selectedIndex != -1) {
+//            int modelIndex = tbl_hoadon.convertRowIndexToModel(selectedIndex);
+//            if (modelIndex >= 0 && modelIndex < dshdn.size()) {
+//                HoaDonNhap hdn = dshdn.get(modelIndex);
+//                
+//                hdn.setMaHDN(txtMaHDN.getText());
+//                hdn.setMaThuoc(txtMaThuoc.getText());
+//                hdn.setTenThuoc(txtTenThuoc.getText());
+//                hdn.setMaNPP(txtMaNPP.getText());
+//                hdn.setNguoiGiao(txtNguoiGiao.getText());
+//                hdn.setNguoiNhan(txtNguoiNhan.getText());
+//                hdn.setNgayViet(dateNgayViet.getDate());
+//                hdn.setNgayNhap(dateNgayNhap.getDate());
+//                hdn.setTongTien(Float.parseFloat(txtTongTien.getText()));
+//
+//                filltotable(); // Cập nhật bảng với thông tin đã sửa
+//                clearInputFields(); // Xóa các trường nhập liệu sau khi sửa
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Vui lòng chọn một hóa đơn để sửa.");
+//        }
+//    }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
@@ -765,8 +840,8 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     private javax.swing.JTable tbl_hdnls;
     private javax.swing.JTable tbl_hoadon;
     private javax.swing.JTextField txtMaHDN;
+    private javax.swing.JTextField txtMaNPP;
     private javax.swing.JTextField txtMaThuoc;
-    private javax.swing.JTextField txtNPP;
     private javax.swing.JTextField txtNguoiGiao;
     private javax.swing.JTextField txtNguoiNhan;
     private javax.swing.JTextField txtTenThuoc;
