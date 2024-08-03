@@ -102,10 +102,4 @@ public class HoaDonDao extends ConnectSQL {
         return dshdls;
     }
 
-    
-<<<<<<< Updated upstream
-
-=======
-    
->>>>>>> Stashed changes
 }
