@@ -12,7 +12,7 @@
         <exec.mainClass>com.mycompany.pharmatechno.Pharmatechno</exec.mainClass>
     </properties>
     <dependencies>
-<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
@@ -45,6 +45,47 @@
             <version>1.0.24</version>
         </dependency>
 
+    
+        <!-- JasperReports runtime libraries -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>7.0.0</version>
+        </dependency>
+    
+        <!-- JasperReports SQL library (if you need to connect to databases) -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>7.0.0</version>
+        </dependency>
+        <!-- For database connections, you may need specific JDBC drivers -->
+        <!-- Example for MySQL JDBC driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version> <!-- Thay đổi phiên bản nếu cần -->
+        </dependency>
+
+        <!-- For PDF generation, if using iText -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13.2</version> <!-- Thay đổi phiên bản nếu cần -->
+        </dependency>
+    
+        <!-- For charting, if using JFreeChart -->
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.3</version> <!-- Thay đổi phiên bản nếu cần -->
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-pdf</artifactId>
+            <version>7.0.0</version>
+        </dependency>
+        
 
 
 

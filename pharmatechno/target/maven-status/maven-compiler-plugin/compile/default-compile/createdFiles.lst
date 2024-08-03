@@ -1,3 +1,4 @@
+com\mycompany\pharmatechno\bean\ReportUtils.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang.class
 com\mycompany\pharmatechno\UI\hoadonnhap$2.class
 com\mycompany\pharmatechno\Control\ConnectSQL.class
@@ -30,10 +31,12 @@ com\mycompany\pharmatechno\UI\hoadonnhap$3.class
 com\mycompany\pharmatechno\UI\hoadon$8.class
 com\mycompany\pharmatechno\UI\hoadonnhap$9.class
 com\mycompany\pharmatechno\UI\hoadon$1.class
+com\mycompany\pharmatechno\Model\GiohangBean.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$6.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$5.class
 com\mycompany\pharmatechno\UI\mainframe$2.class
 com\mycompany\pharmatechno\UI\main$12.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$14.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$4.class
 com\mycompany\pharmatechno\UI\main.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$17.class
@@ -60,6 +63,7 @@ com\mycompany\pharmatechno\UI\QuanLiNhanVien$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$8.class
 com\mycompany\pharmatechno\UI\hoadon$5.class
 com\mycompany\pharmatechno\UI\Chao.class
+com\mycompany\pharmatechno\Control\GioHangDao.class
 TaiKhoanNhanVien$3.class
 com\mycompany\pharmatechno\UI\main$2.class
 com\mycompany\pharmatechno\UI\hoadonnhap$5.class
@@ -77,9 +81,11 @@ DoiMatKhau$1.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$16.class
 com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.class
 com\mycompany\pharmatechno\UI\mainframe.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$16.class
 com\mycompany\pharmatechno\UI\hoadon$10.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$15.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$12.class
+com\mycompany\pharmatechno\UI\QuanLiBanHang$15.class
 TaiKhoanNhanVien$2.class
 com\mycompany\pharmatechno\Control\NhanVienDao.class
 com\mycompany\pharmatechno\Model\NhaPhanPhoi.class

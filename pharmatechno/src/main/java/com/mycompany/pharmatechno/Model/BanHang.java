@@ -43,18 +43,6 @@ public class BanHang {
     }
 
 
-
-
-
-    
-
-
-
-
-
-
-
-
     public String getMaNV() {
         return MaNV;
     }

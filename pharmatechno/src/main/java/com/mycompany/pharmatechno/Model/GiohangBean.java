@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pharmatechno.bean;
+package com.mycompany.pharmatechno.Model;
 
 /**
  *
  * @author Cuong
  */
 public class GiohangBean {
+
     private String MaHD;
     private String ThoiGian;
     private String TenNV;
@@ -18,31 +19,23 @@ public class GiohangBean {
     private int ThanhTien;
     private int TongTien;
 
+    // Constructor mặc định
+    public GiohangBean() {
+    }
 
-    public GiohangBean(String MaHD, int TongTien, String ThoiGian, String TenNV) {
+    // Constructor với tất cả các tham số
+    public GiohangBean(String MaHD, String ThoiGian, String TenNV, int TongTien, String TenThuoc, int SoLuong, int DonGia, int ThanhTien) {
         this.MaHD = MaHD;
         this.ThoiGian = ThoiGian;
         this.TenNV = TenNV;
         this.TongTien = TongTien;
-    }
-
-    public GiohangBean(String TenThuoc, int SoLuong, int DonGia, int ThanhTien) {
         this.TenThuoc = TenThuoc;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
         this.ThanhTien = ThanhTien;
     }
-    
-   
 
-    public int getTongTien() {
-        return TongTien;
-    }
-
-    public void setTongTien(int TongTien) {
-        this.TongTien = TongTien;
-    }
-
+    // Các phương thức getter và setter
     public String getMaHD() {
         return MaHD;
     }
@@ -98,6 +91,12 @@ public class GiohangBean {
     public void setThanhTien(int ThanhTien) {
         this.ThanhTien = ThanhTien;
     }
-    
-    
+
+    public int getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(int TongTien) {
+        this.TongTien = TongTien;
+    }
 }
