@@ -25,7 +25,6 @@ import javax.swing.JOptionPane;
 public class HoaDonNhapDao extends ConnectSQL {
 
     List<HoaDonNhap> dshdn = new ArrayList<>();
-    List<HoaDonNhap> dshdnls = new ArrayList<>();
 
     public List<HoaDonNhap> filltoArrayList() {
         try {
@@ -116,7 +115,6 @@ public class HoaDonNhapDao extends ConnectSQL {
             
             st2.setString(1, hdn.getMaThuoc());
             st2.setString(2, hdn.getTenThuoc());
-            st2.setInt(14,1);
             int row1 = st2.executeUpdate();
             
             if (row1 > 0) {

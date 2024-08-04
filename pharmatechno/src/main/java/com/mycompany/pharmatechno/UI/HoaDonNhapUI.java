@@ -761,30 +761,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-//        if (save()) {
-//        int selectedIndex = tbl_hoadon.getSelectedRow();
-//        if (selectedIndex != -1) {
-//            int modelIndex = tbl_hoadon.convertRowIndexToModel(selectedIndex);
-//            if (modelIndex >= 0 && modelIndex < dshdn.size()) {
-//                HoaDonNhap hdn = dshdn.get(modelIndex);
-//                
-//                hdn.setMaHDN(txtMaHDN.getText());
-//                hdn.setMaThuoc(txtMaThuoc.getText());
-//                hdn.setTenThuoc(txtTenThuoc.getText());
-//                hdn.setMaNPP(txtMaNPP.getText());
-//                hdn.setNguoiGiao(txtNguoiGiao.getText());
-//                hdn.setNguoiNhan(txtNguoiNhan.getText());
-//                hdn.setNgayViet(dateNgayViet.getDate());
-//                hdn.setNgayNhap(dateNgayNhap.getDate());
-//                hdn.setTongTien(Float.parseFloat(txtTongTien.getText()));
-//
-//                filltotable(); // Cập nhật bảng với thông tin đã sửa
-//                clearInputFields(); // Xóa các trường nhập liệu sau khi sửa
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Vui lòng chọn một hóa đơn để sửa.");
-//        }
-//    }
+        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
