@@ -59,7 +59,7 @@ public class HoaDonNhapDao extends ConnectSQL {
         return dshdn;
     }
         
-<<<<<<< HEAD
+
    public List<HoaDonNhap> filltoArrayList2() {
     List<HoaDonNhap> dshdnls = new ArrayList<>(); // Tạo danh sách mới nếu chưa có
 
@@ -87,55 +87,58 @@ public class HoaDonNhapDao extends ConnectSQL {
         }
     } catch (SQLException ex) {
         Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, "SQL Error", ex);
-=======
-    public List<HoaDonNhap> filltoArrayList2() {
-        try {
-//            String sql = 
-//                    """
-//                    select hdn.mahdn, t.tenthuoc, hdn.manpp, cthdn.soluong, hdn.nguoigiao, hdn.nguoinhan, hdn.ngayviet, hdn.ngaynhap
-//                    from hoadonnhap as hdn
-//                    inner join chitiethoadonnhap as cthdn on hdn.maHDN = cthdn.MaHDN
-//                    inner join Thuoc as t on t.MaThuoc = cthdn.MaThuoc;""";
-            String sql
-                    = """
-                SELECT hdn.*, t.MaThuoc, t.TenThuoc, cthdn.SoLuong
-                FROM hoadonnhap AS hdn
-                INNER JOIN chitiethoadonnhap AS cthdn ON hdn.MaHDN = cthdn.MaHDN
-                INNER JOIN Thuoc AS t ON t.MaThuoc = cthdn.MaThuoc;
-                """;
-            try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
-                dshdn.clear();
-                while (rs.next()) {
-                    HoaDonNhap hdn = new HoaDonNhap();
-                    hdn.setMaHDN(rs.getString("MaHDN"));
-                    hdn.setMaNPP(rs.getString("MaNPP"));                 
-                    hdn.setNguoiGiao(rs.getString("nguoiGiao"));
-                    hdn.setNguoiNhan(rs.getString("nguoiNhan"));
-                    hdn.setNgayViet(rs.getDate("ngayViet"));
-                    hdn.setNgayNhap(rs.getDate("ngayNhap"));
-                    hdn.setTongTien(rs.getFloat("tongTien"));
-
-                    dshdn.add(hdn);
-                }
-                rs.close();
-                st.close();
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dshdn;
-    }
-    public void add(HoaDonNhap hdn) {
-        dshdn.add(hdn);
-        // Logic to add hdn to the database or any other source
->>>>>>> 9731a4f0625ae032cab947dc8c139fe3b5166b2e
-    }
-
-    return dshdnls; // Trả về danh sách đúng
+//=======
+//    public List<HoaDonNhap> filltoArrayList2() {
+//        try {
+////            String sql = 
+////                    """
+////                    select hdn.mahdn, t.tenthuoc, hdn.manpp, cthdn.soluong, hdn.nguoigiao, hdn.nguoinhan, hdn.ngayviet, hdn.ngaynhap
+////                    from hoadonnhap as hdn
+////                    inner join chitiethoadonnhap as cthdn on hdn.maHDN = cthdn.MaHDN
+////                    inner join Thuoc as t on t.MaThuoc = cthdn.MaThuoc;""";
+//            String sql
+//                    = """
+//                SELECT hdn.*, t.MaThuoc, t.TenThuoc, cthdn.SoLuong
+//                FROM hoadonnhap AS hdn
+//                INNER JOIN chitiethoadonnhap AS cthdn ON hdn.MaHDN = cthdn.MaHDN
+//                INNER JOIN Thuoc AS t ON t.MaThuoc = cthdn.MaThuoc;
+//                """;
+//            try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+//                dshdn.clear();
+//                while (rs.next()) {
+//                    HoaDonNhap hdn = new HoaDonNhap();
+//                    hdn.setMaHDN(rs.getString("MaHDN"));
+//                    hdn.setMaNPP(rs.getString("MaNPP"));                 
+//                    hdn.setNguoiGiao(rs.getString("nguoiGiao"));
+//                    hdn.setNguoiNhan(rs.getString("nguoiNhan"));
+//                    hdn.setNgayViet(rs.getDate("ngayViet"));
+//                    hdn.setNgayNhap(rs.getDate("ngayNhap"));
+//                    hdn.setTongTien(rs.getFloat("tongTien"));
+//
+//                    dshdn.add(hdn);
+//                }
+//                rs.close();
+//                st.close();
+//            }
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return dshdn;
+//    }
+//    public void add(HoaDonNhap hdn) {
+//        dshdn.add(hdn);
+////        // Logic to add hdn to the database or any other source
+////>>>>>>> 9731a4f0625ae032cab947dc8c139fe3b5166b2e
+////    }
+////
+////    return dshdnls; // Trả về danh sách đúng
+////}
+////
+////
+////    
+////    
 }
-
-
-    
-    
+        return dshdnls;
+   }
 }
