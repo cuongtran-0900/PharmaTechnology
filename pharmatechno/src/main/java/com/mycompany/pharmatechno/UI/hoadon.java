@@ -18,6 +18,7 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,6 +75,9 @@ public class hoadon extends javax.swing.JPanel {
             txtMaNV.setText(hd.getMaNV());
             txtThoiGian.setDate(hd.getThoiGian());
             txtTongTien.setText(String.valueOf(hd.getTongTienNgay()));
+            txtMaNV.setText(hd.getMaNV());
+            txtMaKH.setText(hd.getMaKH());
+            txtThoiGian.setDate(hd.getThoiGian());
         }
     }
     
@@ -97,6 +101,7 @@ public class hoadon extends javax.swing.JPanel {
             txtMaNV.setText(hd.getMaNV());
             txtMaKH.setText(hd.getMaKH());
             txtTongTien.setText(String.valueOf(hd.getTongTienNgay()));
+            txtThoiGian.setDate(hd.getThoiGian());
         }
     }
 
@@ -113,6 +118,23 @@ public class hoadon extends javax.swing.JPanel {
         }
     }
 
+    private void addTableMouseListener() {
+    tbl_HoaDon.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int row = tbl_HoaDon.rowAtPoint(e.getPoint());
+            if (row >= 0) {
+                fillToTextBox(row); // Cập nhật các ô văn bản với dữ liệu của hàng được chọn
+            }
+        }
+    });
+}
+    
+    
+    
+    
+    
+    
     private void find() {
         DefaultTableModel ob = (DefaultTableModel) tblHoaDon_lichsu.getModel();
         TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
@@ -168,22 +190,104 @@ public class hoadon extends javax.swing.JPanel {
         }
     }
 
-   private void addTableMouseListener() {
-    tbl_HoaDon.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            int row = tbl_HoaDon.rowAtPoint(e.getPoint());
-            if (row >= 0) {
-                fillToTextBox(row); // Update text boxes with the selected row's data
-            }
+//   private void addTableMouseListener() {
+//    tbl_HoaDon.addMouseListener(new MouseAdapter() {
+//        @Override
+//        public void mouseClicked(MouseEvent e) {
+//            int row = tbl_HoaDon.rowAtPoint(e.getPoint());
+//            if (row >= 0) {
+//                fillToTextBox(row); // Update text boxes with the selected row's data
+//            }
+//        }
+//    });
+//}
+   
+
+
+
+
+
+
+
+
+
+
+
+// Bảng Hóa Đơn
+   
+    private void navigate1(int index) {
+        tbl_HoaDon.setRowSelectionInterval(index, index);
+        showDetail();
+    }  
+   
+    public void btnFirst1() {
+        navigate1(0);
+        scrollToVisible1(0);
+    }
+    public void btnBack1() {
+        int currentIndex = tbl_HoaDon.getSelectedRow();
+        if (currentIndex > 0) {
+            navigate1(currentIndex - 1);
+            scrollToVisible1(currentIndex - 1);
         }
-    });
+    }
+    
+       private void btnNext1() {
+        int currentIndex = tbl_HoaDon.getSelectedRow();
+        if (currentIndex < dshd.size() - 1) {
+            navigate1(currentIndex + 1);
+            scrollToVisible1(currentIndex + 1);
+        }
+    }
+       
+          private void btnLast1() {
+        int lastIndex = dshd.size() - 1;
+        navigate1(lastIndex);
+        scrollToVisible1(lastIndex);
+    }
+          
+              private void scrollToVisible1(int rowIndex) {
+    tbl_HoaDon.scrollRectToVisible(tbl_HoaDon.getCellRect(rowIndex, 0, true));
 }
    
    
+              
+    // Bảng Lịch Sử Hóa Đơn
+              
+   private void navigate2(int index) {
+        tblHoaDon_lichsu.setRowSelectionInterval(index, index);
+        showDetail();
+    }  
    
-   
-   
+    public void btnFirst2() {
+        navigate2(0);
+        scrollToVisible2(0);
+    }
+    public void btnBack2() {
+        int currentIndex = tblHoaDon_lichsu.getSelectedRow();
+        if (currentIndex > 0) {
+            navigate2(currentIndex - 1);
+            scrollToVisible2(currentIndex - 1);
+        }
+    }
+    
+       private void btnNext2() {
+        int currentIndex = tblHoaDon_lichsu.getSelectedRow();
+        if (currentIndex < dshdls.size() - 1) {
+            navigate2(currentIndex + 1);
+            scrollToVisible2(currentIndex + 1);
+        }
+    }
+       
+          private void btnLast2() {
+        int lastIndex = dshdls.size() - 1;
+        navigate2(lastIndex);
+        scrollToVisible2(lastIndex);
+    }
+          
+              private void scrollToVisible2(int rowIndex) {
+    tblHoaDon_lichsu.scrollRectToVisible(tblHoaDon_lichsu.getCellRect(rowIndex, 0, true));
+              }
    
    
 
@@ -197,10 +301,10 @@ public class hoadon extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoaDon_lichsu = new javax.swing.JTable();
         btnInHoaDon1 = new javax.swing.JButton();
-        btnFirst = new javax.swing.JButton();
-        btnPrev = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
-        btnLast = new javax.swing.JButton();
+        btnFirst2 = new javax.swing.JButton();
+        btnBack2 = new javax.swing.JButton();
+        btnNext2 = new javax.swing.JButton();
+        btnLast2 = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -215,7 +319,7 @@ public class hoadon extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         txtThoiGian = new com.toedter.calendar.JDateChooser();
         btnFirst1 = new javax.swing.JButton();
-        btnPrev1 = new javax.swing.JButton();
+        btnBack1 = new javax.swing.JButton();
         btnNext1 = new javax.swing.JButton();
         btnLast1 = new javax.swing.JButton();
         txtMaNV = new javax.swing.JTextField();
@@ -260,31 +364,31 @@ public class hoadon extends javax.swing.JPanel {
             }
         });
 
-        btnFirst.setText("|<");
-        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+        btnFirst2.setText("|<");
+        btnFirst2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFirstActionPerformed(evt);
+                btnFirst2ActionPerformed(evt);
             }
         });
 
-        btnPrev.setText("<<");
-        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+        btnBack2.setText("<<");
+        btnBack2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrevActionPerformed(evt);
+                btnBack2ActionPerformed(evt);
             }
         });
 
-        btnNext.setText(">>");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
+        btnNext2.setText(">>");
+        btnNext2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
+                btnNext2ActionPerformed(evt);
             }
         });
 
-        btnLast.setText(">|");
-        btnLast.addActionListener(new java.awt.event.ActionListener() {
+        btnLast2.setText(">|");
+        btnLast2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLastActionPerformed(evt);
+                btnLast2ActionPerformed(evt);
             }
         });
 
@@ -310,13 +414,13 @@ public class hoadon extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(btnFirst)
+                .addComponent(btnFirst2)
                 .addGap(18, 18, 18)
-                .addComponent(btnPrev)
+                .addComponent(btnBack2)
                 .addGap(32, 32, 32)
-                .addComponent(btnNext)
+                .addComponent(btnNext2)
                 .addGap(29, 29, 29)
-                .addComponent(btnLast)
+                .addComponent(btnLast2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
                 .addComponent(btnInHoaDon1)
                 .addGap(70, 70, 70))
@@ -338,10 +442,10 @@ public class hoadon extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFirst)
-                    .addComponent(btnPrev)
-                    .addComponent(btnNext)
-                    .addComponent(btnLast)
+                    .addComponent(btnFirst2)
+                    .addComponent(btnBack2)
+                    .addComponent(btnNext2)
+                    .addComponent(btnLast2)
                     .addComponent(btnInHoaDon1))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -405,10 +509,10 @@ public class hoadon extends javax.swing.JPanel {
             }
         });
 
-        btnPrev1.setText("<<");
-        btnPrev1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack1.setText("<<");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrev1ActionPerformed(evt);
+                btnBack1ActionPerformed(evt);
             }
         });
 
@@ -476,7 +580,7 @@ public class hoadon extends javax.swing.JPanel {
                 .addGap(61, 61, 61)
                 .addComponent(btnFirst1)
                 .addGap(18, 18, 18)
-                .addComponent(btnPrev1)
+                .addComponent(btnBack1)
                 .addGap(32, 32, 32)
                 .addComponent(btnNext1)
                 .addGap(29, 29, 29)
@@ -510,7 +614,7 @@ public class hoadon extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFirst1)
-                    .addComponent(btnPrev1)
+                    .addComponent(btnBack1)
                     .addComponent(btnNext1)
                     .addComponent(btnLast1)
                     .addComponent(btnInHoaDon))
@@ -570,92 +674,76 @@ public class hoadon extends javax.swing.JPanel {
         
     }//GEN-LAST:event_tbl_HoaDonMouseClicked
 
-    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+    private void btnLast2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLast2ActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tblHoaDon_lichsu.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshdls.size()) {
-                tblHoaDon_lichsu.setRowSelectionInterval(dshdls.size() - 1, dshdls.size() - 1);
-                showDetail2();
-            }
-        }
-    }//GEN-LAST:event_btnLastActionPerformed
+        btnLast2();
+        btnBack2.setEnabled(true);
+        btnFirst2.setEnabled(true);
+        btnNext2.setEnabled(false);
+        btnLast2.setEnabled(false);
+    }//GEN-LAST:event_btnLast2ActionPerformed
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+    private void btnNext2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext2ActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tblHoaDon_lichsu.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshdls.size()) {
-                tblHoaDon_lichsu.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
-                showDetail2();
-            }
-        }
-    }//GEN-LAST:event_btnNextActionPerformed
+        btnNext2();
+        btnBack2.setEnabled(true);
+        btnFirst2.setEnabled(true);
+        btnNext2.setEnabled(true);
+        btnLast2.setEnabled(true);
+    }//GEN-LAST:event_btnNext2ActionPerformed
 
-    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tblHoaDon_lichsu.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tblHoaDon_lichsu.convertRowIndexToModel(viewIndex);
-            if (modelIndex > 0) {
-                tblHoaDon_lichsu.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
-                showDetail2();
-            }
-        }
+        btnBack2();
+        btnBack2.setEnabled(true);
+        btnFirst2.setEnabled(true);
+        btnNext2.setEnabled(true);
+        btnLast2.setEnabled(true);
+    }//GEN-LAST:event_btnBack2ActionPerformed
 
-    }//GEN-LAST:event_btnPrevActionPerformed
-
-    private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
+    private void btnFirst2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst2ActionPerformed
         // TODO add your handling code here:
-        vitri = 0;
-        this.fillToTextBox(vitri);
-        tblHoaDon_lichsu.setRowSelectionInterval(vitri, vitri);
-    }//GEN-LAST:event_btnFirstActionPerformed
+        btnFirst2();
+        btnBack2.setEnabled(false);
+        btnFirst2.setEnabled(false);
+        btnNext2.setEnabled(true);
+        btnLast2.setEnabled(true);
+    }//GEN-LAST:event_btnFirst2ActionPerformed
 
     private void btnFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst1ActionPerformed
         // TODO add your handling code here:
-        vitri = 0;
-        this.fillToTextBox(vitri);
-        tbl_HoaDon.setRowSelectionInterval(vitri, vitri);
+        btnFirst1();
+        btnBack1.setEnabled(false);
+        btnFirst1.setEnabled(false);
+        btnNext1.setEnabled(true);
+        btnLast1.setEnabled(true);
     }//GEN-LAST:event_btnFirst1ActionPerformed
 
-    private void btnPrev1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrev1ActionPerformed
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_HoaDon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
-            if (modelIndex > 0) {
-                tbl_HoaDon.setRowSelectionInterval(viewIndex - 1, viewIndex - 1);
-                showDetail();
-            }
-        }
-
-    }//GEN-LAST:event_btnPrev1ActionPerformed
+    btnBack1();
+        btnBack1.setEnabled(true);
+        btnFirst1.setEnabled(true);
+        btnNext1.setEnabled(true);
+        btnLast1.setEnabled(true);
+    }//GEN-LAST:event_btnBack1ActionPerformed
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_HoaDon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshd.size()) {
-                tbl_HoaDon.setRowSelectionInterval(viewIndex + 1, viewIndex + 1);
-                showDetail();
-            }
-        }
+     btnNext1();
+        btnBack1.setEnabled(true);
+        btnFirst1.setEnabled(true);
+        btnNext1.setEnabled(true);
+        btnLast1.setEnabled(true);
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     private void btnLast1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLast1ActionPerformed
         // TODO add your handling code here:
-        int viewIndex = tbl_HoaDon.getSelectedRow();
-        if (viewIndex != -1) {
-            int modelIndex = tbl_HoaDon.convertRowIndexToModel(viewIndex);
-            if (modelIndex + 1 < dshd.size()) {
-                tbl_HoaDon.setRowSelectionInterval(dshd.size() - 1, dshd.size() - 1);
-                showDetail();
-            }
-        }
+        btnLast1();
+            btnBack1.setEnabled(true);
+            btnFirst1.setEnabled(true);
+            btnNext1.setEnabled(false);
+            btnLast1.setEnabled(false);       
     }//GEN-LAST:event_btnLast1ActionPerformed
 
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
@@ -698,16 +786,16 @@ public class hoadon extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnBack1;
+    private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnFirst1;
+    private javax.swing.JButton btnFirst2;
     private javax.swing.JButton btnInHoaDon;
     private javax.swing.JButton btnInHoaDon1;
-    private javax.swing.JButton btnLast;
     private javax.swing.JButton btnLast1;
-    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnLast2;
     private javax.swing.JButton btnNext1;
-    private javax.swing.JButton btnPrev;
-    private javax.swing.JButton btnPrev1;
+    private javax.swing.JButton btnNext2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -731,12 +819,5 @@ public class hoadon extends javax.swing.JPanel {
     private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 
-//    private void xuatHoaDon() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-//
-//    private void XuatHoaDon() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
 
 }

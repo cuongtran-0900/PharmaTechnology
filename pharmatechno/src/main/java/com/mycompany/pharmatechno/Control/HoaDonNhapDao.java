@@ -9,11 +9,14 @@ import java.util.List;
 import java.util.ArrayList;
 import com.mycompany.pharmatechno.Model.HoaDonNhap;
 import com.mycompany.pharmatechno.UI.HoaDonNhapUI;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +25,6 @@ import java.util.logging.Logger;
 public class HoaDonNhapDao extends ConnectSQL {
 
     List<HoaDonNhap> dshdn = new ArrayList<>();
-    List<HoaDonNhap> dshdnls = new ArrayList<>();
 
     public List<HoaDonNhap> filltoArrayList() {
         try {
@@ -59,7 +61,6 @@ public class HoaDonNhapDao extends ConnectSQL {
         return dshdn;
     }
         
-
    public List<HoaDonNhap> filltoArrayList2() {
     List<HoaDonNhap> dshdnls = new ArrayList<>(); // Tạo danh sách mới nếu chưa có
 
@@ -86,59 +87,54 @@ public class HoaDonNhapDao extends ConnectSQL {
             dshdnls.add(hdn);
         }
     } catch (SQLException ex) {
-        Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, "SQL Error", ex);
-//=======
-//    public List<HoaDonNhap> filltoArrayList2() {
-//        try {
-////            String sql = 
-////                    """
-////                    select hdn.mahdn, t.tenthuoc, hdn.manpp, cthdn.soluong, hdn.nguoigiao, hdn.nguoinhan, hdn.ngayviet, hdn.ngaynhap
-////                    from hoadonnhap as hdn
-////                    inner join chitiethoadonnhap as cthdn on hdn.maHDN = cthdn.MaHDN
-////                    inner join Thuoc as t on t.MaThuoc = cthdn.MaThuoc;""";
-//            String sql
-//                    = """
-//                SELECT hdn.*, t.MaThuoc, t.TenThuoc, cthdn.SoLuong
-//                FROM hoadonnhap AS hdn
-//                INNER JOIN chitiethoadonnhap AS cthdn ON hdn.MaHDN = cthdn.MaHDN
-//                INNER JOIN Thuoc AS t ON t.MaThuoc = cthdn.MaThuoc;
-//                """;
-//            try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
-//                dshdn.clear();
-//                while (rs.next()) {
-//                    HoaDonNhap hdn = new HoaDonNhap();
-//                    hdn.setMaHDN(rs.getString("MaHDN"));
-//                    hdn.setMaNPP(rs.getString("MaNPP"));                 
-//                    hdn.setNguoiGiao(rs.getString("nguoiGiao"));
-//                    hdn.setNguoiNhan(rs.getString("nguoiNhan"));
-//                    hdn.setNgayViet(rs.getDate("ngayViet"));
-//                    hdn.setNgayNhap(rs.getDate("ngayNhap"));
-//                    hdn.setTongTien(rs.getFloat("tongTien"));
-//
-//                    dshdn.add(hdn);
-//                }
-//                rs.close();
-//                st.close();
-//            }
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return dshdn;
-//    }
-//    public void add(HoaDonNhap hdn) {
-//        dshdn.add(hdn);
-////        // Logic to add hdn to the database or any other source
-////>>>>>>> 9731a4f0625ae032cab947dc8c139fe3b5166b2e
-////    }
-////
-////    return dshdnls; // Trả về danh sách đúng
-////}
-////
-////
-////    
-////    
-}
-        return dshdnls;
+        Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, "SQL Error", ex);}
+    return dshdnls;
    }
+   
+   
+   public int save(HoaDonNhap hdn) {
+
+        try {
+            String sql1 = "insert into HoaDonNhap (MaHDN,MaNPP,NguoiGiao,NguoiNhan,NgayViet,NgayNhap,TongTien,isdelete) values(?,?,?,?,?,?,?,?)";
+            PreparedStatement st1 = con.prepareStatement(sql1);
+            
+            
+            st1.setString(1, hdn.getMaHDN());
+            st1.setString(2, hdn.getMaNPP());
+            st1.setString(3, hdn.getNguoiGiao());
+            st1.setString(4, hdn.getNguoiNhan());
+            st1.setDate(5, (Date) hdn.getNgayViet());
+            st1.setDate(6, (Date) hdn.getNgayNhap());
+            st1.setString(7, String.valueOf(hdn.getTongTien()));
+            st1.setInt(8,1);
+           
+            
+            String sql2 = "insert into Thuoc (MaThuoc,TenThuoc) values(?,?)";
+            PreparedStatement st2 = con.prepareStatement(sql1);
+            
+            
+            st2.setString(1, hdn.getMaThuoc());
+            st2.setString(2, hdn.getTenThuoc());
+            int row1 = st2.executeUpdate();
+            
+            if (row1 > 0) {
+                JOptionPane.showMessageDialog(null, "Thêm thành công");
+                return row1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
 }
+   
+   
+   
+   
+   
+  
+
+
+    
+    
+
