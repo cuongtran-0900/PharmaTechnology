@@ -28,14 +28,8 @@ public class HoaDonNhapDao extends ConnectSQL {
 
     public List<HoaDonNhap> filltoArrayList() {
     try {
-        String sql = """
-            SELECT hdn.maHDN, hdn.MaNPP, hdn.NguoiGiao, hdn.NguoiNhan, hdn.NgayViet, hdn.NgayNhap, hdn.TongTien, 
-                   t.MaThuoc, t.TenThuoc, cthdn.Soluong, cthdn.GiaNhap, cthdn.Soluong * cthdn.GiaNhap AS ThanhTien
-            FROM hoadonnhap AS hdn
-            INNER JOIN chitiethoadonnhap AS cthdn ON hdn.MaHDN = cthdn.MaHDN
-            INNER JOIN Thuoc AS t ON t.MaThuoc = cthdn.MaThuoc
-            WHERE hdn.IsDelete = 1
-        """;
+        String sql = 
+        " SELECT hdn.maHDN, hdn.MaNPP, hdn.NguoiGiao, hdn.NguoiNhan, hdn.NgayViet, hdn.NgayNhap, hdn.TongTien,t.MaThuoc, t.TenThuoc, cthdn.Soluong, cthdn.GiaNhap, cthdn.Soluong * cthdn.GiaNhap AS ThanhTien FROM hoadonnhap AS hdn INNER JOIN chitiethoadonnhap AS cthdn ON hdn.MaHDN = cthdn.MaHDN INNER JOIN Thuoc AS t ON t.MaThuoc = cthdn.MaThuoc WHERE hdn.IsDelete = 1";
         try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
             dshdn.clear();
             HoaDonNhap currentHDN = null;
