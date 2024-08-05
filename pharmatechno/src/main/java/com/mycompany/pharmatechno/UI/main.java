@@ -583,9 +583,14 @@ public class main extends javax.swing.JFrame {
 
         mniHoaDonNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
         mniHoaDonNhap.setText("Hóa Đơn Nhập");
+        mniHoaDonNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mniHoaDonNhapMouseClicked(evt);
+            }
+        });
         mniHoaDonNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
+                mniHoaDonNhapActionPerformed(evt);            }
         });
         MnuXuLi.add(mniHoaDonNhap);
 
@@ -603,12 +608,12 @@ public class main extends javax.swing.JFrame {
         mniDoanhThu.setText("Doanh Thu");
         mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                
+                // jMenuItem11MouseClicked(evt);
             }
         });
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                     mniDoanhThuActionPerformed(evt);
+                mniDoanhThuActionPerformed(evt);
             }
         });
         MnuThongKe.add(mniDoanhThu);
@@ -621,6 +626,7 @@ public class main extends javax.swing.JFrame {
         mniThuoc.setText("Thuốc ");
         mniThuoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // jMenuItem13ActionPerformed(evt);
             }
         });
         MnuThongKe.add(mniThuoc);
@@ -741,6 +747,7 @@ public class main extends javax.swing.JFrame {
     private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
         // TODO add your handling code here:
                 changePanel(new ThongKe());
+                updateBackgroundColorsformni();
     }//GEN-LAST:event_mniDoanhThuActionPerformed
 
     private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
@@ -939,6 +946,18 @@ public class main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
+    private void mniHoaDonNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniHoaDonNhapMouseClicked
+        // TODO add your handling code here:
+        changePanel(new HoaDonNhapUI());
+        updateBackgroundColorsformni();
+    }//GEN-LAST:event_mniHoaDonNhapMouseClicked
+
+    private void mniHoaDonNhapActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        changePanel(new HoaDonNhapUI());
+        updateBackgroundColorsformni();
+    }   
+    
     private void mniHoaDonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
         changePanel(new hoadon());

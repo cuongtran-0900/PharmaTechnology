@@ -163,6 +163,7 @@
                 <Property name="text" type="java.lang.String" value="H&#xf3;a &#x110;&#x1a1;n Nh&#x1ead;p"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mniHoaDonNhapMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem10ActionPerformed"/>
               </Events>
             </MenuItem>
