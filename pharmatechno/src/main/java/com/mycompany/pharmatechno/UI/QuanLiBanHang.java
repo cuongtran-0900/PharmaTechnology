@@ -792,6 +792,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         bhdao.filltoArrayList();
         txtMaHoaDon.setText("");
         txtThoiGian.setText("");
+        txtTongTien.setText("");
         txtMaHoaDon.setText(bhdao.Maphatsinh());
         txtThoiGian.setText(currentTimestamp.toString());
 
