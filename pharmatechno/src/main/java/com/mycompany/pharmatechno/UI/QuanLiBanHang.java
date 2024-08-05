@@ -79,7 +79,6 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         btnLuuIn = new javax.swing.JButton();
         btbThanhToan = new javax.swing.JButton();
-        btnHuy = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         cboHinhThuc = new javax.swing.JComboBox<>();
@@ -91,16 +90,27 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtThoiGian = new javax.swing.JTextField();
         txtBarCode = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 255));
 
+        tblQuanLiBanHang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã Thuốc", "Tên Thuốc", "Tồn Kho", "ĐVT", "Đơn Giá", "Barcode"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblQuanLiBanHang);
-        if (tblQuanLiBanHang.getColumnModel().getColumnCount() > 0) {
-            tblQuanLiBanHang.getColumnModel().getColumn(1).setMinWidth(200);
-            tblQuanLiBanHang.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tblQuanLiBanHang.getColumnModel().getColumn(1).setMaxWidth(200);
-        }
 
         jPanel3.setBackground(new java.awt.Color(51, 255, 51));
 
@@ -188,13 +198,6 @@ public class QuanLiBanHang extends javax.swing.JPanel {
             }
         });
 
-        btnHuy.setText("Hủy");
-        btnHuy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // btnHuyActionPerformed(evt);
-            }
-        });
-
         jLabel9.setText("Mã Nhân Viên :");
 
         jLabel10.setText("Hình Thức Thanh Toán     :");
@@ -264,9 +267,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                         .addGap(60, 60, 60)
                         .addComponent(btbThanhToan)
                         .addGap(67, 67, 67)
-                        .addComponent(btnLuuIn)
-                        .addGap(66, 66, 66)
-                        .addComponent(btnHuy)))
+                        .addComponent(btnLuuIn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -291,8 +292,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btbThanhToan)
-                    .addComponent(btnLuuIn)
-                    .addComponent(btnHuy))
+                    .addComponent(btnLuuIn))
                 .addGap(15, 15, 15))
         );
 
@@ -310,7 +310,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("BarCode:");
+        jLabel6.setText("BarCode:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -325,7 +325,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtBarCode, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -352,7 +352,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel1)
                     .addComponent(txtBarCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
@@ -367,7 +367,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
     public void filltotable() {
         DefaultTableModel model = new DefaultTableModel(
-                new Object[]{"Mã Thuốc", "Tên Thuốc", "Tồn Kho", "ĐVT", "Đơn Giá"}, 0
+                new Object[]{"Mã Thuốc", "Tên Thuốc", "Tồn Kho", "ĐVT", "Đơn Giá", "barcode"}, 0
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -376,7 +376,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         };
         for (BanHang bh : dsbh) {
             model.addRow(new Object[]{
-                bh.getMaThuoc(), bh.getTenThuoc(), bh.getTonKho(), bh.getDVT(), bh.getDonGia()
+                bh.getMaThuoc(), bh.getTenThuoc(), bh.getTonKho(), bh.getDVT(), bh.getDonGia(), bh.getBarCode()
             });
         }
         tblQuanLiBanHang.setModel(model);
@@ -386,6 +386,44 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         // Giả sử bạn có một bảng giỏ hàng có tên tblGioHang
         // Kiểm tra số lượng hàng trong giỏ hàng
         return tblGioHang.getRowCount() > 0;
+    }
+    
+    private void targetbarcode() {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                txtBarCode.requestFocusInWindow();
+            }
+        });
+
+        // Nếu muốn giữ focus trên txtBarcode sau mỗi thao tác, ví dụ khi bấm nút "Thêm vào giỏ hàng":
+//        btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                // Thực hiện các thao tác thêm sản phẩm vào giỏ hàng
+//                // ...
+//
+//                // Đặt focus lại vào txtBarcode
+//                txtBarCode.requestFocusInWindow();
+//            }
+//        });
+    }
+
+    private void addProductToCartByBarcode(String barcode) {
+        for (BanHang product : dsbh) {
+            if (product.getBarCode().equals(barcode)) {
+                DefaultTableModel model = (DefaultTableModel) tblGioHang.getModel();
+                model.addRow(new Object[]{
+                    product.getTenThuoc(),
+                    product.getDVT(),
+                    1, // default quantity
+                    product.getDonGia(),
+                    product.getDonGia(),
+                    product.getBarCode()// total price for one item
+                });
+                txtBarCode.setText(""); // Clear barcode after processing
+                break;
+            }
+        }
     }
 
     private void tableEvent() {
@@ -444,72 +482,88 @@ public class QuanLiBanHang extends javax.swing.JPanel {
     }
 
     private void addToListCart() {
-        DefaultTableModel cartModel = (DefaultTableModel) tblGioHang.getModel();
-        cartModel.setRowCount(0);
-
         tblQuanLiBanHang.addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int selectedRow = tblQuanLiBanHang.getSelectedRow();
+                if (e.getClickCount() == 2) { // Kiểm tra click đôi
+                    int selectedRow = tblQuanLiBanHang.rowAtPoint(e.getPoint()); // Lấy hàng tại vị trí chuột
                     if (selectedRow != -1) {
-                        addToCart(selectedRow);
+                        addProductToCart(selectedRow);
                     }
                 }
             }
         });
-
+        
         txtBarCode.addActionListener(evt -> {
-            String barcode = txtBarCode.getText().trim();
-            System.out.println("Mã vạch nhập vào: " + barcode); // In mã vạch nhận được
-            if (barcode.isEmpty()) {
-                return;
-            }
+    String barcode = txtBarCode.getText().trim();
+    System.out.println("Mã vạch nhập vào: " + barcode); // In mã vạch nhận được
+    if (barcode.isEmpty()) return;
+    
+    boolean productFound = false;
+    for (int i = 0; i < tblQuanLiBanHang.getRowCount(); i++) {
+        String currentBarcode = (String) tblQuanLiBanHang.getValueAt(i, 5); // Giả sử mã vạch ở cột 0
+        if (barcode.equals(currentBarcode)) {
+            productFound = true;
+            addProductToCart(i);
+            break;
+        }
+    }
+    
+    if (!productFound) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Sản phẩm không có trong danh sách!", "Thông Báo", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+    
+    txtBarCode.setText(""); // Xóa mã vạch sau khi xử lý
+});
 
-            boolean productFound = false;
-            for (int i = 0; i < tblQuanLiBanHang.getRowCount(); i++) {
-                String currentBarcode = (String) tblQuanLiBanHang.getValueAt(i, 4); // Giả sử mã vạch ở cột 0
-                if (barcode.equals(currentBarcode)) {
-                    productFound = true;
-                    addToCart(i);
-                    break;
+        DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
+        cartmodel.setRowCount(0);
+
+        // Thêm TableModelListener để lắng nghe sự thay đổi
+        cartmodel.addTableModelListener(e -> {
+            if (!isUpdatingTable) {
+                int row = e.getFirstRow();
+                int column = e.getColumn();
+                if (column == 3) { // Kiểm tra nếu cột là cột số lượng hoặc thành tiền
+                    updateRowTotal(row);
                 }
             }
-
-            if (!productFound) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Sản phẩm không có trong danh sách!", "Thông Báo", javax.swing.JOptionPane.ERROR_MESSAGE);
-            }
-
-            txtBarCode.setText(""); // Xóa mã vạch sau khi xử lý
         });
 
-        cartModel.addTableModelListener(e -> {
-            int row = e.getFirstRow();
-            int column = e.getColumn();
-            if (column == 2) { // Check if column is quantity
-                int newQuantity = 0;
-                Object newQuantityObj = tblGioHang.getValueAt(row, 2);
-                if (newQuantityObj instanceof Number) {
-                    newQuantity = ((Number) newQuantityObj).intValue();
-                } else if (newQuantityObj instanceof String) {
-                    try {
-                        newQuantity = Integer.parseInt((String) newQuantityObj);
-                    } catch (NumberFormatException ex) {
-                        ex.printStackTrace(); // Handle error if conversion fails
-                    }
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem deleteItem = new JMenuItem("Delete");
+        popupMenu.add(deleteItem);
+
+        // Thêm sự kiện cho menu ngữ cảnh
+        deleteItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = tblGioHang.getSelectedRow();
+                if (selectedRow != -1) {
+                    cartmodel.removeRow(selectedRow);
+                    updateTotalAmount(); // Cập nhật tổng tiền khi xóa
                 }
-                Object donGiaObj = tblGioHang.getValueAt(row, 3);
-                int DonGia = 0;
-                if (donGiaObj instanceof Number) {
-                    DonGia = ((Number) donGiaObj).intValue();
-                } else if (donGiaObj instanceof String) {
-                    try {
-                        DonGia = Integer.parseInt((String) donGiaObj);
-                    } catch (NumberFormatException ex) {
-                        ex.printStackTrace(); // Handle error if conversion fails
+            }
+        });
+
+        // Thêm sự kiện chuột phải để hiển thị menu ngữ cảnh
+        tblGioHang.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+                    int row = tblGioHang.rowAtPoint(e.getPoint());
+                    if (row >= 0 && row < tblGioHang.getRowCount()) {
+                        tblGioHang.setRowSelectionInterval(row, row);
+                    } else {
+                        tblGioHang.clearSelection();
                     }
+
+                    int rowindex = tblGioHang.getSelectedRow();
+                    if (rowindex < 0) {
+                        return;
+                    }
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
                 }
-                int thanhTien = newQuantity * DonGia;
-                tblGioHang.setValueAt(thanhTien, row, 4); // Update total price
             }
         });
     }
@@ -520,15 +574,13 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         String TenThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 1));
         String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 3));
         int SoLuong = 1;
-    }
 
-    private void addToCart(int rowIndex) {
-        DefaultTableModel cartModel = (DefaultTableModel) tblGioHang.getModel();
-        String TenThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(rowIndex, 0));
-        String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(rowIndex, 1));
-        int SoLuong = 1;
-        Object donGiaObj = tblQuanLiBanHang.getValueAt(rowIndex, 3);
+        // Lấy số lượng tồn kho từ bảng tblQuanLiBanHang (giả sử cột 2 là số lượng tồn kho)
+        int tonKho = (int) tblQuanLiBanHang.getValueAt(selectedRow, 2);
+
+        Object donGiaObj = tblQuanLiBanHang.getValueAt(selectedRow, 4);
         int DonGia = 0;
+
         if (donGiaObj instanceof Number) {
             DonGia = ((Number) donGiaObj).intValue();
         } else if (donGiaObj instanceof String) {
@@ -536,15 +588,16 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                 DonGia = Integer.parseInt((String) donGiaObj);
             } catch (NumberFormatException ex) {
                 ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                return; // Thoát nếu không thể chuyển đổi
             }
         }
 
         boolean productExists = false;
         for (int i = 0; i < tblGioHang.getRowCount(); i++) {
-            Object tenThuocInCart = tblGioHang.getValueAt(i, 0);
+            Object tenThuocInCart = tblGioHang.getValueAt(i, 1); // Cột 1 là TenThuoc
             if (TenThuoc.equals(String.valueOf(tenThuocInCart))) {
                 int currentQuantity = 0;
-                Object currentQuantityObj = tblGioHang.getValueAt(i, 2);
+                Object currentQuantityObj = tblGioHang.getValueAt(i, 3); // Cột 3 là SoLuong
                 if (currentQuantityObj instanceof Number) {
                     currentQuantity = ((Number) currentQuantityObj).intValue();
                 } else if (currentQuantityObj instanceof String) {
@@ -555,56 +608,44 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                     }
                 }
                 int newQuantity = currentQuantity + SoLuong;
+
+                // Kiểm tra nếu newQuantity vượt quá số lượng tồn kho
+                if (newQuantity > tonKho) {
+                    JOptionPane.showMessageDialog(null, "Số lượng trong giỏ hàng không được vượt quá tồn kho!");
+                    return;
+                }
+
                 int thanhTien = newQuantity * DonGia;
-                tblGioHang.setValueAt(newQuantity, i, 2); // Cập nhật số lượng
-                tblGioHang.setValueAt(thanhTien, i, 4); // Cập nhật thành tiền
+
+                isUpdatingTable = true;
+                tblGioHang.setValueAt(newQuantity, i, 3); // Cập nhật số lượng
+                tblGioHang.setValueAt(thanhTien, i, 5); // Cập nhật thành tiền
+                isUpdatingTable = false;
+
                 productExists = true;
+
+                // Cập nhật tồn kho sau khi sản phẩm được thêm vào giỏ hàng
+                int updatedTonKho = tonKho - SoLuong;
+                tblQuanLiBanHang.setValueAt(updatedTonKho, selectedRow, 2); // Cập nhật tồn kho
+
                 break;
             }
         }
-
         if (!productExists) {
+            // Kiểm tra nếu số lượng ban đầu vượt quá tồn kho
+            if (SoLuong > tonKho) {
+                JOptionPane.showMessageDialog(null, "Số lượng trong giỏ hàng không được vượt quá tồn kho!");
+                return;
+            }
+
             int thanhTien = SoLuong * DonGia;
-            cartModel.addRow(new Object[]{TenThuoc, DVT, SoLuong, DonGia, thanhTien});
+            cartmodel.addRow(new Object[]{MaThuoc, TenThuoc, DVT, SoLuong, DonGia, thanhTien});
+
+            // Cập nhật tồn kho sau khi sản phẩm được thêm vào giỏ hàng
+            int updatedTonKho = tonKho - SoLuong;
+            tblQuanLiBanHang.setValueAt(updatedTonKho, selectedRow, 2); // Cập nhật tồn kho
         }
-    }
-
-    private void targetbarcode() {
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                txtBarCode.requestFocusInWindow();
-            }
-        });
-
-        // Nếu muốn giữ focus trên txtBarcode sau mỗi thao tác, ví dụ khi bấm nút "Thêm vào giỏ hàng":
-//        btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                // Thực hiện các thao tác thêm sản phẩm vào giỏ hàng
-//                // ...
-//
-//                // Đặt focus lại vào txtBarcode
-//                txtBarCode.requestFocusInWindow();
-//            }
-//        });
-    }
-
-    private void addProductToCartByBarcode(String barcode) {
-        for (BanHang product : dsbh) {
-            if (product.getBarCode().equals(barcode)) {
-                DefaultTableModel model = (DefaultTableModel) tblGioHang.getModel();
-                model.addRow(new Object[]{
-                    product.getTenThuoc(),
-                    product.getDVT(),
-                    1, // default quantity
-                    product.getDonGia(),
-                    product.getDonGia(),
-                    product.getBarCode()// total price for one item
-                });
-                txtBarCode.setText(""); // Clear barcode after processing
-                break;
-            }
-        }
+        updateTotalAmount(); // Cập nhật tổng tiền
     }
 
     private void updateRowTotal(int row) {
@@ -715,6 +756,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         }
     }
 
+    
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
@@ -780,7 +822,6 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btbThanhToan;
-    private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnLuuIn;
     private javax.swing.JComboBox<String> cboHinhThuc;
     private javax.swing.JLabel jLabel1;
@@ -788,9 +829,9 @@ public class QuanLiBanHang extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

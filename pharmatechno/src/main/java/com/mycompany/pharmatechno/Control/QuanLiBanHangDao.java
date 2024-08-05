@@ -28,12 +28,13 @@ public class QuanLiBanHangDao extends ConnectSQL{
         
             public List<BanHang> filltoArrayList(){
     try {
-            String sql = "select TenThuoc, DonViTinh, LoaiThuoc, DonGia, soluongton,barcode from thuoc where isdelete = 1 order by tenthuoc ";
+            String sql = "select Mathuoc, TenThuoc, DonViTinh, LoaiThuoc, DonGia, soluongton,barcode from thuoc where isdelete = 1 order by tenthuoc ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)) {
             dsbh.clear();
             while(rs.next()) {
                 BanHang bh = new BanHang();
+                bh.setMaThuoc(rs.getString("MaThuoc"));
                 bh.setTenThuoc(rs.getString("TenThuoc"));
                 bh.setDVT(rs.getString("DonViTinh"));
                 bh.setLoai(rs.getString("LoaiThuoc"));
