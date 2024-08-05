@@ -21,30 +21,29 @@ import javax.swing.JOptionPane;
  * @author tu
  */
 public class ChiTietHoaDonNhapDAO extends ConnectSQL {
-  List<ChiTietHoaDonNhap> cthdn = new ArrayList<>();
-    
-  public List<ChiTietHoaDonNhap> filltoArrayList(){
-    try {
-            String sql = "select * from chitiethoadonnhap where isdelete = 1 order by mahd ";
-        try (Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql)){
-            cthdn.clear();
-            while(rs.next()) {
-                ChiTietHoaDonNhap hd = new ChiTietHoaDonNhap();
-                hd.setMaHDN(rs.getString("MaHDN"));
-                 hd.setMaThuoc(rs.getString("Mathuoc"));
-                  hd.setSoLuong(rs.getInt("soLuong"));
-                   hd.setGiaNhap(rs.getFloat("gianhap"));
-                cthdn.add(hd);   
-            }
-            rs.close();
-            st.close();
-        }
-        
-    } catch (SQLException ex) {
-        Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    return cthdn;
-}
-}
 
+    List<ChiTietHoaDonNhap> cthdn = new ArrayList<>();
+
+    public List<ChiTietHoaDonNhap> filltoArrayList() {
+        try {
+            String sql = " select t.TenThuoc ,cthdn.Soluong, cthdn.GiaNhap, ThanhTien = cthdn.Soluong * cthdn.GiaNhap from chitiethoadonnhap as cthdn inner join Thuoc as t on cthdn.MaThuoc = t.MaThuoc order by MaHDN ";
+            try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+                cthdn.clear();
+                while (rs.next()) {
+                    ChiTietHoaDonNhap hd = new ChiTietHoaDonNhap();
+                    hd.setTenThuoc(rs.getString("TenThuoc"));
+                    hd.setSoLuong(rs.getInt("soLuong"));
+                    hd.setGiaNhap(rs.getInt("gianhap"));
+                    hd.setThanhTien(rs.getInt("ThanhTien"));   
+                    cthdn.add(hd);
+                }
+                rs.close();
+                st.close();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HoaDonNhapUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cthdn;
+    }
+}

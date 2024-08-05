@@ -6,29 +6,53 @@ package com.mycompany.pharmatechno.Model;
  * @author Cuong
  */
 public class ChiTietHoaDonNhap {
-    private String MaHDN;
     private String MaThuoc;
-    private int SoLuong;
-    private float GiaNhap;
+    private String tenThuoc;
+    private int soLuong;
+    private int giaNhap;
+    private int ThanhTien;
 
     public ChiTietHoaDonNhap() {
     }
-    
-    
-    
-    public ChiTietHoaDonNhap(String MaHDN, String MaThuoc, int SoLuong, float GiaNhap) {
-        this.MaHDN = MaHDN;
+
+    public ChiTietHoaDonNhap(String MaThuoc, String tenThuoc, int soLuong, int giaNhap, int ThanhTien) {
         this.MaThuoc = MaThuoc;
-        this.SoLuong = SoLuong;
-        this.GiaNhap = GiaNhap;
+        this.tenThuoc = tenThuoc;
+        this.soLuong = soLuong;
+        this.giaNhap = giaNhap;
+        this.ThanhTien = ThanhTien;
     }
 
-    public String getMaHDN() {
-        return MaHDN;
+    public String getTenThuoc() {
+        return tenThuoc;
     }
 
-    public void setMaHDN(String MaHDN) {
-        this.MaHDN = MaHDN;
+    public void setTenThuoc(String tenThuoc) {
+        this.tenThuoc = tenThuoc;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public int getGiaNhap() {
+        return giaNhap;
+    }
+
+    public void setGiaNhap(int giaNhap) {
+        this.giaNhap = giaNhap;
+    }
+
+    public int getThanhTien() {
+        return ThanhTien;
+    }
+
+    public void setThanhTien(int ThanhTien) {
+        this.ThanhTien = ThanhTien;
     }
 
     public String getMaThuoc() {
@@ -39,21 +63,6 @@ public class ChiTietHoaDonNhap {
         this.MaThuoc = MaThuoc;
     }
 
-    public int getSoLuong() {
-        return SoLuong;
-    }
 
-    public void setSoLuong(int SoLuong) {
-        this.SoLuong = SoLuong;
-    }
-
-    public float getGiaNhap() {
-        return GiaNhap;
-    }
-
-    public void setGiaNhap(float GiaNhap) {
-        this.GiaNhap = GiaNhap;
-    }
-    
-    
 }
+
