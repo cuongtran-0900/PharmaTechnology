@@ -39,8 +39,8 @@ public class main extends javax.swing.JFrame {
     public main() {
         initComponents();
         mniLightActionPerformed(null);
-        setPanelEvents(jpnDangXuat, jpnDoanhThu, jpnQuanLiBanHang, jpnQuanLiNV);
-
+        setPanelEvents(jpnDangXuat,jpnDoanhThu,jpnQuanLiBanHang,jpnQuanLiNV,jpnQuanLiThuoc,jpnTaiKhoan);
+        
     }
 
     public void hideAdminPanel() {
@@ -68,9 +68,9 @@ public class main extends javax.swing.JFrame {
     }
 
     private JPanel currentPanel = null;
-    private final Color originalColor = new Color(13, 18, 130);
-    private final Color hoverColor = new Color(2, 94, 167);
-    private final Color clickColor = new Color(255, 102, 102);
+    private final Color originalColor = new Color(153, 255, 204);
+    private final Color hoverColor = new Color(255, 204, 204);
+    private final Color clickColor = new Color(255, 204, 204);
 
     /**
      * This method is called from within the constructor to initialize the form.
