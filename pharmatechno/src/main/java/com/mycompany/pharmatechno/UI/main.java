@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -435,6 +436,11 @@ public class main extends javax.swing.JFrame {
 
         mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Logout_30px_1.png"))); // NOI18N
         mniDangXuat.setText("Đăng Xuất");
+        mniDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDangXuatActionPerformed(evt);
+            }
+        });
         jMnHeThong.add(mniDangXuat);
 
         mniDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_find_and_replace_30px.png"))); // NOI18N
@@ -448,6 +454,11 @@ public class main extends javax.swing.JFrame {
 
         mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
         mniThoat.setText("Thoát");
+        mniThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniThoatActionPerformed(evt);
+            }
+        });
         jMnHeThong.add(mniThoat);
 
         mniTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
@@ -771,6 +782,7 @@ private void updateBackgroundColorsformni() {
 
     private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
         // TODO add your handling code here:
+          changePanel(new TaiKhoan());
     }//GEN-LAST:event_mniTaiKhoanActionPerformed
 
     private void jpnTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnTaiKhoanMouseClicked
@@ -790,6 +802,29 @@ private void updateBackgroundColorsformni() {
         changePanel(new ThayDoiMatKhau());
         
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
+
+    private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
+        // TODO add your handling code here:    
+        // Đóng
+        dispose();
+        
+        // Tạo và hiển thị JFrame mới của bạn (ví dụ: màn hình đăng nhập)
+        JFrame newFrame = new DangNhap(); 
+        newFrame.setVisible(true);
+    
+        
+        
+    }//GEN-LAST:event_mniDangXuatActionPerformed
+
+    private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
+        // TODO add your handling code here:       
+        // Đóng 
+        dispose();
+        JFrame newFrame = new main(); 
+        newFrame.setVisible(true);
+        
+
+    }//GEN-LAST:event_mniThoatActionPerformed
 
     /**
      * @param args the command line arguments
