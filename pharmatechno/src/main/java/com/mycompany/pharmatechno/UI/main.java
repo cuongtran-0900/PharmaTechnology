@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.mycompany.pharmatechno.Control.Auth;
 import com.mycompany.pharmatechno.Control.appController;
+import com.mycompany.pharmatechno.Model.HoaDon;
 import com.sun.tools.javac.Main;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -575,6 +576,7 @@ public class main extends javax.swing.JFrame {
         mniHoaDon.setText("Hóa Đơn");
         mniHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniHoaDonActionPerformed(evt);
             }
         });
         MnuXuLi.add(mniHoaDon);
@@ -874,6 +876,8 @@ public class main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
+    
+    
     private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
         // TODO add your handling code here:
         int response = JOptionPane.showConfirmDialog(this,
@@ -935,9 +939,15 @@ public class main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
-//GEN-LAST:event_mniDangXuatActionPerformed
+    private void mniHoaDonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        changePanel(new hoadon());
+        updateBackgroundColorsformni();
+        
+    }     
+                                           
 
-    //GEN-LAST:event_mniThoatActionPerformed
+                                            
 
     /**
      * @param args the command line arguments
