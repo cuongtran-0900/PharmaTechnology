@@ -1,37 +1,67 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.pharmatechno.Model;
 
 import java.sql.Timestamp;
 
-
-/**
- *
- * @author Cuong
- */
 public class HoaDon {
-
+    
+    private String TenThuoc;
+    private int SoLuong;
+    private float DonGia;
+    private float TongTien;
     private String MaHD;
     private Timestamp thoiGian;
     private String MaNV;
-    private String MaKH;
-    private float tongTien;
-    private String tenKH;
-   
-    
-    public HoaDon() {
+    private String MaKH; 
+    private float ThanhTien;
+    private float TongTienNgay;
 
+    public HoaDon() {
     }
 
-    public HoaDon(String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float tongTien, String tenKH) {
+    public HoaDon(String TenThuoc, int SoLuong, float DonGia, float TongTien, String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float ThanhTien, float TongTienNgay) {
+        this.TenThuoc = TenThuoc;
+        this.SoLuong = SoLuong;
+        this.DonGia = DonGia;
+        this.TongTien = TongTien;
         this.MaHD = MaHD;
         this.thoiGian = thoiGian;
         this.MaNV = MaNV;
         this.MaKH = MaKH;
-        this.tongTien = tongTien;
-        this.tenKH = tenKH;
+        this.ThanhTien = ThanhTien;
+        this.TongTienNgay = TongTienNgay;
+    }
+
+    public String getTenThuoc() {
+        return TenThuoc;
+    }
+
+    public void setTenThuoc(String TenThuoc) {
+        this.TenThuoc = TenThuoc;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
+    }
+
+    public float getDonGia() {
+        return DonGia;
+    }
+
+    public void setDonGia(float DonGia) {
+        this.DonGia = DonGia;
+    }
+
+    public float getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(float TongTien) {
+        this.TongTien = TongTien;
     }
 
     public String getMaHD() {
@@ -66,24 +96,21 @@ public class HoaDon {
         this.MaKH = MaKH;
     }
 
-    public float getTongTien() {
-        return tongTien;
+    public float getThanhTien() {
+        return ThanhTien;
     }
 
-    public void setTongTien(float tongTien) {
-        this.tongTien = tongTien;
+    public void setThanhTien(float ThanhTien) {
+        this.ThanhTien = ThanhTien;
     }
 
-    public String getTenKH() {
-        return tenKH;
+    public float getTongTienNgay() {
+        return TongTienNgay;
     }
 
-    public void setTenKH(String tenKH) {
-        this.tenKH = tenKH;
+    public void setTongTienNgay(float TongTienNgay) {
+        this.TongTienNgay = TongTienNgay;
     }
-
     
-   
-
-  
+    
 }
