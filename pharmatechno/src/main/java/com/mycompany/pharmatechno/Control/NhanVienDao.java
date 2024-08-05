@@ -1,4 +1,4 @@
-/*
+                                                                                                                                                                                                                                                        /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -23,14 +23,14 @@ import javax.swing.JOptionPane;
 public class NhanVienDao extends ConnectSQL{
     
     List<NhanVien> dsnv = new ArrayList<>();
-    
+                                                       
     public List<NhanVien> filltoArrayList(){
     try {
-            String sql = "select * from nhanvien where isdelete = 1 order by manv ";
+            String sql = "select * from nhanvien where isdelete = 1 order by manv  ";
         try (Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql)){
             dsnv.clear();
-            while(rs.next()) {
+            while(rs.next()) {                                                  
                 NhanVien nv = new NhanVien();
                 nv.setMaNV(rs.getString("MaNV"));
                 nv.setTenNV(rs.getString(2));
