@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.pharmatechno.Control;
-
 import com.mycompany.pharmatechno.Model.Thuoc;
 import com.mycompany.pharmatechno.UI.QuanLiThuoc;
 import java.sql.Connection;

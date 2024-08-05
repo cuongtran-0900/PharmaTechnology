@@ -1,3 +1,53 @@
+<<<<<<< HEAD
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\NhaPhanPhoiDao.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\KhachHangDao.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\ChiTietHoaDon.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\main.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\DoanhThu.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiBanHang.java
+<<<<<<< HEAD
+=======
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\QuanLiBanHangDao.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\BanHang.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\bean\DanhMucBean.java
+>>>>>>> main
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\hoadonnhap.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\HoaDon.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Pharmatechno.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\Thuoc.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\NhaPhanPhoi.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\mainframe.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\ChiTietHoaDonNhap.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\HoaDonNhap.java
+<<<<<<< HEAD
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiThuoc.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\ThongTinThanhVien.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiKhachHang.java
+=======
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\DoanhThuDAO.java
+>>>>>>> main
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\ConnectSQL.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\DoanhThuModel.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\Chao.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\ThuocTonKho.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\DangNhap.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\Xlimg.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\NhanVien.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\DoiMatKhau.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\hoadon.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\KhachHang.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\NhanVienDao.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiNhanVien.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\TaiKhoanNhanVien.java
+<<<<<<< HEAD
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\ThuocDao.java
+=======
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\ThuocTonKhoDAO.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\Thuoc.java
+>>>>>>> main
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi.java
+E:\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\ThuocTonKhoModel.java
+=======
 C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Control\ThuocDao.java
 C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\QuanLiThuoc.java
 C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Pharmatechno.java
@@ -39,3 +89,4 @@ C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\
 C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\ChiTietHoaDon.java
 C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\UI\hoadon.java
 C:\Users\hongo\Documents\GitHub\PharmaTechnology\pharmatechno\src\main\java\com\mycompany\pharmatechno\Model\ChiTietHoaDonNhap.java
+>>>>>>> 40419c31ed492801ad401c65fc8ece5a2827d555
