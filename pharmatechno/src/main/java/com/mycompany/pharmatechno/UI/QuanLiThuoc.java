@@ -118,7 +118,7 @@ txtBarcode.setText("");
     }
 void imagine(String hinh) {
     // Tạo đường dẫn đầy đủ cho hình ảnh
-    String basePath = "C:\\Users\\hongo\\Documents\\GitHub\\PharmaTechnology\\pharmatechno\\src\\main\\java\\com\\mycompany\\pharmatechno\\product-image\\";
+    String basePath = "E:\\PharmaTechnology\\pharmatechno\\src\\main\\java\\com\\mycompany\\pharmatechno\\product-image\\";
     String imagePath = basePath + hinh;
     
     ImageIcon image1 = new ImageIcon(imagePath);
