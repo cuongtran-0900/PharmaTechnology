@@ -1,26 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.pharmatechno.Model;
 
-/**
- *
- * @author C
- */
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 import java.sql.Date;
-/**
- *
- * @author hongo
- */
+
 public class Thuoc {
     private String maThuoc;
     private String tenThuoc;
-    private String soLuong;
     private String hinhAnh;
     private String thanhPhan;
     private int soLuongTon;
@@ -31,14 +15,14 @@ public class Thuoc {
     private String donViTinh;
     private String loaiThuoc;
     private String xuatXu;
+    private String barcode;  // Thêm thuộc tính barcode
 
     public Thuoc() {
     }
 
-    public Thuoc(String maThuoc, String tenThuoc, String soLuong, String hinhAnh, String thanhPhan, int soLuongTon, float giaNhap, float donGia, Date ngaySanXuat, Date hanSuDung, String donViTinh, String loaiThuoc, String xuatXu) {
+    public Thuoc(String maThuoc, String tenThuoc, String hinhAnh, String thanhPhan, int soLuongTon, float giaNhap, float donGia, Date ngaySanXuat, Date hanSuDung, String donViTinh, String loaiThuoc, String xuatXu, String barcode) {
         this.maThuoc = maThuoc;
         this.tenThuoc = tenThuoc;
-        this.soLuong = soLuong;
         this.hinhAnh = hinhAnh;
         this.thanhPhan = thanhPhan;
         this.soLuongTon = soLuongTon;
@@ -49,6 +33,16 @@ public class Thuoc {
         this.donViTinh = donViTinh;
         this.loaiThuoc = loaiThuoc;
         this.xuatXu = xuatXu;
+        this.barcode = barcode;  // Gán giá trị barcode trong constructor
+    }
+
+    // Getter và Setter cho thuộc tính barcode
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
     }
 
     public String getXuatXu() {
@@ -73,14 +67,6 @@ public class Thuoc {
 
     public void setTenThuoc(String tenThuoc) {
         this.tenThuoc = tenThuoc;
-    }
-
-    public String getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(String soLuong) {
-        this.soLuong = soLuong;
     }
 
     public String getHinhAnh() {
@@ -154,7 +140,6 @@ public class Thuoc {
     public void setLoaiThuoc(String loaiThuoc) {
         this.loaiThuoc = loaiThuoc;
     }
-    
 }
 
 
