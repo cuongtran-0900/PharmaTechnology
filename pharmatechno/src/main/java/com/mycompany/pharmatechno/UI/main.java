@@ -554,7 +554,6 @@ public class main extends javax.swing.JFrame {
         mniHoaDon.setText("Hóa Đơn");
         mniHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
             }
         });
         MnuXuLi.add(mniHoaDon);
@@ -563,7 +562,6 @@ public class main extends javax.swing.JFrame {
         mniHoaDonNhap.setText("Hóa Đơn Nhập");
         mniHoaDonNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
             }
         });
         MnuXuLi.add(mniHoaDonNhap);
@@ -582,12 +580,10 @@ public class main extends javax.swing.JFrame {
         mniDoanhThu.setText("Doanh Thu");
         mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem11MouseClicked(evt);
             }
         });
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
             }
         });
         MnuThongKe.add(mniDoanhThu);
@@ -600,7 +596,6 @@ public class main extends javax.swing.JFrame {
         mniThuoc.setText("Thuốc ");
         mniThuoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
             }
         });
         MnuThongKe.add(mniThuoc);
