@@ -486,7 +486,7 @@ public class main extends javax.swing.JFrame {
                 mniDangXuatActionPerformed(evt);
             }
         });
-        jMnHeThong.add(mniDangXuat);
+        MnuHeThong.add(mniDangXuat);
 
         mniDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_find_and_replace_30px.png"))); // NOI18N
         mniDoiMatKhau.setText("Đổi Mật Khẩu");
@@ -495,7 +495,7 @@ public class main extends javax.swing.JFrame {
                 mniDoiMatKhauActionPerformed(evt);
             }
         });
-        jMnHeThong.add(mniDoiMatKhau);
+        MnuHeThong.add(mniDoiMatKhau);
 
         mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
         mniThoat.setText("Thoát");
@@ -504,7 +504,7 @@ public class main extends javax.swing.JFrame {
                 mniThoatActionPerformed(evt);
             }
         });
-        jMnHeThong.add(mniThoat);
+        MnuHeThong.add(mniThoat);
 
         mniTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
         mniTaiKhoan.setText("Tài Khoản");
@@ -513,7 +513,7 @@ public class main extends javax.swing.JFrame {
                 mniTaiKhoanActionPerformed(evt);
             }
         });
-        jMnHeThong.add(mniTaiKhoan);
+        MnuHeThong.add(mniTaiKhoan);
 
         jMenuBar1.add(MnuHeThong);
 
@@ -935,28 +935,9 @@ public class main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
-    private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
-        // TODO add your handling code here:    
-        // Đóng
-        dispose();
-        
-        // Tạo và hiển thị JFrame mới của bạn (ví dụ: màn hình đăng nhập)
-        JFrame newFrame = new DangNhap(); 
-        newFrame.setVisible(true);
-    
-        
-        
-    }//GEN-LAST:event_mniDangXuatActionPerformed
+//GEN-LAST:event_mniDangXuatActionPerformed
 
-    private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
-        // TODO add your handling code here:       
-        // Đóng 
-        dispose();
-        JFrame newFrame = new main(); 
-        newFrame.setVisible(true);
-        
-
-    }//GEN-LAST:event_mniThoatActionPerformed
+    //GEN-LAST:event_mniThoatActionPerformed
 
     /**
      * @param args the command line arguments
