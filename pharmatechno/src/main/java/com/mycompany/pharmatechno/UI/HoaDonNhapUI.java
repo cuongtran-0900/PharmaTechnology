@@ -231,6 +231,11 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         btnPrev1.setText("<<");
 
         btnFirst1.setText("|<");
+        btnFirst1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirst1ActionPerformed(evt);
+            }
+        });
 
         btnNext1.setText(">>");
 
