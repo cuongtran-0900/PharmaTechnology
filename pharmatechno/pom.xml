@@ -60,11 +60,16 @@
             <version>1.0.24</version>
         </dependency>
         <dependency>
-    <groupId>net.sf.jasperreports</groupId>
-    <artifactId>jasperreports</artifactId>
-    <version>6.20.0</version> <!-- Chọn phiên bản phù hợp với nhu cầu của bạn -->
+    <groupId>com.google.zxing</groupId>
+    <artifactId>core</artifactId>
+    <version>3.4.1</version>
 </dependency>
-
+<dependency>
+    <groupId>com.google.zxing</groupId>
+    <artifactId>javase</artifactId>
+    <version>3.4.1</version>
+</dependency>
+     
 
 
     </dependencies>
