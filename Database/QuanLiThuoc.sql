@@ -1,4 +1,4 @@
-
+﻿
 
 create database QuanLiThuoc;
 
@@ -70,6 +70,9 @@ CREATE TABLE Thuoc (
     IsDelete Int NOT NULL,
 )
 go
+ALTER TABLE Thuoc 
+ADD barcode NVARCHAR(255)  ;
+
 
 INSERT INTO Thuoc(MaThuoc, TenThuoc, SoLuong, HinhAnh, ThanhPhan, SoLuongTon, giaNhap, DonGia, NgaySanXuat, HanSuDung, DonViTinh, LoaiThuoc, XuatXu, IsDelete)
 VALUES
@@ -83,6 +86,7 @@ VALUES
     ('798E63U16', N'Đại Tràng Trường Phúc', 32, 'Daitrangtruongphuc.jpg', N'Hoàng liên, Mộc hương, Bạch truật, Bạch thược, Ngũ bội tử, Hậu phác, Cam thảo, Xa tiền tử, Hoạt thạch', 1021, 90000, 105000, '2024-09-03', '2026-09-03', N'Viên', N'Đại tràng', N'Việt Nam', 1),
     ('745KCI1KX', N'Ninh Tâm Vương Hồng Bàng', 46, 'Ninhtamvuong.png', N'L-Carnitine, Taurine, Đan sâm, Khổ sâm bắc, Nattokinase, Hoàng đằng, Magie, Tá dược vừa đủ', 1054, 165000, 180000, '2024-08-15', '2026-08-15', N'Viên', N'Tim mạch', N'Việt Nam', 1);
 GO
+
 --4t?o b?ng nhà phân ph?i 
 create table nhaPhanPhoi
 (
@@ -290,3 +294,5 @@ BEGIN
     WHERE MaNPP = @MaNPP;
 END;
 GO
+-- text1 -- 
+-- text 2 --
