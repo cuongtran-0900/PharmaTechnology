@@ -1,4 +1,4 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -29,44 +29,46 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Cuong
  */
 public class main extends javax.swing.JFrame {
- private JPanel adminPanel; // Panel dành cho quản trị viên
+
+    private JPanel adminPanel; // Panel dành cho quản trị viên
     private JPanel employeePanel; // Panel dành cho nhân viên
+
     /**
      * Creates new form main
      */
     public main() {
         initComponents();
         mniLightActionPerformed(null);
-        setPanelEvents(jpnDangXuat,jpnDoanhThu,jpnQuanLiBanHang,jpnQuanLiNV);
-        
+        setPanelEvents(jpnDangXuat, jpnDoanhThu, jpnQuanLiBanHang, jpnQuanLiNV);
+
     }
-    
+
     public void hideAdminPanel() {
         if (adminPanel != null) {
             adminPanel.setVisible(false);
         }
     }
-    
-     public void showAdminPanel() {
+
+    public void showAdminPanel() {
         if (adminPanel != null) {
             adminPanel.setVisible(true);
         }
     }
-     
-      public void hideEmployeePanel() {
+
+    public void hideEmployeePanel() {
         if (employeePanel != null) {
             employeePanel.setVisible(false);
         }
     }
 
-          public void showEmployeePanel() {
+    public void showEmployeePanel() {
         if (employeePanel != null) {
             employeePanel.setVisible(true);
         }
     }
-    
+
     private JPanel currentPanel = null;
-    private final Color originalColor = new Color(13,18,130);
+    private final Color originalColor = new Color(13, 18, 130);
     private final Color hoverColor = new Color(2, 94, 167);
     private final Color clickColor = new Color(255, 102, 102);
 
@@ -550,22 +552,42 @@ public class main extends javax.swing.JFrame {
 
         mniHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill-import.png"))); // NOI18N
         mniHoaDon.setText("Hóa Đơn");
+        mniHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         MnuXuLi.add(mniHoaDon);
 
         mniHoaDonNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
         mniHoaDonNhap.setText("Hóa Đơn Nhập");
+        mniHoaDonNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         MnuXuLi.add(mniHoaDonNhap);
 
         jMenuBar1.add(MnuXuLi);
 
         MnuThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Statistics.png"))); // NOI18N
         MnuThongKe.setText("Thống Kê");
+        MnuThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnuThongKeActionPerformed(evt);
+            }
+        });
 
         mniDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Dollar.png"))); // NOI18N
         mniDoanhThu.setText("Doanh Thu");
+        mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem11MouseClicked(evt);
+            }
+        });
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniDoanhThuActionPerformed(evt);
+                jMenuItem11ActionPerformed(evt);
             }
         });
         MnuThongKe.add(mniDoanhThu);
@@ -576,6 +598,11 @@ public class main extends javax.swing.JFrame {
 
         mniThuoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Diagram.png"))); // NOI18N
         mniThuoc.setText("Thuốc ");
+        mniThuoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         MnuThongKe.add(mniThuoc);
 
         jMenuBar1.add(MnuThongKe);
@@ -631,10 +658,9 @@ public class main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     // 3. Tạo hiệu ứng Hover, và Đánh dấu mục đang sử dụng
     public void setPanelEvents(JPanel... panels) {
-        for(JPanel panel : panels){
+        for (JPanel panel : panels) {
             panel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -661,87 +687,84 @@ public class main extends javax.swing.JFrame {
             });
         }
     }
-    
 
+    private void changePanel(JPanel newPanel) {
+        JpnScreen.removeAll();
+        JpnScreen.add(newPanel);
+        newPanel.setVisible(true);
+        JpnScreen.updateUI();
+    }
 
-private void changePanel(JPanel newPanel) {
-    JpnScreen.removeAll();
-    JpnScreen.add(newPanel);
-    newPanel.setVisible(true);
-    JpnScreen.updateUI();
-}
+    private void updateBackgroundColors(JPanel activePanel) {
+        jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiBanHang.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
+        jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
+        jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
+        activePanel.setBackground(new java.awt.Color(153, 153, 255));
+    }
 
-private void updateBackgroundColors(JPanel activePanel) {
-    jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
-    jpnQuanLiBanHang.setBackground(new java.awt.Color(153, 255, 204));
-    jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
-    jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
-    jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
-    activePanel.setBackground(new java.awt.Color(153, 153, 255));
-}
-private void updateBackgroundColorsformni() {
-    jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
-    jpnQuanLiBanHang.setBackground(new java.awt.Color(153, 255, 204));
-    jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
-    jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
-    jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
-}
-    
+    private void updateBackgroundColorsformni() {
+        jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiBanHang.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
+        jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
+        jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
+    }
+
     private void mniKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhachHangActionPerformed
         // TODO add your handling code here:
         changePanel(new QuanLiKhachHang());
-    updateBackgroundColorsformni();
+        updateBackgroundColorsformni();
     }//GEN-LAST:event_mniKhachHangActionPerformed
 
     private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
         // TODO add your handling code here:
-        jpnDoanhThuMouseClicked(null);
+                changePanel(new ThongKe());
     }//GEN-LAST:event_mniDoanhThuActionPerformed
 
     private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
         // TODO add your handling code here:
         jpnQuanLiNVMouseClicked(null);
     }//GEN-LAST:event_MniNhanVienActionPerformed
-    private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        SwingUtilities.invokeLater(()->{
+        SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(new FlatLightLaf());
                 SwingUtilities.updateComponentTreeUI(this);
             } catch (UnsupportedLookAndFeelException ex) {
-                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex); 
+                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    } 
+    }
     private void MnuQuanLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuQuanLiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MnuQuanLiActionPerformed
 
     private void jpnQuanLiNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiNVMouseClicked
         // TODO add your handling code here:
-        
-        
-             // TODO add your handling code here:
-      if (!Auth.isLogin()) {
-        JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí nhân viên .");
-        return;
-    }
-        
-    if (!Auth.isManager()) {
-        JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin quản lí nhân viên .");
-        return;
-    }else{
-         changePanel(new QuanLiNhanVien());
-    }
-     updateBackgroundColors(jpnQuanLiNV);
-                    
-   
-   
+
+        // TODO add your handling code here:
+        if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí nhân viên .");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin quản lí nhân viên .");
+            return;
+        } else {
+            changePanel(new QuanLiNhanVien());
+        }
+        updateBackgroundColors(jpnQuanLiNV);
+
+
     }//GEN-LAST:event_jpnQuanLiNVMouseClicked
 
     private void MnuQuanLiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MnuQuanLiMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_MnuQuanLiMouseClicked
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -750,7 +773,7 @@ private void updateBackgroundColorsformni() {
 
     private void mniDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDarkActionPerformed
         // TODO add your handling code here:
-                SwingUtilities.invokeLater(()->{
+        SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(new FlatDarkLaf());
                 SwingUtilities.updateComponentTreeUI(this);
@@ -762,15 +785,15 @@ private void updateBackgroundColorsformni() {
 
     private void mniQuanLiNPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQuanLiNPPActionPerformed
         // TODO add your handling code here:
-    changePanel(new QuanLiNhaPhanPhoi());
-    updateBackgroundColorsformni();
-    
+        changePanel(new QuanLiNhaPhanPhoi());
+        updateBackgroundColorsformni();
+
     }//GEN-LAST:event_mniQuanLiNPPActionPerformed
 
     private void jpnQuanLiBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiBanHangMouseClicked
         // TODO add your handling code here:
-    changePanel(new QuanLiBanHang());
-    updateBackgroundColors(jpnQuanLiBanHang);
+        changePanel(new QuanLiBanHang());
+        updateBackgroundColors(jpnQuanLiBanHang);
     }//GEN-LAST:event_jpnQuanLiBanHangMouseClicked
 
     private void MniThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniThuocActionPerformed
@@ -780,73 +803,72 @@ private void updateBackgroundColorsformni() {
 
     private void jpnDoanhThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDoanhThuMouseClicked
         // TODO add your handling code here:
-      if (!Auth.isLogin()) {
-        JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin doanh thu.");
-        return;
-    }
-        
-    if (!Auth.isManager()) {
-        JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin doanh thu.");
-        return;
-    }else{
-        changePanel(new DoanhThu());
-    }
+        if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin doanh thu.");
+            return;
+        }
 
-    updateBackgroundColors(jpnDoanhThu);
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin doanh thu.");
+            return;
+        } else {
+            changePanel(new DoanhThu());
+        }
+
+        updateBackgroundColors(jpnDoanhThu);
     }//GEN-LAST:event_jpnDoanhThuMouseClicked
 
     private void jpnQuanLiThuocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiThuocMouseClicked
         // TODO add your handling code here:
-        
-        
+
         if (!Auth.isLogin()) {
-        JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí thuốc.");
-        return;
-    }
-        
-    if (!Auth.isManager()) {
-        JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin quản lí thuốc.");
-        return;
-    }else{
-       changePanel(new QuanLiThuoc());
-    }
-    updateBackgroundColors(jpnQuanLiThuoc);
-    
-    
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí thuốc.");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin quản lí thuốc.");
+            return;
+        } else {
+            changePanel(new QuanLiThuoc());
+        }
+        updateBackgroundColors(jpnQuanLiThuoc);
+
+
     }//GEN-LAST:event_jpnQuanLiThuocMouseClicked
 
     private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
         // TODO add your handling code here:
-         int response = JOptionPane.showConfirmDialog(this, 
-        "Bạn có chắc chắn muốn đăng xuất không?", 
-        "Xác nhận đăng xuất", 
-        JOptionPane.YES_NO_OPTION, 
-        JOptionPane.QUESTION_MESSAGE);
-    
-    // Kiểm tra phản hồi của người dùng
-    if (response == JOptionPane.YES_OPTION) {
-        // Đóng MainFrame hiện tại
-        this.dispose();
-        
-        // Hiển thị lại LoginFrame
-        DangNhap login = new DangNhap();
-        login.setVisible(true);
-    }
+        int response = JOptionPane.showConfirmDialog(this,
+                "Bạn có chắc chắn muốn đăng xuất không?",
+                "Xác nhận đăng xuất",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        // Kiểm tra phản hồi của người dùng
+        if (response == JOptionPane.YES_OPTION) {
+            // Đóng MainFrame hiện tại
+            this.dispose();
+
+            // Hiển thị lại LoginFrame
+            DangNhap login = new DangNhap();
+            login.setVisible(true);
+        }
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
     private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
         // TODO add your handling code here:
-         int response = JOptionPane.showConfirmDialog(this, 
-        "Bạn có chắc chắn muốn thoát không?", 
-        "Xác nhận thoát", 
-        JOptionPane.YES_NO_OPTION, 
-        JOptionPane.QUESTION_MESSAGE);
-    
-    // Kiểm tra phản hồi của người dùng
-    if (response == JOptionPane.YES_OPTION) {
-        // Đóng ứng dụng
-        System.exit(0);
-    }
+        int response = JOptionPane.showConfirmDialog(this,
+                "Bạn có chắc chắn muốn thoát không?",
+                "Xác nhận thoát",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        // Kiểm tra phản hồi của người dùng
+        if (response == JOptionPane.YES_OPTION) {
+            // Đóng ứng dụng
+            System.exit(0);
+        }
     }//GEN-LAST:event_mniThoatActionPerformed
 
     private void MnuTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuTrangChuActionPerformed
@@ -856,11 +878,11 @@ private void updateBackgroundColorsformni() {
 
     private void MnuTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MnuTrangChuMouseClicked
         // TODO add your handling code here:
-                 main mainframe = new main();
-    mainframe.setVisible(true);
-    
-    // Đóng khung hiện tại nếu cần thiết
-    this.dispose();
+        main mainframe = new main();
+        mainframe.setVisible(true);
+
+        // Đóng khung hiện tại nếu cần thiết
+        this.dispose();
     }//GEN-LAST:event_MnuTrangChuMouseClicked
 
     private void jpnDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDangXuatMouseClicked
@@ -868,8 +890,10 @@ private void updateBackgroundColorsformni() {
         mniDangXuatActionPerformed(null);
     }//GEN-LAST:event_jpnDangXuatMouseClicked
 
-    
-    
+    private void MnuThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuThongKeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnuThongKeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -898,10 +922,10 @@ private void updateBackgroundColorsformni() {
         //</editor-fold>
 
         /* Create and display the form */
-       java.awt.EventQueue.invokeLater(() -> {
+        java.awt.EventQueue.invokeLater(() -> {
             appController appController = new appController();
             appController.showChao(); // Bắt đầu từ màn hình chào
-            
+
         });
     }
 
