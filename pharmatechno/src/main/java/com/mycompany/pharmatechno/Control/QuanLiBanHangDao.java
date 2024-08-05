@@ -118,15 +118,15 @@ public class QuanLiBanHangDao extends ConnectSQL{
             try {
                 con.rollback(); // Rollback giao dịch khi có lỗi
             } catch (SQLException rollbackEx) {
-                Logger.getLogger(BanHangDao.class.getName()).log(Level.SEVERE, null, rollbackEx);
+                Logger.getLogger(QuanLiBanHangDao.class.getName()).log(Level.SEVERE, null, rollbackEx);
             }
         }
-        Logger.getLogger(BanHangDao.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(QuanLiBanHangDao.class.getName()).log(Level.SEVERE, null, ex);
     } finally {
         try {
             con.setAutoCommit(true); // Đặt lại AutoCommit về true
         } catch (SQLException e) {
-            Logger.getLogger(BanHangDao.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(QuanLiBanHangDao.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

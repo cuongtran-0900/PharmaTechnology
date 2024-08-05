@@ -25,8 +25,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import com.mycompany.pharmatechno.Model.GiohangBean;
 import com.mycompany.pharmatechno.Control.NhanVienDao;
-import com.mycompany.pharmatechno.Control.GioHangDao;
-import com.mycompany.pharmatechno.bean.ReportUtils;
 import java.beans.Beans;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -53,14 +51,12 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         txtMaHoaDon.setEditable(false);
         txtThoiGian.setEditable(false);
         txtThoiGian.setText(currentTimestamp.toString());
-        
 
-    }  
+    }
 
     QuanLiBanHangDao bhdao = new QuanLiBanHangDao();
     List<BanHang> dsbh = bhdao.filltoArrayList();
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,30 +87,14 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         txtTongTien = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtMaHoaDon = new javax.swing.JTextField();
-        txtBarCode = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         txtMaNV = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtThoiGian = new javax.swing.JTextField();
+        txtBarCode = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 255));
 
-        tblQuanLiBanHang.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Tên Thuốc", "Tồn Kho", "ĐVT", "Đơn Giá", "Barcode"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         jScrollPane1.setViewportView(tblQuanLiBanHang);
         if (tblQuanLiBanHang.getColumnModel().getColumnCount() > 0) {
             tblQuanLiBanHang.getColumnModel().getColumn(1).setMinWidth(200);
@@ -211,7 +191,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         btnHuy.setText("Hủy");
         btnHuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHuyActionPerformed(evt);
+                // btnHuyActionPerformed(evt);
             }
         });
 
@@ -219,9 +199,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
         jLabel10.setText("Hình Thức Thanh Toán     :");
 
-        jLabel10.setText("Hình Thức thanh toán      :");
-
-        cboHinhThuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt ", "Chuyển khoản " }));
+        cboHinhThuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền Mặt", "Chuyển Khoản", " " }));
 
         jLabel11.setText("Tổng Tiền       :");
 
@@ -332,7 +310,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("BarCode:");
+        jLabel3.setText("BarCode:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -347,7 +325,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtBarCode, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -374,7 +352,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel1)
                     .addComponent(txtBarCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
@@ -384,7 +362,6 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
 
     private boolean isUpdatingTable = false;
 
@@ -467,68 +444,72 @@ public class QuanLiBanHang extends javax.swing.JPanel {
     }
 
     private void addToListCart() {
-
+        DefaultTableModel cartModel = (DefaultTableModel) tblGioHang.getModel();
+        cartModel.setRowCount(0);
 
         tblQuanLiBanHang.addMouseListener(new MouseAdapter() {
-            @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) { // Kiểm tra click đôi
-                    int selectedRow = tblQuanLiBanHang.rowAtPoint(e.getPoint()); // Lấy hàng tại vị trí chuột
+                if (e.getClickCount() == 2) {
+                    int selectedRow = tblQuanLiBanHang.getSelectedRow();
                     if (selectedRow != -1) {
-                        addProductToCart(selectedRow);
+                        addToCart(selectedRow);
                     }
                 }
             }
         });
 
-        DefaultTableModel cartmodel = (DefaultTableModel) tblGioHang.getModel();
-        cartmodel.setRowCount(0);
+        txtBarCode.addActionListener(evt -> {
+            String barcode = txtBarCode.getText().trim();
+            System.out.println("Mã vạch nhập vào: " + barcode); // In mã vạch nhận được
+            if (barcode.isEmpty()) {
+                return;
+            }
 
-        // Thêm TableModelListener để lắng nghe sự thay đổi
-        cartmodel.addTableModelListener(e -> {
-            if (!isUpdatingTable) {
-                int row = e.getFirstRow();
-                int column = e.getColumn();
-                if (column == 3 ) { // Kiểm tra nếu cột là cột số lượng hoặc thành tiền
-                    updateRowTotal(row);
+            boolean productFound = false;
+            for (int i = 0; i < tblQuanLiBanHang.getRowCount(); i++) {
+                String currentBarcode = (String) tblQuanLiBanHang.getValueAt(i, 4); // Giả sử mã vạch ở cột 0
+                if (barcode.equals(currentBarcode)) {
+                    productFound = true;
+                    addToCart(i);
+                    break;
                 }
             }
-        });
 
-        JPopupMenu popupMenu = new JPopupMenu();
-        JMenuItem deleteItem = new JMenuItem("Delete");
-        popupMenu.add(deleteItem);
-
-        // Thêm sự kiện cho menu ngữ cảnh
-        deleteItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int selectedRow = tblGioHang.getSelectedRow();
-                if (selectedRow != -1) {
-                    cartmodel.removeRow(selectedRow);
-                    updateTotalAmount(); // Cập nhật tổng tiền khi xóa
-                }
+            if (!productFound) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Sản phẩm không có trong danh sách!", "Thông Báo", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
+
+            txtBarCode.setText(""); // Xóa mã vạch sau khi xử lý
         });
 
-        // Thêm sự kiện chuột phải để hiển thị menu ngữ cảnh
-        tblGioHang.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                if (e.isPopupTrigger()) {
-                    int row = tblGioHang.rowAtPoint(e.getPoint());
-                    if (row >= 0 && row < tblGioHang.getRowCount()) {
-                        tblGioHang.setRowSelectionInterval(row, row);
-                    } else {
-                        tblGioHang.clearSelection();
+        cartModel.addTableModelListener(e -> {
+            int row = e.getFirstRow();
+            int column = e.getColumn();
+            if (column == 2) { // Check if column is quantity
+                int newQuantity = 0;
+                Object newQuantityObj = tblGioHang.getValueAt(row, 2);
+                if (newQuantityObj instanceof Number) {
+                    newQuantity = ((Number) newQuantityObj).intValue();
+                } else if (newQuantityObj instanceof String) {
+                    try {
+                        newQuantity = Integer.parseInt((String) newQuantityObj);
+                    } catch (NumberFormatException ex) {
+                        ex.printStackTrace(); // Handle error if conversion fails
                     }
-
-                    int rowindex = tblGioHang.getSelectedRow();
-                    if (rowindex < 0) {
-                        return;
-                    }
-                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
                 }
+                Object donGiaObj = tblGioHang.getValueAt(row, 3);
+                int DonGia = 0;
+                if (donGiaObj instanceof Number) {
+                    DonGia = ((Number) donGiaObj).intValue();
+                } else if (donGiaObj instanceof String) {
+                    try {
+                        DonGia = Integer.parseInt((String) donGiaObj);
+                    } catch (NumberFormatException ex) {
+                        ex.printStackTrace(); // Handle error if conversion fails
+                    }
+                }
+                int thanhTien = newQuantity * DonGia;
+                tblGioHang.setValueAt(thanhTien, row, 4); // Update total price
             }
         });
     }
@@ -539,18 +520,63 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         String TenThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 1));
         String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 3));
         int SoLuong = 1;
+    }
+
+    private void addToCart(int rowIndex) {
+        DefaultTableModel cartModel = (DefaultTableModel) tblGioHang.getModel();
+        String TenThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(rowIndex, 0));
+        String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(rowIndex, 1));
+        int SoLuong = 1;
+        Object donGiaObj = tblQuanLiBanHang.getValueAt(rowIndex, 3);
+        int DonGia = 0;
+        if (donGiaObj instanceof Number) {
+            DonGia = ((Number) donGiaObj).intValue();
+        } else if (donGiaObj instanceof String) {
+            try {
+                DonGia = Integer.parseInt((String) donGiaObj);
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+            }
         }
 
+        boolean productExists = false;
+        for (int i = 0; i < tblGioHang.getRowCount(); i++) {
+            Object tenThuocInCart = tblGioHang.getValueAt(i, 0);
+            if (TenThuoc.equals(String.valueOf(tenThuocInCart))) {
+                int currentQuantity = 0;
+                Object currentQuantityObj = tblGioHang.getValueAt(i, 2);
+                if (currentQuantityObj instanceof Number) {
+                    currentQuantity = ((Number) currentQuantityObj).intValue();
+                } else if (currentQuantityObj instanceof String) {
+                    try {
+                        currentQuantity = Integer.parseInt((String) currentQuantityObj);
+                    } catch (NumberFormatException ex) {
+                        ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
+                    }
+                }
+                int newQuantity = currentQuantity + SoLuong;
+                int thanhTien = newQuantity * DonGia;
+                tblGioHang.setValueAt(newQuantity, i, 2); // Cập nhật số lượng
+                tblGioHang.setValueAt(thanhTien, i, 4); // Cập nhật thành tiền
+                productExists = true;
+                break;
+            }
+        }
 
+        if (!productExists) {
+            int thanhTien = SoLuong * DonGia;
+            cartModel.addRow(new Object[]{TenThuoc, DVT, SoLuong, DonGia, thanhTien});
+        }
+    }
 
-private void targetbarcode(){
-addWindowListener(new java.awt.event.WindowAdapter() {
+    private void targetbarcode() {
+        addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 txtBarCode.requestFocusInWindow();
             }
         });
-        
+
         // Nếu muốn giữ focus trên txtBarcode sau mỗi thao tác, ví dụ khi bấm nút "Thêm vào giỏ hàng":
 //        btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
 //            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -563,24 +589,24 @@ addWindowListener(new java.awt.event.WindowAdapter() {
 //        });
     }
 
-private void addProductToCartByBarcode(String barcode) {
-    for (BanHang product : dsbh) {
-        if (product.getBarCode().equals(barcode)) {
-            DefaultTableModel model = (DefaultTableModel) tblGioHang.getModel();
-            model.addRow(new Object[]{
-                product.getTenThuoc(),
-                product.getDVT(),
-                1, // default quantity
-                product.getDonGia(),
-                product.getDonGia(),
-                product.getBarCode()// total price for one item
-            });
-            txtBarCode.setText(""); // Clear barcode after processing
-            break;
+    private void addProductToCartByBarcode(String barcode) {
+        for (BanHang product : dsbh) {
+            if (product.getBarCode().equals(barcode)) {
+                DefaultTableModel model = (DefaultTableModel) tblGioHang.getModel();
+                model.addRow(new Object[]{
+                    product.getTenThuoc(),
+                    product.getDVT(),
+                    1, // default quantity
+                    product.getDonGia(),
+                    product.getDonGia(),
+                    product.getBarCode()// total price for one item
+                });
+                txtBarCode.setText(""); // Clear barcode after processing
+                break;
+            }
         }
     }
-}
-  
+
     private void updateRowTotal(int row) {
         int newQuantity = 0;
         Object newQuantityObj = tblGioHang.getValueAt(row, 3);
@@ -688,8 +714,7 @@ private void addProductToCartByBarcode(String barcode) {
             JOptionPane.showMessageDialog(this, "Thanh Toán thất bại", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    
+
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
@@ -701,22 +726,22 @@ private void addProductToCartByBarcode(String barcode) {
     }//GEN-LAST:event_txtTimKiemActionPerformed
 
     private void txtBarCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarCodeKeyPressed
-          String barcode = txtBarCode.getText();
-    if(evt.getKeyCode() == KeyEvent.VK_ENTER && txtBarCode.requestFocus(true)){
-        JOptionPane.showMessageDialog(this, "Mã barcode của bạn là:"+barcode);
-    }
-   // txtBarCode.requestFocus();
+        String barcode = txtBarCode.getText();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER && txtBarCode.requestFocus(true)) {
+            JOptionPane.showMessageDialog(this, "Mã barcode của bạn là:" + barcode);
+        }
+        // txtBarCode.requestFocus();
     }//GEN-LAST:event_txtBarCodeKeyPressed
 
     private void txtBarCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarCodeActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtBarCodeActionPerformed
 
     private void txtBarCodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBarCodeKeyReleased
         // TODO add your handling code here:
-           // TODO add your handling code here:
-   
+        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtBarCodeKeyReleased
     private void btbThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbThanhToanActionPerformed
         // TODO add your handling code here:
@@ -727,7 +752,7 @@ private void addProductToCartByBarcode(String barcode) {
         txtThoiGian.setText("");
         txtMaHoaDon.setText(bhdao.Maphatsinh());
         txtThoiGian.setText(currentTimestamp.toString());
-                
+
 
     }//GEN-LAST:event_btbThanhToanActionPerformed
 
@@ -736,9 +761,9 @@ private void addProductToCartByBarcode(String barcode) {
 
     }//GEN-LAST:event_txtTongTienActionPerformed
 
-    private void txtThoiGianActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void txtThoiGianActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-
+    }
     private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaNVActionPerformed
@@ -747,11 +772,10 @@ private void addProductToCartByBarcode(String barcode) {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaHoaDonActionPerformed
 
-    private void btnLuuInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuInActionPerformed
+    private void btnLuuInActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        
-
-    }//GEN-LAST:event_btnLuuInActionPerformed
+        // Ví dụ: Thực hiện một số hành động khi nút được nhấn.
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -764,6 +788,7 @@ private void addProductToCartByBarcode(String barcode) {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
