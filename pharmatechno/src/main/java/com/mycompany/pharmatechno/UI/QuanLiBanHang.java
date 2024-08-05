@@ -385,34 +385,6 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-public void convertTableDataToBeansAndDoSomething() {
-    try {
-        // Lấy dữ liệu từ bảng
-        List<GiohangBean> dshd = GioHangDao.convertTableDataToBeans(tblGioHang, 
-            GioHangDao.convertTextFieldsToBean(txtMaNV, txtThoiGian, txtTongTien, txtMaHoaDon));
-
-        if (dshd == null) {
-            dshd = new ArrayList<>();
-        }
-
-        // Tạo báo cáo
-        ReportUtils reportUtils = new ReportUtils();
-        reportUtils.generateReport(dshd);
-
-        // In dữ liệu ra console để kiểm tra
-        for (GiohangBean bean : dshd) {
-            System.out.println("MaNV: " + bean.getTenNV());
-            System.out.println("MaHoaDon: " + bean.getMaHD());
-            System.out.println("ThoiGian: " + bean.getThoiGian());
-            System.out.println("TongTien: " + bean.getTongTien());
-            System.out.println("Tên thuốc: " + bean.getTenThuoc());
-            System.out.println("Số Lượng: " + bean.getSoLuong());
-            System.out.println("-----------------------");
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
 
     private boolean isUpdatingTable = false;
 
@@ -495,6 +467,8 @@ public void convertTableDataToBeansAndDoSomething() {
     }
 
     private void addToListCart() {
+
+
         tblQuanLiBanHang.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -565,6 +539,7 @@ public void convertTableDataToBeansAndDoSomething() {
         String TenThuoc = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 1));
         String DVT = String.valueOf(tblQuanLiBanHang.getValueAt(selectedRow, 3));
         int SoLuong = 1;
+        }
 
 
 
@@ -606,141 +581,6 @@ private void addProductToCartByBarcode(String barcode) {
     }
 }
   
-  
-   private void addToListCart() {
-    DefaultTableModel cartModel = (DefaultTableModel) tblGioHang.getModel();
-    cartModel.setRowCount(0);
-    
-    tblQuanLiBanHang.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2) {
-                int selectedRow = tblQuanLiBanHang.getSelectedRow();
-                if (selectedRow != -1) {
-                    addToCart(selectedRow);
-                }
-            }
-        }
-    });
-    
-    txtBarCode.addActionListener(evt -> {
-    String barcode = txtBarCode.getText().trim();
-    System.out.println("Mã vạch nhập vào: " + barcode); // In mã vạch nhận được
-    if (barcode.isEmpty()) return;
-    
-    boolean productFound = false;
-    for (int i = 0; i < tblQuanLiBanHang.getRowCount(); i++) {
-        String currentBarcode = (String) tblQuanLiBanHang.getValueAt(i, 4); // Giả sử mã vạch ở cột 0
-        if (barcode.equals(currentBarcode)) {
-            productFound = true;
-            addToCart(i);
-            break;
-        }
-    }
-    
-    if (!productFound) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Sản phẩm không có trong danh sách!", "Thông Báo", javax.swing.JOptionPane.ERROR_MESSAGE);
-    }
-    
-    txtBarCode.setText(""); // Xóa mã vạch sau khi xử lý
-});
-
-    cartModel.addTableModelListener(e -> {
-        int row = e.getFirstRow();
-        int column = e.getColumn();
-        if (column == 2) { // Check if column is quantity
-            int newQuantity = 0;
-            Object newQuantityObj = tblGioHang.getValueAt(row, 2);
-            if (newQuantityObj instanceof Number) {
-                newQuantity = ((Number) newQuantityObj).intValue();
-            } else if (newQuantityObj instanceof String) {
-                try {
-                    newQuantity = Integer.parseInt((String) newQuantityObj);
-                } catch (NumberFormatException ex) {
-                    ex.printStackTrace(); // Handle error if conversion fails
-                }
-            }
-            Object donGiaObj = tblGioHang.getValueAt(row, 3);
-            int DonGia = 0;
-            if (donGiaObj instanceof Number) {
-                DonGia = ((Number) donGiaObj).intValue();
-            } else if (donGiaObj instanceof String) {
-                try {
-                    DonGia = Integer.parseInt((String) donGiaObj);
-                } catch (NumberFormatException ex) {
-                    ex.printStackTrace(); // Handle error if conversion fails
-        // Lấy số lượng tồn kho từ bảng tblQuanLiBanHang (giả sử cột 2 là số lượng tồn kho)
-        int tonKho = (int) tblQuanLiBanHang.getValueAt(selectedRow, 2);
-
-        Object donGiaObj = tblQuanLiBanHang.getValueAt(selectedRow, 4);
-        int DonGia = 0;
-
-        if (donGiaObj instanceof Number) {
-            DonGia = ((Number) donGiaObj).intValue();
-        } else if (donGiaObj instanceof String) {
-            try {
-                DonGia = Integer.parseInt((String) donGiaObj);
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
-                return; // Thoát nếu không thể chuyển đổi
-            }
-        }
-
-        boolean productExists = false;
-        for (int i = 0; i < tblGioHang.getRowCount(); i++) {
-            Object tenThuocInCart = tblGioHang.getValueAt(i, 1); // Cột 1 là TenThuoc
-            if (TenThuoc.equals(String.valueOf(tenThuocInCart))) {
-                int currentQuantity = 0;
-                Object currentQuantityObj = tblGioHang.getValueAt(i, 3); // Cột 3 là SoLuong
-                if (currentQuantityObj instanceof Number) {
-                    currentQuantity = ((Number) currentQuantityObj).intValue();
-                } else if (currentQuantityObj instanceof String) {
-                    try {
-                        currentQuantity = Integer.parseInt((String) currentQuantityObj);
-                    } catch (NumberFormatException ex) {
-                        ex.printStackTrace(); // Xử lý lỗi nếu không thể chuyển đổi
-                    }
-                }
-                int newQuantity = currentQuantity + SoLuong;
-
-                // Kiểm tra nếu newQuantity vượt quá số lượng tồn kho
-                if (newQuantity > tonKho) {
-                    JOptionPane.showMessageDialog(null, "Số lượng trong giỏ hàng không được vượt quá tồn kho!");
-                    return;
-                }
-
-                int thanhTien = newQuantity * DonGia;
-
-                isUpdatingTable = true;
-                tblGioHang.setValueAt(newQuantity, i, 3); // Cập nhật số lượng
-                tblGioHang.setValueAt(thanhTien, i, 5); // Cập nhật thành tiền
-                isUpdatingTable = false;
-
-                productExists = true;
-
-                // Cập nhật tồn kho sau khi sản phẩm được thêm vào giỏ hàng
-                int updatedTonKho = tonKho - SoLuong;
-                tblQuanLiBanHang.setValueAt(updatedTonKho, selectedRow, 2); // Cập nhật tồn kho
-
-                break;
-            }
-        }
-        if (!productExists) {
-            // Kiểm tra nếu số lượng ban đầu vượt quá tồn kho
-            if (SoLuong > tonKho) {
-                JOptionPane.showMessageDialog(null, "Số lượng trong giỏ hàng không được vượt quá tồn kho!");
-                return;
-            }
-
-            int thanhTien = SoLuong * DonGia;
-            cartmodel.addRow(new Object[]{MaThuoc, TenThuoc, DVT, SoLuong, DonGia, thanhTien});
-
-            // Cập nhật tồn kho sau khi sản phẩm được thêm vào giỏ hàng
-            int updatedTonKho = tonKho - SoLuong;
-            tblQuanLiBanHang.setValueAt(updatedTonKho, selectedRow, 2); // Cập nhật tồn kho
-        }
-        updateTotalAmount(); // Cập nhật tổng tiền
-    }
-
     private void updateRowTotal(int row) {
         int newQuantity = 0;
         Object newQuantityObj = tblGioHang.getValueAt(row, 3);
@@ -881,7 +721,6 @@ private void addProductToCartByBarcode(String barcode) {
     private void btbThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbThanhToanActionPerformed
         // TODO add your handling code here:
         java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
-        convertTableDataToBeansAndDoSomething();
         payment();
         bhdao.filltoArrayList();
         txtMaHoaDon.setText("");
@@ -897,7 +736,7 @@ private void addProductToCartByBarcode(String barcode) {
 
     }//GEN-LAST:event_txtTongTienActionPerformed
 
-    private void txtThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThoiGianActionPerformed
+    private void txtThoiGianActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
 
     private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
