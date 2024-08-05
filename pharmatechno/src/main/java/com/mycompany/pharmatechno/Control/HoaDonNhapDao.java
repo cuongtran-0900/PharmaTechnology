@@ -30,7 +30,7 @@ public class HoaDonNhapDao extends ConnectSQL {
         try {
             String sql
                     = """
-                SELECT hdn.maHDN,hdn.MaNPP,hdn.NguoiGiao,hdn.NguoiNhan,hdn.NgayViet,hdn.NgayNhap,hdn.TongTien, t.MaThuoc, t.TenThuoc
+                SELECT hdn.maHDN,hdn.MaNPP,hdn.NguoiGiao,hdn.NguoiNhan,hdn.NgayViet,hdn.NgayNhap,hdn.TongTien, t.MaThuoc, t.TenThuoc,cthdn.Soluong
                 FROM hoadonnhap AS hdn
                 INNER JOIN chitiethoadonnhap AS cthdn ON hdn.MaHDN = cthdn.MaHDN
                 INNER JOIN Thuoc AS t ON t.MaThuoc = cthdn.MaThuoc
@@ -47,6 +47,7 @@ public class HoaDonNhapDao extends ConnectSQL {
                     hdn.setNgayViet(rs.getDate("ngayViet"));
                     hdn.setNgayNhap(rs.getDate("ngayNhap"));
                     hdn.setTongTien(rs.getFloat("tongTien"));
+                    hdn.setSoLuong(rs.getInt("Soluong"));
                     hdn.setTenThuoc(rs.getString("TenThuoc"));
                     hdn.setMaThuoc(rs.getString("MaThuoc"));
                     dshdn.add(hdn);
