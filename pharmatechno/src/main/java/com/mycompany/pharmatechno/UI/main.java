@@ -580,10 +580,12 @@ public class main extends javax.swing.JFrame {
         mniDoanhThu.setText("Doanh Thu");
         mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                
             }
         });
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                     mniDoanhThuActionPerformed(evt);
             }
         });
         MnuThongKe.add(mniDoanhThu);
