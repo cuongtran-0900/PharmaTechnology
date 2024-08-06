@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.mycompany.pharmatechno.Control.Auth;
 import com.mycompany.pharmatechno.Control.appController;
+import com.mycompany.pharmatechno.Model.HoaDon;
 import com.sun.tools.javac.Main;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -575,17 +576,30 @@ public class main extends javax.swing.JFrame {
         mniHoaDon.setText("Hóa Đơn");
         mniHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+<<<<<<< HEAD
                 jMenuItem9ActionPerformed(evt);
+=======
+                mniHoaDonActionPerformed(evt);
+>>>>>>> main
             }
         });
         MnuXuLi.add(mniHoaDon);
 
         mniHoaDonNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
         mniHoaDonNhap.setText("Hóa Đơn Nhập");
+        mniHoaDonNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mniHoaDonNhapMouseClicked(evt);
+            }
+        });
         mniHoaDonNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+<<<<<<< HEAD
                 jMenuItem10ActionPerformed(evt);
             }
+=======
+                mniHoaDonNhapActionPerformed(evt);            }
+>>>>>>> main
         });
         MnuXuLi.add(mniHoaDonNhap);
 
@@ -603,12 +617,20 @@ public class main extends javax.swing.JFrame {
         mniDoanhThu.setText("Doanh Thu");
         mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+<<<<<<< HEAD
                 jMenuItem11MouseClicked(evt);
+=======
+                // jMenuItem11MouseClicked(evt);
+>>>>>>> main
             }
         });
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+<<<<<<< HEAD
                 jMenuItem11ActionPerformed(evt);
+=======
+                mniDoanhThuActionPerformed(evt);
+>>>>>>> main
             }
         });
         MnuThongKe.add(mniDoanhThu);
@@ -617,7 +639,11 @@ public class main extends javax.swing.JFrame {
         mniThuoc.setText("Thuốc ");
         mniThuoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+<<<<<<< HEAD
                 jMenuItem13ActionPerformed(evt);
+=======
+                // jMenuItem13ActionPerformed(evt);
+>>>>>>> main
             }
         });
         MnuThongKe.add(mniThuoc);
@@ -738,6 +764,7 @@ public class main extends javax.swing.JFrame {
     private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
         // TODO add your handling code here:
                 changePanel(new ThongKe());
+                updateBackgroundColorsformni();
     }//GEN-LAST:event_mniDoanhThuActionPerformed
 
     private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
@@ -873,6 +900,8 @@ public class main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
+    
+    
     private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
         // TODO add your handling code here:
         int response = JOptionPane.showConfirmDialog(this,
@@ -934,8 +963,31 @@ public class main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
+<<<<<<< HEAD
                                            
 
+=======
+    private void mniHoaDonNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniHoaDonNhapMouseClicked
+        // TODO add your handling code here:
+        changePanel(new HoaDonNhapUI());
+        updateBackgroundColorsformni();
+    }//GEN-LAST:event_mniHoaDonNhapMouseClicked
+
+    private void mniHoaDonNhapActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        changePanel(new HoaDonNhapUI());
+        updateBackgroundColorsformni();
+    }   
+    
+    private void mniHoaDonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        changePanel(new hoadon());
+        updateBackgroundColorsformni();
+        
+    }     
+                                           
+
+>>>>>>> main
                                             
 
     /**

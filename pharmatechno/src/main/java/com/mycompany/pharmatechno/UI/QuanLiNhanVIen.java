@@ -19,6 +19,7 @@ import javax.swing.table.TableRowSorter;
  */
 public class QuanLiNhanVien extends javax.swing.JPanel {
 
+    
     /**
      * Creates new form QuanLiNhanVIen
      */
