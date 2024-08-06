@@ -432,7 +432,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     }
 }
 
-private void showDetailInTblHDN(HoaDonNhap hdn) {
+    private void showDetailInTblHDN(HoaDonNhap hdn) {
     DefaultTableModel model = (DefaultTableModel) tblHDN.getModel();
     model.setRowCount(0); // Xóa dữ liệu cũ trong tblHDN
 
@@ -447,7 +447,85 @@ private void showDetailInTblHDN(HoaDonNhap hdn) {
     }
 }
 
-
+//    private void save() {
+//    HoaDonNhap hdn = new HoaDonNhap();
+//    
+//    // Kiểm tra mã thuốc có tồn tại không
+//    if (HoaDonNhapDao.check(txtMaThuoc.getText())) {
+//        try {
+//            thuoc.setMaThuoc(txtMaThuoc.getText().trim()); // Trim để loại bỏ khoảng trắng thừa
+//            thuoc.setTenThuoc(txtTenThuoc.getText().trim());
+//            thuoc.setThanhPhan(txtThanhPhan.getText().trim());
+//            thuoc.setDonViTinh((String) cboDonViTinh.getSelectedItem());
+//            thuoc.setLoaiThuoc(txtLoaiThuoc.getText().trim());
+//            thuoc.setXuatXu(txtXuatXu.getText().trim());
+//
+//            // Kiểm tra mã barcode
+//            String barcode = txtBarcode.getText().trim();
+//            if (barcode.isEmpty()) {
+//                throw new IllegalArgumentException("Mã barcode không được để trống.");
+//            } else if (!barcode.matches("^[0-9A-Za-z]+$")) { // Ví dụ kiểm tra barcode chỉ chứa ký tự chữ và số
+//                throw new IllegalArgumentException("Mã barcode chỉ được chứa chữ cái và số.");
+//            }
+//            thuoc.setBarcode(barcode);
+//            
+//            // Kiểm tra và chuyển đổi các giá trị số
+//            try {
+//                int soLuongTon = Integer.parseInt(txtSoLuongTon.getText().trim());
+//                float giaNhap = Float.parseFloat(txtGiaNhap.getText().trim());
+//                float donGia = Float.parseFloat(txtDonGia.getText().trim());
+//
+//                thuoc.setSoLuongTon(soLuongTon);
+//                thuoc.setGiaNhap(giaNhap);
+//                thuoc.setDonGia(donGia);
+//            } catch (NumberFormatException e) {
+//                JOptionPane.showMessageDialog(this, "Số lượng tồn kho, giá nhập, và đơn giá phải là số hợp lệ.");
+//                return;
+//            }
+//
+//            // Kiểm tra ngày hết hạn và ngày sản xuất
+//            Date hanSuDungUntil = dcsHanSuDung.getDate();
+//            Date ngaySanXuatUntil = dcsNgaySanXuat.getDate();
+//            if (hanSuDungUntil == null || ngaySanXuatUntil == null) {
+//                throw new IllegalArgumentException("Ngày hết hạn và ngày sản xuất không được để trống.");
+//            }
+//
+//            java.sql.Date hanSuDung = new java.sql.Date(hanSuDungUntil.getTime());
+//            java.sql.Date ngaySanXuat = new java.sql.Date(ngaySanXuatUntil.getTime());
+//
+//            thuoc.setHanSuDung(hanSuDung);
+//            thuoc.setNgaySanXuat(ngaySanXuat);
+//
+//            // Xử lý hình ảnh
+//            String hinhAnh = lblHinhAnh.getText().trim();
+//            if (hinhAnh.isEmpty()) {
+//                throw new IllegalArgumentException("Hình ảnh không được để trống.");
+//            }
+//            // Lấy tên tệp hình ảnh từ đường dẫn đầy đủ
+//            String[] parts = hinhAnh.split("\\\\");
+//            String tenTepHinhAnh = parts[parts.length - 1];
+//            thuoc.setHinhAnh(tenTepHinhAnh);
+//
+//        } catch (IllegalArgumentException e) {
+//            JOptionPane.showMessageDialog(this, e.getMessage());
+//            return;
+//        }
+//
+//        // Lưu thông tin thuốc vào cơ sở dữ liệu
+//        int result = thuocdao.save(thuoc);
+//        if (result > 0) {
+//            JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+//            thuocdao.filltoArrayList();
+//            filltotable();
+//            filltotextbox(dsthuoc.size() - 1);
+//            tblQuanliThuoc.setRowSelectionInterval(dsthuoc.size() - 1, dsthuoc.size() - 1);
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Lưu thất bại");
+//        }
+//    } else {
+//        JOptionPane.showMessageDialog(this, "Mã thuốc đã tồn tại.");
+//    }
+//}
 
 
 
