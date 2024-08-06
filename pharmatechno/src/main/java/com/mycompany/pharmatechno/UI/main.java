@@ -576,11 +576,7 @@ public class main extends javax.swing.JFrame {
         mniHoaDon.setText("Hóa Đơn");
         mniHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<<<<<<< HEAD
-                jMenuItem9ActionPerformed(evt);
-=======
                 mniHoaDonActionPerformed(evt);
->>>>>>> main
             }
         });
         MnuXuLi.add(mniHoaDon);
@@ -594,12 +590,7 @@ public class main extends javax.swing.JFrame {
         });
         mniHoaDonNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<<<<<<< HEAD
-                jMenuItem10ActionPerformed(evt);
-            }
-=======
                 mniHoaDonNhapActionPerformed(evt);            }
->>>>>>> main
         });
         MnuXuLi.add(mniHoaDonNhap);
 
@@ -617,20 +608,12 @@ public class main extends javax.swing.JFrame {
         mniDoanhThu.setText("Doanh Thu");
         mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-<<<<<<< HEAD
-                jMenuItem11MouseClicked(evt);
-=======
                 // jMenuItem11MouseClicked(evt);
->>>>>>> main
             }
         });
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<<<<<<< HEAD
-                jMenuItem11ActionPerformed(evt);
-=======
                 mniDoanhThuActionPerformed(evt);
->>>>>>> main
             }
         });
         MnuThongKe.add(mniDoanhThu);
@@ -639,11 +622,7 @@ public class main extends javax.swing.JFrame {
         mniThuoc.setText("Thuốc ");
         mniThuoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<<<<<<< HEAD
-                jMenuItem13ActionPerformed(evt);
-=======
                 // jMenuItem13ActionPerformed(evt);
->>>>>>> main
             }
         });
         MnuThongKe.add(mniThuoc);
@@ -963,10 +942,6 @@ public class main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
-<<<<<<< HEAD
-                                           
-
-=======
     private void mniHoaDonNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniHoaDonNhapMouseClicked
         // TODO add your handling code here:
         changePanel(new HoaDonNhapUI());
@@ -987,7 +962,6 @@ public class main extends javax.swing.JFrame {
     }     
                                            
 
->>>>>>> main
                                             
 
     /**
