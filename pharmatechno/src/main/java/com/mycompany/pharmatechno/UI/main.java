@@ -879,7 +879,10 @@ public class main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
-    
+        private void mniThuocActionPerformed(java.awt.event.ActionEvent evt) {                                         
+            changePanel(new ThuocTonKho());
+            updateBackgroundColorsformni();
+    }  
     
     private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
         // TODO add your handling code here:

@@ -65,6 +65,7 @@ public class DoiMatKhau extends javax.swing.JFrame {
         txtxacnhanmatkhau = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Đổi Mật Khẩu");
 
         jLabel3.setText("Mật khẩu hiện tại");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);

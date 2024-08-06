@@ -19,6 +19,7 @@ com\mycompany\pharmatechno\UI\QuanLiKhachHang$1.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$12.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$2.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$4.class
+com\mycompany\pharmatechno\UI\ThuocTonKho$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$17.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$1.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$11.class
@@ -126,6 +127,7 @@ com\mycompany\pharmatechno\UI\hoadon$10.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$3.class
 com\mycompany\pharmatechno\UI\hoadon$15.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$4.class
+com\mycompany\pharmatechno\UI\ThuocTonKho$8.class
 com\mycompany\pharmatechno\UI\DoanhThu$6.class
 com\mycompany\pharmatechno\Model\NhaPhanPhoi.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$6.class
