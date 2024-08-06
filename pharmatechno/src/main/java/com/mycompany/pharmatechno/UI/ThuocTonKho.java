@@ -7,7 +7,9 @@ package com.mycompany.pharmatechno.UI;
 import com.mycompany.pharmatechno.Control.ThuocTonKhoDAO;
 import com.mycompany.pharmatechno.Model.ThuocTonKhoModel;
 import java.util.List;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -20,6 +22,7 @@ public class ThuocTonKho extends javax.swing.JPanel {
      */
     public ThuocTonKho() {
         initComponents();
+        filltotable();
     }
 
     /**
@@ -38,8 +41,6 @@ public class ThuocTonKho extends javax.swing.JPanel {
             model.addRow(new Object[] 
             {ttk.getMaThuoc(),
             ttk.getTenThuoc(),
-            ttk.getSoLuongNhap(),
-            ttk.getSoLuongBan(),
             ttk.getSoLuongTon()});
         }
     }
@@ -50,29 +51,36 @@ public class ThuocTonKho extends javax.swing.JPanel {
         }
     }
 
-        private void navigate(int index) {
+        
+   private void navigate(int index) {
+    // Kiểm tra xem index có hợp lệ không
+    if (index >= 0 && index < tblThuocTonKho.getRowCount()) {
         tblThuocTonKho.setRowSelectionInterval(index, index);
         showDetail(index);
+    } else {
+        // Nếu không hợp lệ, có thể hiển thị thông báo lỗi hoặc xử lý phù hợp
+        System.err.println("Đã đến cuối");
     }
+}
         
 
     public void btnFirst() {
         navigate(0);
         scrollToVisible(0);
     }
-    public void btnBack() {
+    private void btnNext() {
+        int currentIndex = tblThuocTonKho.getSelectedRow();
+        if (currentIndex >= 0 && currentIndex < ttkm.size() - 1) {
+            navigate(currentIndex + 1);
+            scrollToVisible(currentIndex + 1);
+        }
+    }
+
+    private void btnBack() {
         int currentIndex = tblThuocTonKho.getSelectedRow();
         if (currentIndex > 0) {
             navigate(currentIndex - 1);
             scrollToVisible(currentIndex - 1);
-        }
-    }
-    
-       private void btnNext() {
-        int currentIndex = tblThuocTonKho.getSelectedRow();
-        if (currentIndex < ttkm.size() - 1) {
-            navigate(currentIndex + 1);
-            scrollToVisible(currentIndex + 1);
         }
     }
        
@@ -91,7 +99,12 @@ public class ThuocTonKho extends javax.swing.JPanel {
     tblThuocTonKho.scrollRectToVisible(tblThuocTonKho.getCellRect(rowIndex, 0, true));
 }
     
-    
+            private void find(){
+        DefaultTableModel ob = (DefaultTableModel) tblThuocTonKho.getModel();
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
+        tblThuocTonKho.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTim.getText()));
+    }
     
     
     
@@ -121,7 +134,6 @@ public class ThuocTonKho extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
-        btnTim = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -129,19 +141,24 @@ public class ThuocTonKho extends javax.swing.JPanel {
 
         tblThuocTonKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Mã Thuốc", "Tên Thuốc", "Số Lượng Nhập", "Số Lượng Bán", "Số Lượng Tồn Kho"
+                "Mã Thuốc", "Tên Thuốc", "Số Lượng Tồn Kho"
             }
         ));
         jScrollPane1.setViewportView(tblThuocTonKho);
 
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh.png"))); // NOI18N
         btnLamMoi.setText("Làm Mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
 
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Exit.png"))); // NOI18N
         btnThoat.setText("Thoát");
@@ -153,7 +170,13 @@ public class ThuocTonKho extends javax.swing.JPanel {
             }
         });
 
-        lblTim.setText("Tìm thuốc");
+        txtTim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKeyReleased(evt);
+            }
+        });
+
+        lblTim.setText("Tìm Kiếm :");
 
         btnBack.setText("<<");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -176,12 +199,10 @@ public class ThuocTonKho extends javax.swing.JPanel {
             }
         });
 
-        btnTim.setText("Tìm");
-
         jPanel1.setBackground(new java.awt.Color(0, 255, 0));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("THUỐC TỒN KHO");
+        jLabel2.setText("THUỐC GẦN HẾT");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,30 +231,32 @@ public class ThuocTonKho extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTim)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnTim)
-                        .addGap(173, 173, 173))
+                        .addGap(22, 22, 22)
+                        .addComponent(btnLamMoi))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
                         .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnLamMoi, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                        .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTim)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -243,17 +266,16 @@ public class ThuocTonKho extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFirst)
-                    .addComponent(btnBack)
-                    .addComponent(btnNext)
-                    .addComponent(btnLast))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTim)
-                    .addComponent(btnTim))
-                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTim))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnFirst)
+                        .addComponent(btnBack)
+                        .addComponent(btnNext)
+                        .addComponent(btnLast)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,22 +286,46 @@ public class ThuocTonKho extends javax.swing.JPanel {
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
         btnFirst();
+        btnFirst.setEnabled(false);
+        btnBack.setEnabled(false);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         btnBack();
+        btnFirst.setEnabled(true);
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
         btnNext();
+        btnFirst.setEnabled(true);
+        btnBack.setEnabled(true);
+        btnLast.setEnabled(true);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
         btnLast();
+        btnFirst.setEnabled(true);
+        btnBack.setEnabled(true);
+        btnNext.setEnabled(false);
+        btnLast.setEnabled(false);
     }//GEN-LAST:event_btnLastActionPerformed
+
+    private void txtTimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKeyReleased
+        // TODO add your handling code here:
+        find();
+    }//GEN-LAST:event_txtTimKeyReleased
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        showtoTable();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -289,7 +335,6 @@ public class ThuocTonKho extends javax.swing.JPanel {
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnThoat;
-    private javax.swing.JButton btnTim;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

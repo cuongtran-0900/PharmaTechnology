@@ -11,18 +11,14 @@ package com.mycompany.pharmatechno.Model;
 public class ThuocTonKhoModel {
     private String MaThuoc;
     private String TenThuoc;
-    private int SoLuongNhap;
-    private int SoLuongBan;
     private int SoLuongTon;
 
     public ThuocTonKhoModel() {
     }
 
-    public ThuocTonKhoModel(String MaThuoc, String TenThuoc, int SoLuongNhap, int SoLuongBan, int SoLuongTon) {
+    public ThuocTonKhoModel(String MaThuoc, String TenThuoc, int SoLuongTon) {
         this.MaThuoc = MaThuoc;
         this.TenThuoc = TenThuoc;
-        this.SoLuongNhap = SoLuongNhap;
-        this.SoLuongBan = SoLuongBan;
         this.SoLuongTon = SoLuongTon;
     }
 
@@ -40,22 +36,6 @@ public class ThuocTonKhoModel {
 
     public void setTenThuoc(String TenThuoc) {
         this.TenThuoc = TenThuoc;
-    }
-
-    public int getSoLuongNhap() {
-        return SoLuongNhap;
-    }
-
-    public void setSoLuongNhap(int SoLuongNhap) {
-        this.SoLuongNhap = SoLuongNhap;
-    }
-
-    public int getSoLuongBan() {
-        return SoLuongBan;
-    }
-
-    public void setSoLuongBan(int SoLuongBan) {
-        this.SoLuongBan = SoLuongBan;
     }
 
     public int getSoLuongTon() {

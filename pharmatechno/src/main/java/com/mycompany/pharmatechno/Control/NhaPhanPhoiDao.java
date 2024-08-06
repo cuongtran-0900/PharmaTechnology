@@ -26,6 +26,7 @@ public class NhaPhanPhoiDao extends ConnectSQL{
             ResultSet rs = st.executeQuery(sql)) {
             dsnpp.clear();
             while(rs.next()) {
+                
                 NhaPhanPhoi npp = new NhaPhanPhoi();
                 npp.setMaNPP(rs.getString(1));
                 npp.setTenNPP(rs.getString(2));
