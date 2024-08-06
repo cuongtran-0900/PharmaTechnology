@@ -7,6 +7,10 @@ package com.mycompany.pharmatechno.UI;
 import javax.swing.table.DefaultTableModel;
 import com.mycompany.pharmatechno.Control.KhoiPhucDao;
 import com.mycompany.pharmatechno.Model.Thuoc;
+import com.mycompany.pharmatechno.UI.main;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -15,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author Cuong
  */
 public class KhoiPhuc extends javax.swing.JFrame {
+    private main mainFrame; // Tham chiếu đến MainFrame
 
     /**
      * Creates new form KhoiPhuc
@@ -22,6 +27,7 @@ public class KhoiPhuc extends javax.swing.JFrame {
     public KhoiPhuc() {
         initComponents();
         filltotable();
+   
     }
 
     /**
@@ -38,6 +44,7 @@ public class KhoiPhuc extends javax.swing.JFrame {
         btnKhoiPhuc = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
+        btnThoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +72,13 @@ public class KhoiPhuc extends javax.swing.JFrame {
 
         jLabel1.setText("Tìm Kiếm : ");
 
+        btnThoat.setText("thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,9 +89,11 @@ public class KhoiPhuc extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
                 .addComponent(btnKhoiPhuc)
-                .addGap(135, 135, 135))
+                .addGap(18, 18, 18)
+                .addComponent(btnThoat)
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +102,8 @@ public class KhoiPhuc extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnKhoiPhuc))
+                    .addComponent(btnKhoiPhuc)
+                    .addComponent(btnThoat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -110,6 +127,28 @@ public class KhoiPhuc extends javax.swing.JFrame {
         // TODO add your handling code here:
         showDetail();
     }//GEN-LAST:event_tblKhoiPhucMouseClicked
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+ int option = JOptionPane.showConfirmDialog(
+        this, 
+        "Bạn có muốn thoát không?", 
+        "Xác nhận thoát", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.QUESTION_MESSAGE
+    );
+    
+    // Nếu người dùng chọn Yes
+    if (option == JOptionPane.YES_OPTION) {
+        // Đóng JFrame hiện tại (KhoiPhuc)
+        this.dispose();
+
+        // Mở lại panel jpnQuanLiThuoc trên MainFrame hiện tại
+        if (mainFrame != null) {
+            mainFrame.showPanel("jpnQuanLiThuoc");
+        }
+    }
+    }//GEN-LAST:event_btnThoatActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -168,6 +207,7 @@ public class KhoiPhuc extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnKhoiPhuc;
+    private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblKhoiPhuc;

@@ -9,6 +9,8 @@ package com.mycompany.pharmatechno.Model;
  * @author Cuong
  */
 public class NhanVien {
+     private TaiKhoanNhanVien taiKhoanNhanVien;
+    
     private String MaNV;
     private String TenNV;
     private String TuoiNV;
@@ -116,4 +118,12 @@ public class NhanVien {
     public void setPassWord(String PassWord) {
         this.PassWord = PassWord;
     }
+      public TaiKhoanNhanVien getTaiKhoanNhanVien() {
+        return taiKhoanNhanVien;
+    }
+
+    public void setTaiKhoanNhanVien(TaiKhoanNhanVien taiKhoanNhanVien) {
+        this.taiKhoanNhanVien = taiKhoanNhanVien;
+    }
+    
 }

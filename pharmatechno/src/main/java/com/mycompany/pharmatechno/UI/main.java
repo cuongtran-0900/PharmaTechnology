@@ -9,6 +9,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.mycompany.pharmatechno.Control.Auth;
 import com.mycompany.pharmatechno.Control.appController;
 import com.sun.tools.javac.Main;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -120,7 +121,6 @@ public class main extends javax.swing.JFrame {
         mniHoaDonNhap = new javax.swing.JMenuItem();
         MnuThongKe = new javax.swing.JMenu();
         mniDoanhThu = new javax.swing.JMenuItem();
-        mniKhacHang = new javax.swing.JMenuItem();
         mniThuoc = new javax.swing.JMenuItem();
         MnuTroGiup = new javax.swing.JMenu();
         mnuCheDo = new javax.swing.JMenu();
@@ -575,6 +575,7 @@ public class main extends javax.swing.JFrame {
         mniHoaDon.setText("Hóa Đơn");
         mniHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
             }
         });
         MnuXuLi.add(mniHoaDon);
@@ -583,6 +584,7 @@ public class main extends javax.swing.JFrame {
         mniHoaDonNhap.setText("Hóa Đơn Nhập");
         mniHoaDonNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
             }
         });
         MnuXuLi.add(mniHoaDonNhap);
@@ -601,24 +603,21 @@ public class main extends javax.swing.JFrame {
         mniDoanhThu.setText("Doanh Thu");
         mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                
+                jMenuItem11MouseClicked(evt);
             }
         });
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                     mniDoanhThuActionPerformed(evt);
+                jMenuItem11ActionPerformed(evt);
             }
         });
         MnuThongKe.add(mniDoanhThu);
-
-        mniKhacHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User group.png"))); // NOI18N
-        mniKhacHang.setText("Khách Hàng");
-        MnuThongKe.add(mniKhacHang);
 
         mniThuoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Diagram.png"))); // NOI18N
         mniThuoc.setText("Thuốc ");
         mniThuoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
             }
         });
         MnuThongKe.add(mniThuoc);
@@ -919,25 +918,25 @@ public class main extends javax.swing.JFrame {
 
     private void jpnTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnTaiKhoanMouseClicked
         // TODO add your handling code here:
-        changePanel(new TaiKhoan());
+            changePanel(new TaiKhoan());
     updateBackgroundColors(jpnTaiKhoan);
     }//GEN-LAST:event_jpnTaiKhoanMouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-           changePanel(new TaiKhoan());
-    updateBackgroundColors(jpnTaiKhoan);
+//       changePanel(new TaiKhoan());
+//    updateBackgroundColors(jpnTaiKhoan);
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
         // TODO add your handling code here:
-        changePanel(new ThayDoiMatKhau());
+
         
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
-//GEN-LAST:event_mniDangXuatActionPerformed
+                                           
 
-    //GEN-LAST:event_mniThoatActionPerformed
+                                            
 
     /**
      * @param args the command line arguments
@@ -1012,7 +1011,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniDoiMatKhau;
     private javax.swing.JMenuItem mniHoaDon;
     private javax.swing.JMenuItem mniHoaDonNhap;
-    private javax.swing.JMenuItem mniKhacHang;
     private javax.swing.JMenuItem mniKhachHang;
     private javax.swing.JMenuItem mniLight;
     private javax.swing.JMenuItem mniQuanLiNPP;
@@ -1021,4 +1019,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniThuoc;
     private javax.swing.JMenu mnuCheDo;
     // End of variables declaration//GEN-END:variables
+
+    void showPanel(String jpnQuanLiThuoc) {
+         CardLayout cardLayout = (CardLayout) jpnRoot.getLayout();
+    cardLayout.show(jpnRoot, jpnQuanLiThuoc);
+    }
 }

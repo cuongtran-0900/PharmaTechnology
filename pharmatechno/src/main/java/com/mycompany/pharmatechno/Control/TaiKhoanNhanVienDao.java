@@ -1,4 +1,5 @@
 package com.mycompany.pharmatechno.Control;
+import com.mycompany.pharmatechno.Model.NhanVien;
 import com.mycompany.pharmatechno.Model.TaiKhoanNhanVien;
 import com.mycompany.pharmatechno.UI.TaiKhoan;
 import java.sql.PreparedStatement;
@@ -21,32 +22,32 @@ import java.util.logging.Logger;
 public class TaiKhoanNhanVienDao extends ConnectSQL{
       List<TaiKhoanNhanVien> dstknv = new ArrayList<>();
         
-     public List<TaiKhoanNhanVien> filltoArrayList(){
-    List<TaiKhoanNhanVien> dstknv = new ArrayList<>();
+public NhanVien selectByUsername(String username) {
+    NhanVien nhanVien = null;
     try {
-        String sql = "select * from NhanVien where isdelete = 1 order by MaNV";
-        try (Statement st = con.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
-            dstknv.clear();
-            while (rs.next()) {
-                TaiKhoanNhanVien tknv = new TaiKhoanNhanVien();
-                tknv.setMaNV(rs.getString("MaNV"));
-                tknv.setTen(rs.getString("Ten"));
-                tknv.setTuoi(rs.getString("Tuoi"));
-                tknv.setSDT(rs.getString("SDT"));
-                tknv.setEmail(rs.getString("Email"));
-                tknv.setGioiTinh(rs.getString("GioiTinh"));
-                tknv.setDiaChi(rs.getString("DiaChi"));
-                tknv.setUsername(rs.getString("Username"));
-                tknv.setPassword(rs.getString("Password"));
-                dstknv.add(tknv);
+        String sql = "SELECT * FROM NhanVien WHERE Username = ?";
+        try (PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, username);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                nhanVien = new NhanVien();
+                nhanVien.setMaNV(rs.getString("MaNV"));
+                nhanVien.setTenNV(rs.getString("Ten"));
+                nhanVien.setTuoiNV(rs.getString("Tuoi"));
+                nhanVien.setSDT(rs.getString("SDT"));
+                nhanVien.setEmail(rs.getString("Email"));
+                nhanVien.setGioiTinh(rs.getString("GioiTinh"));
+                nhanVien.setDiaChi(rs.getString("DiaChi"));
+                nhanVien.setUserName(rs.getString("Username"));
+                nhanVien.setPassWord(rs.getString("Password"));
             }
         }
     } catch (SQLException ex) {
-        Logger.getLogger(TaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(NhanVienDao.class.getName()).log(Level.SEVERE, null, ex);
     }
-    return dstknv;
+    return nhanVien;
 }
+
 
 
     public boolean updatePassword(String username, String newPassword) {

@@ -5,6 +5,7 @@
 package com.mycompany.pharmatechno.Control;
 
 import com.mycompany.pharmatechno.Model.NhanVien;
+import com.mycompany.pharmatechno.Model.TaiKhoanNhanVien;
 
 /**
  *
@@ -30,7 +31,12 @@ public class Auth {
     public static boolean isLogin() {
         return Auth.user != null;
     }
-
+  public static TaiKhoanNhanVien getTaiKhoanNhanVien() {
+        if (user != null) {
+            return user.getTaiKhoanNhanVien(); // Hoặc thuộc tính tương tự
+        }
+        return null;
+    }
     /**
      * Kiểm tra xem có phải là admin hay không
      */
