@@ -1,33 +1,67 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.pharmatechno.Model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
-/**
- *
- * @author Cuong
- */
 public class HoaDon {
-
-    private String MaHD;
-    private Date thoiGian;
-    private String MaNV;
-    private String MaKH;
-    private float tongTien;
     
-    public HoaDon() {
+    private String TenThuoc;
+    private int SoLuong;
+    private float DonGia;
+    private float TongTien;
+    private String MaHD;
+    private Timestamp thoiGian;
+    private String MaNV;
+    private String MaKH; 
+    private float ThanhTien;
+    private float TongTienNgay;
 
+    public HoaDon() {
     }
 
-    public HoaDon(String MaHD, Date thoiGian, String MaNV, String MaKH, float tongTien) {
+    public HoaDon(String TenThuoc, int SoLuong, float DonGia, float TongTien, String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float ThanhTien, float TongTienNgay) {
+        this.TenThuoc = TenThuoc;
+        this.SoLuong = SoLuong;
+        this.DonGia = DonGia;
+        this.TongTien = TongTien;
         this.MaHD = MaHD;
         this.thoiGian = thoiGian;
         this.MaNV = MaNV;
         this.MaKH = MaKH;
-        this.tongTien = tongTien;
+        this.ThanhTien = ThanhTien;
+        this.TongTienNgay = TongTienNgay;
+    }
+
+    public String getTenThuoc() {
+        return TenThuoc;
+    }
+
+    public void setTenThuoc(String TenThuoc) {
+        this.TenThuoc = TenThuoc;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
+    }
+
+    public float getDonGia() {
+        return DonGia;
+    }
+
+    public void setDonGia(float DonGia) {
+        this.DonGia = DonGia;
+    }
+
+    public float getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(float TongTien) {
+        this.TongTien = TongTien;
     }
 
     public String getMaHD() {
@@ -38,11 +72,11 @@ public class HoaDon {
         this.MaHD = MaHD;
     }
 
-    public Date getThoiGian() {
+    public Timestamp getThoiGian() {
         return thoiGian;
     }
 
-    public void setThoiGian(Date thoiGian) {
+    public void setThoiGian(Timestamp thoiGian) {
         this.thoiGian = thoiGian;
     }
 
@@ -62,13 +96,21 @@ public class HoaDon {
         this.MaKH = MaKH;
     }
 
-    public float getTongTien() {
-        return tongTien;
+    public float getThanhTien() {
+        return ThanhTien;
     }
 
-    public void setTongTien(float tongTien) {
-        this.tongTien = tongTien;
+    public void setThanhTien(float ThanhTien) {
+        this.ThanhTien = ThanhTien;
     }
 
-  
+    public float getTongTienNgay() {
+        return TongTienNgay;
+    }
+
+    public void setTongTienNgay(float TongTienNgay) {
+        this.TongTienNgay = TongTienNgay;
+    }
+    
+    
 }

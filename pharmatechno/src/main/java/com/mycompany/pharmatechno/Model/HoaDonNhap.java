@@ -5,69 +5,48 @@
 package com.mycompany.pharmatechno.Model;
 
 import java.util.Date;
+import java.util.List;
 
-/**
- *
- * @author Cuong
- */
 public class HoaDonNhap {
-
-    private String MaHDN;
-    private String MaNPP;
-    private String TenThuoc;
-    private int soLuong;
+    private String maHDN;
+    private String maNPP;
     private String nguoiGiao;
     private String nguoiNhan;
     private Date ngayViet;
     private Date ngayNhap;
-    private float tongTien;
+    private int tongTien;
+    private List<ChiTietHoaDonNhap> chiTietHoaDon;
 
+    // Constructor
     public HoaDonNhap() {
-
     }
 
-    public HoaDonNhap(String MaHDN, String MaNPP, String TenThuoc, int soLuong, String nguoiGiao, String nguoiNhan, Date ngayViet, Date ngayNhap, float tongTien) {
-        this.MaHDN = MaHDN;
-        this.MaNPP = MaNPP;
-        this.TenThuoc = TenThuoc;
-        this.soLuong = soLuong;
+    public HoaDonNhap(String maHDN, String maNPP, String nguoiGiao, String nguoiNhan, Date ngayViet, Date ngayNhap, int tongTien, List<ChiTietHoaDonNhap> chiTietHoaDon) {
+        this.maHDN = maHDN;
+        this.maNPP = maNPP;
         this.nguoiGiao = nguoiGiao;
         this.nguoiNhan = nguoiNhan;
         this.ngayViet = ngayViet;
         this.ngayNhap = ngayNhap;
         this.tongTien = tongTien;
+        this.chiTietHoaDon = chiTietHoaDon;
     }
 
+    // Getters and Setters
     public String getMaHDN() {
-        return MaHDN;
+        return maHDN;
     }
 
-    public void setMaHDN(String MaHDN) {
-        this.MaHDN = MaHDN;
+    public void setMaHDN(String maHDN) {
+        this.maHDN = maHDN;
     }
 
     public String getMaNPP() {
-        return MaNPP;
+        return maNPP;
     }
 
-    public void setMaNPP(String MaNPP) {
-        this.MaNPP = MaNPP;
-    }
-
-    public String getTenThuoc() {
-        return TenThuoc;
-    }
-
-    public void setTenThuoc(String TenThuoc) {
-        this.TenThuoc = TenThuoc;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setMaNPP(String maNPP) {
+        this.maNPP = maNPP;
     }
 
     public String getNguoiGiao() {
@@ -102,13 +81,25 @@ public class HoaDonNhap {
         this.ngayNhap = ngayNhap;
     }
 
-    public float getTongTien() {
+    public int getTongTien() {
         return tongTien;
     }
 
-    public void setTongTien(float tongTien) {
+    public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
     }
 
-  
+    public List<ChiTietHoaDonNhap> getChiTietHoaDon() {
+        return chiTietHoaDon;
+    }
+
+    public void setChiTietHoaDon(List<ChiTietHoaDonNhap> chiTietHoaDon) {
+        this.chiTietHoaDon = chiTietHoaDon;
+    }
+
+    // Method to add a ChiTietHoaDonNhap object to the list
+    public void addChiTietHoaDon(ChiTietHoaDonNhap chiTiet) {
+        this.chiTietHoaDon.add(chiTiet);
+    }
 }
+
