@@ -4,26 +4,68 @@
  */
 package com.mycompany.pharmatechno.UI;
 
+import com.mycompany.pharmatechno.Control.Auth;
+import com.mycompany.pharmatechno.Control.LoginControl;
+import com.mycompany.pharmatechno.Control.NhanVienDao;
 import com.mycompany.pharmatechno.Control.Xlimg;
+import com.mycompany.pharmatechno.Model.NhanVien;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hongo
  */
 public class DangNhap extends javax.swing.JFrame {
-
+private Consumer<Boolean> loginCallback; 
+private LoginControl loginControl;
     /**
      * Creates new form DangNhaP
      */
     public DangNhap() {
         initComponents();
         init();
+        loginControl = new LoginControl(this);
+        btnDangNhap.addActionListener(e -> handleLogin());
+        txtMatKhau.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btnDangNhap.doClick(); // Tự động nhấn nút
+                }
+            }
+        });
     }
+    
+       private void handleLogin() {
+        String username = txtMaNV.getText();
+        String password = new String(txtMatKhau.getPassword());
+        loginControl.handleLogin(username, password);
+    }
+    
+    public void setLoginCallback(Consumer<Boolean> callback) {
+        this.loginCallback = callback;
+    }
+
+       NhanVienDao dao= new NhanVienDao();
+       
+
+          
+        
+        
+        
 void init(){
-      //setIconImage(Xlimg.getAppIcon());
-//      setIconImage(Xlimg.getAppIcon());
+     
+    setIconImage(Xlimg.getAppIcon());
       setLocationRelativeTo(null);
 }
+
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,12 +78,12 @@ void init(){
         logo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
+        txtMaNV = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
         btnthoat = new javax.swing.JButton();
+        txtMatKhau = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,27 +109,37 @@ void init(){
 
         jLabel2.setText("Username:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 66, -1));
-        getContentPane().add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 263, 28));
+        getContentPane().add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 263, 28));
 
         jLabel3.setText("Password");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 66, -1));
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 263, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 0, 555, 488));
 
         btnDangNhap.setText("Đăng Nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, -1, 39));
 
         btnthoat.setText("Thoát");
         getContentPane().add(btnthoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, 85, 39));
+        getContentPane().add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 260, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/background-mau-trang.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 490));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 0, 950, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+        //  dangNhap();
+    }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,7 +186,7 @@ void init(){
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel logo;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtMaNV;
+    private javax.swing.JPasswordField txtMatKhau;
     // End of variables declaration//GEN-END:variables
 }
