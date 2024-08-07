@@ -53,9 +53,13 @@ public class Xdate {
      * @return String kết quả
      */
     public static String toString(Date date, String pattern) {
-        formater.applyPattern(pattern);
-        return formater.format(date);
+    if (date == null) {
+        return ""; // hoặc một giá trị mặc định bạn muốn hiển thị khi date là null
     }
+    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+    return sdf.format(date);
+}
+
 
     /**
      * Chuyển đổi từ Date sang String với định dạng mặc định
