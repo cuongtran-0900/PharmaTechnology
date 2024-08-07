@@ -51,6 +51,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         txtMaHoaDon.setEditable(false);
         txtThoiGian.setEditable(false);
         txtThoiGian.setText(currentTimestamp.toString());
+        
 
     }
 
