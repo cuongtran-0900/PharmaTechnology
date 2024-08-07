@@ -283,11 +283,10 @@ private void filltotextbox(int index) {
         });
         jScrollPane1.setViewportView(tblQuanLiNhaPhanPhoi);
 
-        jPanel3.setBackground(new java.awt.Color(51, 255, 51));
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel4.setBackground(new java.awt.Color(0, 204, 51));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("QUẢN LÍ NHÀ PHÂN PHỐI");
 

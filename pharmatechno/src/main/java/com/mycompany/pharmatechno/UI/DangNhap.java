@@ -42,33 +42,14 @@ private LoginControl loginControl;
 
        NhanVienDao dao= new NhanVienDao();
        
-//        private void dangNhap() {
-//        NhanVienDao nvDao = new NhanVienDao();
-//        String username = txtUsername.getText();
-//        String password = new String(txtMatKhau.getPassword());
-//
-//        NhanVien nhanVien = nvDao.selectByUsername(username);
-//
-//        if (nhanVien != null && nhanVien.getPassWord().equals(password)) {
-//            JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-//            if (loginCallback != null) {
-//                loginCallback.accept(true);
-//            }
-//            this.dispose();
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Sai tên đăng nhập hoặc mật khẩu");
-//            if (loginCallback != null) {
-//                loginCallback.accept(false);
-//            }
-//        }
-//    }
+
           
         
         
         
 void init(){
-      //setIconImage(Xlimg.getAppIcon());
-//      setIconImage(Xlimg.getAppIcon());
+     
+    setIconImage(Xlimg.getAppIcon());
       setLocationRelativeTo(null);
 }
 

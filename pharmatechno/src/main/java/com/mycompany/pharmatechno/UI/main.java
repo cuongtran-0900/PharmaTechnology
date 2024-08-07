@@ -10,6 +10,7 @@ import com.mycompany.pharmatechno.Control.Auth;
 import com.mycompany.pharmatechno.Control.appController;
 import com.mycompany.pharmatechno.Model.HoaDon;
 import com.sun.tools.javac.Main;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -121,8 +122,7 @@ public class main extends javax.swing.JFrame {
         mniHoaDonNhap = new javax.swing.JMenuItem();
         MnuThongKe = new javax.swing.JMenu();
         mniDoanhThu = new javax.swing.JMenuItem();
-        mniKhacHang = new javax.swing.JMenuItem();
-        mniThuoc = new javax.swing.JMenuItem();
+        mniThuocThongKe = new javax.swing.JMenuItem();
         MnuTroGiup = new javax.swing.JMenu();
         mnuCheDo = new javax.swing.JMenu();
         mniLight = new javax.swing.JMenuItem();
@@ -590,7 +590,8 @@ public class main extends javax.swing.JFrame {
         });
         mniHoaDonNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniHoaDonNhapActionPerformed(evt);            }
+            mniHoaDonNhapActionPerformed(evt);
+            }
         });
         MnuXuLi.add(mniHoaDonNhap);
 
@@ -608,7 +609,7 @@ public class main extends javax.swing.JFrame {
         mniDoanhThu.setText("Doanh Thu");
         mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                // jMenuItem11MouseClicked(evt);
+            //    mniDoanhThuMouseClicked(evt);
             }
         });
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
@@ -618,18 +619,14 @@ public class main extends javax.swing.JFrame {
         });
         MnuThongKe.add(mniDoanhThu);
 
-        mniKhacHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User group.png"))); // NOI18N
-        mniKhacHang.setText("Khách Hàng");
-        MnuThongKe.add(mniKhacHang);
-
-        mniThuoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Diagram.png"))); // NOI18N
-        mniThuoc.setText("Thuốc ");
-        mniThuoc.addActionListener(new java.awt.event.ActionListener() {
+        mniThuocThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Diagram.png"))); // NOI18N
+        mniThuocThongKe.setText("Thuốc Tồn kho");
+        mniThuocThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // jMenuItem13ActionPerformed(evt);
+                mniThuocThongKeActionPerformed(evt);
             }
         });
-        MnuThongKe.add(mniThuoc);
+        MnuThongKe.add(mniThuocThongKe);
 
         jMenuBar1.add(MnuThongKe);
 
@@ -746,7 +743,18 @@ public class main extends javax.swing.JFrame {
 
     private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
         // TODO add your handling code here:
-                changePanel(new ThongKe());
+        
+                if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí nhân viên .");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin Doanh thu.");
+            return;
+        } else {
+           changePanel(new ThongKeDoanhThu());
+        }       
                 updateBackgroundColorsformni();
     }//GEN-LAST:event_mniDoanhThuActionPerformed
 
@@ -882,8 +890,6 @@ public class main extends javax.swing.JFrame {
             login.setVisible(true);
         }
     }//GEN-LAST:event_mniDangXuatActionPerformed
-
-    
     
     private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
         // TODO add your handling code here:
@@ -921,28 +927,31 @@ public class main extends javax.swing.JFrame {
 
     private void MnuThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuThongKeActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_MnuThongKeActionPerformed
 
     private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
         // TODO add your handling code here:
           changePanel(new TaiKhoan());
+          updateBackgroundColorsformni();
     }//GEN-LAST:event_mniTaiKhoanActionPerformed
 
     private void jpnTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnTaiKhoanMouseClicked
         // TODO add your handling code here:
-        changePanel(new TaiKhoan());
+            changePanel(new TaiKhoan());
     updateBackgroundColors(jpnTaiKhoan);
     }//GEN-LAST:event_jpnTaiKhoanMouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-           changePanel(new TaiKhoan());
-    updateBackgroundColors(jpnTaiKhoan);
+//       changePanel(new TaiKhoan());
+//    updateBackgroundColors(jpnTaiKhoan);
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
         // TODO add your handling code here:
-        changePanel(new ThayDoiMatKhau());
+            DoiMatKhau dmk = new DoiMatKhau();
+        dmk.setVisible(true);
         
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
@@ -954,7 +963,19 @@ public class main extends javax.swing.JFrame {
 
     private void mniHoaDonNhapActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-        changePanel(new HoaDonNhapUI());
+        
+         if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin doanh thu.");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin hóa đơn nhập.");
+            return;
+        } else {
+            changePanel(new HoaDonNhapUI());
+        }
+       
         updateBackgroundColorsformni();
     }   
     
@@ -964,6 +985,22 @@ public class main extends javax.swing.JFrame {
         updateBackgroundColorsformni();
         
     }     
+    private void mniThuocThongKeActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin doanh thu.");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin thuốc thống kê.");
+            return;
+        } else {
+           changePanel(new ThuocTonKho());
+        }
+       
+        updateBackgroundColorsformni();
+    }  
                                            
 
                                             
@@ -1041,13 +1078,17 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniDoiMatKhau;
     private javax.swing.JMenuItem mniHoaDon;
     private javax.swing.JMenuItem mniHoaDonNhap;
-    private javax.swing.JMenuItem mniKhacHang;
     private javax.swing.JMenuItem mniKhachHang;
     private javax.swing.JMenuItem mniLight;
     private javax.swing.JMenuItem mniQuanLiNPP;
     private javax.swing.JMenuItem mniTaiKhoan;
     private javax.swing.JMenuItem mniThoat;
-    private javax.swing.JMenuItem mniThuoc;
+    private javax.swing.JMenuItem mniThuocThongKe;
     private javax.swing.JMenu mnuCheDo;
     // End of variables declaration//GEN-END:variables
+
+    void showPanel(String jpnQuanLiThuoc) {
+         CardLayout cardLayout = (CardLayout) jpnRoot.getLayout();
+    cardLayout.show(jpnRoot, jpnQuanLiThuoc);
+    }
 }

@@ -137,7 +137,7 @@ public class QuanLiBanHangDao extends ConnectSQL{
                
             
             
-    public String fillmaphatsinh() {
+   public String fillmaphatsinh() {
     String mps = null; 
     try {
         String sql = "SELECT mahd FROM hoadon WHERE mahd LIKE 'hd%' ORDER BY mahd DESC";
@@ -154,10 +154,15 @@ public class QuanLiBanHangDao extends ConnectSQL{
         Logger.getLogger(QuanLiBanHang.class.getName()).log(Level.SEVERE, null, ex);
     }
     
-    int so = Integer.parseInt(mps.substring(3,5));
+    if (mps != null && mps.length() >= 5) {
+        int so = Integer.parseInt(mps.substring(3, 5));
         String manv = String.valueOf(so);
-    return manv;
+        return manv;
+    } else {
+        return "00"; // Giá trị mặc định hoặc xử lý cho trường hợp mps là null hoặc không đủ độ dài
+    }
 }
+
         public String Maphatsinh() {
     if (dsbh.size() <= 0) {
         return "hd001";

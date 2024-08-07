@@ -621,9 +621,9 @@ public class hoadon extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Lịch sử hóa đơn", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 26)); // NOI18N
         jLabel1.setText("HÓA ĐƠN");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

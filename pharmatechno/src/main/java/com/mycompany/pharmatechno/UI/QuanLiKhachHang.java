@@ -297,7 +297,7 @@ public class QuanLiKhachHang extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(51, 255, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N

@@ -339,10 +339,9 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblQuanLiNhanVien);
 
-        jPanel3.setBackground(new java.awt.Color(51, 255, 51));
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("QUẢN LÍ NHÂN VIÊN");
 
@@ -398,10 +397,16 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnFrist)
+                .addGap(18, 18, 18)
+                .addComponent(btnBack)
+                .addGap(18, 18, 18)
+                .addComponent(btnNext)
+                .addGap(18, 18, 18)
+                .addComponent(btnLast)
+                .addGap(329, 329, 329))
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,14 +421,8 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
                 .addGap(69, 69, 69))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnFrist)
-                .addGap(18, 18, 18)
-                .addComponent(btnBack)
-                .addGap(18, 18, 18)
-                .addComponent(btnNext)
-                .addGap(18, 18, 18)
-                .addComponent(btnLast)
-                .addGap(332, 332, 332))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
