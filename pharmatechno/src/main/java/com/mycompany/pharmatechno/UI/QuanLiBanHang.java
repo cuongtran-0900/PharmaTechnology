@@ -185,7 +185,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
             tblGioHang.getColumnModel().getColumn(3).setMaxWidth(70);
         }
 
-        jPanel2.setBackground(new java.awt.Color(51, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
         btnLuuIn.setText("Lưu In");
         btnLuuIn.addActionListener(new java.awt.event.ActionListener() {
