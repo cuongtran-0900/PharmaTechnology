@@ -48,8 +48,8 @@ private LoginControl loginControl;
         
         
 void init(){
-      //setIconImage(Xlimg.getAppIcon());
-//      setIconImage(Xlimg.getAppIcon());
+     
+    setIconImage(Xlimg.getAppIcon());
       setLocationRelativeTo(null);
 }
 

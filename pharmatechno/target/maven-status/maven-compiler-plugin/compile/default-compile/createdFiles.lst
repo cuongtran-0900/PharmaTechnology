@@ -29,7 +29,6 @@ com\mycompany\pharmatechno\UI\HoaDonNhapUI$10.class
 com\mycompany\pharmatechno\UI\ThuocTonKho$5.class
 com\mycompany\pharmatechno\Model\DoanhThuModel.class
 com\mycompany\pharmatechno\UI\hoadon$18.class
-com\mycompany\pharmatechno\UI\mainframe$1.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$5.class
 com\mycompany\pharmatechno\UI\DoanhThu.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$9.class
@@ -61,7 +60,6 @@ com\mycompany\pharmatechno\UI\QuanLiBanHang$9.class
 com\mycompany\pharmatechno\UI\hoadon$3.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$12.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$18.class
-com\mycompany\pharmatechno\UI\ThuocTonKho.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$8.class
 com\mycompany\pharmatechno\UI\hoadon$4.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$11.class
@@ -89,7 +87,6 @@ com\mycompany\pharmatechno\UI\hoadon$1.class
 com\mycompany\pharmatechno\Model\GiohangBean.class
 com\mycompany\pharmatechno\UI\QuanLiNhaPhanPhoi$6.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$5.class
-com\mycompany\pharmatechno\UI\mainframe$2.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$14.class
 com\mycompany\pharmatechno\UI\HoaDonNhapUI$3.class
 com\mycompany\pharmatechno\UI\DoanhThu$8.class
@@ -112,16 +109,13 @@ com\mycompany\pharmatechno\UI\HoaDonNhapUI$4.class
 com\mycompany\pharmatechno\UI\hoadon$16.class
 com\mycompany\pharmatechno\Model\KhachHang.class
 com\mycompany\pharmatechno\Model\HoaDonNhap.class
-com\mycompany\pharmatechno\Control\ThuocTonKhoDAO.class
 com\mycompany\pharmatechno\UI\DoanhThu$7.class
 com\mycompany\pharmatechno\UI\QuanLiNhanVien$1.class
-com\mycompany\pharmatechno\UI\mainframe$3.class
 com\mycompany\pharmatechno\UI\DoanhThu$1.class
 com\mycompany\pharmatechno\UI\hoadon$11.class
 com\mycompany\pharmatechno\UI\QuanLiBanHang$10.class
 com\mycompany\pharmatechno\UI\TaiKhoan$4.class
 com\mycompany\pharmatechno\Model\DoiMatKhau.class
-com\mycompany\pharmatechno\UI\mainframe.class
 com\mycompany\pharmatechno\Control\HoaDonDao.class
 com\mycompany\pharmatechno\UI\hoadon$10.class
 com\mycompany\pharmatechno\UI\QuanLiThuoc$3.class
