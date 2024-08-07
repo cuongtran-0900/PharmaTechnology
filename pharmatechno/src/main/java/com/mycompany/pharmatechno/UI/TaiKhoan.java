@@ -47,22 +47,6 @@ public TaiKhoan() {
      */
     @SuppressWarnings("unchecked")
 
-public void updateUserInfo() {
-  //  TaiKhoanNhanVien tknv = Auth.user; // Hoặc lấy từ nguồn dữ liệu nếu bạn có nguồn khác
-    if (tknv != null) {
-        txtMaNV.setText(tknv.getMaNV());
-        txtTen.setText(tknv.getTenNV());
-        txtTuoi.setText(String.valueOf(tknv.getTuoiNV()));
-        txtSDT.setText(tknv.getSDT());
-        txtEmail.setText(tknv.getEmail());
-        taDiaChi.setText(tknv.getDiaChi());
-        txtUsername.setText(tknv.getUserName());
-        pwfPassword.setText(tknv.getPassWord());
-    } else {
-        // Xử lý trường hợp tknv là null
-        JOptionPane.showMessageDialog(this, "Thông tin người dùng không hợp lệ.");
-    }
-}
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
