@@ -7,6 +7,7 @@ package com.mycompany.pharmatechno.UI;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.mycompany.pharmatechno.Control.Auth;
+import com.mycompany.pharmatechno.Control.Xlimg;
 import com.mycompany.pharmatechno.Control.appController;
 import com.mycompany.pharmatechno.Model.HoaDon;
 import com.sun.tools.javac.Main;
@@ -39,6 +40,7 @@ public class main extends javax.swing.JFrame {
      * Creates new form main
      */
     public main() {
+        setIconImage(Xlimg.getAppIcon());
         initComponents();
         mniLightActionPerformed(null);
         setPanelEvents(jpnDangXuat,jpnDoanhThu,jpnQuanLiBanHang,jpnQuanLiNV,jpnQuanLiThuoc,jpnTaiKhoan);
