@@ -499,7 +499,6 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
         }
     }
     
-    
     private void xulicn(boolean a){
         btnBack.setEnabled(a);
         btnNext.setEnabled(a);
@@ -606,10 +605,10 @@ public class QuanLiNhanVien extends javax.swing.JPanel {
 
     private void delete(){
                if (txtMaNV.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập Mã Nhân Viên Cần Xóa");
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập Mã Nhà phân phói Cần Xóa");
             txtMaNV.requestFocus();
         } else {
-            int opt = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa nhân viên này?", "Xác nhận",
+            int opt = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa nhà phân phối này?", "Xác nhận",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (opt == JOptionPane.YES_OPTION) {
                 nvdao.removeStaff(txtMaNV.getText());
