@@ -75,6 +75,13 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Số lượng không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
+                try {
+                    String tenthuoc = txtTenThuoc.getText();
+                    tblHDN.setValueAt(tenthuoc, row, 1); // Cập nhật số lượng
+                    // Cập nhật tổng tiền
+                } catch (IllegalArgumentException ex) {
+                    JOptionPane.showMessageDialog(null, "Tên thuốc không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
@@ -94,6 +101,13 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Đơn giá không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
+                try {
+                    String tenthuoc = txtTenThuoc.getText();
+                    tblHDN.setValueAt(tenthuoc, row, 1); // Cập nhật số lượng
+                    // Cập nhật tổng tiền
+                } catch (IllegalArgumentException ex) {
+                    JOptionPane.showMessageDialog(null, "Tên thuốc không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         txtTenThuoc.addActionListener(e -> {
@@ -105,6 +119,30 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                     // Cập nhật tổng tiền
                 } catch (IllegalArgumentException ex) {
                     JOptionPane.showMessageDialog(null, "Tên thuốc không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
+                try {
+                    int soLuong = Integer.parseInt(txtSoLuong.getText());
+                    int donGia = (int) tblHDN.getValueAt(row, 3); // Đơn giá
+                    int thanhTien = donGia * soLuong;
+                    tblHDN.setValueAt(soLuong, row, 2); // Cập nhật số lượng
+                    tblHDN.setValueAt(thanhTien, row, 4); // Cập nhật thành tiền
+
+                    // Cập nhật tổng tiền
+                    updateTotalAmount();
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Số lượng không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
+                try {
+                    int donGia = Integer.parseInt(txtDonGia.getText());
+                    int soLuong = (int) tblHDN.getValueAt(row, 2); // Số lượng
+                    int thanhTien = (int) (donGia * soLuong);
+                    tblHDN.setValueAt(donGia, row, 3); // Cập nhật đơn giá
+                    tblHDN.setValueAt(thanhTien, row, 4); // Cập nhật thành tiền
+
+                    // Cập nhật tổng tiền
+                    updateTotalAmount();
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Đơn giá không hợp lệ", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
