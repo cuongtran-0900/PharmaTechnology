@@ -9,6 +9,8 @@ import com.mycompany.pharmatechno.Control.LoginControl;
 import com.mycompany.pharmatechno.Control.NhanVienDao;
 import com.mycompany.pharmatechno.Control.Xlimg;
 import com.mycompany.pharmatechno.Model.NhanVien;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.function.Consumer;
 import javax.swing.JOptionPane;
@@ -28,6 +30,14 @@ private LoginControl loginControl;
         init();
         loginControl = new LoginControl(this);
         btnDangNhap.addActionListener(e -> handleLogin());
+        txtMatKhau.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btnDangNhap.doClick(); // Tự động nhấn nút
+                }
+            }
+        });
     }
     
        private void handleLogin() {

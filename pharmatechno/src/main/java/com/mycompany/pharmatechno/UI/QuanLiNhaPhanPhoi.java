@@ -8,7 +8,9 @@ import com.mycompany.pharmatechno.Control.NhaPhanPhoiDao;
 import com.mycompany.pharmatechno.Model.NhaPhanPhoi;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -20,22 +22,28 @@ public class QuanLiNhaPhanPhoi extends javax.swing.JPanel {
      * Creates new form QuanLiNhaPhanPhoi
      */
     int vitri = 0;
+
     public QuanLiNhaPhanPhoi() {
-        initComponents();      
+        initComponents();
         filltotable();
+        btnCapNhat.setEnabled(false);
+        btnXoa.setEnabled(false);
     }
-    
-        NhaPhanPhoiDao nppdao = new NhaPhanPhoiDao();
-        List<NhaPhanPhoi> dsnpp = nppdao.filltoArrayList();  
-        
-private void filltotextbox(int index) {
+
+    NhaPhanPhoiDao nppdao = new NhaPhanPhoiDao();
+    List<NhaPhanPhoi> dsnpp = nppdao.filltoArrayList();
+
+    private void filltotextbox(int index) {
         if (index >= 0 && index < dsnpp.size()) {
+            // Lấy thông tin từ đối tượng Student tại chỉ mục index
             NhaPhanPhoi npp = dsnpp.get(index);
+
             txtMaNPP.setText(npp.getMaNPP());
-            txtTenNPP.setText(npp.getTenNPP());
             txtDiaChi.setText(npp.getDiaChi());
             txtSDT.setText(npp.getSDT());
             txtEmail.setText(npp.getEmail());
+            txtTenNPP.setText(npp.getTenNPP());
+
         } else {
             txtMaNPP.setText("");
             txtTenNPP.setText("");
@@ -44,30 +52,146 @@ private void filltotextbox(int index) {
             txtEmail.setText("");
         }
     }
-    public void filltotable(){
+
+    public void filltotable() {
         DefaultTableModel model = (DefaultTableModel) tblQuanLiNhaPhanPhoi.getModel();
         model.setRowCount(0);
-        for(NhaPhanPhoi npp:dsnpp){
-            model.addRow(new Object[] {npp.getMaNPP(),npp.getTenNPP(),npp.getSDT(),npp.getDiaChi(),npp.getEmail() });
+        for (NhaPhanPhoi npp : dsnpp) {
+            model.addRow(new Object[]{npp.getMaNPP(), npp.getTenNPP(), npp.getSDT(), npp.getDiaChi(), npp.getEmail()});
         }
     }
-    public void showDetail(){
-        int index  = tblQuanLiNhaPhanPhoi.getSelectedRow();
-        NhaPhanPhoi npp = dsnpp.get(index);
-        txtMaNPP.setText(npp.getMaNPP());
-        txtTenNPP.setText(npp.getTenNPP());
-        txtEmail.setText(npp.getEmail());
-        txtSDT.setText(npp.getSDT());
-        txtDiaChi.setText(npp.getDiaChi());
+
+    public void showDetail() {
+        int viewIndex = tblQuanLiNhaPhanPhoi.getSelectedRow();
+        if (viewIndex == -1) {
+            return;
+        }
+
+        int modelIndex = tblQuanLiNhaPhanPhoi.convertRowIndexToModel(viewIndex);
+        if (modelIndex >= 0 && modelIndex < dsnpp.size()) {
+            NhaPhanPhoi npp = dsnpp.get(modelIndex);
+            txtMaNPP.setText(npp.getMaNPP());
+            txtTenNPP.setText(npp.getTenNPP());
+            txtEmail.setText(npp.getEmail());
+            txtSDT.setText(npp.getSDT());
+            txtDiaChi.setText(npp.getDiaChi());
+        }
+    }
+
+    private void save() {
+        String patternEmail = "\\w+@\\w+(\\.\\w+){1,2}";
+        String patternSdt = "0\\d{9,10}";
+        if (nppdao.check(txtMaNPP.getText())) {
+            NhaPhanPhoi npp = new NhaPhanPhoi();
+            npp.setDiaChi(txtDiaChi.getText());
+            npp.setSDT(txtSDT.getText());
+            npp.setEmail(txtEmail.getText());
+            npp.setMaNPP(txtMaNPP.getText());
+            npp.setTenNPP(txtTenNPP.getText());
+            if (txtEmail.getText().matches(patternEmail)) {
+                if (txtSDT.getText().matches(patternSdt)) {
+                    if (new NhaPhanPhoiDao().save(npp) > 0) {
+                        JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+                        nppdao.filltoArrayList();
+                        this.filltotable();
+                        filltotextbox(dsnpp.size() - 1);
+                        tblQuanLiNhaPhanPhoi.setRowSelectionInterval(dsnpp.size() - 1, dsnpp.size() - 1);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Lưu thất bại");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng định dạng số điện thoại");
+                    txtSDT.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng định dạng email");
+                txtEmail.requestFocus();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Đã có mã sv này");
+        }
+    }
+
+    private void delete() {
+        if (txtMaNPP.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập Mã Nhân Viên Cần Xóa");
+            txtMaNPP.requestFocus();
+        } else {
+            int opt = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa nhân viên này?", "Xác nhận",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (opt == JOptionPane.YES_OPTION) {
+                nppdao.removeStaff(txtMaNPP.getText());
+            }
+        }
+        nppdao.filltoArrayList();
+        filltotable();
+    }
+
+    private void update() {
+        vitri = tblQuanLiNhaPhanPhoi.getSelectedRow();
+        NhaPhanPhoi npp = new NhaPhanPhoi();
+        npp.setDiaChi(txtDiaChi.getText());
+        npp.setSDT(txtSDT.getText());
+        npp.setEmail(txtEmail.getText());
+        npp.setMaNPP(txtMaNPP.getText());
+        npp.setTenNPP(txtTenNPP.getText());
+        tblQuanLiNhaPhanPhoi.setRowSelectionInterval(vitri, vitri);
+        tblQuanLiNhaPhanPhoi.scrollRectToVisible(tblQuanLiNhaPhanPhoi.getCellRect(vitri, 0, true));
+        if (CheckTextBox(txtEmail.getText(), txtSDT.getText(), vitri)) {
+            if (nppdao.update(npp) > 0) {
+                tblQuanLiNhaPhanPhoi.setRowSelectionInterval(vitri, vitri);
+                tblQuanLiNhaPhanPhoi.scrollRectToVisible(tblQuanLiNhaPhanPhoi.getCellRect(vitri, 0, true));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại");
+            }
+            nppdao.filltoArrayList();
+            filltotable();
+            filltotextbox(vitri);
+            tblQuanLiNhaPhanPhoi.setRowSelectionInterval(vitri, vitri);
+        }
+    }
+
+    public boolean CheckTextBox(String email, String sdt, int vitri) {
+        String patternEmail = "\\w+@\\w+(\\.\\w+){1,2}";
+        String patternSdt = "0\\d{9,10}";
+        if (email.matches(patternEmail)) {
+            if (sdt.matches(patternSdt)) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng định dạng SDT");
+                JOptionPane.showMessageDialog(null, vitri);
+                tblQuanLiNhaPhanPhoi.setRowSelectionInterval(vitri, vitri);
+                txtSDT.requestFocus();
+                tblQuanLiNhaPhanPhoi.scrollRectToVisible(tblQuanLiNhaPhanPhoi.getCellRect(vitri, 0, true));
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập đúng định dạng Email");
+            JOptionPane.showMessageDialog(null, vitri);
+            tblQuanLiNhaPhanPhoi.setRowSelectionInterval(vitri, vitri);
+            txtEmail.requestFocus();
+            tblQuanLiNhaPhanPhoi.scrollRectToVisible(tblQuanLiNhaPhanPhoi.getCellRect(vitri, 0, true));
+            return false;
+        }
+
+    }
+
+    private void find() {
+        DefaultTableModel ob = (DefaultTableModel) tblQuanLiNhaPhanPhoi.getModel();
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(ob);
+        tblQuanLiNhaPhanPhoi.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter("(?i)" + txtTimKiem.getText()));
     }
     
-    public void someMethod(int v) {
-    if (v >= 0 && v < dsnpp.size()) {
-        filltotextbox(v);
-    } else {
-        JOptionPane.showMessageDialog(this, "Chỉ mục không hợp lệ");
+    private void clearInput(){
+        txtDiaChi.setText("");
+        txtEmail.setText("");
+        txtMaNPP.setText(nppdao.Maphatsinh());
+        txtSDT.setText("");
+        txtTenNPP.setText("");
     }
-}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,15 +218,10 @@ private void filltotextbox(int index) {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
-        btnTimKiem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQuanLiNhaPhanPhoi = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        btnFrist = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
-        btnLast = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 255));
 
@@ -233,10 +352,9 @@ private void filltotextbox(int index) {
 
         jLabel6.setText("Tìm Kiếm");
 
-        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Zoom.png"))); // NOI18N
-        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemActionPerformed(evt);
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
             }
         });
 
@@ -249,23 +367,16 @@ private void filltotextbox(int index) {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123))
+                .addGap(195, 195, 195))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         tblQuanLiNhaPhanPhoi.setModel(new javax.swing.table.DefaultTableModel(
@@ -303,24 +414,6 @@ private void filltotextbox(int index) {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        btnFrist.setText("|<");
-        btnFrist.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFristActionPerformed(evt);
-            }
-        });
-
-        btnBack.setText("<<");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
-        btnNext.setText(">>");
-
-        btnLast.setText(">|");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -341,31 +434,15 @@ private void filltotextbox(int index) {
                 .addGap(18, 18, 18)
                 .addComponent(btnXoa)
                 .addGap(70, 70, 70))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(329, 329, 329)
-                .addComponent(btnFrist)
-                .addGap(18, 18, 18)
-                .addComponent(btnBack)
-                .addGap(18, 18, 18)
-                .addComponent(btnNext)
-                .addGap(18, 18, 18)
-                .addComponent(btnLast)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnFrist)
-                            .addComponent(btnBack)
-                            .addComponent(btnNext)
-                            .addComponent(btnLast))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
@@ -402,42 +479,35 @@ private void filltotextbox(int index) {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        clearInput();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         // TODO add your handling code here:
+        update();
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        delete();
     }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void btnFristActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFristActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFristActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void tblQuanLiNhaPhanPhoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuanLiNhaPhanPhoiMouseClicked
         // TODO add your handling code here:
         showDetail();
+        btnCapNhat.setEnabled(true);
+        btnXoa.setEnabled(true);
     }//GEN-LAST:event_tblQuanLiNhaPhanPhoiMouseClicked
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        find();
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCapNhat;
-    private javax.swing.JButton btnFrist;
-    private javax.swing.JButton btnLast;
-    private javax.swing.JButton btnNext;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
