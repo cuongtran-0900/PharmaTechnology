@@ -15,7 +15,7 @@ public class HoaDonNhap {
     private Date ngayViet;
     private Date ngayNhap;
     private int tongTien;
-    private List<ChiTietHoaDonNhap> chiTietHoaDon;
+    private List<ChiTietHoaDonNhap> chiTietHoaDonNhap;
 
     // Constructor
     public HoaDonNhap() {
@@ -29,7 +29,7 @@ public class HoaDonNhap {
         this.ngayViet = ngayViet;
         this.ngayNhap = ngayNhap;
         this.tongTien = tongTien;
-        this.chiTietHoaDon = chiTietHoaDon;
+        this.chiTietHoaDonNhap = chiTietHoaDon;
     }
 
     // Getters and Setters
@@ -89,17 +89,17 @@ public class HoaDonNhap {
         this.tongTien = tongTien;
     }
 
-    public List<ChiTietHoaDonNhap> getChiTietHoaDon() {
-        return chiTietHoaDon;
+    public List<ChiTietHoaDonNhap> getChiTietHoaDonNhap() {
+        return chiTietHoaDonNhap;
     }
 
-    public void setChiTietHoaDon(List<ChiTietHoaDonNhap> chiTietHoaDon) {
-        this.chiTietHoaDon = chiTietHoaDon;
+    public void setChiTietHoaDonNhap(List<ChiTietHoaDonNhap> chiTietHoaDon) {
+        this.chiTietHoaDonNhap = chiTietHoaDon;
     }
 
     // Method to add a ChiTietHoaDonNhap object to the list
-    public void addChiTietHoaDon(ChiTietHoaDonNhap chiTiet) {
-        this.chiTietHoaDon.add(chiTiet);
+    public void addChiTietHoaDonNhap(ChiTietHoaDonNhap chiTiet) {
+        this.chiTietHoaDonNhap.add(chiTiet);
     }
 }
 

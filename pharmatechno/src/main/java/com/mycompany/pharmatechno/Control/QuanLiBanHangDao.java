@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
 public class QuanLiBanHangDao extends ConnectSQL{
         List<BanHang> dsbh = new ArrayList<>();
         
-            public List<BanHang> filltoArrayList(){
+    public List<BanHang> filltoArrayList(){
     try {
             String sql = "select Mathuoc, TenThuoc, DonViTinh, LoaiThuoc, DonGia, soluongton,barcode from thuoc where isdelete = 1 order by tenthuoc ";
         try (Statement st = con.createStatement();
@@ -52,6 +52,7 @@ public class QuanLiBanHangDao extends ConnectSQL{
     }
     return dsbh;
 }
+            
     public int payment(BanHang bh) {
     try {
         con.setAutoCommit(false); // Bắt đầu giao dịch
@@ -158,7 +159,8 @@ public class QuanLiBanHangDao extends ConnectSQL{
         String manv = String.valueOf(so);
     return manv;
 }
-        public String Maphatsinh() {
+    
+    public String Maphatsinh() {
     if (dsbh.size() <= 0) {
         return "hd001";
     } else {

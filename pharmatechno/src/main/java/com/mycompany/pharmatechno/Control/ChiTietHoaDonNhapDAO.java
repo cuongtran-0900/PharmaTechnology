@@ -26,11 +26,12 @@ public class ChiTietHoaDonNhapDAO extends ConnectSQL {
 
     public List<ChiTietHoaDonNhap> filltoArrayList() {
         try {
-            String sql = " select t.TenThuoc ,cthdn.Soluong, cthdn.GiaNhap, ThanhTien = cthdn.Soluong * cthdn.GiaNhap from chitiethoadonnhap as cthdn inner join Thuoc as t on cthdn.MaThuoc = t.MaThuoc order by MaHDN ";
+            String sql = " select t.MaThuoc, t.TenThuoc ,cthdn.Soluong, cthdn.GiaNhap, ThanhTien = cthdn.Soluong * cthdn.GiaNhap from chitiethoadonnhap as cthdn inner join Thuoc as t on cthdn.MaThuoc = t.MaThuoc order by MaHDN ";
             try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
                 cthdn.clear();
                 while (rs.next()) {
                     ChiTietHoaDonNhap hd = new ChiTietHoaDonNhap();
+                    hd.setMaThuoc(rs.getString("MaThuoc"));
                     hd.setTenThuoc(rs.getString("TenThuoc"));
                     hd.setSoLuong(rs.getInt("soLuong"));
                     hd.setGiaNhap(rs.getInt("gianhap"));
