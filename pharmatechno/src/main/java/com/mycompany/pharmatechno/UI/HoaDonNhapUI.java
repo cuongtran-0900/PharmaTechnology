@@ -39,6 +39,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         BtnSua.setEnabled(false);
         btnHoanThanh.setEnabled(false);
         btnThemThuoc.setEnabled(false);
+        txtMaHDN.setEditable(false);
         
         DefaultTableModel modelHDN = (DefaultTableModel) tblHDN.getModel();
         tblHDN.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
