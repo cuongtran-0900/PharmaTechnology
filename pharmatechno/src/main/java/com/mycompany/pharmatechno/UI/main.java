@@ -1,4 +1,4 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -6,7 +6,12 @@ package com.mycompany.pharmatechno.UI;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.mycompany.pharmatechno.Control.Auth;
+import com.mycompany.pharmatechno.Control.Xlimg;
+import com.mycompany.pharmatechno.Control.appController;
+import com.mycompany.pharmatechno.Model.HoaDon;
 import com.sun.tools.javac.Main;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -16,30 +21,60 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import com.mycompany.pharmatechno.UI.ThongKe;
+
 /**
  *
  * @author Cuong
  */
 public class main extends javax.swing.JFrame {
 
+    private JPanel adminPanel; // Panel dành cho quản trị viên
+    private JPanel employeePanel; // Panel dành cho nhân viên
+
     /**
      * Creates new form main
      */
     public main() {
+        setIconImage(Xlimg.getAppIcon());
         initComponents();
         mniLightActionPerformed(null);
-        setPanelEvents(jpnDangXuat,jpnDoanhThu,jpnQuanLiBanHang,jpnQuanLiNV);
+        setPanelEvents(jpnDangXuat,jpnDoanhThu,jpnQuanLiBanHang,jpnQuanLiNV,jpnQuanLiThuoc,jpnTaiKhoan);
         
     }
+
+    public void hideAdminPanel() {
+        if (adminPanel != null) {
+            adminPanel.setVisible(false);
+        }
+    }
+
+    public void showAdminPanel() {
+        if (adminPanel != null) {
+            adminPanel.setVisible(true);
+        }
+    }
+
+    public void hideEmployeePanel() {
+        if (employeePanel != null) {
+            employeePanel.setVisible(false);
+        }
+    }
+
+    public void showEmployeePanel() {
+        if (employeePanel != null) {
+            employeePanel.setVisible(true);
+        }
+    }
+
     private JPanel currentPanel = null;
-    private final Color originalColor = new Color(13,18,130);
-    private final Color hoverColor = new Color(2, 94, 167);
-    private final Color clickColor = new Color(255, 102, 102);
+    private final Color originalColor = new Color(153, 255, 204);
+    private final Color hoverColor = new Color(255, 204, 204);
+    private final Color clickColor = new Color(255, 204, 204);
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,26 +108,25 @@ public class main extends javax.swing.JFrame {
         JpnScreen = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMnTrangChu = new javax.swing.JMenu();
-        jMnHeThong = new javax.swing.JMenu();
+        MnuTrangChu = new javax.swing.JMenu();
+        MnuHeThong = new javax.swing.JMenu();
         mniDangXuat = new javax.swing.JMenuItem();
         mniDoiMatKhau = new javax.swing.JMenuItem();
         mniThoat = new javax.swing.JMenuItem();
         mniTaiKhoan = new javax.swing.JMenuItem();
-        jMnQuanLi = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        MnuQuanLi = new javax.swing.JMenu();
+        MniThuoc = new javax.swing.JMenuItem();
         MniNhanVien = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        mniKhachHang = new javax.swing.JMenuItem();
         mniQuanLiNPP = new javax.swing.JMenuItem();
-        jMnXuLi = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMnThongKe = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMnTroGiup = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        MnuXuLi = new javax.swing.JMenu();
+        mniHoaDon = new javax.swing.JMenuItem();
+        mniHoaDonNhap = new javax.swing.JMenuItem();
+        MnuThongKe = new javax.swing.JMenu();
+        mniDoanhThu = new javax.swing.JMenuItem();
+        mniThuocThongKe = new javax.swing.JMenuItem();
+        MnuTroGiup = new javax.swing.JMenu();
+        mnuCheDo = new javax.swing.JMenu();
         mniLight = new javax.swing.JMenuItem();
         mniDark = new javax.swing.JMenuItem();
 
@@ -234,6 +268,11 @@ public class main extends javax.swing.JFrame {
         );
 
         jpnDangXuat.setBackground(new java.awt.Color(153, 255, 204));
+        jpnDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpnDangXuatMouseClicked(evt);
+            }
+        });
 
         lblDangXuat.setBackground(new java.awt.Color(255, 255, 255));
         lblDangXuat.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -259,12 +298,22 @@ public class main extends javax.swing.JFrame {
         );
 
         jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
+        jpnTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpnTaiKhoanMouseClicked(evt);
+            }
+        });
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
         jLabel12.setText("TÀI KHOẢN");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpnTaiKhoanLayout = new javax.swing.GroupLayout(jpnTaiKhoan);
         jpnTaiKhoan.setLayout(jpnTaiKhoanLayout);
@@ -394,6 +443,7 @@ public class main extends javax.swing.JFrame {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cuahangthuoc.png"))); // NOI18N
+        jLabel2.setText("  ");
         JpnScreen.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -404,7 +454,7 @@ public class main extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jpnRoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(JpnScreen, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE))
+                .addComponent(JpnScreen, javax.swing.GroupLayout.DEFAULT_SIZE, 1013, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,52 +465,82 @@ public class main extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(204, 255, 255));
         jMenuBar1.setBorder(null);
 
-        jMnTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Home.png"))); // NOI18N
-        jMnTrangChu.setText("Trang Chủ");
-        jMenuBar1.add(jMnTrangChu);
+        MnuTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Home.png"))); // NOI18N
+        MnuTrangChu.setText("Trang Chủ");
+        MnuTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MnuTrangChuMouseClicked(evt);
+            }
+        });
+        MnuTrangChu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnuTrangChuActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(MnuTrangChu);
 
-        jMnHeThong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Gear.png"))); // NOI18N
-        jMnHeThong.setText("Hệ Thống");
+        MnuHeThong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Gear.png"))); // NOI18N
+        MnuHeThong.setText("Hệ Thống");
 
         mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Logout_30px_1.png"))); // NOI18N
         mniDangXuat.setText("Đăng Xuất");
-        jMnHeThong.add(mniDangXuat);
+        mniDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDangXuatActionPerformed(evt);
+            }
+        });
+        MnuHeThong.add(mniDangXuat);
 
         mniDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_find_and_replace_30px.png"))); // NOI18N
         mniDoiMatKhau.setText("Đổi Mật Khẩu");
-        jMnHeThong.add(mniDoiMatKhau);
+        mniDoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoiMatKhauActionPerformed(evt);
+            }
+        });
+        MnuHeThong.add(mniDoiMatKhau);
 
         mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
         mniThoat.setText("Thoát");
-        jMnHeThong.add(mniThoat);
+        mniThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniThoatActionPerformed(evt);
+            }
+        });
+        MnuHeThong.add(mniThoat);
 
         mniTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/account.png"))); // NOI18N
         mniTaiKhoan.setText("Tài Khoản");
-        jMnHeThong.add(mniTaiKhoan);
+        mniTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniTaiKhoanActionPerformed(evt);
+            }
+        });
+        MnuHeThong.add(mniTaiKhoan);
 
-        jMenuBar1.add(jMnHeThong);
+        jMenuBar1.add(MnuHeThong);
 
-        jMnQuanLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/To do list.png"))); // NOI18N
-        jMnQuanLi.setText("Quản Lí");
-        jMnQuanLi.addMouseListener(new java.awt.event.MouseAdapter() {
+        MnuQuanLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/To do list.png"))); // NOI18N
+        MnuQuanLi.setText("Quản Lí");
+        MnuQuanLi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMnQuanLiMouseClicked(evt);
+                MnuQuanLiMouseClicked(evt);
             }
         });
-        jMnQuanLi.addActionListener(new java.awt.event.ActionListener() {
+        MnuQuanLi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnQuanLiActionPerformed(evt);
+                MnuQuanLiActionPerformed(evt);
             }
         });
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/medicine.png"))); // NOI18N
-        jMenuItem5.setText("Thuốc");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        MniThuoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/medicine.png"))); // NOI18N
+        MniThuoc.setText("Thuốc");
+        MniThuoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                MniThuocActionPerformed(evt);
             }
         });
-        jMnQuanLi.add(jMenuItem5);
+        MnuQuanLi.add(MniThuoc);
 
         MniNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.png"))); // NOI18N
         MniNhanVien.setText("Nhân Viên");
@@ -469,16 +549,16 @@ public class main extends javax.swing.JFrame {
                 MniNhanVienActionPerformed(evt);
             }
         });
-        jMnQuanLi.add(MniNhanVien);
+        MnuQuanLi.add(MniNhanVien);
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clien list.png"))); // NOI18N
-        jMenuItem7.setText("Khách Hàng");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clien list.png"))); // NOI18N
+        mniKhachHang.setText("Khách Hàng");
+        mniKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                mniKhachHangActionPerformed(evt);
             }
         });
-        jMnQuanLi.add(jMenuItem7);
+        MnuQuanLi.add(mniKhachHang);
 
         mniQuanLiNPP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Conference.png"))); // NOI18N
         mniQuanLiNPP.setText("Nhà Phân Phối");
@@ -487,71 +567,77 @@ public class main extends javax.swing.JFrame {
                 mniQuanLiNPPActionPerformed(evt);
             }
         });
-        jMnQuanLi.add(mniQuanLiNPP);
+        MnuQuanLi.add(mniQuanLiNPP);
 
-        jMenuBar1.add(jMnQuanLi);
+        jMenuBar1.add(MnuQuanLi);
 
-        jMnXuLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Cash register.png"))); // NOI18N
-        jMnXuLi.setText("Xử Lí");
+        MnuXuLi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Cash register.png"))); // NOI18N
+        MnuXuLi.setText("Xử Lí");
 
-        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill-import.png"))); // NOI18N
-        jMenuItem9.setText("Hóa Đơn");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        mniHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill-import.png"))); // NOI18N
+        mniHoaDon.setText("Hóa Đơn");
+        mniHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                mniHoaDonActionPerformed(evt);
             }
         });
-        jMnXuLi.add(jMenuItem9);
+        MnuXuLi.add(mniHoaDon);
 
-        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
-        jMenuItem10.setText("Hóa Đơn Nhập");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMnXuLi.add(jMenuItem10);
-
-        jMenuBar1.add(jMnXuLi);
-
-        jMnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Statistics.png"))); // NOI18N
-        jMnThongKe.setText("Thống Kê");
-
-        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Dollar.png"))); // NOI18N
-        jMenuItem11.setText("Doanh Thu");
-        jMenuItem11.addMouseListener(new java.awt.event.MouseAdapter() {
+        mniHoaDonNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bill.png"))); // NOI18N
+        mniHoaDonNhap.setText("Hóa Đơn Nhập");
+        mniHoaDonNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem11MouseClicked(evt);
+                mniHoaDonNhapMouseClicked(evt);
             }
         });
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        mniHoaDonNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+            mniHoaDonNhapActionPerformed(evt);
             }
         });
-        jMnThongKe.add(jMenuItem11);
+        MnuXuLi.add(mniHoaDonNhap);
 
-        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User group.png"))); // NOI18N
-        jMenuItem12.setText("Khách Hàng");
-        jMnThongKe.add(jMenuItem12);
+        jMenuBar1.add(MnuXuLi);
 
-        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Diagram.png"))); // NOI18N
-        jMenuItem13.setText("Thuốc ");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+        MnuThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Statistics.png"))); // NOI18N
+        MnuThongKe.setText("Thống Kê");
+        MnuThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
+                MnuThongKeActionPerformed(evt);
             }
         });
-        jMnThongKe.add(jMenuItem13);
 
-        jMenuBar1.add(jMnThongKe);
+        mniDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Dollar.png"))); // NOI18N
+        mniDoanhThu.setText("Doanh Thu");
+        mniDoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            //    mniDoanhThuMouseClicked(evt);
+            }
+        });
+        mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoanhThuActionPerformed(evt);
+            }
+        });
+        MnuThongKe.add(mniDoanhThu);
 
-        jMnTroGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/info.png"))); // NOI18N
-        jMnTroGiup.setText("Trợ Giúp");
-        jMenuBar1.add(jMnTroGiup);
+        mniThuocThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Diagram.png"))); // NOI18N
+        mniThuocThongKe.setText("Thuốc Tồn kho");
+        mniThuocThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniThuocThongKeActionPerformed(evt);
+            }
+        });
+        MnuThongKe.add(mniThuocThongKe);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Color wheel.png"))); // NOI18N
-        jMenu1.setText("Chế Độ");
+        jMenuBar1.add(MnuThongKe);
+
+        MnuTroGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/info.png"))); // NOI18N
+        MnuTroGiup.setText("Trợ Giúp");
+        jMenuBar1.add(MnuTroGiup);
+
+        mnuCheDo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Color wheel.png"))); // NOI18N
+        mnuCheDo.setText("Chế Độ");
 
         mniLight.setText("Light");
         mniLight.addActionListener(new java.awt.event.ActionListener() {
@@ -559,7 +645,7 @@ public class main extends javax.swing.JFrame {
                 mniLightActionPerformed(evt);
             }
         });
-        jMenu1.add(mniLight);
+        mnuCheDo.add(mniLight);
 
         mniDark.setText("Dark");
         mniDark.addActionListener(new java.awt.event.ActionListener() {
@@ -567,9 +653,9 @@ public class main extends javax.swing.JFrame {
                 mniDarkActionPerformed(evt);
             }
         });
-        jMenu1.add(mniDark);
+        mnuCheDo.add(mniDark);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnuCheDo);
 
         setJMenuBar(jMenuBar1);
 
@@ -597,10 +683,9 @@ public class main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     // 3. Tạo hiệu ứng Hover, và Đánh dấu mục đang sử dụng
     public void setPanelEvents(JPanel... panels) {
-        for(JPanel panel : panels){
+        for (JPanel panel : panels) {
             panel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -627,59 +712,61 @@ public class main extends javax.swing.JFrame {
             });
         }
     }
-    
-//    public void MoreSmooth(JComponent previousComponent,JComponent nextComponent,java.awt.event.KeyEvent evt){
-//        if(evt.getKeyCode()==KeyEvent.VK_ENTER ||
-//            evt.getKeyCode()==KeyEvent.VK_TAB ||
-//            evt.getKeyCode()==KeyEvent.VK_DOWN)
-//        {
-//            nextComponent.requestFocus();
-//        }else if(evt.getKeyCode()==KeyEvent.VK_UP)
-//        {
-//            previousComponent.requestFocus();
-//        }
-//    }
 
-private void changePanel(JPanel newPanel) {
-    JpnScreen.removeAll();
-    JpnScreen.add(newPanel);
-    newPanel.setVisible(true);
-    JpnScreen.updateUI();
-}
+    private void changePanel(JPanel newPanel) {
+        JpnScreen.removeAll();
+        JpnScreen.add(newPanel);
+        newPanel.setVisible(true);
+        JpnScreen.updateUI();
+    }
 
-private void updateBackgroundColors(JPanel activePanel) {
-    jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
-    jpnQuanLiBanHang.setBackground(new java.awt.Color(153, 255, 204));
-    jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
-    jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
-    jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
-    activePanel.setBackground(new java.awt.Color(153, 153, 255));
-}
-private void updateBackgroundColorsformni() {
-    jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
-    jpnQuanLiBanHang.setBackground(new java.awt.Color(153, 255, 204));
-    jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
-    jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
-    jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
-}
-    
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void updateBackgroundColors(JPanel activePanel) {
+        jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiBanHang.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
+        jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
+        jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
+        activePanel.setBackground(new java.awt.Color(153, 153, 255));
+    }
+
+    private void updateBackgroundColorsformni() {
+        jpnQuanLiNV.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiBanHang.setBackground(new java.awt.Color(153, 255, 204));
+        jpnQuanLiThuoc.setBackground(new java.awt.Color(153, 255, 204));
+        jpnTaiKhoan.setBackground(new java.awt.Color(153, 255, 204));
+        jpnDoanhThu.setBackground(new java.awt.Color(153, 255, 204));
+    }
+
+    private void mniKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhachHangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+        changePanel(new QuanLiKhachHang());
+        updateBackgroundColorsformni();
+    }//GEN-LAST:event_mniKhachHangActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
         // TODO add your handling code here:
-        changePanel(new ThongKe());
-       
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+        
+                if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí nhân viên .");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin Doanh thu.");
+            return;
+        } else {
+           changePanel(new ThongKeDoanhThu());
+        }       
+                updateBackgroundColorsformni();
+    }//GEN-LAST:event_mniDoanhThuActionPerformed
 
     private void MniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniNhanVienActionPerformed
         // TODO add your handling code here:
         jpnQuanLiNVMouseClicked(null);
     }//GEN-LAST:event_MniNhanVienActionPerformed
-    private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void mniLightActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        SwingUtilities.invokeLater(()->{
+        SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(new FlatLightLaf());
                 SwingUtilities.updateComponentTreeUI(this);
@@ -687,21 +774,35 @@ private void updateBackgroundColorsformni() {
                 Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    } 
-    private void jMnQuanLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnQuanLiActionPerformed
+    }
+    private void MnuQuanLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuQuanLiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMnQuanLiActionPerformed
+    }//GEN-LAST:event_MnuQuanLiActionPerformed
 
     private void jpnQuanLiNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiNVMouseClicked
         // TODO add your handling code here:
-    changePanel(new QuanLiNhanVien());
-    updateBackgroundColors(jpnQuanLiNV);
+
+        // TODO add your handling code here:
+        if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí nhân viên .");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin quản lí nhân viên .");
+            return;
+        } else {
+            changePanel(new QuanLiNhanVien());
+        }
+        updateBackgroundColors(jpnQuanLiNV);
+
+
     }//GEN-LAST:event_jpnQuanLiNVMouseClicked
 
-    private void jMnQuanLiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMnQuanLiMouseClicked
+    private void MnuQuanLiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MnuQuanLiMouseClicked
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jMnQuanLiMouseClicked
+    }//GEN-LAST:event_MnuQuanLiMouseClicked
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
@@ -709,7 +810,7 @@ private void updateBackgroundColorsformni() {
 
     private void mniDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDarkActionPerformed
         // TODO add your handling code here:
-                SwingUtilities.invokeLater(()->{
+        SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(new FlatDarkLaf());
                 SwingUtilities.updateComponentTreeUI(this);
@@ -721,53 +822,190 @@ private void updateBackgroundColorsformni() {
 
     private void mniQuanLiNPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQuanLiNPPActionPerformed
         // TODO add your handling code here:
-    changePanel(new QuanLiNhaPhanPhoi());
-    updateBackgroundColorsformni();
-    
+        changePanel(new QuanLiNhaPhanPhoi());
+        updateBackgroundColorsformni();
+
     }//GEN-LAST:event_mniQuanLiNPPActionPerformed
 
     private void jpnQuanLiBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiBanHangMouseClicked
         // TODO add your handling code here:
-    changePanel(new QuanLiBanHang());
-    updateBackgroundColors(jpnQuanLiBanHang);
+        changePanel(new QuanLiBanHang());
+        updateBackgroundColors(jpnQuanLiBanHang);
     }//GEN-LAST:event_jpnQuanLiBanHangMouseClicked
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void MniThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniThuocActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        jpnQuanLiThuocMouseClicked(null);
+    }//GEN-LAST:event_MniThuocActionPerformed
 
     private void jpnDoanhThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDoanhThuMouseClicked
         // TODO add your handling code here:
-    changePanel(new DoanhThu());
-    updateBackgroundColors(jpnDoanhThu);
+        if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin doanh thu.");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin doanh thu.");
+            return;
+        } else {
+            changePanel(new DoanhThu());
+        }
+
+        updateBackgroundColors(jpnDoanhThu);
     }//GEN-LAST:event_jpnDoanhThuMouseClicked
 
     private void jpnQuanLiThuocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnQuanLiThuocMouseClicked
         // TODO add your handling code here:
-    changePanel(new Thuoc());
-    updateBackgroundColors(jpnQuanLiThuoc);
+
+        if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin Quản lí thuốc.");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin quản lí thuốc.");
+            return;
+        } else {
+            changePanel(new QuanLiThuoc());
+        }
+        updateBackgroundColors(jpnQuanLiThuoc);
+
+
     }//GEN-LAST:event_jpnQuanLiThuocMouseClicked
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
         // TODO add your handling code here:
-        changePanel(new hoadon());
-        updateBackgroundColorsformni();
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+        int response = JOptionPane.showConfirmDialog(this,
+                "Bạn có chắc chắn muốn đăng xuất không?",
+                "Xác nhận đăng xuất",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // Kiểm tra phản hồi của người dùng
+        if (response == JOptionPane.YES_OPTION) {
+            // Đóng MainFrame hiện tại
+            this.dispose();
+
+            // Hiển thị lại LoginFrame
+            DangNhap login = new DangNhap();
+            login.setVisible(true);
+        }
+    }//GEN-LAST:event_mniDangXuatActionPerformed
+    
+    private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
+        // TODO add your handling code here:
+        int response = JOptionPane.showConfirmDialog(this,
+                "Bạn có chắc chắn muốn thoát không?",
+                "Xác nhận thoát",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        // Kiểm tra phản hồi của người dùng
+        if (response == JOptionPane.YES_OPTION) {
+            // Đóng ứng dụng
+            System.exit(0);
+        }
+    }//GEN-LAST:event_mniThoatActionPerformed
+
+    private void MnuTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuTrangChuActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_MnuTrangChuActionPerformed
+
+    private void MnuTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MnuTrangChuMouseClicked
+        // TODO add your handling code here:
+        main mainframe = new main();
+        mainframe.setVisible(true);
+
+        // Đóng khung hiện tại nếu cần thiết
+        this.dispose();
+    }//GEN-LAST:event_MnuTrangChuMouseClicked
+
+    private void jpnDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnDangXuatMouseClicked
+        // TODO add your handling code here:
+        mniDangXuatActionPerformed(null);
+    }//GEN-LAST:event_jpnDangXuatMouseClicked
+
+    private void MnuThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuThongKeActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_MnuThongKeActionPerformed
+
+    private void mniTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTaiKhoanActionPerformed
+        // TODO add your handling code here:
+          changePanel(new TaiKhoan());
+          updateBackgroundColorsformni();
+    }//GEN-LAST:event_mniTaiKhoanActionPerformed
+
+    private void jpnTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnTaiKhoanMouseClicked
+        // TODO add your handling code here:
+            changePanel(new TaiKhoan());
+    updateBackgroundColors(jpnTaiKhoan);
+    }//GEN-LAST:event_jpnTaiKhoanMouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+//       changePanel(new TaiKhoan());
+//    updateBackgroundColors(jpnTaiKhoan);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
+        // TODO add your handling code here:
+            DoiMatKhau dmk = new DoiMatKhau();
+        dmk.setVisible(true);
+        
+    }//GEN-LAST:event_mniDoiMatKhauActionPerformed
+
+    private void mniHoaDonNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mniHoaDonNhapMouseClicked
         // TODO add your handling code here:
         changePanel(new HoaDonNhapUI());
         updateBackgroundColorsformni();
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    }//GEN-LAST:event_mniHoaDonNhapMouseClicked
 
-    private void jMenuItem11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseClicked
+    private void mniHoaDonNhapActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem11MouseClicked
+        
+         if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin doanh thu.");
+            return;
+        }
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin hóa đơn nhập.");
+            return;
+        } else {
+            changePanel(new HoaDonNhapUI());
+        }
+       
+        updateBackgroundColorsformni();
+    }   
+    
+    private void mniHoaDonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
-                changePanel(new ThuocTonKho());
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
+        changePanel(new hoadon());
+        updateBackgroundColorsformni();
+        
+    }     
+    private void mniThuocThongKeActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        if (!Auth.isLogin()) {
+            JOptionPane.showMessageDialog(this, "Bạn cần đăng nhập để xem thông tin doanh thu.");
+            return;
+        }
+
+        if (!Auth.isManager()) {
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin thuốc thống kê.");
+            return;
+        } else {
+           changePanel(new ThuocTonKho());
+        }
+       
+        updateBackgroundColorsformni();
+    }  
+                                           
+
+                                            
 
     /**
      * @param args the command line arguments
@@ -795,39 +1033,32 @@ private void updateBackgroundColorsformni() {
             java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-            
+
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new main().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            appController appController = new appController();
+            appController.showChao(); // Bắt đầu từ màn hình chào
+
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JpnScreen;
     private javax.swing.JMenuItem MniNhanVien;
+    private javax.swing.JMenuItem MniThuoc;
+    private javax.swing.JMenu MnuHeThong;
+    private javax.swing.JMenu MnuQuanLi;
+    private javax.swing.JMenu MnuThongKe;
+    private javax.swing.JMenu MnuTrangChu;
+    private javax.swing.JMenu MnuTroGiup;
+    private javax.swing.JMenu MnuXuLi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenu jMnHeThong;
-    private javax.swing.JMenu jMnQuanLi;
-    private javax.swing.JMenu jMnThongKe;
-    private javax.swing.JMenu jMnTrangChu;
-    private javax.swing.JMenu jMnTroGiup;
-    private javax.swing.JMenu jMnXuLi;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -845,10 +1076,21 @@ private void updateBackgroundColorsformni() {
     private javax.swing.JLabel lblDangXuat;
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDark;
+    private javax.swing.JMenuItem mniDoanhThu;
     private javax.swing.JMenuItem mniDoiMatKhau;
+    private javax.swing.JMenuItem mniHoaDon;
+    private javax.swing.JMenuItem mniHoaDonNhap;
+    private javax.swing.JMenuItem mniKhachHang;
     private javax.swing.JMenuItem mniLight;
     private javax.swing.JMenuItem mniQuanLiNPP;
     private javax.swing.JMenuItem mniTaiKhoan;
     private javax.swing.JMenuItem mniThoat;
+    private javax.swing.JMenuItem mniThuocThongKe;
+    private javax.swing.JMenu mnuCheDo;
     // End of variables declaration//GEN-END:variables
+
+    void showPanel(String jpnQuanLiThuoc) {
+         CardLayout cardLayout = (CardLayout) jpnRoot.getLayout();
+    cardLayout.show(jpnRoot, jpnQuanLiThuoc);
+    }
 }
