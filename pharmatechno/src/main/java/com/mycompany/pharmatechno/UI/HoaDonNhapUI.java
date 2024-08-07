@@ -485,13 +485,10 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnThemThuoc, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(btnHoanThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(BtnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnHoanThanh, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -648,13 +645,27 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
         }
     }
 
-    private void updateTotalAmount() {
-        int totalAmount = 0;
-        for (int i = 0; i < tblHDN.getRowCount(); i++) {
-            totalAmount += (int) tblHDN.getValueAt(i, 4); // Cột thành tiền
+   private void updateTotalAmount() {
+    int totalAmount = 0;
+    
+    for (int i = 0; i < tblHDN.getRowCount(); i++) {
+        Object value = tblHDN.getValueAt(i, 4); // Cột thành tiền
+        
+        // Kiểm tra giá trị null hoặc rỗng trước khi chuyển đổi và cộng vào tổng tiền
+        if (value != null && !value.toString().trim().isEmpty()) {
+            try {
+                totalAmount += Double.valueOf(value.toString()).intValue();
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Giá trị trong bảng không hợp lệ tại dòng " + (i + 1) + ".", "Lỗi định dạng", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         }
-        txtTongTien.setText(String.format("%d", totalAmount));
     }
+    
+    txtTongTien.setText(String.valueOf(totalAmount));
+}
+
+
 
     private void save() {
         HoaDonNhap hdn = new HoaDonNhap();
@@ -723,7 +734,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     }
 
     private void addChiTietHoaDonNhap() {
-        try {
+//        try {
             String maThuoc = txtMaThuoc.getText();
             String tenThuoc = txtTenThuoc.getText();
             int soLuong = Integer.parseInt(txtSoLuong.getText());
@@ -743,8 +754,8 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
                     int column = e.getColumn();
 
                     if (row != -1 && (column == 2 || column == 3)) { // Kiểm tra nếu cột số lượng hoặc giá nhập thay đổi
-                        int soLuong = Integer.parseInt(tblHDN.getValueAt(row, 2).toString());
-                        int giaNhap = Integer.parseInt(tblHDN.getValueAt(row, 3).toString());
+                        int soLuong =(int) tblHDN.getValueAt(row, 2);
+                        int giaNhap = (int) tblHDN.getValueAt(row, 3);
                         int thanhTien = soLuong * giaNhap;
 
                         // Cập nhật lại cột thành tiền
@@ -752,10 +763,12 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
 
                         // Tính toán lại tổng tiền
                         int tongTien = 0;
+                        int tongtiennew = 0;
                         for (int i = 0; i < tblHDN.getRowCount(); i++) {
-                            tongTien += Integer.parseInt(tblHDN.getValueAt(i, 4).toString());
+                            tongtiennew = (int) tblHDN.getValueAt(i, 4) + tongTien;
                         }
-                        txtTongTien.setText(String.valueOf(tongTien));
+                        txtTongTien.setText(String.valueOf(tongtiennew));
+                        updateTotalAmount();
                     }
                 }
             });
@@ -776,9 +789,10 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             txtTenThuoc.setText("");
             txtSoLuong.setText("");
             txtDonGia.setText("");
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập số lượng và giá nhập hợp lệ.");
-        }
+            
+//        } catch (Exception e) {
+////            JOptionPane.showMessageDialog(null, "Vui lòng nhập số lượng và giá nhập hợp lệ.");
+//        }
     }
 
     private void update() {
@@ -919,7 +933,9 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
     private void btnThemThuocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemThuocActionPerformed
         // TODO add your handling code here:
 //        addtotblhdn();
+        updateTotalAmount();
         addChiTietHoaDonNhap();
+        
     }//GEN-LAST:event_btnThemThuocActionPerformed
 
     private void tblLichSuHDNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLichSuHDNMouseClicked
