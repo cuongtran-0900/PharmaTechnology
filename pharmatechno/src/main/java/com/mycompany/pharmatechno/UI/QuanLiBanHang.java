@@ -25,6 +25,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import com.mycompany.pharmatechno.Model.GiohangBean;
 import com.mycompany.pharmatechno.Control.NhanVienDao;
+import com.mycompany.pharmatechno.Control.TaiKhoanNhanVienDao;
+import com.mycompany.pharmatechno.Model.NhanVien;
 import java.beans.Beans;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -51,12 +53,16 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         txtMaHoaDon.setEditable(false);
         txtThoiGian.setEditable(false);
         txtThoiGian.setText(currentTimestamp.toString());
-        
+        txtMaNV.setEditable(false);
+        txtMaNV.setText(tknv.getMaNV());
 
     }
 
     QuanLiBanHangDao bhdao = new QuanLiBanHangDao();
     List<BanHang> dsbh = bhdao.filltoArrayList();
+    
+    TaiKhoanNhanVienDao tknvd = new TaiKhoanNhanVienDao();
+         private NhanVien tknv; 
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
 
     /**
@@ -369,6 +375,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
     private boolean isUpdatingTable = false;
 
+    
     public void filltotable() {
         DefaultTableModel model = new DefaultTableModel(
                 new Object[]{"Mã Thuốc", "Tên Thuốc", "Tồn Kho", "ĐVT", "Đơn Giá", "barcode"}, 0
