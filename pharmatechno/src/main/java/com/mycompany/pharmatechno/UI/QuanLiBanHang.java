@@ -4,6 +4,7 @@
  */
 package com.mycompany.pharmatechno.UI;
 
+import com.mycompany.pharmatechno.Control.Auth;
 import com.mycompany.pharmatechno.Control.QuanLiBanHangDao;
 import com.mycompany.pharmatechno.Model.BanHang;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
@@ -37,7 +38,8 @@ import javax.swing.JTextField;
  * @author Cuong
  */
 public class QuanLiBanHang extends javax.swing.JPanel {
-
+   TaiKhoanNhanVienDao tknvd = new TaiKhoanNhanVienDao();
+   private NhanVien tknv;  
     /**
      * Creates new form QuanLiBanHang
      */
@@ -53,9 +55,13 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         txtMaHoaDon.setEditable(false);
         txtThoiGian.setEditable(false);
         txtThoiGian.setText(currentTimestamp.toString());
+        if (Auth.isLogin()) {
+            tknv = Auth.user;
+            fillToTextBox();
+        } else {
+            // Xử lý khi không có người dùng đăng nhập
+        }
         txtMaNV.setEditable(false);
-        txtMaNV.setText(tknv.getMaNV());
-
     }
 
     QuanLiBanHangDao bhdao = new QuanLiBanHangDao();
@@ -65,6 +71,17 @@ public class QuanLiBanHang extends javax.swing.JPanel {
          private NhanVien tknv; 
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
 
+    
+    
+     public void fillToTextBox() {
+    if (tknv != null) {
+        // Điền thông tin vào các trường
+        txtMaNV.setText(tknv.getMaNV());
+    } else {
+        // Xử lý nếu tknv là null, ví dụ: hiển thị thông báo lỗi hoặc làm trống các trường
+        JOptionPane.showMessageDialog(this, "Thông tin người dùng không hợp lệ.");
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
