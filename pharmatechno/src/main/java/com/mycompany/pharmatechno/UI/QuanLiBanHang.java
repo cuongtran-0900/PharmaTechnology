@@ -67,8 +67,6 @@ public class QuanLiBanHang extends javax.swing.JPanel {
     QuanLiBanHangDao bhdao = new QuanLiBanHangDao();
     List<BanHang> dsbh = bhdao.filltoArrayList();
     
-    TaiKhoanNhanVienDao tknvd = new TaiKhoanNhanVienDao();
-         private NhanVien tknv; 
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
 
     
