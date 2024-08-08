@@ -11,26 +11,30 @@ public class HoaDon {
     private float TongTien;
     private String MaHD;
     private Timestamp thoiGian;
-    private String MaNV;
-    private String MaKH; 
     private float ThanhTien;
     private float TongTienNgay;
+    private String TenNV;
 
     public HoaDon() {
     }
 
-    public HoaDon(String TenThuoc, int SoLuong, float DonGia, float TongTien, String MaHD, Timestamp thoiGian, String MaNV, String MaKH, float ThanhTien, float TongTienNgay) {
+    public HoaDon(String TenThuoc, int SoLuong, float DonGia, float TongTien, String MaHD, Timestamp thoiGian, float ThanhTien, float TongTienNgay, String TenNV) {
         this.TenThuoc = TenThuoc;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
         this.TongTien = TongTien;
         this.MaHD = MaHD;
         this.thoiGian = thoiGian;
-        this.MaNV = MaNV;
-        this.MaKH = MaKH;
         this.ThanhTien = ThanhTien;
         this.TongTienNgay = TongTienNgay;
+        this.TenNV = TenNV;
     }
+    
+    
+
+    
+
+    
 
     public String getTenThuoc() {
         return TenThuoc;
@@ -80,22 +84,6 @@ public class HoaDon {
         this.thoiGian = thoiGian;
     }
 
-    public String getMaNV() {
-        return MaNV;
-    }
-
-    public void setMaNV(String MaNV) {
-        this.MaNV = MaNV;
-    }
-
-    public String getMaKH() {
-        return MaKH;
-    }
-
-    public void setMaKH(String MaKH) {
-        this.MaKH = MaKH;
-    }
-
     public float getThanhTien() {
         return ThanhTien;
     }
@@ -110,6 +98,14 @@ public class HoaDon {
 
     public void setTongTienNgay(float TongTienNgay) {
         this.TongTienNgay = TongTienNgay;
+    }
+
+    public String getTenNV() {
+        return TenNV;
+    }
+
+    public void setTenNV(String TenNV) {
+        this.TenNV = TenNV;
     }
     
     
