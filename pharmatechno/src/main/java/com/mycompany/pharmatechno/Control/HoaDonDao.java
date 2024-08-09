@@ -50,7 +50,7 @@ public class HoaDonDao extends ConnectSQL {
                     hd.setSoLuong(rs.getInt("SoLuong"));
                     hd.setDonGia(rs.getFloat("dongia"));
                     hd.setThanhTien(rs.getFloat("thanhtien"));
-                    hd.setTongTien(rs.getFloat("tongtien"));
+                    hd.setTongTienNgay(rs.getFloat("tongtien"));
                     dshd.add(hd);
                 }
                 rs.close();

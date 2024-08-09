@@ -63,7 +63,7 @@ public class hoadon extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblHoaDon_lichsu.getModel();
         model.setRowCount(0); // Xóa tất cả các hàng hiện có
         for (HoaDon hd : dshd) { // Duyệt qua danh sách lịch sử hóa đơn
-            model.addRow(new Object[]{hd.getMaHD(), hd.getTenNV(), hd.getThoiGian(),hd.getTongTien()}); // Thêm hàng mới vào bảng
+            model.addRow(new Object[]{hd.getMaHD(), hd.getTenNV(), hd.getThoiGian(),hd.getTongTienNgay()}); // Thêm hàng mới vào bảng
         }
     }
 
