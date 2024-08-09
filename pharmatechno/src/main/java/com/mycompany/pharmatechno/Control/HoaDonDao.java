@@ -50,7 +50,7 @@ public class HoaDonDao extends ConnectSQL {
                     hd.setSoLuong(rs.getInt("SoLuong"));
                     hd.setDonGia(rs.getFloat("dongia"));
                     hd.setThanhTien(rs.getFloat("thanhtien"));
-                    hd.setTongTienNgay(rs.getFloat("tongtien"));
+                    hd.setTongTien(rs.getFloat("tongtien"));
                     dshd.add(hd);
                 }
                 rs.close();
@@ -84,6 +84,7 @@ public List<HoaDon> filltoArrayListForTblHD() {
                 hd.setSoLuong(rs.getInt("SoLuong"));
                 hd.setDonGia(rs.getFloat("DonGia"));
                 hd.setThanhTien(rs.getFloat("thanhtien"));
+                
                 tblhd.add(hd);
             }
             rs.close();
