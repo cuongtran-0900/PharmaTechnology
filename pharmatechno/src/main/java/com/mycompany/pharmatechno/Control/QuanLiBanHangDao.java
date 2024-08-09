@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
 public class QuanLiBanHangDao extends ConnectSQL{
         List<BanHang> dsbh = new ArrayList<>();
         
-            public List<BanHang> filltoArrayList(){
+    public List<BanHang> filltoArrayList(){
     try {
             String sql = "select Mathuoc, TenThuoc, DonViTinh, LoaiThuoc, DonGia, soluongton,barcode from thuoc where isdelete = 1 order by tenthuoc ";
         try (Statement st = con.createStatement();
@@ -52,6 +52,7 @@ public class QuanLiBanHangDao extends ConnectSQL{
     }
     return dsbh;
 }
+            
     public int payment(BanHang bh) {
     try {
         con.setAutoCommit(false); // Bắt đầu giao dịch
@@ -137,7 +138,7 @@ public class QuanLiBanHangDao extends ConnectSQL{
                
             
             
-    public String fillmaphatsinh() {
+   public String fillmaphatsinh() {
     String mps = null; 
     try {
         String sql = "SELECT mahd FROM hoadon WHERE mahd LIKE 'hd%' ORDER BY mahd DESC";
@@ -154,11 +155,16 @@ public class QuanLiBanHangDao extends ConnectSQL{
         Logger.getLogger(QuanLiBanHang.class.getName()).log(Level.SEVERE, null, ex);
     }
     
-    int so = Integer.parseInt(mps.substring(3,5));
+    if (mps != null && mps.length() >= 5) {
+        int so = Integer.parseInt(mps.substring(3, 5));
         String manv = String.valueOf(so);
-    return manv;
+        return manv;
+    } else {
+        return "00"; // Giá trị mặc định hoặc xử lý cho trường hợp mps là null hoặc không đủ độ dài
+    }
 }
-        public String Maphatsinh() {
+    
+    public String Maphatsinh() {
     if (dsbh.size() <= 0) {
         return "hd001";
     } else {

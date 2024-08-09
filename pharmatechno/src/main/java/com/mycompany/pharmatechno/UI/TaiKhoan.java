@@ -1,6 +1,8 @@
 package com.mycompany.pharmatechno.UI;
+import com.mycompany.pharmatechno.Control.Auth;
 import com.mycompany.pharmatechno.Model.TaiKhoanNhanVien;
 import com.mycompany.pharmatechno.Control.TaiKhoanNhanVienDao;
+import com.mycompany.pharmatechno.Model.NhanVien;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,24 +21,25 @@ import com.mycompany.pharmatechno.UI.main;
  */
 public class TaiKhoan extends javax.swing.JPanel {
         TaiKhoanNhanVienDao tknvd = new TaiKhoanNhanVienDao();
-    List<TaiKhoanNhanVien> list;
-
+    private NhanVien tknv;  
+    
 
     /**
      * Creates new form TaiKhoan
      */
 public TaiKhoan() {
-        initComponents();
-        list = tknvd.filltoArrayList(); // Lấy dữ liệu từ cơ sở dữ liệu
-        if (!list.isEmpty()) {
-            fillToTextBox(list.get(0)); // Điền thông tin của phần tử đầu tiên vào giao diện
+   initComponents();
+        if (Auth.isLogin()) {
+            tknv = Auth.user;
+            fillToTextBox();
         } else {
-            // Hiển thị thông báo nếu không có dữ liệu
-            JOptionPane.showMessageDialog(this, "Không có dữ liệu để hiển thị.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            // Xử lý khi không có người dùng đăng nhập
         }
+      //  updateUserInfo();
     }
 
     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +47,6 @@ public TaiKhoan() {
      */
     @SuppressWarnings("unchecked")
 
-    
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,7 +85,7 @@ public TaiKhoan() {
 
         setBackground(new java.awt.Color(204, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(0, 255, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("TÀI KHOẢN");
@@ -294,17 +296,11 @@ public TaiKhoan() {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
-        // TODO add your handling code here:
-          ThayDoiMatKhau panelThayDoiMatKhau = new ThayDoiMatKhau();
-
-    // Assuming you have a JFrame or similar container to add this panel to
-    JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-    parentFrame.setContentPane(panelThayDoiMatKhau);
-    parentFrame.revalidate();
-    parentFrame.repaint();
-
-       
+        DoiMatKhau dmk = new DoiMatKhau();
+        dmk.setVisible(true);
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void btnDoiMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoiMatKhauMouseClicked
@@ -373,40 +369,46 @@ public TaiKhoan() {
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
-        public void fillToTextBox(TaiKhoanNhanVien tknv) {
-        
-      // Điền thông tin vào các trường
-    txtMaNV.setText(tknv.getMaNV());
-    txtTen.setText(tknv.getTen());
-    txtTuoi.setText(String.valueOf(tknv.getTuoi()));
-    txtSDT.setText(tknv.getSDT());
-    txtEmail.setText(tknv.getEmail());
-    taDiaChi.setText(tknv.getDiaChi());
-    txtUsername.setText(tknv.getUsername());
-    pwfPassword.setText(tknv.getPassword());
-    
-    // Cài đặt giới tính
-    if ("Nam".equalsIgnoreCase(tknv.getGioiTinh())) {
-        rbtnNam.setSelected(true);
+  public void fillToTextBox() {
+    if (tknv != null) {
+        // Điền thông tin vào các trường
+        txtMaNV.setText(tknv.getMaNV());
+        txtTen.setText(tknv.getTenNV());
+        txtTuoi.setText(String.valueOf(tknv.getTuoiNV()));
+        txtSDT.setText(tknv.getSDT());
+        txtEmail.setText(tknv.getEmail());
+        taDiaChi.setText(tknv.getDiaChi());
+        txtUsername.setText(tknv.getUserName());
+        pwfPassword.setText(tknv.getPassWord());
+
+        // Cài đặt giới tính
+        if ("Nam".equalsIgnoreCase(tknv.getGioiTinh())) {
+            rbtnNam.setSelected(true);
+        } else if ("Nữ".equalsIgnoreCase(tknv.getGioiTinh())) {
+            rbtnNu.setSelected(true);
+        } else {
+            // Xử lý nếu giới tính không hợp lệ hoặc không có giá trị
+            rbtnNam.setSelected(false);
+            rbtnNu.setSelected(false);
+        }
+
+        // Thiết lập các trường không thể chỉnh sửa
+        txtMaNV.setEditable(false);
+        txtTen.setEditable(false);
+        txtTuoi.setEditable(false);
+        txtSDT.setEditable(false);
+        txtEmail.setEditable(false);
+        taDiaChi.setEditable(false);
+        txtUsername.setEditable(false);
+        pwfPassword.setEditable(false);
+        rbtnNam.setEnabled(false);
+        rbtnNu.setEnabled(false);
     } else {
-        rbtnNu.setSelected(true);
+        // Xử lý nếu tknv là null, ví dụ: hiển thị thông báo lỗi hoặc làm trống các trường
+        JOptionPane.showMessageDialog(this, "Thông tin người dùng không hợp lệ.");
     }
+}
 
-    // Thiết lập các trường không thể chỉnh sửa
-    txtMaNV.setEditable(false);
-    txtTen.setEditable(false);
-    txtTuoi.setEditable(false);
-    txtSDT.setEditable(false);
-    txtEmail.setEditable(false);
-    taDiaChi.setEditable(false);
-    txtUsername.setEditable(false);
-    pwfPassword.setEditable(false);
-    
-
-    
-      rbtnNam.setEnabled(false);
-    rbtnNu.setEnabled(false);
-    }
 
 
      

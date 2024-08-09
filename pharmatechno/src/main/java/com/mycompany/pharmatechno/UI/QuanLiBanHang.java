@@ -4,6 +4,7 @@
  */
 package com.mycompany.pharmatechno.UI;
 
+import com.mycompany.pharmatechno.Control.Auth;
 import com.mycompany.pharmatechno.Control.QuanLiBanHangDao;
 import com.mycompany.pharmatechno.Model.BanHang;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
@@ -25,6 +26,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import com.mycompany.pharmatechno.Model.GiohangBean;
 import com.mycompany.pharmatechno.Control.NhanVienDao;
+import com.mycompany.pharmatechno.Control.TaiKhoanNhanVienDao;
+import com.mycompany.pharmatechno.Model.NhanVien;
 import java.beans.Beans;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -35,7 +38,8 @@ import javax.swing.JTextField;
  * @author Cuong
  */
 public class QuanLiBanHang extends javax.swing.JPanel {
-
+   TaiKhoanNhanVienDao tknvd = new TaiKhoanNhanVienDao();
+   private NhanVien tknv;  
     /**
      * Creates new form QuanLiBanHang
      */
@@ -51,13 +55,31 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         txtMaHoaDon.setEditable(false);
         txtThoiGian.setEditable(false);
         txtThoiGian.setText(currentTimestamp.toString());
-
+        if (Auth.isLogin()) {
+            tknv = Auth.user;
+            fillToTextBox();
+        } else {
+            // Xử lý khi không có người dùng đăng nhập
+        }
+        txtMaNV.setEditable(false);
     }
 
     QuanLiBanHangDao bhdao = new QuanLiBanHangDao();
     List<BanHang> dsbh = bhdao.filltoArrayList();
+    
     java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(System.currentTimeMillis());
 
+    
+    
+     public void fillToTextBox() {
+    if (tknv != null) {
+        // Điền thông tin vào các trường
+        txtMaNV.setText(tknv.getMaNV());
+    } else {
+        // Xử lý nếu tknv là null, ví dụ: hiển thị thông báo lỗi hoặc làm trống các trường
+        JOptionPane.showMessageDialog(this, "Thông tin người dùng không hợp lệ.");
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,10 +134,10 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblQuanLiBanHang);
 
-        jPanel3.setBackground(new java.awt.Color(51, 255, 51));
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 51));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("QUẢN LÍ BÁN HÀNG");
 
@@ -123,11 +145,14 @@ public class QuanLiBanHang extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(364, 364, 364)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
         );
 
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +207,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
             tblGioHang.getColumnModel().getColumn(3).setMaxWidth(70);
         }
 
-        jPanel2.setBackground(new java.awt.Color(51, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
         btnLuuIn.setText("Lưu In");
         btnLuuIn.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +314,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btbThanhToan)
                     .addComponent(btnLuuIn))
@@ -333,7 +358,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -365,6 +390,7 @@ public class QuanLiBanHang extends javax.swing.JPanel {
 
     private boolean isUpdatingTable = false;
 
+    
     public void filltotable() {
         DefaultTableModel model = new DefaultTableModel(
                 new Object[]{"Mã Thuốc", "Tên Thuốc", "Tồn Kho", "ĐVT", "Đơn Giá", "barcode"}, 0

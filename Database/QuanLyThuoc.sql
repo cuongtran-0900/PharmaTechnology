@@ -71,6 +71,7 @@ CREATE TABLE Thuoc (
 )
 go
 
+
 INSERT INTO Thuoc(MaThuoc, TenThuoc, SoLuong, HinhAnh, ThanhPhan, SoLuongTon, giaNhap, DonGia, NgaySanXuat, HanSuDung, DonViTinh, LoaiThuoc, XuatXu, IsDelete)
 VALUES
     ('X12IFO4BZ', N'Hapacol 650 DHG', 24, 'thuocHapacol.png', N'Paracetamol', 1021, 20000, 25000, '2024-02-15', '2026-02-15', N'Viên', N'Hệ tim mạch & tạo máu', N'Việt Nam', 1),
@@ -295,4 +296,31 @@ GO
 
 ALTER TABLE HoaDon
 ALTER COLUMN MaKH NVARCHAR(10) NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN hinhanh NVARCHAR(50) NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN dongia NVARCHAR(50) NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN thanhphan NVARCHAR(255) NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN NgaySanXuat date NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN HanSuDung date NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN DonViTinh NVARCHAR(50) NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN LoaiThuoc NVARCHAR(50) NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN XuatXu NVARCHAR(50) NULL;
+
+ALTER TABLE Thuoc
+ALTER COLUMN soluongton NVARCHAR(50) NULL;
 
