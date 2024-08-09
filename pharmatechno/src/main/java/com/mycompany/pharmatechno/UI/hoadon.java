@@ -37,6 +37,10 @@ public class hoadon extends javax.swing.JPanel {
         filltotable2();
         fillToTextBox(vitri);
         addTableMouseListener();
+        txtMaHD.setEditable(false);
+        txtTenNV.setEditable(false);
+        txtThoiGian.setEnabled(false);
+        txtTongTien.setEditable(false);
     }
 
     /**
@@ -285,10 +289,6 @@ public class hoadon extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoaDon_lichsu = new javax.swing.JTable();
-        btnFirst2 = new javax.swing.JButton();
-        btnBack2 = new javax.swing.JButton();
-        btnNext2 = new javax.swing.JButton();
-        btnLast2 = new javax.swing.JButton();
         txtTimKiem = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -310,7 +310,15 @@ public class hoadon extends javax.swing.JPanel {
             new String [] {
                 "Tên thuốc", "Số lượng", "Đơn giá", "Thành Tiền"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbl_HoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_HoaDonMouseClicked(evt);
@@ -467,41 +475,21 @@ public class hoadon extends javax.swing.JPanel {
             new String [] {
                 "Mã hóa đơn", "Tên NV", "Ngày mua hàng", "Tổng tiền"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblHoaDon_lichsu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHoaDon_lichsuMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblHoaDon_lichsu);
-
-        btnFirst2.setText("|<");
-        btnFirst2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFirst2ActionPerformed(evt);
-            }
-        });
-
-        btnBack2.setText("<<");
-        btnBack2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack2ActionPerformed(evt);
-            }
-        });
-
-        btnNext2.setText(">>");
-        btnNext2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext2ActionPerformed(evt);
-            }
-        });
-
-        btnLast2.setText(">|");
-        btnLast2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLast2ActionPerformed(evt);
-            }
-        });
 
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -524,17 +512,7 @@ public class hoadon extends javax.swing.JPanel {
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(btnFirst2)
-                .addGap(18, 18, 18)
-                .addComponent(btnBack2)
-                .addGap(32, 32, 32)
-                .addComponent(btnNext2)
-                .addGap(29, 29, 29)
-                .addComponent(btnLast2)
-                .addGap(70, 644, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(137, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -549,13 +527,7 @@ public class hoadon extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addGap(72, 72, 72)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFirst2)
-                    .addComponent(btnBack2)
-                    .addComponent(btnNext2)
-                    .addComponent(btnLast2))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lịch sử hóa đơn", jPanel2);
@@ -625,40 +597,6 @@ public class hoadon extends javax.swing.JPanel {
         fillToTextBox(vitri);
         
     }//GEN-LAST:event_tbl_HoaDonMouseClicked
-
-    private void btnLast2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLast2ActionPerformed
-        // TODO add your handling code here:
-        btnBack2.setEnabled(true);
-        btnFirst2.setEnabled(true);
-        btnNext2.setEnabled(false);
-        btnLast2.setEnabled(false);
-    }//GEN-LAST:event_btnLast2ActionPerformed
-
-    private void btnNext2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext2ActionPerformed
-        // TODO add your handling code here:
-        btnBack2.setEnabled(true);
-        btnFirst2.setEnabled(true);
-        btnNext2.setEnabled(true);
-        btnLast2.setEnabled(true);
-    }//GEN-LAST:event_btnNext2ActionPerformed
-
-    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-        // TODO add your handling code here:
-        btnBack2();
-        btnBack2.setEnabled(true);
-        btnFirst2.setEnabled(true);
-        btnNext2.setEnabled(true);
-        btnLast2.setEnabled(true);
-    }//GEN-LAST:event_btnBack2ActionPerformed
-
-    private void btnFirst2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst2ActionPerformed
-        // TODO add your handling code here:
-        btnFirst2();
-        btnBack2.setEnabled(false);
-        btnFirst2.setEnabled(false);
-        btnNext2.setEnabled(true);
-        btnLast2.setEnabled(true);
-    }//GEN-LAST:event_btnFirst2ActionPerformed
 
     private void btnFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirst1ActionPerformed
         // TODO add your handling code here:
@@ -733,14 +671,10 @@ public class hoadon extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack1;
-    private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnFirst1;
-    private javax.swing.JButton btnFirst2;
     private javax.swing.JButton btnInHoaDon;
     private javax.swing.JButton btnLast1;
-    private javax.swing.JButton btnLast2;
     private javax.swing.JButton btnNext1;
-    private javax.swing.JButton btnNext2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
