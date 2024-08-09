@@ -630,7 +630,7 @@ public class HoaDonNhapUI extends javax.swing.JPanel {
             String tenThuoc = (String) tblHDN.getValueAt(row, 1); // Cột tên thuốc
             int donGia = (int) tblHDN.getValueAt(row, 2); // Cột đơn giá
             int soLuong = (int) tblHDN.getValueAt(row, 3); // Cột số lượng
-
+ 
             // Cập nhật các trường văn bản
             txtMaThuoc.setText(maThuoc);
             txtTenThuoc.setText(tenThuoc);
